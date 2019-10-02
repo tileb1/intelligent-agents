@@ -1,6 +1,8 @@
 package template;
 
 import java.util.Random;
+import java.util.HashMap;
+import java.util.ArrayList;
 
 import logist.simulation.Vehicle;
 import logist.agent.Agent;
@@ -19,6 +21,7 @@ public class ReactiveTemplate implements ReactiveBehavior {
 	private double pPickup;
 	private int numActions;
 	private Agent myAgent;
+	private HashMap<City, ArrayList<State>> statesMap;
 
 	@Override
 	public void setup(Topology topology, TaskDistribution td, Agent agent) {
@@ -32,6 +35,16 @@ public class ReactiveTemplate implements ReactiveBehavior {
 		this.pPickup = discount;
 		this.numActions = 0;
 		this.myAgent = agent;
+		statesMap = new HashMap<City, ArrayList<State>>();
+		
+		for (City fromCity: topology.cities()) {
+			ArrayList<State> states = new ArrayList<State>();
+			for (City toCity: topology.cities()) {
+				State newState = new State(fromCity, toCity);
+				states.add(newState);
+			}
+			statesMap.put(fromCity, states);
+		}
 	}
 
 	@Override
