@@ -1,5 +1,7 @@
 package template;
 
+import java.util.Objects;
+
 import logist.topology.Topology.City;
 
 public class State {
@@ -21,6 +23,11 @@ public class State {
 		}
 		State s = (State) o;
 		return s.fromCity == this.fromCity && s.toCity == this.toCity;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(fromCity, toCity);
 	}
 
 }
