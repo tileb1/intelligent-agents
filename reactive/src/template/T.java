@@ -32,7 +32,8 @@ public class T {
 			// Identify current city and its neighbours
 			City currentCity = statesBatch.get(0).fromCity; 
 			HashMap<City, HashMap<State, Double>> cityToStatesMap = new HashMap<City, HashMap<State, Double>>();
-			ArrayList<City> neighbours = (ArrayList<City>) currentCity.neighbors();
+			ArrayList<City> neighbours = new ArrayList<City>();
+			neighbours.addAll(currentCity.neighbors());
 			
 			// Gather all neighbours' probability data for all the relevant states
 			for (City neighbour : neighbours) {

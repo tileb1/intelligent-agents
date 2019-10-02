@@ -24,8 +24,8 @@ public class ReactiveTemplate implements ReactiveBehavior {
 	private HashMap<City, ArrayList<State>> statesMap;
 	private T T;
 	private R R;
-	private HashMap<State, Double> V;
-	private HashMap<State, City> PI;
+	private HashMap<State, Double> V = new HashMap<State, Double>();
+	private HashMap<State, City> PI = new HashMap<State, Topology.City>();
 
 	@Override
 	public void setup(Topology topology, TaskDistribution td, Agent agent) {
@@ -59,7 +59,7 @@ public class ReactiveTemplate implements ReactiveBehavior {
 		
 		// Initialize needed "tensors"
 		this.T = new T(statesMap, topology, td);
-		this.R = new R();
+		this.R = new R(statesMap, this.myAgent, topology, td);
 		for (ArrayList<State> stateList : this.statesMap.values()) {
 			for (State s : stateList) {
 				// Random initialization
@@ -85,7 +85,9 @@ public class ReactiveTemplate implements ReactiveBehavior {
 					double bestQ = Double.NEGATIVE_INFINITY;
 					City bestAction = null;
 					for (City a : this.statesMap.keySet()) {
-						double QNew = this.R.get(s, a) + gamma * this.getExpectedV(s, a);
+						System.out.println(s.fromCity.name);
+						System.out.println(a.name);
+						double QNew = gamma * this.getExpectedV(s, a);
 						if (QNew > bestQ) {
 							bestQ = QNew;
 							bestAction = a;
@@ -121,41 +123,41 @@ public class ReactiveTemplate implements ReactiveBehavior {
 
 	@Override
 	public Action act(Vehicle vehicle, Task availableTask) {
-//		Action action;
-//
-//		if (availableTask == null || random.nextDouble() > pPickup) {
-//			City currentCity = vehicle.getCurrentCity();
-//			action = new Move(currentCity.randomNeighbor(random));
-//		} else {
-//			action = new Pickup(availableTask);
-//		}
-//		
-//		if (numActions >= 1) {
-//			System.out.println("The total profit after "+numActions+" actions is "+myAgent.getTotalProfit()+" (average profit: "+(myAgent.getTotalProfit() / (double)numActions)+")");
-//		}
-//		numActions++;
-//		
-//		return action;
+		Action action;
+
+		if (availableTask == null || random.nextDouble() > pPickup) {
+			City currentCity = vehicle.getCurrentCity();
+			action = new Move(currentCity.randomNeighbor(random));
+		} else {
+			action = new Pickup(availableTask);
+		}
+		
+		if (numActions >= 1) {
+			System.out.println("The total profit after "+numActions+" actions is "+myAgent.getTotalProfit()+" (average profit: "+(myAgent.getTotalProfit() / (double)numActions)+")");
+		}
+		numActions++;
+		
+		return action;
 		
 		// We don't care about the weight of the task as described by the assistants
-		State currentState;
-		Action action;
-		// Move to best neighbor if no task available.
-		if (availableTask == null) {
-			currentState = new State(vehicle.getCurrentCity(), null);
-			action = new Move(this.getPolicy(currentState));
-		}
-		// Move to best neighbor and pickup task if deliver city corresponds.
-		else {
-			currentState = new State(vehicle.getCurrentCity(), availableTask.deliveryCity);
-			City a = this.getPolicy(currentState);
-			if (availableTask.deliveryCity == a) {
-				action = new Pickup(availableTask);
-			}
-			else {
-				action = new Move(a);
-			}
-		}
-		return action;
+//		State currentState;
+//		Action action;
+//		// Move to best neighbor if no task available.
+//		if (availableTask == null) {
+//			currentState = new State(vehicle.getCurrentCity(), null);
+//			action = new Move(this.getPolicy(currentState));
+//		}
+//		// Move to best neighbor and pickup task if deliver city corresponds.
+//		else {
+//			currentState = new State(vehicle.getCurrentCity(), availableTask.deliveryCity);
+//			City a = this.getPolicy(currentState);
+//			if (availableTask.deliveryCity == a) {
+//				action = new Pickup(availableTask);
+//			}
+//			else {
+//				action = new Move(a);
+//			}
+//		}
+//		return action;
 	}
 }
