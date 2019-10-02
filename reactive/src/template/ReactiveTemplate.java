@@ -66,12 +66,14 @@ public class ReactiveTemplate implements ReactiveBehavior {
 				this.V.put(s, 0.0);
 			}
 		}
+		
+		this.doValueIteration(discount);
 	}
 	
 	/*
 	 * Learns V offline to compute the best policy.
 	 */
-	public void doValueIteration(double gamma) {
+	private void doValueIteration(double gamma) {
 		// Loop until good enough (change later) -------------------------------------------------------------------
 		for (int index = 0; index < 10; index++) {
 			
