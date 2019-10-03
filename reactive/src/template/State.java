@@ -29,5 +29,13 @@ public class State {
 	public int hashCode() {
 		return Objects.hash(fromCity, toCity);
 	}
+	
+	@Override
+	public String toString() {
+		if (this.toCity == null) {
+			return "(" + this.fromCity.name + ", " + "no task" + ")";
+		}
+		return "(" + this.fromCity.name + ", " + this.toCity.name + ")";
+	}
 
 }

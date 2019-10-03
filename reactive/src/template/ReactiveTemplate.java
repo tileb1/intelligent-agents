@@ -32,31 +32,29 @@ public class ReactiveTemplate implements ReactiveBehavior {
 
 		// Reads the discount factor from the agents.xml file.
 		// If the property is not present it defaults to 0.95
-		Double discount = agent.readProperty("discount-factor", Double.class,
-				0.95);
+		Double discount = agent.readProperty("discount-factor", Double.class, 0.95);
 
 		this.random = new Random();
 		this.pPickup = discount;
 		this.numActions = 0;
 		this.myAgent = agent;
-		
+
 		// Data structure for fast iteration over relevant states
 		this.statesMap = new HashMap<City, ArrayList<State>>();
-		for (City fromCity: topology.cities()) {
+		for (City fromCity : topology.cities()) {
 			ArrayList<State> states = new ArrayList<State>();
-			for (City toCity: topology.cities()) {
+			for (City toCity : topology.cities()) {
 				State newState;
-				if (toCity == fromCity) {
-					newState = new State(fromCity, toCity);
-				}
-				else {
+				if (toCity.equals(fromCity)) {
 					newState = new State(fromCity, null);
+				} else {
+					newState = new State(fromCity, toCity);
 				}
 				states.add(newState);
 			}
 			this.statesMap.put(fromCity, states);
 		}
-		
+
 		// Initialize needed "tensors"
 		this.T = new T(statesMap, topology, td);
 		this.R = new R(statesMap, this.myAgent, topology, td);
@@ -66,50 +64,60 @@ public class ReactiveTemplate implements ReactiveBehavior {
 				this.V.put(s, 0.0);
 			}
 		}
-		
+
 		this.doValueIteration(discount);
 	}
-	
+
 	/*
 	 * Learns V offline to compute the best policy.
 	 */
 	private void doValueIteration(double gamma) {
-		// Loop until good enough (change later) -------------------------------------------------------------------
-		for (int index = 0; index < 10; index++) {
-			
+		// Loop until good enough (change later)
+		// -------------------------------------------------------------------
+		for (int index = 0; index < 10000; index++) {
+
 			// The 2 following for loops loop over all the possible states
 			for (ArrayList<State> stateList : this.statesMap.values()) {
 				for (State s : stateList) {
-					
-					// Loop over all actions
+
+					// Loop over most actions (going to neighbor)
 					double bestQ = Double.NEGATIVE_INFINITY;
 					City bestAction = null;
-					for (City a : this.statesMap.keySet()) {
-						System.out.println(s.fromCity.name);
-						System.out.println(a.name);
-						double QNew = gamma * this.getExpectedV(s, a);
+					for (City a : s.fromCity.neighbors()) {
+						System.out.print(s);
+						System.out.println(" + " + a.name);
+						double QNew = this.R.get(s, a) + gamma * this.getExpectedV(s, a);
 						if (QNew > bestQ) {
 							bestQ = QNew;
 							bestAction = a;
 						}
 					}
 					
+					// Loop over last action (going to task if possible)
+					if (s.toCity != null) {
+						double QNew = this.R.get(s, s.toCity) + gamma * this.getExpectedV(s, s.toCity);
+						if (QNew > bestQ) {
+							bestQ = QNew;
+							bestAction = s.toCity;
+						}
+					}
+
 					// Set V(s) to max of Q over all possible actions
 					this.V.put(s, bestQ);
 					this.PI.put(s, bestAction);
 				}
 			}
 		}
-		
+
 	}
-	
+
 	/*
 	 * Returns the optimal learned policy given a state
 	 */
 	private City getPolicy(State s) {
 		return this.PI.get(s);
 	}
-	
+
 	/*
 	 * Compute expected value of V given a current state and an action.
 	 */
@@ -123,41 +131,46 @@ public class ReactiveTemplate implements ReactiveBehavior {
 
 	@Override
 	public Action act(Vehicle vehicle, Task availableTask) {
-		Action action;
+//		Action action;
+//
+//		if (availableTask == null || random.nextDouble() > pPickup) {
+//			City currentCity = vehicle.getCurrentCity();
+//			action = new Move(currentCity.randomNeighbor(random));
+//		} else {
+//			action = new Pickup(availableTask);
+//		}
+//		
+//		if (numActions >= 1) {
+//			System.out.println("The total profit after "+numActions+" actions is "+myAgent.getTotalProfit()+" (average profit: "+(myAgent.getTotalProfit() / (double)numActions)+")");
+//		}
+//		numActions++;
+//		
+//		return action;
 
-		if (availableTask == null || random.nextDouble() > pPickup) {
-			City currentCity = vehicle.getCurrentCity();
-			action = new Move(currentCity.randomNeighbor(random));
-		} else {
-			action = new Pickup(availableTask);
+		// We don't care about the weight of the task as described by the assistants
+		State currentState;
+		Action action;
+		// Move to best neighbor if no task available.
+		if (availableTask == null) {
+			currentState = new State(vehicle.getCurrentCity(), null);
+			action = new Move(this.getPolicy(currentState));
 		}
-		
+		// Move to best neighbor and pickup task if deliver city corresponds.
+		else {
+			currentState = new State(vehicle.getCurrentCity(), availableTask.deliveryCity);
+			City a = this.getPolicy(currentState);
+			if (availableTask.deliveryCity.equals(a)) {
+				action = new Pickup(availableTask);
+			} else {
+				action = new Move(a);
+			}
+		}
+
 		if (numActions >= 1) {
-			System.out.println("The total profit after "+numActions+" actions is "+myAgent.getTotalProfit()+" (average profit: "+(myAgent.getTotalProfit() / (double)numActions)+")");
+			System.out.println("The total profit after " + numActions + " actions is " + myAgent.getTotalProfit()
+					+ " (average profit: " + (myAgent.getTotalProfit() / (double) numActions) + ")");
 		}
 		numActions++;
-		
 		return action;
-		
-		// We don't care about the weight of the task as described by the assistants
-//		State currentState;
-//		Action action;
-//		// Move to best neighbor if no task available.
-//		if (availableTask == null) {
-//			currentState = new State(vehicle.getCurrentCity(), null);
-//			action = new Move(this.getPolicy(currentState));
-//		}
-//		// Move to best neighbor and pickup task if deliver city corresponds.
-//		else {
-//			currentState = new State(vehicle.getCurrentCity(), availableTask.deliveryCity);
-//			City a = this.getPolicy(currentState);
-//			if (availableTask.deliveryCity == a) {
-//				action = new Pickup(availableTask);
-//			}
-//			else {
-//				action = new Move(a);
-//			}
-//		}
-//		return action;
 	}
 }

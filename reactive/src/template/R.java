@@ -10,7 +10,7 @@ import logist.topology.Topology.City;
 
 public class R {
 
-	private HashMap<State, HashMap<City, Double>> rewards;// = new HashMap<State, HashMap<City,Double>>();
+	private HashMap<State, HashMap<City, Double>> rewards = new HashMap<State, HashMap<City,Double>>();
 	private ArrayList<State> states = new ArrayList<State>();
 	
 	public R(HashMap<City, ArrayList<State>> cityStates, Agent agent, Topology topology, TaskDistribution td) {
