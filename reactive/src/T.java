@@ -1,4 +1,4 @@
-package template;
+
 
 import logist.task.TaskDistribution;
 import logist.topology.Topology;
