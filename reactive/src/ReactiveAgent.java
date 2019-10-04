@@ -21,6 +21,7 @@ public class ReactiveAgent implements ReactiveBehavior {
 	private R R;
 	private HashMap<State, Double> V = new HashMap<State, Double>();
 	private HashMap<State, City> PI = new HashMap<State, Topology.City>();
+	private final double EPS = 1e-7;
 
 	@Override
 	public void setup(Topology topology, TaskDistribution td, Agent agent) {
@@ -28,6 +29,7 @@ public class ReactiveAgent implements ReactiveBehavior {
 		// Reads the discount factor from the agents.xml file.
 		// If the property is not present it defaults to 0.95
 		Double discount = agent.readProperty("discount-factor", Double.class, 0.95);
+		System.out.println(discount);
 
 		this.numActions = 0;
 		this.myAgent = agent;
@@ -54,7 +56,7 @@ public class ReactiveAgent implements ReactiveBehavior {
 		for (ArrayList<State> stateList : this.statesMap.values()) {
 			for (State s : stateList) {
 				// Random initialization
-				this.V.put(s, 0.0);
+				this.V.put(s, 100000.0);
 			}
 		}
 
@@ -67,8 +69,10 @@ public class ReactiveAgent implements ReactiveBehavior {
 	private void doValueIteration(double gamma) {
 		// Loop until good enough (change later)
 		// -------------------------------------------------------------------
-		for (int index = 0; index < 10000; index++) {
-
+		double maxDiffV;
+		int i = 0;
+		do {
+			maxDiffV = 0.0;
 			// The 2 following for loops loop over all the possible states
 			for (ArrayList<State> stateList : this.statesMap.values()) {
 				for (State s : stateList) {
@@ -77,8 +81,8 @@ public class ReactiveAgent implements ReactiveBehavior {
 					double bestQ = Double.NEGATIVE_INFINITY;
 					City bestAction = null;
 					for (City a : s.fromCity.neighbors()) {
-						System.out.print(s);
-						System.out.println(" + " + a.name);
+//						System.out.print(s);
+//						System.out.println(" + " + a.name);
 						double QNew = this.R.get(s, a) + gamma * this.getExpectedV(s, a);
 						if (QNew > bestQ) {
 							bestQ = QNew;
@@ -94,13 +98,18 @@ public class ReactiveAgent implements ReactiveBehavior {
 							bestAction = s.toCity;
 						}
 					}
+					// Renew max of difference |V(S)-V'(S)|
+					if (Math.abs(this.V.get(s) - bestQ) > maxDiffV) {
+						maxDiffV = Math.abs(this.V.get(s) - bestQ);
+					}
 
 					// Set V(s) to max of Q over all possible actions
 					this.V.put(s, bestQ);
 					this.PI.put(s, bestAction);
 				}
 			}
-		}
+			System.out.println("Iteration: " + i++ + " : " + maxDiffV);
+		} while (maxDiffV > this.EPS);
 
 	}
 
@@ -137,11 +146,44 @@ public class ReactiveAgent implements ReactiveBehavior {
 		else {
 			currentState = new State(vehicle.getCurrentCity(), availableTask.deliveryCity);
 			City a = this.getPolicy(currentState);
+				
+			
 			if (availableTask.deliveryCity.equals(a)) {
 				action = new Pickup(availableTask);
 			} else {
-				action = new Move(a);
+				System.out.println("Task: " + availableTask.deliveryCity);
+				System.out.println("Predicted: " + a);
+				double sumVDelivery = 0.0;
+				for (State possibleState : this.statesMap.get(availableTask.deliveryCity)) {
+					sumVDelivery += this.V.get(possibleState);
+				}
+				double sumBestVOffline = 0.0;
+				for (State possibleState : this.statesMap.get(a)) {
+					sumBestVOffline += this.V.get(possibleState);
+				}
+				System.out.println(sumVDelivery/sumBestVOffline);
+				if (sumVDelivery / sumBestVOffline >= 1.0) {
+					action = new Pickup(availableTask);
+				}
+				else {
+					action = new Move(a);
+				}
+				
+//				throw new NullPointerException();
 			}
+			
+//			currentState = new State(vehicle.getCurrentCity(), availableTask.deliveryCity);
+//			City a = this.getPolicy(currentState);
+//			
+//			double maxV = Double.NEGATIVE_INFINITY;
+//			City bestMove = null;
+//			for (State possibleState : this.statesMap.get(availableTask.deliveryCity)) {
+//				if (this.V.get(possibleState) > maxV) {
+//					maxV = this.V.get(possibleState);
+//				}
+//			}
+//			if (maxV - this.V.get(key))
+			
 		}
 
 		if (numActions >= 1) {
