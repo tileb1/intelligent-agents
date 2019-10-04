@@ -67,8 +67,7 @@ public class ReactiveAgent implements ReactiveBehavior {
 	 * Learns V offline to compute the best policy.
 	 */
 	private void doValueIteration(double gamma) {
-		// Loop until good enough (change later)
-		// -------------------------------------------------------------------
+		// Loop until good enough
 		double maxDiffV;
 		int i = 0;
 		do {
@@ -81,15 +80,13 @@ public class ReactiveAgent implements ReactiveBehavior {
 					double bestQ = Double.NEGATIVE_INFINITY;
 					City bestAction = null;
 					for (City a : s.fromCity.neighbors()) {
-//						System.out.print(s);
-//						System.out.println(" + " + a.name);
 						double QNew = this.R.get(s, a) + gamma * this.getExpectedV(s, a);
 						if (QNew > bestQ) {
 							bestQ = QNew;
 							bestAction = a;
 						}
 					}
-					
+
 					// Loop over last action (going to task if possible)
 					if (s.toCity != null) {
 						double QNew = this.R.get(s, s.toCity) + gamma * this.getExpectedV(s, s.toCity);
@@ -146,44 +143,12 @@ public class ReactiveAgent implements ReactiveBehavior {
 		else {
 			currentState = new State(vehicle.getCurrentCity(), availableTask.deliveryCity);
 			City a = this.getPolicy(currentState);
-				
-			
+
 			if (availableTask.deliveryCity.equals(a)) {
 				action = new Pickup(availableTask);
 			} else {
-				System.out.println("Task: " + availableTask.deliveryCity);
-				System.out.println("Predicted: " + a);
-				double sumVDelivery = 0.0;
-				for (State possibleState : this.statesMap.get(availableTask.deliveryCity)) {
-					sumVDelivery += this.V.get(possibleState);
-				}
-				double sumBestVOffline = 0.0;
-				for (State possibleState : this.statesMap.get(a)) {
-					sumBestVOffline += this.V.get(possibleState);
-				}
-				System.out.println(sumVDelivery/sumBestVOffline);
-				if (sumVDelivery / sumBestVOffline >= 1.0) {
-					action = new Pickup(availableTask);
-				}
-				else {
-					action = new Move(a);
-				}
-				
-//				throw new NullPointerException();
+				action = new Move(a);
 			}
-			
-//			currentState = new State(vehicle.getCurrentCity(), availableTask.deliveryCity);
-//			City a = this.getPolicy(currentState);
-//			
-//			double maxV = Double.NEGATIVE_INFINITY;
-//			City bestMove = null;
-//			for (State possibleState : this.statesMap.get(availableTask.deliveryCity)) {
-//				if (this.V.get(possibleState) > maxV) {
-//					maxV = this.V.get(possibleState);
-//				}
-//			}
-//			if (maxV - this.V.get(key))
-			
 		}
 
 		if (numActions >= 1) {
