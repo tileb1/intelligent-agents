@@ -7,7 +7,44 @@
 	<agent name="reactive-rla">
 		<set class-path="bin/"/>
 		<set class-name="ReactiveAgent"/>
-		<set discount-factor=".95"/>
+		<set discount-factor=".99"/>
+	</agent>
+
+	<agent name="random">
+		<set class-path="bin/"/>
+		<set class-name="template.ReactiveTemplate"/>
+	</agent>
+
+	<agent name="dummy">
+		<set class-path="bin/"/>
+		<set class-name="DummyAgent"/>
+	</agent>
+
+	<!-- Test with other discount factor -->
+	<agent name="reactive-rla-0.80">
+		<set class-path="bin/"/>
+		<set class-name="ReactiveAgent"/>
+		<set discount-factor=".80"/>
+	</agent>
+
+	<agent name="reactive-rla-0.50">
+		<set class-path="bin/"/>
+		<set class-name="ReactiveAgent"/>
+		<set discount-factor=".50"/>
+	</agent>
+
+	<agent name="reactive-rla-0.10">
+		<set class-path="bin/"/>
+		<set class-name="ReactiveAgent"/>
+		<set discount-factor=".20"/>
+	</agent>
+
+	<agent name="reactive-rla-0.0">
+		<set class-path="bin/"/>
+		<set class-name="ReactiveAgent"/>
+		<set discount-factor=".0"/>
 	</agent>
 	
 </agents>
+
+
