@@ -26,7 +26,7 @@ public class R {
 					fixedOriginStateRewards.put(nextCity, - initState.fromCity.distanceTo(nextCity) * agent.vehicles().get(0).costPerKm());
 				}
 			}
-			rewards.put(initState, fixedOriginStateRewards);
+			this.rewards.put(initState, fixedOriginStateRewards);
 		}
 	}
 	public double get(State s, City a) {

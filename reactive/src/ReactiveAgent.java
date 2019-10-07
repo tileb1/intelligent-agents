@@ -29,7 +29,7 @@ public class ReactiveAgent implements ReactiveBehavior {
 		// Reads the discount factor from the agents.xml file.
 		// If the property is not present it defaults to 0.95
 		Double discount = agent.readProperty("discount-factor", Double.class, 0.95);
-		System.out.println(discount);
+		System.out.print(discount);
 
 		this.numActions = 0;
 		this.myAgent = agent;
@@ -105,9 +105,10 @@ public class ReactiveAgent implements ReactiveBehavior {
 					this.PI.put(s, bestAction);
 				}
 			}
-			System.out.println("Iteration: " + i++ + " : " + maxDiffV);
+			i++;
 		} while (maxDiffV > this.EPS);
-
+		i--;
+		System.out.println(" - Converged after " + i + " iterations");
 	}
 
 	/*
