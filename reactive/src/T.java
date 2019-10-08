@@ -32,11 +32,9 @@ public class T {
 			// Identify current city and its neighbors
 			City currentCity = statesBatch.get(0).fromCity; 
 			HashMap<City, HashMap<State, Double>> cityToStatesMap = new HashMap<City, HashMap<State, Double>>();
-			ArrayList<City> neighbours = new ArrayList<City>();
-			neighbours.addAll(currentCity.neighbors());
 			
 			// Gather all neighbors' probability data for all the relevant states
-			for (City neighbour : neighbours) {
+			for (City neighbour : currentCity.neighbors()) {
 				cityToStatesMap.put(neighbour, probabilities.get(neighbour));
 			}
 			
@@ -46,7 +44,7 @@ public class T {
 			// and additionally the states that have as current city the delivery 
 			// city of the current task (if it isn't a neighbor)
 			for (State currentState : statesBatch) {
-				if (!(neighbours.contains(currentState.toCity))) {
+				if (!(currentCity.neighbors().contains(currentState.toCity))) {
 					HashMap<City, HashMap<State, Double>> accessibleStatesMap = new HashMap<City, HashMap<State, Double>>();
 					accessibleStatesMap.putAll(cityToStatesMap);
 					accessibleStatesMap.put(currentState.toCity, probabilities.get(currentState.toCity));
