@@ -9,55 +9,51 @@ import java.util.HashMap;
 
 public class T {
 	
-	private HashMap<State, HashMap<City, HashMap<State, Double>>> mat;
+	private HashMap<State, HashMap<City, HashMap<State, Double>>> transitionMatrix;
 	private HashMap<City, HashMap<State, Double>> probabilities;
 	
-	public T(HashMap<City, ArrayList<State>> cityStates, Topology topology, TaskDistribution td) {
-		this.mat = new HashMap<State, HashMap<City, HashMap<State, Double>>>();
+	public T(HashMap<City, ArrayList<State>> statesPerCity, Topology topology, TaskDistribution td) {
+		this.transitionMatrix = new HashMap<State, HashMap<City, HashMap<State, Double>>>();
 		this.probabilities = new HashMap<City, HashMap<State, Double>>();
 		
-		// First extract the probabilities data for all states into a HashMap
-		// that is organized by current city
-		for (City city : cityStates.keySet()) {
+		// First extract the probabilities data for all states into a HashMap organized by fromCity
+		for (City city : statesPerCity.keySet()) {
 			HashMap<State, Double> cityProbs = new HashMap<State, Double>();
-			for (State state : cityStates.get(city)) {
+			for (State state : statesPerCity.get(city)) {
 				cityProbs.put(state, td.probability(state.fromCity, state.toCity));
 			}
 			this.probabilities.put(city, cityProbs);
 		}
 		
-		// Iterate over all states in batches of states that share the same current city
-		for (ArrayList<State> statesBatch : cityStates.values()) {
+		// Iterate over all states in batches of states that share the same fromCity
+		for (ArrayList<State> cityStates : statesPerCity.values()) {
 			
-			// Identify current city and its neighbors
-			City currentCity = statesBatch.get(0).fromCity; 
-			HashMap<City, HashMap<State, Double>> cityToStatesMap = new HashMap<City, HashMap<State, Double>>();
+			// Identify current city
+			City currentCity = cityStates.get(0).fromCity; 
+			HashMap<City, HashMap<State, Double>> neighboringStates = new HashMap<City, HashMap<State, Double>>();
 			
-			// Gather all neighbors' probability data for all the relevant states
-			for (City neighbour : currentCity.neighbors()) {
-				cityToStatesMap.put(neighbour, probabilities.get(neighbour));
+			// Gather all probability data for all neighboring cities' states
+			for (City neighbor : currentCity.neighbors()) {
+				neighboringStates.put(neighbor, probabilities.get(neighbor));
 			}
 			
-			// For every state that shares the same current city, populate the
-			// HashMap representing the transition matrix with the transition 
-			// probabilities of accessible states i.e. all neighboring states
-			// and additionally the states that have as current city the delivery 
-			// city of the current task (if it isn't a neighbor)
-			for (State currentState : statesBatch) {
+			// For each state populate the transition matrix with the probabilities of accessible states 
+			// i.e. states of neighboring cities and states of the toCity (if it isn't a neighbor)
+			for (State currentState : cityStates) {
 				if (!(currentCity.neighbors().contains(currentState.toCity))) {
-					HashMap<City, HashMap<State, Double>> accessibleStatesMap = new HashMap<City, HashMap<State, Double>>();
-					accessibleStatesMap.putAll(cityToStatesMap);
-					accessibleStatesMap.put(currentState.toCity, probabilities.get(currentState.toCity));
-					mat.put(currentState, accessibleStatesMap);
+					HashMap<City, HashMap<State, Double>> accessibleStates = new HashMap<City, HashMap<State, Double>>();
+					accessibleStates.putAll(neighboringStates);
+					accessibleStates.put(currentState.toCity, probabilities.get(currentState.toCity));
+					transitionMatrix.put(currentState, accessibleStates);
 				} else {
-					mat.put(currentState, cityToStatesMap);
+					transitionMatrix.put(currentState, neighboringStates);
 				}
 			}
 		}	
 	}
 	
 	public double get(State s1, City a, State s2) {
-		return this.mat.get(s1).get(a).get(s2);
+		return this.transitionMatrix.get(s1).get(a).get(s2);
 	}
 
 }

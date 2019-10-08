@@ -13,17 +13,20 @@ public class R {
 	private HashMap<State, HashMap<City, Double>> rewards = new HashMap<State, HashMap<City,Double>>();
 	
 	public R(HashMap<City, ArrayList<State>> cityStates, Agent agent, Topology topology, TaskDistribution td) {
+		// Iterate over every state
 		for(ArrayList<State> states : cityStates.values()) {
 			for(State initState: states) {
-				HashMap<City, Double> fixedOriginStateRewards = new HashMap<City, Double>();
+				HashMap<City, Double> initStateRewards = new HashMap<City, Double>();
 				for (City nextCity : cityStates.keySet()) {
+					// Set reward to expected reward minus cost of the action, if it corresponds to going to toCity of the state
+					// Otherwise set reward to cost of the action (only neighbors)
 					if(initState.toCity == nextCity) {
-						fixedOriginStateRewards.put(nextCity, td.reward(initState.fromCity, nextCity) - initState.fromCity.distanceTo(nextCity) * agent.vehicles().get(0).costPerKm());
+						initStateRewards.put(nextCity, td.reward(initState.fromCity, nextCity) - initState.fromCity.distanceTo(nextCity) * agent.vehicles().get(0).costPerKm());
 					} else if(initState.fromCity.hasNeighbor(nextCity)) {
-						fixedOriginStateRewards.put(nextCity, - initState.fromCity.distanceTo(nextCity) * agent.vehicles().get(0).costPerKm());
+						initStateRewards.put(nextCity, - initState.fromCity.distanceTo(nextCity) * agent.vehicles().get(0).costPerKm());
 					}
 				}
-				this.rewards.put(initState, fixedOriginStateRewards);
+				this.rewards.put(initState, initStateRewards);
 			}
 		}
 	}
