@@ -15,7 +15,6 @@ public class BFS {
 		Q.add(initState);
 		
 		while (!Q.isEmpty()) {
-			System.out.println(Q);
 			State n = Q.remove(0);
 			if (n.getIsGoal()) {
 				if ((bestGoalState == null) || (n.getCost() < bestGoalState.getCost())) {
@@ -25,16 +24,21 @@ public class BFS {
 			else {
 				ArrayList<State> childNodes = n.getChildren();
 				boolean newState = true;
+				State sameState = null;
 				for (State s: exploredStates) {
 					if ((s.equals(n)) & (s.getCost() > n.getCost())) {
-						System.out.println("IF");
-						exploredStates.remove(s);
-						exploredStates.add(n);
+//						System.out.println("IF");
 						newState = false;
+						sameState = s;
 						break;
 					}
 				}
-				if (newState) {
+				if (!newState) {
+					exploredStates.remove(sameState);
+					exploredStates.add(n);
+				}
+				else {
+					
 					exploredStates.add(n);
 				}
 				Q.addAll(childNodes);
