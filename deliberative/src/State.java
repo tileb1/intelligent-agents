@@ -41,6 +41,12 @@ public class State {
 			this.capacityLeft -= task.weight;
 		}
 	}
+	
+	@Override
+	public String toString() {
+		return Integer.toString(this.availableTasks.size());
+		
+	}
 
 	// -------------------- GETTERS -------------------------
 	public double getCost() {

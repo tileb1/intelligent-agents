@@ -2,6 +2,9 @@ import java.util.ArrayList;
 import logist.plan.Plan;
 
 public class BFS {
+	public BFS() {
+		
+	}
 	
 	public Plan computePlan(State initState) {
 		
@@ -12,6 +15,7 @@ public class BFS {
 		Q.add(initState);
 		
 		while (!Q.isEmpty()) {
+			System.out.println(Q);
 			State n = Q.remove(0);
 			if (n.getIsGoal()) {
 				if ((bestGoalState == null) || (n.getCost() < bestGoalState.getCost())) {
@@ -23,9 +27,11 @@ public class BFS {
 				boolean newState = true;
 				for (State s: exploredStates) {
 					if ((s.equals(n)) & (s.getCost() > n.getCost())) {
+						System.out.println("IF");
 						exploredStates.remove(s);
 						exploredStates.add(n);
 						newState = false;
+						break;
 					}
 				}
 				if (newState) {
