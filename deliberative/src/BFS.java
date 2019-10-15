@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.concurrent.TimeUnit;
 
 import logist.plan.Plan;
 
@@ -9,6 +10,7 @@ public class BFS {
 	}
 	
 	public Plan computePlan(State initState) {
+		final long startTime = System.nanoTime();
 		
 		LinkedList<State> Q = new LinkedList<State>();
 //		ArrayList<State> exploredStates = new ArrayList<State>();
@@ -46,9 +48,10 @@ public class BFS {
 				Q.addAll(childNodes);
 			}		
 		}
-		long timeBegin = System.nanoTime();
+		final long timeBegin = System.nanoTime();
 		Plan plan = bestGoalState.getPlan();
-		System.out.println(System.nanoTime() - timeBegin);
+		System.out.println(TimeUnit.MILLISECONDS.convert(timeBegin - startTime, TimeUnit.NANOSECONDS));
+		System.out.println(TimeUnit.MILLISECONDS.convert(System.nanoTime() - timeBegin, TimeUnit.NANOSECONDS));
 		return plan;	
 	}
 }

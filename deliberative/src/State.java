@@ -13,33 +13,29 @@ public class State {
 	private TaskSet loadedTasks;
 	private State parent;
 	private double cost;
-	private double capacityLeft;
+	private int capacityLeft;
 	
-	private boolean isGoal = false;
-	private Vehicle vehicle;
+//	private Vehicle vehicle;
 
-	public State(City city, TaskSet availableTasks, TaskSet loadedTasks, Vehicle vehicle, State parent) {
+	public State(City city, TaskSet availableTasks, TaskSet loadedTasks, State parent, int capacityLeft) {
 		this.city = city;
 		this.availableTasks = availableTasks;
 		this.loadedTasks = loadedTasks;
 		this.parent = parent;
-		this.vehicle = vehicle;
+//		this.vehicle = vehicle;
 
-		if (parent != null) {
-			this.cost = this.parent.getCost() + this.parent.getCity().distanceTo(this.city) * vehicle.costPerKm();
-		} else {
-			this.cost = 0;
-		}
-		
-		if (this.loadedTasks.size() == 0 & this.availableTasks.size() == 0) {
-			this.isGoal = true;
-		}
+//		if (parent != null) {
+//			this.cost = this.parent.getCost() + this.parent.getCity().distanceTo(this.city) * vehicle.costPerKm();
+//		} else {
+//			this.cost = 0;
+//		}
+		this.cost = 0;
 		
 		// We could precompute this to make it faster but this is more user friendly
-		this.capacityLeft = vehicle.capacity();
-		for (Task task : this.loadedTasks) {
-			this.capacityLeft -= task.weight;
-		}
+		this.capacityLeft = capacityLeft;//vehicle.capacity();
+//		for (Task task : this.loadedTasks) {
+//			this.capacityLeft -= task.weight;
+//		}
 	}
 	
 	@Override
@@ -66,7 +62,7 @@ public class State {
 	}
 
 	public boolean getIsGoal() {
-		return this.isGoal;
+		return this.loadedTasks.size() == 0 & this.availableTasks.size() == 0;
 	}
 
 	@Override
@@ -99,7 +95,7 @@ public class State {
 				newAvailableTasks.remove(task);
 				newLoadedTasks = this.loadedTasks.clone();
 				newLoadedTasks.add(task);
-				children.add(new State(task.pickupCity, newAvailableTasks, newLoadedTasks, this.vehicle, this));
+				children.add(new State(task.pickupCity, newAvailableTasks, newLoadedTasks, this, this.capacityLeft - task.weight));
 			}
 		}
 		
@@ -107,7 +103,7 @@ public class State {
 		for (Task task : this.loadedTasks) {
 			newLoadedTasks = this.loadedTasks.clone();
 			newLoadedTasks.remove(task);
-			children.add(new State(task.deliveryCity, this.availableTasks, newLoadedTasks, this.vehicle, this));
+			children.add(new State(task.deliveryCity, this.availableTasks, newLoadedTasks, this, this.capacityLeft + task.weight));
 		}
 		return children;
 	}
