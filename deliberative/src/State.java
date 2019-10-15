@@ -116,6 +116,7 @@ public class State {
 	 * Returns the plan from the initial state to the current state
 	 */
 	public Plan getPlan() {
+//		long timeBegin = System.nanoTime();
 		if (this.parent == null) {
 			return new Plan(this.city);
 		}
@@ -151,7 +152,7 @@ public class State {
 				currentPlan.appendPickup(onlyTask);
 			}
 		}
-		
+//		System.out.println(System.nanoTime() - timeBegin);
 		return currentPlan;
 	}
 }
