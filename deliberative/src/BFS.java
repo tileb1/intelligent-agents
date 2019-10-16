@@ -27,39 +27,19 @@ public class BFS {
 				if ((bestGoalState == null) || (n.getCost() < bestGoalState.getCost())) {
 					bestGoalState = n;
 				}
-			}
-			else if (exploredStates.containsKey(n)) {
-				
+				exploredStates.put(n, n);
+			} else if (exploredStates.containsKey(n)) {
 				if (exploredStates.get(n).getCost() > n.getCost()) {
-
+					exploredStates.put(n, n);	
 				}
-				
-			}
-			else {
+			} else {
 				ArrayList<State> childNodes = n.getChildren();
-//				boolean newState = true;
-//				State sameState = null;
-//				for (State s: exploredStates) {
-//					if ((s.equals(n)) & (s.getCost() > n.getCost())) {
-////						System.out.println("IF");
-//						newState = false;
-//						sameState = s;
-//						break;
-//					}
-//				}
-//				if (!newState) {
-//					exploredStates.remove(sameState);
-//					exploredStates.add(n);
-//				}
-//				else {
-//					
-//					exploredStates.add(n);
-//				}
 				Q.addAll(childNodes);
+				exploredStates.put(n, n);
 			}		
 		}
 		final long timeBegin = System.nanoTime();
-		Plan plan = this.getPlan(bestGoalState);
+		Plan plan = getPlan(bestGoalState);
 		System.out.println(TimeUnit.MILLISECONDS.convert(timeBegin - startTime, TimeUnit.NANOSECONDS));
 		System.out.println(TimeUnit.MILLISECONDS.convert(System.nanoTime() - timeBegin, TimeUnit.NANOSECONDS));
 		return plan;	
