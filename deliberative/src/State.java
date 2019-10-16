@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 
 import logist.plan.Plan;
 import logist.simulation.Vehicle;
@@ -60,6 +61,10 @@ public class State {
 	public City getCity() {
 		return this.city;
 	}
+	
+	public State getParent() {
+		return this.parent;
+	}
 
 	public boolean getIsGoal() {
 		return this.loadedTasks.size() == 0 & this.availableTasks.size() == 0;
@@ -78,9 +83,10 @@ public class State {
 				& this.city.equals(other.getCity());
 	}
 	
-//	@Override
-//	public int hashCode() {
-//	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(this.availableTasks, this.loadedTasks, this.city);
+	}
 
 	/*
 	 * Gets the children node of the current state
@@ -112,47 +118,47 @@ public class State {
 		return children;
 	}
 	
-	/*
-	 * Returns the plan from the initial state to the current state
-	 */
-	public Plan getPlan() {
-//		long timeBegin = System.nanoTime();
-		if (this.parent == null) {
-			return new Plan(this.city);
-		}
-		// Recursive call to parent getPlan() method
-		Plan currentPlan = this.parent.getPlan();
-		
-		TaskSet oneElemMaxLoaded;
-		TaskSet oneElemMaxAvailable = this.parent.getAvailableTasks().clone();
-		oneElemMaxAvailable.removeAll(this.availableTasks);
-		
-		// The current city is a deliver city for the parent node
-		if (oneElemMaxAvailable.size() == 0) {
-			for (City city : this.parent.getCity().pathTo(this.city)) {
-				currentPlan.appendMove(city);
-			}
-			// If the current city is a deliver city, then, the parent node has 1 extra loaded task than the current node
-			oneElemMaxLoaded = this.parent.getLoadedTasks().clone();
-			oneElemMaxLoaded.removeAll(this.loadedTasks);
-			for (Task onlyTask : oneElemMaxLoaded) {
-				currentPlan.appendDelivery(onlyTask);
-			}
-		}
-		
-		// The current city is a pickup city for the parent node
-		else {
-			for (City city : this.parent.getCity().pathTo(this.city)) {
-				currentPlan.appendMove(city);
-			}
-			// If the current city is a pickup city, then, the current node has 1 extra loaded task than the parent
-			oneElemMaxLoaded = this.loadedTasks.clone();
-			oneElemMaxLoaded.removeAll(this.parent.getLoadedTasks());
-			for (Task onlyTask : oneElemMaxLoaded) {
-				currentPlan.appendPickup(onlyTask);
-			}
-		}
-//		System.out.println(System.nanoTime() - timeBegin);
-		return currentPlan;
-	}
+//	/*
+//	 * Returns the plan from the initial state to the current state
+//	 */
+//	public Plan getPlan() {
+////		long timeBegin = System.nanoTime();
+//		if (this.parent == null) {
+//			return new Plan(this.city);
+//		}
+//		// Recursive call to parent getPlan() method
+//		Plan currentPlan = this.parent.getPlan();
+//		
+//		TaskSet oneElemMaxLoaded;
+//		TaskSet oneElemMaxAvailable = this.parent.getAvailableTasks().clone();
+//		oneElemMaxAvailable.removeAll(this.availableTasks);
+//		
+//		// The current city is a deliver city for the parent node
+//		if (oneElemMaxAvailable.size() == 0) {
+//			for (City city : this.parent.getCity().pathTo(this.city)) {
+//				currentPlan.appendMove(city);
+//			}
+//			// If the current city is a deliver city, then, the parent node has 1 extra loaded task than the current node
+//			oneElemMaxLoaded = this.parent.getLoadedTasks().clone();
+//			oneElemMaxLoaded.removeAll(this.loadedTasks);
+//			for (Task onlyTask : oneElemMaxLoaded) {
+//				currentPlan.appendDelivery(onlyTask);
+//			}
+//		}
+//		
+//		// The current city is a pickup city for the parent node
+//		else {
+//			for (City city : this.parent.getCity().pathTo(this.city)) {
+//				currentPlan.appendMove(city);
+//			}
+//			// If the current city is a pickup city, then, the current node has 1 extra loaded task than the parent
+//			oneElemMaxLoaded = this.loadedTasks.clone();
+//			oneElemMaxLoaded.removeAll(this.parent.getLoadedTasks());
+//			for (Task onlyTask : oneElemMaxLoaded) {
+//				currentPlan.appendPickup(onlyTask);
+//			}
+//		}
+////		System.out.println(System.nanoTime() - timeBegin);
+//		return currentPlan;
+//	}
 }
