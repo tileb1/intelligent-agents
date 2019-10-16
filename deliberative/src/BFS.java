@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
@@ -13,7 +14,7 @@ public class BFS {
 		final long startTime = System.nanoTime();
 		
 		LinkedList<State> Q = new LinkedList<State>();
-//		ArrayList<State> exploredStates = new ArrayList<State>();
+		HashMap<State, State> exploredStates = new HashMap<State, State>();
 		State bestGoalState = null;
 		
 		Q.add(initState);
@@ -24,6 +25,13 @@ public class BFS {
 				if ((bestGoalState == null) || (n.getCost() < bestGoalState.getCost())) {
 					bestGoalState = n;
 				}
+			}
+			else if (exploredStates.containsKey(n)) {
+				
+				if (exploredStates.get(n).getCost() > n.getCost()) {
+
+				}
+				
 			}
 			else {
 				ArrayList<State> childNodes = n.getChildren();
