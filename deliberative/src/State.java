@@ -15,20 +15,20 @@ public class State {
 	private double cost;
 	private int capacityLeft;
 	
-//	private Vehicle vehicle;
+	private Vehicle vehicle;
 
-	public State(City city, TaskSet availableTasks, TaskSet loadedTasks, State parent, int capacityLeft) {
+	public State(City city, TaskSet availableTasks, TaskSet loadedTasks, State parent, Vehicle vehicle, int capacityLeft) {
 		this.city = city;
 		this.availableTasks = availableTasks;
 		this.loadedTasks = loadedTasks;
 		this.parent = parent;
-//		this.vehicle = vehicle;
+		this.vehicle = vehicle;
 
-//		if (parent != null) {
-//			this.cost = this.parent.getCost() + this.parent.getCity().distanceTo(this.city) * vehicle.costPerKm();
-//		} else {
-//			this.cost = 0;
-//		}
+		if (parent != null) {
+			this.cost = this.parent.getCost() + this.parent.getCity().distanceTo(this.city) * vehicle.costPerKm();
+		} else {
+			this.cost = 0;
+		}
 		this.cost = 0;
 		
 		// We could precompute this to make it faster but this is more user friendly
@@ -77,6 +77,10 @@ public class State {
 		return other.getLoadedTasks().equals(this.loadedTasks) & other.getAvailableTasks().equals(this.availableTasks)
 				& this.city.equals(other.getCity());
 	}
+	
+//	@Override
+//	public int hashCode() {
+//	}
 
 	/*
 	 * Gets the children node of the current state
@@ -95,7 +99,7 @@ public class State {
 				newAvailableTasks.remove(task);
 				newLoadedTasks = this.loadedTasks.clone();
 				newLoadedTasks.add(task);
-				children.add(new State(task.pickupCity, newAvailableTasks, newLoadedTasks, this, this.capacityLeft - task.weight));
+				children.add(new State(task.pickupCity, newAvailableTasks, newLoadedTasks, this, this.vehicle, this.capacityLeft - task.weight));
 			}
 		}
 		
@@ -103,7 +107,7 @@ public class State {
 		for (Task task : this.loadedTasks) {
 			newLoadedTasks = this.loadedTasks.clone();
 			newLoadedTasks.remove(task);
-			children.add(new State(task.deliveryCity, this.availableTasks, newLoadedTasks, this, this.capacityLeft + task.weight));
+			children.add(new State(task.deliveryCity, this.availableTasks, newLoadedTasks, this, this.vehicle, this.capacityLeft + task.weight));
 		}
 		return children;
 	}

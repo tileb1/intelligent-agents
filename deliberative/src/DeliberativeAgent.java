@@ -63,7 +63,7 @@ public class DeliberativeAgent implements DeliberativeBehavior {
 //		default:
 //			throw new AssertionError("Should not happen.");
 //		}		
-		return bfs.computePlan(new State(vehicle.getCurrentCity(), tasks, TaskSet.noneOf(tasks), null, vehicle.capacity()));
+		return bfs.computePlan(new State(vehicle.getCurrentCity(), tasks, TaskSet.noneOf(tasks), null, vehicle, vehicle.capacity()));
 	}
 	
 	private Plan naivePlan(Vehicle vehicle, TaskSet tasks) {
