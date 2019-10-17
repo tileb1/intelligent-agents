@@ -4,7 +4,26 @@
 	<!-- A list of agents and their behavior classes -->
 	
 	<!-- #### DELIBERATIVE AGENTS ### -->
-	<agent name="deliberative-random">
+
+	<agent name="deliberative-1">
+		<set class-path="bin/"/>
+		<set class-name="DeliberativeAgent"/>
+		<set algorithm="BFS"/>
+	</agent>
+
+	<agent name="deliberative-2">
+		<set class-path="bin/"/>
+		<set class-name="DeliberativeAgent"/>
+		<set algorithm="BFS"/>
+	</agent>
+
+	<agent name="deliberative-3">
+		<set class-path="bin/"/>
+		<set class-name="DeliberativeAgent"/>
+		<set algorithm="BFS"/>
+	</agent>
+
+	<agent name="deliberative-4">
 		<set class-path="bin/"/>
 		<set class-name="DeliberativeAgent"/>
 		<set algorithm="BFS"/>

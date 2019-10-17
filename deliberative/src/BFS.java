@@ -1,21 +1,16 @@
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
 import logist.plan.Plan;
-import logist.task.Task;
-import logist.task.TaskSet;
-import logist.topology.Topology.City;
 
 public class BFS {
-	public BFS() {
 
-	}
-
-	HashMap<State, State> exploredStates = new HashMap<State, State>();
+	HashMap<State, State> exploredStates;
 
 	public Plan computePlan(State initState) {
+		this.exploredStates = new HashMap<State, State>();
+		System.out.println("INIT STATE: " + initState);
 		final long startTime = System.nanoTime();
 
 		LinkedList<State> Q = new LinkedList<State>();
@@ -52,13 +47,13 @@ public class BFS {
 		System.out.println(TimeUnit.MILLISECONDS.convert(System.nanoTime() - timeBegin, TimeUnit.NANOSECONDS));
 		
 		
-		
 		System.out.println("-----------------------------------------------------------------");
 		State someState = bestGoalState;
 		while (someState != null) {
 			System.out.println(someState.getCity() + " " + someState);
 			someState = someState.getParent();
 		}
+		System.out.println("-----------------------------------------------------------------");
 		return plan;
 	}
 }

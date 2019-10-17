@@ -24,6 +24,8 @@ public class DeliberativeAgent implements DeliberativeBehavior {
 	/* the properties of the agent */
 	Agent agent;
 	int capacity;
+	BFS bfs = new BFS();
+	TaskSet loadedTasks;
 
 	/* the planning class */
 	Algorithm algorithm;
@@ -40,30 +42,26 @@ public class DeliberativeAgent implements DeliberativeBehavior {
 		
 		// Throws IllegalArgumentException if algorithm is unknown
 		algorithm = Algorithm.valueOf(algorithmName.toUpperCase());
-		
-		// ...
 	}
 	
 	@Override
 	public Plan plan(Vehicle vehicle, TaskSet tasks) {
 		Plan plan;
-		BFS bfs = new BFS();
-		
 
 		// Compute the plan with the selected algorithm.
-//		switch (algorithm) {
-//		case ASTAR:
-//			// ...
-//			plan = naivePlan(vehicle, tasks);
-//			break;
-//		case BFS:
-//			// ...
-//			plan = naivePlan(vehicle, tasks);
-//			break;
-//		default:
-//			throw new AssertionError("Should not happen.");
-//		}		
-		return bfs.computePlan(new State(vehicle.getCurrentCity(), tasks, TaskSet.noneOf(tasks), null, vehicle, vehicle.capacity()));
+		switch (algorithm) {
+		case ASTAR:
+			// ...
+			plan = this.bfs.computePlan(new State(vehicle.getCurrentCity(), tasks, vehicle.getCurrentTasks(), null, vehicle, vehicle.capacity()));
+			break;
+		case BFS:
+			// ...
+			plan = this.bfs.computePlan(new State(vehicle.getCurrentCity(), tasks, vehicle.getCurrentTasks(), null, vehicle, vehicle.capacity()));
+			break;
+		default:
+			throw new AssertionError("Should not happen.");
+		}		
+		return plan;
 	}
 	
 	private Plan naivePlan(Vehicle vehicle, TaskSet tasks) {

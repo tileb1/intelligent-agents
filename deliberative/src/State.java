@@ -18,8 +18,8 @@ public class State {
 	private int capacityLeft;
 	
 	private Vehicle vehicle;
-//	private HashSet<Integer> hashSetAvailableID = new HashSet<Integer>();
-//	private HashSet<Integer> hashSetLoadedID = new HashSet<Integer>();
+	private HashSet<Integer> hashSetAvailableID = new HashSet<Integer>();
+	private HashSet<Integer> hashSetLoadedID = new HashSet<Integer>();
 
 	public State(City city, TaskSet availableTasks, TaskSet loadedTasks, State parent, Vehicle vehicle, int capacityLeft) {
 		this.city = city;
@@ -34,13 +34,13 @@ public class State {
 			this.costDistance = 0;
 		}
 		
-//		for (Task task : this.availableTasks) {
-//			hashSetAvailableID.add(task.id);
-//		}
-//		
-//		for (Task task : this.loadedTasks) {
-//			hashSetLoadedID.add(task.id);
-//		}
+		for (Task task : this.availableTasks) {
+			hashSetAvailableID.add(task.id);
+		}
+		
+		for (Task task : this.loadedTasks) {
+			hashSetLoadedID.add(task.id);
+		}
 		
 		// We could precompute this to make it faster but this is more user friendly
 		this.capacityLeft = capacityLeft;//vehicle.capacity();
@@ -49,11 +49,11 @@ public class State {
 //		}
 	}
 	
-//	@Override
-//	public String toString() {
-//		return "available: " + this.hashSetAvailableID.toString() + ", loaded: " + this.hashSetLoadedID.toString();
-//		
-//	}
+	@Override
+	public String toString() {
+		return "available: " + this.hashSetAvailableID.toString() + ", loaded: " + this.hashSetLoadedID.toString();
+		
+	}
 
 	// -------------------- GETTERS -------------------------
 	public double getCost() {
@@ -83,23 +83,6 @@ public class State {
 		return this.loadedTasks.size() == 0 & this.availableTasks.size() == 0;
 	}
 
-//	@Override
-//	public boolean equals(Object o) {
-//		if (this == o) {
-//			return true;
-//		}
-//		if (o == null || getClass() != o.getClass()) {
-//			return false;
-//		}
-//		State other = (State) o;
-//		return other.getLoadedTasks().equals(this.loadedTasks) & other.getAvailableTasks().equals(this.availableTasks)
-//				& this.city.equals(other.getCity());
-//	}
-	
-//	@Override
-//	public int hashCode() {
-//		return Objects.hash(this.availableTasks, this.loadedTasks, this.city);
-//	}
 
 	/*
 	 * Gets the children node of the current state
@@ -133,18 +116,12 @@ public class State {
 		return children;
 	}
 	
-//	public void setParentCost(double cost) {
-//		this.costParent = cost;
-//	}
 	
-
-
 	public void setParent(State state) {
 		this.parent = state;
 	}
 	
-
-
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(this.availableTasks, this.loadedTasks, this.city);
@@ -185,7 +162,7 @@ public class State {
 		if (this.parent == null) {
 			return new Plan(this.city);
 		}
-		System.out.println(this.city.toString() + " - " + this.parent.getCity().toString());
+//		System.out.println(this.city.toString() + " - " + this.parent.getCity().toString());
 		// Recursive call to parent getPlan() method
 		Plan currentPlan = this.parent.getPlan();
 		
@@ -197,17 +174,17 @@ public class State {
 		if (oneElemMaxAvailable.size() == 0) {
 			for (City city : this.parent.getCity().pathTo(this.city)) {
 				currentPlan.appendMove(city);
-				System.out.println(city);
+//				System.out.println(city);
 			}
-			int index = 0;
+//			int index = 0;
 			// If the current city is a deliver city, then, the parent node has 1 extra loaded task than the current node
 			oneElemMaxLoaded = this.parent.getLoadedTasks().clone();
 			oneElemMaxLoaded.removeAll(this.loadedTasks);
 			for (Task onlyTask : oneElemMaxLoaded) {
-				System.out.println("Deliver: " + onlyTask);
+//				System.out.println("Deliver: " + onlyTask);
 				currentPlan.appendDelivery(onlyTask);
-				System.out.println(index);
-				index++;
+//				System.out.println(index);
+//				index++;
 			}
 		}
 		
@@ -216,17 +193,17 @@ public class State {
 			assert oneElemMaxAvailable.size() == 1;
 			for (City city : this.parent.getCity().pathTo(this.city)) {
 				currentPlan.appendMove(city);
-				System.out.println(city);
+//				System.out.println(city);
 			}
 			// If the current city is a pickup city, then, the current node has 1 extra loaded task than the parent
 			oneElemMaxLoaded = this.loadedTasks.clone();
 			oneElemMaxLoaded.removeAll(this.parent.getLoadedTasks());
-			int index = 0;
+//			int index = 0;
 			for (Task onlyTask : oneElemMaxLoaded) {
-				System.out.println("Pickup: " + onlyTask);
+//				System.out.println("Pickup: " + onlyTask);
 				currentPlan.appendPickup(onlyTask);
-				System.out.println(index);
-				index++;
+//				System.out.println(index);
+//				index++;
 			}
 		}
 //		System.out.println(System.nanoTime() - timeBegin);
