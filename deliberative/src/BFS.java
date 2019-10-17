@@ -50,6 +50,15 @@ public class BFS {
 		Plan plan = bestGoalState.getPlan();
 		System.out.println(TimeUnit.MILLISECONDS.convert(timeBegin - startTime, TimeUnit.NANOSECONDS));
 		System.out.println(TimeUnit.MILLISECONDS.convert(System.nanoTime() - timeBegin, TimeUnit.NANOSECONDS));
+		
+		
+		
+		System.out.println("-----------------------------------------------------------------");
+		State someState = bestGoalState;
+		while (someState != null) {
+			System.out.println(someState.getCity() + " " + someState);
+			someState = someState.getParent();
+		}
 		return plan;
 	}
 

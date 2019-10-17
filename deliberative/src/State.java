@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Objects;
 
 import logist.plan.Plan;
@@ -13,12 +14,12 @@ public class State {
 	private TaskSet availableTasks;
 	private TaskSet loadedTasks;
 	private State parent;
-	private double cost;
-	private double costParent;
 	private double costDistance;
 	private int capacityLeft;
 	
 	private Vehicle vehicle;
+//	private HashSet<Integer> hashSetAvailableID = new HashSet<Integer>();
+//	private HashSet<Integer> hashSetLoadedID = new HashSet<Integer>();
 
 	public State(City city, TaskSet availableTasks, TaskSet loadedTasks, State parent, Vehicle vehicle, int capacityLeft) {
 		this.city = city;
@@ -28,13 +29,18 @@ public class State {
 		this.vehicle = vehicle;
 
 		if (parent != null) {
-			this.costParent = this.parent.getCost();
 			this.costDistance = this.parent.getCity().distanceTo(this.city) * vehicle.costPerKm();
 		} else {
 			this.costDistance = 0;
-			this.costParent = 0;
 		}
-//		this.cost = 0;
+		
+//		for (Task task : this.availableTasks) {
+//			hashSetAvailableID.add(task.id);
+//		}
+//		
+//		for (Task task : this.loadedTasks) {
+//			hashSetLoadedID.add(task.id);
+//		}
 		
 		// We could precompute this to make it faster but this is more user friendly
 		this.capacityLeft = capacityLeft;//vehicle.capacity();
@@ -43,11 +49,11 @@ public class State {
 //		}
 	}
 	
-	@Override
-	public String toString() {
-		return Integer.toString(this.availableTasks.size());
-		
-	}
+//	@Override
+//	public String toString() {
+//		return "available: " + this.hashSetAvailableID.toString() + ", loaded: " + this.hashSetLoadedID.toString();
+//		
+//	}
 
 	// -------------------- GETTERS -------------------------
 	public double getCost() {
@@ -95,40 +101,6 @@ public class State {
 //		return Objects.hash(this.availableTasks, this.loadedTasks, this.city);
 //	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((availableTasks == null) ? 0 : availableTasks.hashCode());
-		result = prime * result + capacityLeft;
-		result = prime * result + ((city == null) ? 0 : city.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		State other = (State) obj;
-		if (availableTasks == null) {
-			if (other.availableTasks != null)
-				return false;
-		} else if (!availableTasks.equals(other.availableTasks))
-			return false;
-		if (capacityLeft != other.capacityLeft)
-			return false;
-		if (city == null) {
-			if (other.city != null)
-				return false;
-		} else if (!city.equals(other.city))
-			return false;
-		return true;
-	}
-
 	/*
 	 * Gets the children node of the current state
 	 */
@@ -146,6 +118,7 @@ public class State {
 				newAvailableTasks.remove(task);
 				newLoadedTasks = this.loadedTasks.clone();
 				newLoadedTasks.add(task);
+//				assert task.pickupCity != this.city;
 				children.add(new State(task.pickupCity, newAvailableTasks, newLoadedTasks, this, this.vehicle, this.capacityLeft - task.weight));
 			}
 		}
@@ -154,6 +127,7 @@ public class State {
 		for (Task task : this.loadedTasks) {
 			newLoadedTasks = this.loadedTasks.clone();
 			newLoadedTasks.remove(task);
+//			assert task.deliveryCity != this.city;
 			children.add(new State(task.deliveryCity, this.availableTasks, newLoadedTasks, this, this.vehicle, this.capacityLeft + task.weight));
 		}
 		return children;
@@ -163,10 +137,51 @@ public class State {
 //		this.costParent = cost;
 //	}
 	
+
+
 	public void setParent(State state) {
 		this.parent = state;
 	}
 	
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((availableTasks == null) ? 0 : availableTasks.hashCode());
+		result = prime * result + ((city == null) ? 0 : city.hashCode());
+		result = prime * result + ((loadedTasks == null) ? 0 : loadedTasks.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		State other = (State) obj;
+		if (availableTasks == null) {
+			if (other.availableTasks != null)
+				return false;
+		} else if (!availableTasks.equals(other.availableTasks))
+			return false;
+		if (city == null) {
+			if (other.city != null)
+				return false;
+		} else if (!city.equals(other.city))
+			return false;
+		if (loadedTasks == null) {
+			if (other.loadedTasks != null)
+				return false;
+		} else if (!loadedTasks.equals(other.loadedTasks))
+			return false;
+		return true;
+	}
+
 	/*
 	 * Returns the plan from the initial state to the current state
 	 */
@@ -175,6 +190,7 @@ public class State {
 		if (this.parent == null) {
 			return new Plan(this.city);
 		}
+		System.out.println(this.city.toString() + " - " + this.parent.getCity().toString());
 		// Recursive call to parent getPlan() method
 		Plan currentPlan = this.parent.getPlan();
 		
@@ -188,16 +204,21 @@ public class State {
 				currentPlan.appendMove(city);
 				System.out.println(city);
 			}
+			int index = 0;
 			// If the current city is a deliver city, then, the parent node has 1 extra loaded task than the current node
 			oneElemMaxLoaded = this.parent.getLoadedTasks().clone();
 			oneElemMaxLoaded.removeAll(this.loadedTasks);
 			for (Task onlyTask : oneElemMaxLoaded) {
+				System.out.println("Deliver: " + onlyTask);
 				currentPlan.appendDelivery(onlyTask);
+				System.out.println(index);
+				index++;
 			}
 		}
 		
 		// The current city is a pickup city for the parent node
 		else {
+			assert oneElemMaxAvailable.size() == 1;
 			for (City city : this.parent.getCity().pathTo(this.city)) {
 				currentPlan.appendMove(city);
 				System.out.println(city);
@@ -205,8 +226,12 @@ public class State {
 			// If the current city is a pickup city, then, the current node has 1 extra loaded task than the parent
 			oneElemMaxLoaded = this.loadedTasks.clone();
 			oneElemMaxLoaded.removeAll(this.parent.getLoadedTasks());
+			int index = 0;
 			for (Task onlyTask : oneElemMaxLoaded) {
+				System.out.println("Pickup: " + onlyTask);
 				currentPlan.appendPickup(onlyTask);
+				System.out.println(index);
+				index++;
 			}
 		}
 //		System.out.println(System.nanoTime() - timeBegin);
