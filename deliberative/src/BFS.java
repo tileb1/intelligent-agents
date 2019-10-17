@@ -61,46 +61,4 @@ public class BFS {
 		}
 		return plan;
 	}
-
-//	public Plan getPlan(State state) {
-//		State realState = this.exploredStates.get(state);
-//		if (realState.getParent() == null) {
-//			return new Plan(realState.getCity());
-//		}
-//		Plan currentPlan = this.getPlan(realState.getParent());
-//
-//		TaskSet oneElemMaxLoaded;
-//		TaskSet oneElemMaxAvailable = realState.getParent().getAvailableTasks().clone();
-//		oneElemMaxAvailable.removeAll(realState.getAvailableTasks());
-//
-//		// The current city is a deliver city for the parent node
-//		if (oneElemMaxAvailable.size() == 0) {
-//			for (City city : realState.getParent().getCity().pathTo(realState.getCity())) {
-//				currentPlan.appendMove(city);
-//			}
-//			// If the current city is a deliver city, then, the parent node has 1 extra
-//			// loaded task than the current node
-//			oneElemMaxLoaded = realState.getParent().getLoadedTasks().clone();
-//			oneElemMaxLoaded.removeAll(realState.getLoadedTasks());
-//			for (Task onlyTask : oneElemMaxLoaded) {
-//				currentPlan.appendDelivery(onlyTask);
-//			}
-//		}
-//
-//		// The current city is a pickup city for the parent node
-//		else {
-//			for (City city : realState.getParent().getCity().pathTo(realState.getCity())) {
-//				currentPlan.appendMove(city);
-//			}
-//			// If the current city is a pickup city, then, the current node has 1 extra
-//			// loaded task than the parent
-//			oneElemMaxLoaded = realState.getLoadedTasks().clone();
-//			oneElemMaxLoaded.removeAll(realState.getParent().getLoadedTasks());
-//			for (Task onlyTask : oneElemMaxLoaded) {
-//				currentPlan.appendPickup(onlyTask);
-//			}
-//		}
-////		System.out.println(System.nanoTime() - timeBegin);
-//		return currentPlan;
-//	}
 }
