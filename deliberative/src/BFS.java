@@ -5,14 +5,10 @@ import java.util.concurrent.TimeUnit;
 import logist.plan.Plan;
 
 public class BFS {
-
 	HashMap<State, State> exploredStates;
 
 	public Plan computePlan(State initState) {
 		this.exploredStates = new HashMap<State, State>();
-		System.out.println("INIT STATE: " + initState);
-		final long startTime = System.nanoTime();
-
 		LinkedList<State> Q = new LinkedList<State>();
 		State bestGoalState = null;
 
@@ -40,20 +36,6 @@ public class BFS {
 				}
 			}
 		}
-
-		final long timeBegin = System.nanoTime();
-		Plan plan = bestGoalState.getPlan();
-		System.out.println(TimeUnit.MILLISECONDS.convert(timeBegin - startTime, TimeUnit.NANOSECONDS));
-		System.out.println(TimeUnit.MILLISECONDS.convert(System.nanoTime() - timeBegin, TimeUnit.NANOSECONDS));
-		
-		
-		System.out.println("-----------------------------------------------------------------");
-		State someState = bestGoalState;
-		while (someState != null) {
-			System.out.println(someState.getCity() + " " + someState);
-			someState = someState.getParent();
-		}
-		System.out.println("-----------------------------------------------------------------");
-		return plan;
+		return bestGoalState.getPlan();
 	}
 }

@@ -2,7 +2,7 @@
 
 <history configuration="config/deliberative.xml">
 	<agents>
-		<agent name="deliberative-random">
+		<agent name="deliberative-1">
 			<vehicle name="Vehicle 1"/>
 		</agent>
 	</agents>
@@ -19,57 +19,24 @@
 				<task id="7" pickup="Basel" delivery="Neuchâtel" weight="3" reward="67378"/>
 				<task id="8" pickup="Neuchâtel" delivery="Genève" weight="3" reward="69417"/>
 				<task id="9" pickup="Basel" delivery="Fribourg" weight="3" reward="69417"/>
+				<task id="10" pickup="Neuchâtel" delivery="Luzern" weight="3" reward="55146"/>
 			</tasks>
 			<events>
-				<event id="0" time="0" vehicle="Vehicle 1" pickup="4"/>
-				<event id="1" time="299999995" vehicle="Vehicle 1" move="Fribourg"/>
-				<event id="2" time="1411111066" vehicle="Vehicle 1" move="Bern"/>
-				<event id="3" time="1966666596" vehicle="Vehicle 1" move="Basel"/>
-				<event id="4" time="3522222070" vehicle="Vehicle 1" pickup="3"/>
-				<event id="5" time="3822222053" vehicle="Vehicle 1" pickup="7"/>
-				<event id="6" time="4122222041" vehicle="Vehicle 1" pickup="9"/>
-				<event id="7" time="4422222026" vehicle="Vehicle 1" move="Zürich"/>
-				<event id="8" time="5755555283" vehicle="Vehicle 1" pickup="1"/>
-				<event id="9" time="6055555273" vehicle="Vehicle 1" move="St-Gallen"/>
-				<event id="10" time="7388888606" vehicle="Vehicle 1" deliver="3"/>
-				<event id="11" time="7688888606" vehicle="Vehicle 1" deliver="4"/>
-				<event id="12" time="7988888604" vehicle="Vehicle 1" move="Zürich"/>
-				<event id="13" time="9322221934" vehicle="Vehicle 1" move="Luzern"/>
-				<event id="14" time="10099999710" vehicle="Vehicle 1" pickup="6"/>
-				<event id="15" time="10399999709" vehicle="Vehicle 1" move="Aarau"/>
-				<event id="16" time="11399999706" vehicle="Vehicle 1" pickup="0"/>
-				<event id="17" time="11699999705" vehicle="Vehicle 1" move="Bern"/>
-				<event id="18" time="12922221923" vehicle="Vehicle 1" move="Neuchâtel"/>
-				<event id="19" time="13588888588" vehicle="Vehicle 1" pickup="8"/>
-				<event id="20" time="13888888588" vehicle="Vehicle 1" deliver="7"/>
-				<event id="21" time="14188888586" vehicle="Vehicle 1" move="Bern"/>
-				<event id="22" time="14855555250" vehicle="Vehicle 1" move="Thun"/>
-				<event id="23" time="15299999693" vehicle="Vehicle 1" move="Sion"/>
-				<event id="24" time="16633333021" vehicle="Vehicle 1" pickup="2"/>
-				<event id="25" time="16933333019" vehicle="Vehicle 1" pickup="5"/>
-				<event id="26" time="17233333019" vehicle="Vehicle 1" deliver="1"/>
-				<event id="27" time="17533333018" vehicle="Vehicle 1" move="Lausanne"/>
-				<event id="28" time="19199999680" vehicle="Vehicle 1" move="Genève"/>
-				<event id="29" time="20199999678" vehicle="Vehicle 1" deliver="0"/>
-				<event id="30" time="20499999677" vehicle="Vehicle 1" deliver="2"/>
-				<event id="31" time="20799999676" vehicle="Vehicle 1" deliver="8"/>
-				<event id="32" time="21099999675" vehicle="Vehicle 1" move="Lausanne"/>
-				<event id="33" time="22099999672" vehicle="Vehicle 1" move="Fribourg"/>
-				<event id="34" time="23211110781" vehicle="Vehicle 1" deliver="9"/>
-				<event id="35" time="23511110780" vehicle="Vehicle 1" move="Bern"/>
-				<event id="36" time="24066666333" vehicle="Vehicle 1" move="Basel"/>
-				<event id="37" time="25622221884" vehicle="Vehicle 1" deliver="5"/>
-				<event id="38" time="25922221883" vehicle="Vehicle 1" deliver="6"/>
+				<event id="0" time="0" vehicle="Vehicle 1" move="Neuchâtel"/>
+				<event id="1" time="1111111077" vehicle="Vehicle 1" pickup="10"/>
+				<event id="2" time="1411111066" vehicle="Vehicle 1" pickup="8"/>
+				<event id="3" time="1711111053" vehicle="Vehicle 1" move="Bern"/>
+				<event id="4" time="2377777691" vehicle="Vehicle 1" move="Aarau"/>
 			</events>
 		</round>
 	</rounds>
 	<statistics>
-		<stat rank="1" agent="deliberative-random">
-			<total-tasks value="10"/>
-			<total-distance value="1820.0"/>
-			<total-cost value="9100"/>
-			<total-reward value="537186"/>
-			<total-profit value="528086"/>
+		<stat rank="1" agent="deliberative-1">
+			<total-tasks value="11"/>
+			<total-distance value="270.0"/>
+			<total-cost value="1350"/>
+			<total-reward value="0"/>
+			<total-profit value="-1350"/>
 		</stat>
 	</statistics>
 </history>

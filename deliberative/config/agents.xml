@@ -8,19 +8,19 @@
 	<agent name="deliberative-1">
 		<set class-path="bin/"/>
 		<set class-name="DeliberativeAgent"/>
-		<set algorithm="BFS"/>
+		<set algorithm="ASTAR"></set>
 	</agent>
 
 	<agent name="deliberative-2">
 		<set class-path="bin/"/>
 		<set class-name="DeliberativeAgent"/>
-		<set algorithm="BFS"/>
+		<set algorithm="ASTAR"/>
 	</agent>
 
 	<agent name="deliberative-3">
 		<set class-path="bin/"/>
 		<set class-name="DeliberativeAgent"/>
-		<set algorithm="BFS"/>
+		<set algorithm="ASTAR"/>
 	</agent>
 
 	<agent name="deliberative-4">
