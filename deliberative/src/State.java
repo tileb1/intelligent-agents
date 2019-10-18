@@ -8,7 +8,7 @@ import logist.task.Task;
 import logist.task.TaskSet;
 import logist.topology.Topology.City;
 
-public class State {
+public class State implements Comparable<State>{
 
 	private City city;
 	private TaskSet availableTasks;
@@ -16,12 +16,44 @@ public class State {
 	private State parent;
 	private double costDistance;
 	private int capacityLeft;
+	private int heuristic = 3;
 	
 	private Vehicle vehicle;
 	private HashSet<Integer> hashSetAvailableID = new HashSet<Integer>();
 	private HashSet<Integer> hashSetLoadedID = new HashSet<Integer>();
 
 	public State(City city, TaskSet availableTasks, TaskSet loadedTasks, State parent, Vehicle vehicle, int capacityLeft) {
+		setupState(city, availableTasks, loadedTasks, parent, vehicle, capacityLeft);
+	}
+	
+	public State(City city, TaskSet availableTasks, TaskSet loadedTasks, State parent, Vehicle vehicle, int capacityLeft, boolean calcH) {
+		System.out.println("fg");
+		setupState(city, availableTasks, loadedTasks, parent, vehicle, capacityLeft);
+		
+		this.heuristic = 0;
+		
+		if (!availableTasks.isEmpty()) {
+			for (Task task: availableTasks) {
+				int distance = (int) (this.city.distanceTo(task.pickupCity) + task.pickupCity.distanceTo(task.deliveryCity));
+				this.heuristic = Math.max(distance, this.heuristic);
+			}
+		} 
+		if (!loadedTasks.isEmpty()) {
+			for (Task task: loadedTasks) {
+				int distance = (int) (this.city.distanceTo(task.deliveryCity));
+				this.heuristic = Math.max(distance, this.heuristic);
+			}
+		}
+		
+		this.heuristic = (int) (this.heuristic * this.vehicle.costPerKm() + this.getCost());
+	}
+	@Override
+	public String toString() {
+		return "available: " + this.hashSetAvailableID.toString() + ", loaded: " + this.hashSetLoadedID.toString();
+		
+	}
+	
+	public void setupState(City city, TaskSet availableTasks, TaskSet loadedTasks, State parent, Vehicle vehicle, int capacityLeft) {
 		this.city = city;
 		this.availableTasks = availableTasks;
 		this.loadedTasks = loadedTasks;
@@ -47,12 +79,6 @@ public class State {
 //		for (Task task : this.loadedTasks) {
 //			this.capacityLeft -= task.weight;
 //		}
-	}
-	
-	@Override
-	public String toString() {
-		return "available: " + this.hashSetAvailableID.toString() + ", loaded: " + this.hashSetLoadedID.toString();
-		
 	}
 
 	// -------------------- GETTERS -------------------------
@@ -81,6 +107,10 @@ public class State {
 
 	public boolean getIsGoal() {
 		return this.loadedTasks.size() == 0 & this.availableTasks.size() == 0;
+	}
+	
+	public int getHeuristic() {
+		return this.heuristic;
 	}
 
 
@@ -208,5 +238,10 @@ public class State {
 		}
 //		System.out.println(System.nanoTime() - timeBegin);
 		return currentPlan;
+	}
+
+	@Override
+	public int compareTo(State otherState) {
+		return (int) (this.heuristic - otherState.heuristic);
 	}
 }
