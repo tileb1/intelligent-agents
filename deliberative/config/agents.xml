@@ -26,7 +26,7 @@
 	<agent name="deliberative-4">
 		<set class-path="bin/"/>
 		<set class-name="DeliberativeAgent"/>
-		<set algorithm="BFS"/>
+		<set algorithm="ASTAR"/>
 	</agent>
 	
 </agents>

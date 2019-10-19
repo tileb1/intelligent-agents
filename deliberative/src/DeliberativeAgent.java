@@ -30,9 +30,11 @@ public class DeliberativeAgent implements DeliberativeBehavior {
 	/* the properties of the agent */
 	Agent agent;
 	int capacity;
-	BFS bfs = new BFS();
-	ASTAR astar = new ASTAR();
-	TaskSet loadedTasks;
+	private BFS bfs = new BFS();
+	private ASTAR astar = new ASTAR();
+	private TaskSet loadedTasks;
+	private int nbRecomputedPlan = 0;
+	private static int nbTotalRecomputedPlan = 0;
 
 	/* the planning class */
 	Algorithm algorithm;
@@ -56,6 +58,7 @@ public class DeliberativeAgent implements DeliberativeBehavior {
 		Plan plan;
 		// Compute the plan with the selected algorithm.
 		StringBuilder out = new StringBuilder();
+		out.append("[" + agent.name() + "] ");
 		final long timeBegin = System.nanoTime();
 		switch (algorithm) {
 		case ASTAR:
@@ -79,11 +82,15 @@ public class DeliberativeAgent implements DeliberativeBehavior {
 		out.append(" tasks and a total distance of ");
 		out.append(plan.totalDistance());
 		System.out.println(out.toString());
+		System.out.println("Recomputed times: " + this.nbRecomputedPlan);
+		System.out.println("Total recomputed times: " + DeliberativeAgent.nbTotalRecomputedPlan + "\n");
 		return plan;
 	}
 
 	@Override
 	public void planCancelled(TaskSet carriedTasks) {
 		// We get the carried tasks from the vehicle right away...
+		this.nbRecomputedPlan += 1;
+		DeliberativeAgent.nbTotalRecomputedPlan += 1;
 	}
 }
