@@ -7,6 +7,10 @@ import java.util.Random;
 import java.util.Set;
 
 import logist.simulation.Vehicle;
+import logist.task.Task;
+import logist.task.TaskSet;
+import logist.topology.Topology;
+import logist.topology.Topology.City;
 
 public class Solution implements Comparable<Solution>, Cloneable {
 	private double cost;
@@ -14,9 +18,28 @@ public class Solution implements Comparable<Solution>, Cloneable {
 	private Set<Vehicle> vehicles = this.nextTaskV.keySet(); // init in constructor ---------------------------------
 	public static Random random = new Random();
 
-	public Solution() {
+	public Solution(ArrayList<Vehicle> vehicles, Topology topology, TaskSet taskset) {
 		// TODO
 		// Generate a feasible solution in wrappers and vehicle assos in nextTaskV
+		this.nextTaskV = new HashMap<Vehicle, LinkedList<Wrapper>>();
+		Vehicle biggestVehicle = null;
+		
+		for (Vehicle v: vehicles) {
+			if (biggestVehicle == null || v.capacity() > biggestVehicle.capacity()) {
+				biggestVehicle = v;
+			}
+			this.nextTaskV.put(v, new LinkedList<Wrapper>());
+		}
+		
+		LinkedList<Wrapper> biggestVehiclePlan = new LinkedList<Wrapper>();
+		
+		for (Task task: taskset) {
+			biggestVehiclePlan.addLast(new Wrapper(task, true, biggestVehicle.capacity() - task.weight));
+			biggestVehiclePlan.addLast(new Wrapper(task, false, biggestVehicle.capacity()));
+		}
+		
+		this.nextTaskV.put(biggestVehicle, biggestVehiclePlan);
+		updateCost();	
 	}
 	
 
@@ -79,9 +102,36 @@ public class Solution implements Comparable<Solution>, Cloneable {
 	}
 
 	public void updateCost() {
-
+		for (Vehicle v: this.nextTaskV.keySet()) {
+			City prevCity = v.homeCity();
+			for (Wrapper w: this.nextTaskV.get(v)) {
+				this.cost += prevCity.distanceTo(w.getCity()) * v.costPerKm();
+				prevCity = w.getCity();
+			}
+		}
 	}
 	
+	public boolean isFeasible() {
+		for (Vehicle v: this.nextTaskV.keySet()) {
+			double load = 0;
+			for (Wrapper w: this.nextTaskV.get(v)) {
+				if (w.isPickup()) {
+					load += w.getTask().weight;
+				}
+				else {
+					load -= w.getTask().weight;
+				}
+				if (load > v.capacity()) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+	
+	public HashMap<Vehicle, LinkedList<Wrapper>> getPlans () {
+		return this.nextTaskV;
+	}
 
 	@SuppressWarnings("unchecked")
 	public Solution clone(Vehicle random, Vehicle other) {
@@ -98,7 +148,6 @@ public class Solution implements Comparable<Solution>, Cloneable {
 
 	@Override
 	public int compareTo(Solution o) {
-		// TODO Auto-generated method stub
-		return 0;
+		return (int) (this.cost - o.cost);
 	}
 }
