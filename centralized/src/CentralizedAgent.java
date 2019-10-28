@@ -1,6 +1,7 @@
 import java.io.File;
 //the list of imports
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import logist.LogistSettings;
@@ -60,13 +61,34 @@ public class CentralizedAgent implements CentralizedBehavior {
         long time_start = System.currentTimeMillis();
         
 //		System.out.println("Agent " + agent.id() + " has tasks " + tasks);
-        Plan planVehicle1 = naivePlan(vehicles.get(0), tasks);
-
-        List<Plan> plans = new ArrayList<Plan>();
-        plans.add(planVehicle1);
-        while (plans.size() < vehicles.size()) {
-            plans.add(Plan.EMPTY);
-        }
+        Solution currentSol = new Solution((ArrayList<Vehicle>) (vehicles), topology, tasks);
+        
+        int iter = 0;
+		
+    	while (iter < 10000) {
+    		try {
+				currentSol = Collections.min(currentSol.getNeighbors());
+			} catch (CloneNotSupportedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    		iter++;
+    	}
+    	
+    	List<Plan> plans = new ArrayList<Plan>();
+    	
+    	for (Vehicle v: vehicles) {
+    		Plan plan = new Plan(v.homeCity());
+    		for (Wrapper w: currentSol.getPlans().get(v)) {
+    			if (w.isPickup()) {
+    				plan.appendPickup(w.getTask());
+    			}
+    			else {
+    				plan.appendDelivery(w.getTask());
+    			}
+    		}
+    		plans.add(plan);
+    	}
         
         long time_end = System.currentTimeMillis();
         long duration = time_end - time_start;
