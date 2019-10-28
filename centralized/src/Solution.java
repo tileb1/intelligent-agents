@@ -1,13 +1,12 @@
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedList;
 
 import logist.simulation.Vehicle;
 
 public class Solution implements Comparable<Solution>, Cloneable {
 	private double cost;
-	private HashSet<Wrapper> wrappers = new HashSet<Wrapper>();
-	private HashMap<Vehicle, Wrapper> nextTaskV = new HashMap<Vehicle, Wrapper>();
+	private HashMap<Vehicle, LinkedList<Wrapper>> nextTaskV;
 	
 	public Solution() {
 		// TODO
@@ -16,6 +15,13 @@ public class Solution implements Comparable<Solution>, Cloneable {
 	
 	// TODO
 	public ArrayList<Solution> getNeighbors() {
+		ArrayList<Solution> neighbors = new ArrayList<Solution>();
+		return null;
+	}
+	
+	private ArrayList<Solution> changeVehicle() {
+		
+		ArrayList<Solution> neighbors = new ArrayList<Solution>();
 		return null;
 	}
 	
