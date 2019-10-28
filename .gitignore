@@ -1,2 +1,6 @@
 
 reactive/\.classpath
+
+centralized/.classpath
+
+*.class
