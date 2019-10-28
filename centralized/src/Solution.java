@@ -1,11 +1,10 @@
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.ListIterator;
 import java.util.Random;
 import java.util.Set;
-
 import logist.simulation.Vehicle;
 import logist.task.Task;
 import logist.task.TaskSet;
@@ -15,21 +14,23 @@ import logist.topology.Topology.City;
 public class Solution implements Comparable<Solution>, Cloneable {
 	private double cost;
 	private HashMap<Vehicle, LinkedList<Wrapper>> nextTaskV;
-	private Set<Vehicle> vehicles = this.nextTaskV.keySet(); // init in constructor ---------------------------------
 	public static Random random = new Random();
+	private Set<Vehicle> vehicles;
 
-	public Solution(ArrayList<Vehicle> vehicles, Topology topology, TaskSet taskset) {
+	public Solution(List<Vehicle> vehicles2, Topology topology, TaskSet taskset) {
 		// TODO
 		// Generate a feasible solution in wrappers and vehicle assos in nextTaskV
 		this.nextTaskV = new HashMap<Vehicle, LinkedList<Wrapper>>();
 		Vehicle biggestVehicle = null;
 		
-		for (Vehicle v: vehicles) {
+		for (Vehicle v: vehicles2) {
 			if (biggestVehicle == null || v.capacity() > biggestVehicle.capacity()) {
 				biggestVehicle = v;
 			}
 			this.nextTaskV.put(v, new LinkedList<Wrapper>());
 		}
+		
+		
 		
 		LinkedList<Wrapper> biggestVehiclePlan = new LinkedList<Wrapper>();
 		
@@ -39,15 +40,19 @@ public class Solution implements Comparable<Solution>, Cloneable {
 		}
 		
 		this.nextTaskV.put(biggestVehicle, biggestVehiclePlan);
-		updateCost();	
+		updateCost();
+		this.vehicles = this.nextTaskV.keySet();
 	}
 	
 
 	// TODO
 	public ArrayList<Solution> getNeighbors() throws CloneNotSupportedException {
 		ArrayList<Solution> neighbors = new ArrayList<Solution>();
-		neighbors.addAll(this.getNeighborsChangeVehicle());
-		return null;
+		ArrayList<Solution> changeVehicleNeighbors = this.getNeighborsChangeVehicle();
+		if (changeVehicleNeighbors.size() > 0) {
+			neighbors.addAll(changeVehicleNeighbors);
+		}
+		return neighbors;
 	}
 	
 	private Vehicle getRandomVehicle() {
@@ -61,6 +66,7 @@ public class Solution implements Comparable<Solution>, Cloneable {
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	private ArrayList<Solution> getNeighborsChangeVehicle() throws CloneNotSupportedException {
 		ArrayList<Solution> neighbors = new ArrayList<Solution>();
 		Vehicle removeVehicle = null;
@@ -71,7 +77,13 @@ public class Solution implements Comparable<Solution>, Cloneable {
 			}
 		}
 		if (removeVehicle != null) {
+			if (this.nextTaskV.get(removeVehicle).size() < 2) {
+				return neighbors;
+			}
 			Vehicle addVehicle = this.getRandomVehicle();
+			if (removeVehicle.equals(addVehicle)) {
+				return neighbors;
+			}
 			Solution current = this.clone(removeVehicle, addVehicle);
 			LinkedList<Wrapper> wrappers = current.nextTaskV.get(addVehicle);
 			Wrapper pickup = null;
@@ -89,36 +101,49 @@ public class Solution implements Comparable<Solution>, Cloneable {
 				}
 			}
 			
-			// Try all possible positions for pickup and delivery
-			ListIterator<Wrapper> iteratorForward = wrappers.listIterator();
-			ListIterator<Wrapper> iteratorBackward = wrappers.listIterator(wrappers.size());
-			while (iteratorBackward.hasPrevious()) {
-				while (iteratorForward.hasNext() && iteratorForward.nextIndex() < iteratorBackward.previousIndex()) {
-					iteratorForward.add(pickup);
+			if (wrappers.size() == 0) {
+				wrappers.add(pickup);
+				wrappers.add(delivery);
+				neighbors.add(current.clone(addVehicle, wrappers));
+			}
+			else {
+				// Try all possible positions for pickup and delivery
+				ListIterator<Wrapper> iteratorBackward = wrappers.listIterator(wrappers.size());
+				ListIterator<Wrapper> iteratorForward;
+				while (iteratorBackward.hasPrevious()) {
 					iteratorBackward.add(delivery);
-					
-					// add neighbours to list
-					neighbors.add(current.clone(addVehicle, wrappers));
-					
-					// Reset forward iterator
-					iteratorForward.next();
-					iteratorForward.remove();
-					
-					// Reset backward iterator
-					iteratorBackward.next();
-					iteratorBackward.remove();
-					
-					// Take iterator step
 					iteratorBackward.previous();
-					iteratorForward.next();
+					LinkedList<Wrapper> wrappers2 = (LinkedList<Wrapper>) wrappers.clone();
+					iteratorForward = wrappers2.listIterator();
+					while (iteratorForward.hasNext() && iteratorForward.nextIndex() < iteratorBackward.previousIndex()) {
+						iteratorForward.add(pickup);
+						
+						// Add neighbours to list
+						neighbors.add(current.clone(addVehicle, wrappers2));
+						
+						// Reset forward iterator
+						iteratorForward.next();
+						iteratorForward.remove();
+						
+						// Take iterator step forward
+						iteratorForward.next();
+					}
+					// Reset backward iterator and take step
+					iteratorBackward.next();
 					
+					iteratorBackward.remove();
+					iteratorBackward.previous();
 				}
 			}
+		}
+		for (Solution n : neighbors) {
+			n.updateCost();
 		}
 		return neighbors;
 	}
 
 	public void updateCost() {
+		this.cost = 0; // ----------------------------------------------------------------------RIGHT???
 		for (Vehicle v: this.nextTaskV.keySet()) {
 			City prevCity = v.homeCity();
 			for (Wrapper w: this.nextTaskV.get(v)) {
@@ -178,5 +203,9 @@ public class Solution implements Comparable<Solution>, Cloneable {
 	@Override
 	public int compareTo(Solution o) {
 		return (int) (this.cost - o.cost);
+	}
+	
+	public double getCost() {
+		return this.cost;
 	}
 }

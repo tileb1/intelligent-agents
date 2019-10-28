@@ -61,13 +61,18 @@ public class CentralizedAgent implements CentralizedBehavior {
         long time_start = System.currentTimeMillis();
         
 //		System.out.println("Agent " + agent.id() + " has tasks " + tasks);
-        Solution currentSol = new Solution((ArrayList<Vehicle>) (vehicles), topology, tasks);
+        Solution currentSol = new Solution(vehicles, topology, tasks);
         
         int iter = 0;
 		
-    	while (iter < 10000) {
+    	while (iter < 100) {
+    		System.out.println("iterations number: " + iter + " with cost " + currentSol.getCost());
     		try {
-				currentSol = Collections.min(currentSol.getNeighbors());
+    			ArrayList<Solution> sols = currentSol.getNeighbors();
+    			if (sols.size() > 0) {
+    				currentSol = Collections.min(sols);
+    			}
+				
 			} catch (CloneNotSupportedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -92,7 +97,7 @@ public class CentralizedAgent implements CentralizedBehavior {
         
         long time_end = System.currentTimeMillis();
         long duration = time_end - time_start;
-        System.out.println("The plan was generated in " + duration + " milliseconds.");
+        System.out.println("The plan was generated in ----------" + duration + " milliseconds.");
         
         return plans;
     }
