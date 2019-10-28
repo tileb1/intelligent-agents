@@ -4,7 +4,7 @@ public class Wrapper {
 //	private Wrapper prev;
 //	private Wrapper next;
 //	private int time; // removed because we won't generate wrong solutions
-	private Task task;
-	private boolean pickup;
-	private double capacity;
+	public Task task;
+	public boolean pickup;
+	public double capacity;
 }
