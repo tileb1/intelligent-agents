@@ -257,12 +257,11 @@ public class Solution implements Comparable<Solution>, Cloneable {
 		return this.nextTaskV;
 	}
 
-	@SuppressWarnings("unchecked")
 	public Solution clone(Vehicle random, Vehicle other) {
 		try {
 			Solution clone = (Solution) super.clone();
-			clone.nextTaskV.put(random, (LinkedList<Wrapper>) this.nextTaskV.get(random).clone());
-			clone.nextTaskV.put(other, (LinkedList<Wrapper>) this.nextTaskV.get(other).clone());
+			clone.nextTaskV.put(random, new LinkedList<Wrapper>(this.nextTaskV.get(random)));
+			clone.nextTaskV.put(other, new LinkedList<Wrapper>(this.nextTaskV.get(other)));
 			return clone;
 		} catch (CloneNotSupportedException e) {
 			// Let it be
@@ -270,11 +269,10 @@ public class Solution implements Comparable<Solution>, Cloneable {
 		}
 	}
 	
-	@SuppressWarnings("unchecked")
 	public Solution clone(Vehicle vehicle, LinkedList<Wrapper> wrappers) {
 		try {
 			Solution clone = (Solution) super.clone();
-			clone.nextTaskV.put(vehicle, (LinkedList<Wrapper>) wrappers.clone());
+			clone.nextTaskV.put(vehicle, new LinkedList<Wrapper>(wrappers));
 			return clone;
 		} catch (CloneNotSupportedException e) {
 			// Let it be
