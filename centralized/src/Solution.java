@@ -158,29 +158,28 @@ public class Solution implements Comparable<Solution>, Cloneable {
 				return neighbors;
 			}
 			
-			for (Vehicle addVehicle : this.vehicles) {
-				if (removeVehicle.equals(addVehicle)) {
-					continue;
-				}
-				Solution current = this.clone(removeVehicle, addVehicle);
-				Wrapper pickup = null;
-				Wrapper delivery = null;
-				
-				// Delete the first task from the random vehicle
-				ListIterator<Wrapper> iterator = current.nextTaskV.get(removeVehicle).listIterator();
-				pickup = iterator.next();
-				iterator.remove();
-				while (iterator.hasNext()) {
-					delivery = iterator.next();
-					if (delivery.task.equals(pickup.task)) {
-						iterator.remove();
-						break;
-					}
-				}
-//				System.out.println("Change " + pickup.task.toString());
-				this.addToNeighbors(neighbors, current, pickup, delivery, addVehicle);
+			
+			Vehicle addVehicle = this.getRandomVehicle();
+			if (removeVehicle.equals(addVehicle)) {
+				return neighbors;
 			}
-
+			Solution current = this.clone(removeVehicle, addVehicle);
+			Wrapper pickup = null;
+			Wrapper delivery = null;
+			
+			// Delete the first task from the random vehicle
+			ListIterator<Wrapper> iterator = current.nextTaskV.get(removeVehicle).listIterator();
+			pickup = iterator.next();
+			iterator.remove();
+			while (iterator.hasNext()) {
+				delivery = iterator.next();
+				if (delivery.task.equals(pickup.task)) {
+					iterator.remove();
+					break;
+				}
+			}
+//			System.out.println("Change " + pickup.task.toString());
+			this.addToNeighbors(neighbors, current, pickup, delivery, addVehicle);
 		}
 		return neighbors;
 	}
