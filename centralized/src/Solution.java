@@ -65,6 +65,58 @@ public class Solution implements Comparable<Solution>, Cloneable {
 		}
 		return null;
 	}
+	
+	private ArrayList<Solution> getNeighborsSwapTasks() {
+		ArrayList<Solution> neighbors = new ArrayList<Solution>();
+		Vehicle vehicle = null;
+		for (int i = 0; i < 10; i++) {
+			vehicle = this.getRandomVehicle();
+			if (this.nextTaskV.get(vehicle).size() >= 2) {
+				break;
+			}
+		}
+		LinkedList<Wrapper> wrappers = this.nextTaskV.get(vehicle);
+		if (wrappers.size() >= 2) {
+			// Delete the task from the vehicle
+			Solution current = this.clone(vehicle, wrappers);
+			wrappers = current.nextTaskV.get(vehicle);
+			int toRemove = Solution.random.nextInt(wrappers.size());
+			ListIterator<Wrapper> iterator = wrappers.listIterator();
+			Wrapper pickup = null;
+			Wrapper delivery = null;
+			Wrapper removed = null;
+			while (iterator.hasNext()) {
+				if (iterator.nextIndex() == toRemove) {
+					removed = iterator.next();
+					iterator.remove();
+					if (removed.pickup == false) {
+						delivery = removed;
+						break;
+					}
+					else {
+						pickup = removed;
+					}
+				}
+				Wrapper next = iterator.next();
+				if (removed != null && next.task.equals(removed.task)) {
+					delivery = next;
+					iterator.remove();
+				}
+			}
+			if (pickup == null) {
+				iterator = wrappers.listIterator();
+				while (iterator.hasNext()) {
+					Wrapper next = iterator.next();
+					if (next.task.equals(delivery.task)) {
+						iterator.remove();
+						break;
+					}
+				}
+			}
+			
+		}
+		return neighbors;
+	}
 
 	@SuppressWarnings("unchecked")
 	private ArrayList<Solution> getNeighborsChangeVehicle() throws CloneNotSupportedException {
