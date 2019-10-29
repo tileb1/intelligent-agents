@@ -64,15 +64,24 @@ public class CentralizedAgent implements CentralizedBehavior {
         Solution currentSol = new Solution(vehicles, topology, tasks);
         
         int iter = 0;
-		
-    	while (iter < 100000) {
+        Solution bestSolEver = currentSol;
+    	while (iter < 10000) {
     		System.out.println("iterations number: " + iter + " with cost " + currentSol.getCost());
     		try {
     			ArrayList<Solution> sols = currentSol.getNeighbors();
     			if (sols.size() > 0) {
     				Solution minSol = Collections.min(sols);
-    				if (minSol.getCost() < currentSol.getCost() & Math.random() < 1.0) {
+    				if (minSol.getCost() < currentSol.getCost()) {
     					currentSol = minSol;
+    					if (bestSolEver.getCost() > minSol.getCost()) {
+    						bestSolEver = minSol;
+    					}
+    				}
+    				if (Math.random() < 0.03) {
+    					currentSol = sols.get(Solution.random.nextInt(sols.size()));
+    				}
+    				if (Math.random() < 0.001) {
+    					currentSol = bestSolEver;
     				}
     			}
 				
@@ -88,7 +97,7 @@ public class CentralizedAgent implements CentralizedBehavior {
     	for (Vehicle v: vehicles) {
     		Plan plan = new Plan(v.homeCity());
     		City fromCity = v.homeCity();
-    		for (Wrapper w: currentSol.getPlans().get(v)) {
+    		for (Wrapper w: bestSolEver.getPlans().get(v)) {
     			for (City c: fromCity.pathTo(w.getCity())) {
 					plan.appendMove(c);
 				}
