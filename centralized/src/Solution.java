@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Random;
 import java.util.Set;
+
+import cern.colt.Arrays;
 import logist.simulation.Vehicle;
 import logist.task.Task;
 import logist.task.TaskSet;
@@ -56,13 +58,15 @@ public class Solution implements Comparable<Solution>, Cloneable {
 		if (swapTaskseNeighbors.size() > 0) {
 			neighbors.addAll(swapTaskseNeighbors);
 		}
+		ArrayList<Solution> goodNeighbors = new ArrayList<Solution>();
 		for (Solution n : neighbors) {
 			n.updateCost();
-			if(!n.isFeasible()) {
-				neighbors.remove(n);
+//			System.out.println(n);
+			if(n.isFeasible()) {
+				goodNeighbors.add(n);
 			}
 		}
-		return neighbors;
+		return goodNeighbors;
 	}
 	
 	private Vehicle getRandomVehicle() {
@@ -134,6 +138,7 @@ public class Solution implements Comparable<Solution>, Cloneable {
 //			System.out.println(this);
 //			System.out.println(current);
 //			System.out.println("---------------------------------------------------");
+//			System.out.println(pickup.task);
 			this.addToNeighbors(neighbors, current, pickup, delivery, vehicle);
 		}
 		return neighbors;
@@ -152,6 +157,8 @@ public class Solution implements Comparable<Solution>, Cloneable {
 			if (this.nextTaskV.get(removeVehicle).size() < 2) {
 				return neighbors;
 			}
+			
+			
 			Vehicle addVehicle = this.getRandomVehicle();
 			if (removeVehicle.equals(addVehicle)) {
 				return neighbors;
@@ -171,14 +178,14 @@ public class Solution implements Comparable<Solution>, Cloneable {
 					break;
 				}
 			}
+//			System.out.println("Change " + pickup.task.toString());
 			this.addToNeighbors(neighbors, current, pickup, delivery, addVehicle);
 		}
 		return neighbors;
 	}
 	
 	
-	@SuppressWarnings("unchecked")
-	private void addToNeighbors(ArrayList<Solution> neighbors, Solution current, Wrapper pickup, Wrapper delivery, Vehicle addVehicle) {
+	private void addToNeighbors2(ArrayList<Solution> neighbors, Solution current, Wrapper pickup, Wrapper delivery, Vehicle addVehicle) {
 		LinkedList<Wrapper> wrappers = current.nextTaskV.get(addVehicle);
 		if (wrappers.size() == 0) {
 			wrappers.add(pickup);
@@ -192,7 +199,7 @@ public class Solution implements Comparable<Solution>, Cloneable {
 			while (iteratorBackward.hasPrevious()) {
 				iteratorBackward.add(delivery);
 				iteratorBackward.previous();
-				LinkedList<Wrapper> wrappers2 = (LinkedList<Wrapper>) wrappers.clone();
+				LinkedList<Wrapper> wrappers2 = new LinkedList<Wrapper>(wrappers);
 				iteratorForward = wrappers2.listIterator();
 				while (iteratorForward.hasNext() && iteratorForward.nextIndex() < iteratorBackward.previousIndex()) {
 					iteratorForward.add(pickup);
@@ -212,6 +219,27 @@ public class Solution implements Comparable<Solution>, Cloneable {
 				
 				iteratorBackward.remove();
 				iteratorBackward.previous();
+			}
+		}
+	}
+	
+	private void addToNeighbors(ArrayList<Solution> neighbors, Solution current, Wrapper pickup, Wrapper delivery, Vehicle addVehicle) {
+		ArrayList<Wrapper> wrappers = new ArrayList<Wrapper>(current.nextTaskV.get(addVehicle));
+		if (wrappers.size() == 0) {
+			wrappers.add(pickup);
+			wrappers.add(delivery);
+			neighbors.add(current.clone(addVehicle, wrappers));
+		}
+		else {
+			for (int iF = 0; iF < wrappers.size(); iF++) {
+				for (int iB = wrappers.size()-1; iB > iF; iB--) {
+//					ArrayList<Wrapper> wrapperCopy = new ArrayList<Wrapper>(wrappers);
+					wrappers.add(iF, pickup);
+					wrappers.add(iB+1, delivery);
+					neighbors.add(current.clone(addVehicle, wrappers));
+					wrappers.remove(iB+1);
+					wrappers.remove(iF);
+				}
 			}
 		}
 	}
@@ -260,6 +288,7 @@ public class Solution implements Comparable<Solution>, Cloneable {
 	public Solution clone(Vehicle random, Vehicle other) {
 		try {
 			Solution clone = (Solution) super.clone();
+			clone.nextTaskV = new HashMap<Vehicle, LinkedList<Wrapper>>(this.nextTaskV);
 			clone.nextTaskV.put(random, new LinkedList<Wrapper>(this.nextTaskV.get(random)));
 			clone.nextTaskV.put(other, new LinkedList<Wrapper>(this.nextTaskV.get(other)));
 			return clone;
@@ -272,6 +301,19 @@ public class Solution implements Comparable<Solution>, Cloneable {
 	public Solution clone(Vehicle vehicle, LinkedList<Wrapper> wrappers) {
 		try {
 			Solution clone = (Solution) super.clone();
+			clone.nextTaskV = new HashMap<Vehicle, LinkedList<Wrapper>>(this.nextTaskV);
+			clone.nextTaskV.put(vehicle, new LinkedList<Wrapper>(wrappers));
+			return clone;
+		} catch (CloneNotSupportedException e) {
+			// Let it be
+			return null;
+		}
+	}
+	
+	public Solution clone(Vehicle vehicle, ArrayList<Wrapper> wrappers) {
+		try {
+			Solution clone = (Solution) super.clone();
+			clone.nextTaskV = new HashMap<Vehicle, LinkedList<Wrapper>>(this.nextTaskV);
 			clone.nextTaskV.put(vehicle, new LinkedList<Wrapper>(wrappers));
 			return clone;
 		} catch (CloneNotSupportedException e) {
@@ -282,7 +324,7 @@ public class Solution implements Comparable<Solution>, Cloneable {
 
 	@Override
 	public int compareTo(Solution o) {
-		return (int) -(this.cost - o.cost);
+		return (int) (this.cost - o.cost);
 	}
 	
 	public double getCost() {

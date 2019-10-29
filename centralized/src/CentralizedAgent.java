@@ -71,7 +71,7 @@ public class CentralizedAgent implements CentralizedBehavior {
     			ArrayList<Solution> sols = currentSol.getNeighbors();
     			if (sols.size() > 0) {
     				Solution minSol = Collections.min(sols);
-    				if (minSol.getCost() < currentSol.getCost() & Math.random() < 0.85) {
+    				if (minSol.getCost() < currentSol.getCost() & Math.random() < 1.0) {
     					currentSol = minSol;
     				}
     			}
