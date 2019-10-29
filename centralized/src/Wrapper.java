@@ -31,4 +31,14 @@ public class Wrapper {
 	public boolean isPickup() {
 		return this.pickup;
 	}
+	
+	public String toString() {
+		if (pickup) {
+			return "- Pickup Task " + this.task.id + " at " + this.task.pickupCity.toString() + ", to be delivred to " + this.task.deliveryCity.toString() + " \n";
+		}
+		else {
+			return "- Deliver Task " + this.task.id + " to " + this.task.deliveryCity.toString() + " \n";
+		}
+		
+	}
 }

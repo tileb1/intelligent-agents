@@ -138,6 +138,9 @@ public class Solution implements Comparable<Solution>, Cloneable {
 		}
 		for (Solution n : neighbors) {
 			n.updateCost();
+			if(!n.isFeasible()) {
+				neighbors.remove(n);
+			}
 		}
 		return neighbors;
 	}
@@ -202,10 +205,22 @@ public class Solution implements Comparable<Solution>, Cloneable {
 
 	@Override
 	public int compareTo(Solution o) {
-		return (int) (this.cost - o.cost);
+		return (int) -(this.cost - o.cost);
 	}
 	
 	public double getCost() {
 		return this.cost;
+	}
+	
+	public String toString() {
+		String sString = new String();
+		for (Vehicle v: this.nextTaskV.keySet()) {
+			String vString = "Vehicle" + v.id() + ", origin: " + v.homeCity().toString() + ", capacity: " + v.capacity() + ", costPerKm: " + v.costPerKm() + ", tasks: " + this.nextTaskV.get(v).size() + "\n";
+			for (Wrapper w: this.nextTaskV.get(v)) {
+				vString = vString + w.toString();
+			}
+		sString = sString + vString + "\n";
+		}
+		return sString;
 	}
 }
