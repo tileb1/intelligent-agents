@@ -300,4 +300,29 @@ public class Solution implements Comparable<Solution>, Cloneable {
 		}
 		return sString;
 	}
+	
+	public boolean isValid() {
+		for (Vehicle v: this.nextTaskV.keySet()) {
+			LinkedList<Wrapper> vPlan = this.nextTaskV.get(v);
+			while (!vPlan.isEmpty()) {
+				Wrapper from = vPlan.remove();
+				if (!from.isPickup()) {
+					return false;
+				}
+				int sameTaskCount = 0;
+				@SuppressWarnings("unchecked")
+				LinkedList<Wrapper> vPlanCopy = (LinkedList<Wrapper>) vPlan.clone();
+				for (Wrapper w: vPlanCopy) {
+					if (w.getTask().id == from.getTask().id) {
+						sameTaskCount += 1;
+						vPlan.remove(w);
+						if (sameTaskCount > 1) {
+							return false;
+						}
+					}
+				}
+			}
+		}
+		return true;
+	}
 }

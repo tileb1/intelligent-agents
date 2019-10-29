@@ -65,13 +65,13 @@ public class CentralizedAgent implements CentralizedBehavior {
         
         int iter = 0;
 		
-    	while (iter < 10000) {
+    	while (iter < 100000) {
     		System.out.println("iterations number: " + iter + " with cost " + currentSol.getCost());
     		try {
     			ArrayList<Solution> sols = currentSol.getNeighbors();
     			if (sols.size() > 0) {
     				Solution minSol = Collections.min(sols);
-    				if (minSol.getCost() < currentSol.getCost()) {
+    				if (minSol.getCost() < currentSol.getCost() & Math.random() < 0.85) {
     					currentSol = minSol;
     				}
     			}
@@ -87,7 +87,12 @@ public class CentralizedAgent implements CentralizedBehavior {
     	
     	for (Vehicle v: vehicles) {
     		Plan plan = new Plan(v.homeCity());
+    		City fromCity = v.homeCity();
     		for (Wrapper w: currentSol.getPlans().get(v)) {
+    			for (City c: fromCity.pathTo(w.getCity())) {
+					plan.appendMove(c);
+				}
+    			fromCity = w.getCity();
     			if (w.isPickup()) {
     				plan.appendPickup(w.getTask());
     			}
