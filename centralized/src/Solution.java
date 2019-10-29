@@ -49,8 +49,18 @@ public class Solution implements Comparable<Solution>, Cloneable {
 	public ArrayList<Solution> getNeighbors() throws CloneNotSupportedException {
 		ArrayList<Solution> neighbors = new ArrayList<Solution>();
 		ArrayList<Solution> changeVehicleNeighbors = this.getNeighborsChangeVehicle();
+		ArrayList<Solution> swapTaskseNeighbors = this.getNeighborsSwapTasks();
 		if (changeVehicleNeighbors.size() > 0) {
 			neighbors.addAll(changeVehicleNeighbors);
+		}
+		if (swapTaskseNeighbors.size() > 0) {
+			neighbors.addAll(swapTaskseNeighbors);
+		}
+		for (Solution n : neighbors) {
+			n.updateCost();
+			if(!n.isFeasible()) {
+				neighbors.remove(n);
+			}
 		}
 		return neighbors;
 	}
@@ -71,12 +81,12 @@ public class Solution implements Comparable<Solution>, Cloneable {
 		Vehicle vehicle = null;
 		for (int i = 0; i < 10; i++) {
 			vehicle = this.getRandomVehicle();
-			if (this.nextTaskV.get(vehicle).size() >= 2) {
+			if (this.nextTaskV.get(vehicle).size() >= 4) {
 				break;
 			}
 		}
 		LinkedList<Wrapper> wrappers = this.nextTaskV.get(vehicle);
-		if (wrappers.size() >= 2) {
+		if (wrappers.size() >= 4) {
 			// Delete the task from the vehicle
 			Solution current = this.clone(vehicle, wrappers);
 			wrappers = current.nextTaskV.get(vehicle);
@@ -101,24 +111,34 @@ public class Solution implements Comparable<Solution>, Cloneable {
 				if (removed != null && next.task.equals(removed.task)) {
 					delivery = next;
 					iterator.remove();
+					break;
 				}
 			}
 			if (pickup == null) {
+				if (delivery == null) {
+					throw new IllegalStateException();
+				}
 				iterator = wrappers.listIterator();
 				while (iterator.hasNext()) {
 					Wrapper next = iterator.next();
 					if (next.task.equals(delivery.task)) {
+						pickup = next;
 						iterator.remove();
 						break;
 					}
 				}
 			}
-			
+//			System.out.println(pickup);
+//			System.out.println(delivery);
+//			System.out.println(removed);
+//			System.out.println(this);
+//			System.out.println(current);
+//			System.out.println("---------------------------------------------------");
+			this.addToNeighbors(neighbors, current, pickup, delivery, vehicle);
 		}
 		return neighbors;
 	}
 
-	@SuppressWarnings("unchecked")
 	private ArrayList<Solution> getNeighborsChangeVehicle() throws CloneNotSupportedException {
 		ArrayList<Solution> neighbors = new ArrayList<Solution>();
 		Vehicle removeVehicle = null;
@@ -137,7 +157,6 @@ public class Solution implements Comparable<Solution>, Cloneable {
 				return neighbors;
 			}
 			Solution current = this.clone(removeVehicle, addVehicle);
-			LinkedList<Wrapper> wrappers = current.nextTaskV.get(addVehicle);
 			Wrapper pickup = null;
 			Wrapper delivery = null;
 			
@@ -152,49 +171,49 @@ public class Solution implements Comparable<Solution>, Cloneable {
 					break;
 				}
 			}
-			
-			if (wrappers.size() == 0) {
-				wrappers.add(pickup);
-				wrappers.add(delivery);
-				neighbors.add(current.clone(addVehicle, wrappers));
-			}
-			else {
-				// Try all possible positions for pickup and delivery
-				ListIterator<Wrapper> iteratorBackward = wrappers.listIterator(wrappers.size());
-				ListIterator<Wrapper> iteratorForward;
-				while (iteratorBackward.hasPrevious()) {
-					iteratorBackward.add(delivery);
-					iteratorBackward.previous();
-					LinkedList<Wrapper> wrappers2 = (LinkedList<Wrapper>) wrappers.clone();
-					iteratorForward = wrappers2.listIterator();
-					while (iteratorForward.hasNext() && iteratorForward.nextIndex() < iteratorBackward.previousIndex()) {
-						iteratorForward.add(pickup);
-						
-						// Add neighbours to list
-						neighbors.add(current.clone(addVehicle, wrappers2));
-						
-						// Reset forward iterator
-						iteratorForward.next();
-						iteratorForward.remove();
-						
-						// Take iterator step forward
-						iteratorForward.next();
-					}
-					// Reset backward iterator and take step
-					iteratorBackward.next();
-					
-					iteratorBackward.remove();
-					iteratorBackward.previous();
-				}
-			}
-		}
-		for (Solution n : neighbors) {
-			n.updateCost();
-			if(!n.isFeasible()) {
-				neighbors.remove(n);
-			}
+			this.addToNeighbors(neighbors, current, pickup, delivery, addVehicle);
 		}
 		return neighbors;
+	}
+	
+	
+	@SuppressWarnings("unchecked")
+	private void addToNeighbors(ArrayList<Solution> neighbors, Solution current, Wrapper pickup, Wrapper delivery, Vehicle addVehicle) {
+		LinkedList<Wrapper> wrappers = current.nextTaskV.get(addVehicle);
+		if (wrappers.size() == 0) {
+			wrappers.add(pickup);
+			wrappers.add(delivery);
+			neighbors.add(current.clone(addVehicle, wrappers));
+		}
+		else {
+			// Try all possible positions for pickup and delivery
+			ListIterator<Wrapper> iteratorBackward = wrappers.listIterator(wrappers.size());
+			ListIterator<Wrapper> iteratorForward;
+			while (iteratorBackward.hasPrevious()) {
+				iteratorBackward.add(delivery);
+				iteratorBackward.previous();
+				LinkedList<Wrapper> wrappers2 = (LinkedList<Wrapper>) wrappers.clone();
+				iteratorForward = wrappers2.listIterator();
+				while (iteratorForward.hasNext() && iteratorForward.nextIndex() < iteratorBackward.previousIndex()) {
+					iteratorForward.add(pickup);
+					
+					// Add neighbours to list
+					neighbors.add(current.clone(addVehicle, wrappers2));
+					
+					// Reset forward iterator
+					iteratorForward.next();
+					iteratorForward.remove();
+					
+					// Take iterator step forward
+					iteratorForward.next();
+				}
+				// Reset backward iterator and take step
+				iteratorBackward.next();
+				
+				iteratorBackward.remove();
+				iteratorBackward.previous();
+			}
+		}
 	}
 
 	public void updateCost() {
@@ -202,7 +221,15 @@ public class Solution implements Comparable<Solution>, Cloneable {
 		for (Vehicle v: this.nextTaskV.keySet()) {
 			City prevCity = v.homeCity();
 			for (Wrapper w: this.nextTaskV.get(v)) {
-				this.cost += prevCity.distanceTo(w.getCity()) * v.costPerKm();
+				try {
+					this.cost += prevCity.distanceTo(w.getCity()) * v.costPerKm();
+				}
+				catch (NullPointerException e) {
+					System.out.println(prevCity);
+					System.out.println(v);
+					System.out.println(w);
+					System.out.println(this.nextTaskV.get(v));
+				}
 				prevCity = w.getCity();
 			}
 		}
@@ -271,7 +298,7 @@ public class Solution implements Comparable<Solution>, Cloneable {
 			for (Wrapper w: this.nextTaskV.get(v)) {
 				vString = vString + w.toString();
 			}
-		sString = sString + vString + "\n";
+		sString = sString + vString;
 		}
 		return sString;
 	}
