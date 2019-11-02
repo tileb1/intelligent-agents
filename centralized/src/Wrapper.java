@@ -1,18 +1,16 @@
 import logist.task.Task;
 import logist.topology.Topology.City;
 
+/*
+ * Wrapper class for a task. We generate 2 wrappers for a single task, one for the pickup and one for the delivery.
+ */
 public class Wrapper {
-//	private Wrapper prev;
-//	private Wrapper next;
-//	private int time; // removed because we won't generate wrong solutions
-	public Task task;
-	public boolean pickup;
-	public double capacity;
+	private Task task;
+	private boolean pickup;
 	
-	public Wrapper(Task tsk, boolean pckp, double cpct) {
+	public Wrapper(Task tsk, boolean pckp) {
 		this.task = tsk;
 		this.pickup = pckp;
-		this.capacity = cpct;
 	}
 	
 	public Task getTask() {

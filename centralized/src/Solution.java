@@ -32,8 +32,8 @@ public class Solution implements Comparable<Solution>, Cloneable {
 
 		LinkedList<Wrapper> biggestVehiclePlan = new LinkedList<Wrapper>();
 		for (Task task : taskset) {
-			biggestVehiclePlan.addLast(new Wrapper(task, true, biggestVehicle.capacity() - task.weight));
-			biggestVehiclePlan.addLast(new Wrapper(task, false, biggestVehicle.capacity()));
+			biggestVehiclePlan.addLast(new Wrapper(task, true));
+			biggestVehiclePlan.addLast(new Wrapper(task, false));
 		}
 
 		this.nextTaskV.put(biggestVehicle, biggestVehiclePlan);
@@ -69,6 +69,7 @@ public class Solution implements Comparable<Solution>, Cloneable {
 	}
 
 	private void addNeighborsSwapTasks(ArrayList<Solution> neighbors) {
+		// Get random vehicle
 		Vehicle vehicle = null;
 		for (int i = 0; i < 10; i++) {
 			vehicle = this.getRandomVehicle();
@@ -102,7 +103,7 @@ public class Solution implements Comparable<Solution>, Cloneable {
 			iterator = wrappers.listIterator();
 			while (iterator.hasNext()) {
 				Wrapper next = iterator.next();
-				if (next.task.equals(removed.task)) {
+				if (next.getTask().equals(removed.getTask())) {
 					if (next.isPickup()) {
 						pickup = next;
 						delivery = removed;
@@ -146,7 +147,7 @@ public class Solution implements Comparable<Solution>, Cloneable {
 				// Delete the corresponding delivery Wrapper
 				while (iterator.hasNext()) {
 					delivery = iterator.next();
-					if (delivery.task.equals(pickup.task)) {
+					if (delivery.getTask().equals(pickup.getTask())) {
 						iterator.remove();
 						break;
 					}

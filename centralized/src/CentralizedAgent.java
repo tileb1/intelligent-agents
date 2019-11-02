@@ -76,9 +76,12 @@ public class CentralizedAgent implements CentralizedBehavior {
 						bestSolEver = minSol;
 					}
 				}
+				// Do some exploration
 				if (Math.random() < 0.03) {
 					currentSol = sols.get(Solution.random.nextInt(sols.size()));
 				}
+				// Reset to last local minimum very rarely
+				// This can be usefull when the exploration leads us nowhere...
 				if (Math.random() < 0.0005) {
 					currentSol = bestSolEver;
 				}
@@ -89,8 +92,8 @@ public class CentralizedAgent implements CentralizedBehavior {
     		iter++;
     	}
     	
+    	// Generate plan
     	List<Plan> plans = new ArrayList<Plan>();
-    	
     	for (Vehicle v: vehicles) {
     		Plan plan = new Plan(v.homeCity());
     		City fromCity = v.homeCity();
@@ -109,6 +112,7 @@ public class CentralizedAgent implements CentralizedBehavior {
     		plans.add(plan);
     	}
         
+    	// Print computation time
         long time_end = System.currentTimeMillis();
         long duration = time_end - time_start;
         System.out.println("The plan was generated in " + duration + " milliseconds.");
