@@ -157,43 +157,6 @@ public class Solution implements Comparable<Solution>, Cloneable {
 		}
 	}
 
-	private void addToNeighbors2(ArrayList<Solution> neighbors, Solution current, Wrapper pickup, Wrapper delivery,
-			Vehicle addVehicle) {
-		LinkedList<Wrapper> wrappers = current.nextTaskV.get(addVehicle);
-		if (wrappers.size() == 0) {
-			wrappers.add(pickup);
-			wrappers.add(delivery);
-			neighbors.add(current.clone(addVehicle, wrappers));
-		} else {
-			// Try all possible positions for pickup and delivery
-			ListIterator<Wrapper> iteratorBackward = wrappers.listIterator(wrappers.size());
-			ListIterator<Wrapper> iteratorForward;
-			while (iteratorBackward.hasPrevious()) {
-				iteratorBackward.add(delivery);
-				iteratorBackward.previous();
-
-				LinkedList<Wrapper> wrappers2 = new LinkedList<Wrapper>(wrappers);
-				iteratorBackward.remove();
-				iteratorBackward.previous();
-
-				iteratorForward = wrappers2.listIterator();
-				while (iteratorForward.hasNext() && iteratorForward.nextIndex() < iteratorBackward.previousIndex()) {
-					iteratorForward.add(pickup);
-
-					// Add to neighbors
-					neighbors.add(current.clone(addVehicle, wrappers2));
-
-					// Reset forward iterator
-					iteratorForward.previous();
-					iteratorForward.remove();
-
-					// Take iterator step forward
-					iteratorForward.next();
-				}
-			}
-		}
-	}
-
 	private void addToNeighbors(ArrayList<Solution> neighbors, Solution current, Wrapper pickup, Wrapper delivery,
 			Vehicle addVehicle) {
 		ArrayList<Wrapper> wrappers = new ArrayList<Wrapper>(current.nextTaskV.get(addVehicle));
