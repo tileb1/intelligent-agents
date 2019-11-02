@@ -1,3 +1,4 @@
+import java.nio.channels.IllegalSelectorException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -99,6 +100,10 @@ public class Solution implements Comparable<Solution>, Cloneable {
 			Wrapper pickup = null;
 			Wrapper delivery = null;
 			Wrapper removed = null;
+//			for (Wrapper w : wrappers) {
+//				System.out.print(w.task.id + " ");
+//			}
+//			System.out.println("----------------------------");
 			while (iterator.hasNext()) {
 				if (iterator.nextIndex() == toRemove) {
 					removed = iterator.next();
@@ -111,11 +116,13 @@ public class Solution implements Comparable<Solution>, Cloneable {
 						pickup = removed;
 					}
 				}
-				Wrapper next = iterator.next();
-				if (removed != null && next.task.equals(removed.task)) {
-					delivery = next;
-					iterator.remove();
-					break;
+				else {
+					Wrapper next = iterator.next();
+					if (removed != null && next.task.equals(removed.task)) {
+						delivery = next;
+						iterator.remove();
+						break;
+					}
 				}
 			}
 			if (pickup == null) {
@@ -125,7 +132,7 @@ public class Solution implements Comparable<Solution>, Cloneable {
 				iterator = wrappers.listIterator();
 				while (iterator.hasNext()) {
 					Wrapper next = iterator.next();
-					if (next.task.equals(delivery.task)) {
+					if (delivery.task.equals(next.task)) {
 						pickup = next;
 						iterator.remove();
 						break;
@@ -139,6 +146,21 @@ public class Solution implements Comparable<Solution>, Cloneable {
 //			System.out.println(current);
 //			System.out.println("---------------------------------------------------");
 //			System.out.println(pickup.task);
+			if (pickup == null) {
+				System.out.print(this.nextTaskV.get(vehicle));
+				throw new IllegalStateException("swap pickup");
+			}
+			if (delivery == null) {
+				throw new IllegalStateException("swap delivery");
+			}
+			if (!pickup.task.equals(delivery.task)) {
+				System.out.println(pickup);
+				System.out.println(delivery);
+				System.out.println(removed);
+				System.out.println(this.nextTaskV.get(vehicle));
+				System.out.println(wrappers);
+				throw new IllegalSelectorException();
+			}
 			this.addToNeighbors(neighbors, current, pickup, delivery, vehicle);
 		}
 		return neighbors;
@@ -178,7 +200,13 @@ public class Solution implements Comparable<Solution>, Cloneable {
 					break;
 				}
 			}
-//			System.out.println("Change " + pickup.task.toString());
+			if (!pickup.task.equals(delivery.task)) {
+				System.out.println(this.nextTaskV.get(removeVehicle));
+				throw new IllegalSelectorException();
+			}
+			if (pickup == null || delivery == null) {
+				throw new IllegalStateException("change vehicle");
+			}
 			this.addToNeighbors(neighbors, current, pickup, delivery, addVehicle);
 		}
 		return neighbors;
@@ -198,27 +226,61 @@ public class Solution implements Comparable<Solution>, Cloneable {
 			ListIterator<Wrapper> iteratorForward;
 			while (iteratorBackward.hasPrevious()) {
 				iteratorBackward.add(delivery);
-				iteratorBackward.previous();
+				iteratorBackward.previous(); // this is delivery
+				
 				LinkedList<Wrapper> wrappers2 = new LinkedList<Wrapper>(wrappers);
+				iteratorBackward.remove();
+				iteratorBackward.previous();
+				
 				iteratorForward = wrappers2.listIterator();
 				while (iteratorForward.hasNext() && iteratorForward.nextIndex() < iteratorBackward.previousIndex()) {
 					iteratorForward.add(pickup);
 					
 					// Add neighbours to list
-					neighbors.add(current.clone(addVehicle, wrappers2));
+//					System.out.println(wrappers2.size());
+//					System.out.println(wrappers2);
+					if (wrappers2.size() % 2 == 0) {
+						HashMap<Task, Wrapper> seen = new HashMap<Task, Wrapper>();
+						for (Wrapper wrapper : wrappers2) {
+							if (seen.containsKey(wrapper.task)) {
+								if (!seen.get(wrapper.task).task.equals(wrapper.task)) {
+									System.out.println(pickup);
+									System.out.println(delivery);
+									System.out.println(wrappers2);
+									System.out.println(this.nextTaskV.get(addVehicle));
+									throw new IllegalSelectorException();
+								}
+								if (seen.get(wrapper.task).isPickup() == wrapper.isPickup()) {
+									System.out.println(pickup);
+									System.out.println(delivery);
+									System.out.println(wrappers2);
+									System.out.println(this.nextTaskV.get(addVehicle));
+									throw new IllegalSelectorException();
+								}
+								seen.remove(wrapper.task);
+							}
+							else {
+								
+								seen.put(wrapper.task, wrapper);
+							}
+						}
+						if (seen.size() != 0) {
+							System.out.println(pickup);
+							System.out.println(delivery);
+							System.out.println(wrappers2);
+							System.out.println(this.nextTaskV.get(addVehicle));
+							throw new IllegalSelectorException();
+						}
+						neighbors.add(current.clone(addVehicle, wrappers2));
+					}
 					
 					// Reset forward iterator
-					iteratorForward.next();
+					iteratorForward.previous();
 					iteratorForward.remove();
 					
 					// Take iterator step forward
 					iteratorForward.next();
 				}
-				// Reset backward iterator and take step
-				iteratorBackward.next();
-				
-				iteratorBackward.remove();
-				iteratorBackward.previous();
 			}
 		}
 	}
@@ -236,7 +298,40 @@ public class Solution implements Comparable<Solution>, Cloneable {
 //					ArrayList<Wrapper> wrapperCopy = new ArrayList<Wrapper>(wrappers);
 					wrappers.add(iF, pickup);
 					wrappers.add(iB+1, delivery);
-					neighbors.add(current.clone(addVehicle, wrappers));
+					if (wrappers.size() % 2 == 0) {
+						HashMap<Task, Wrapper> seen = new HashMap<Task, Wrapper>();
+						for (Wrapper wrapper : wrappers) {
+							if (seen.containsKey(wrapper.task)) {
+								if (!seen.get(wrapper.task).task.equals(wrapper.task)) {
+									System.out.println(pickup);
+									System.out.println(delivery);
+									System.out.println(wrappers);
+									System.out.println(this.nextTaskV.get(addVehicle));
+									throw new IllegalSelectorException();
+								}
+								if (seen.get(wrapper.task).isPickup() == wrapper.isPickup()) {
+									System.out.println(pickup);
+									System.out.println(delivery);
+									System.out.println(wrappers);
+									System.out.println(this.nextTaskV.get(addVehicle));
+									throw new IllegalSelectorException();
+								}
+								seen.remove(wrapper.task);
+							}
+							else {
+								
+								seen.put(wrapper.task, wrapper);
+							}
+						}
+						if (seen.size() != 0) {
+							System.out.println(pickup);
+							System.out.println(delivery);
+							System.out.println(wrappers);
+							System.out.println(this.nextTaskV.get(addVehicle));
+							throw new IllegalSelectorException();
+						}
+						neighbors.add(current.clone(addVehicle, wrappers));
+					}
 					wrappers.remove(iB+1);
 					wrappers.remove(iF);
 				}
