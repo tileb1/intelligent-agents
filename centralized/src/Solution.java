@@ -18,6 +18,9 @@ public class Solution implements Comparable<Solution>, Cloneable {
 	public static Random random = new Random();
 	private Set<Vehicle> vehicles;
 
+	/*
+	 * Constructor called for generating the initial solution. All tasks are carried by the biggest vehicle.
+	 */
 	public Solution(List<Vehicle> vehicles2, Topology topology, TaskSet taskset) {
 		this.nextTaskV = new HashMap<Vehicle, LinkedList<Wrapper>>();
 		Vehicle biggestVehicle = null;
@@ -41,6 +44,9 @@ public class Solution implements Comparable<Solution>, Cloneable {
 		this.vehicles = this.nextTaskV.keySet();
 	}
 
+	/*
+	 * Other constructor for generating neighbors.
+	 */
 	public Solution(Set<Vehicle> vehicles, HashMap<Vehicle, LinkedList<Wrapper>> nextTaskV) {
 		this.nextTaskV = nextTaskV;
 		this.vehicles = vehicles;
@@ -68,6 +74,9 @@ public class Solution implements Comparable<Solution>, Cloneable {
 		return null;
 	}
 
+	/*
+	 * Adds neighboring solutions by selecting a task within the same vehicle.
+	 */
 	private void addNeighborsSwapTasks(ArrayList<Solution> neighbors) {
 		// Get random vehicle
 		Vehicle vehicle = null;
@@ -121,7 +130,7 @@ public class Solution implements Comparable<Solution>, Cloneable {
 	}
 
 	/*
-	 * Returns neighboring solutions by selecting a task and moving it to another
+	 * Adds neighboring solutions by selecting a task and moving it to another
 	 * vehicle.
 	 */
 	private void addNeighborsChangeVehicle(ArrayList<Solution> neighbors) {
