@@ -1,4 +1,3 @@
-import java.nio.channels.IllegalSelectorException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -7,7 +6,6 @@ import java.util.ListIterator;
 import java.util.Random;
 import java.util.Set;
 
-import cern.colt.Arrays;
 import logist.simulation.Vehicle;
 import logist.task.Task;
 import logist.task.TaskSet;
@@ -21,55 +19,44 @@ public class Solution implements Comparable<Solution>, Cloneable {
 	private Set<Vehicle> vehicles;
 
 	public Solution(List<Vehicle> vehicles2, Topology topology, TaskSet taskset) {
-		// TODO
-		// Generate a feasible solution in wrappers and vehicle assos in nextTaskV
 		this.nextTaskV = new HashMap<Vehicle, LinkedList<Wrapper>>();
 		Vehicle biggestVehicle = null;
-		
-		for (Vehicle v: vehicles2) {
+
+		// Find vehicle with largest capacity
+		for (Vehicle v : vehicles2) {
 			if (biggestVehicle == null || v.capacity() > biggestVehicle.capacity()) {
 				biggestVehicle = v;
 			}
 			this.nextTaskV.put(v, new LinkedList<Wrapper>());
 		}
-		
-		
-		
+
 		LinkedList<Wrapper> biggestVehiclePlan = new LinkedList<Wrapper>();
-		
-		for (Task task: taskset) {
+		for (Task task : taskset) {
 			biggestVehiclePlan.addLast(new Wrapper(task, true, biggestVehicle.capacity() - task.weight));
 			biggestVehiclePlan.addLast(new Wrapper(task, false, biggestVehicle.capacity()));
 		}
-		
+
 		this.nextTaskV.put(biggestVehicle, biggestVehiclePlan);
-		updateCost();
+		this.updateCost();
 		this.vehicles = this.nextTaskV.keySet();
 	}
-	
 
-	// TODO
-	public ArrayList<Solution> getNeighbors() throws CloneNotSupportedException {
-		ArrayList<Solution> neighbors = new ArrayList<Solution>();
-		ArrayList<Solution> changeVehicleNeighbors = this.getNeighborsChangeVehicle();
-		ArrayList<Solution> swapTaskseNeighbors = this.getNeighborsSwapTasks();
-		if (changeVehicleNeighbors.size() > 0) {
-			neighbors.addAll(changeVehicleNeighbors);
-		}
-		if (swapTaskseNeighbors.size() > 0) {
-			neighbors.addAll(swapTaskseNeighbors);
-		}
-		ArrayList<Solution> goodNeighbors = new ArrayList<Solution>();
-		for (Solution n : neighbors) {
-			n.updateCost();
-//			System.out.println(n);
-			if(n.isFeasible()) {
-				goodNeighbors.add(n);
-			}
-		}
-		return goodNeighbors;
+	public Solution(Set<Vehicle> vehicles, HashMap<Vehicle, LinkedList<Wrapper>> nextTaskV) {
+		this.nextTaskV = nextTaskV;
+		this.vehicles = vehicles;
 	}
-	
+
+	/*
+	 * Returns the neighboring solution. This is the most important method of the
+	 * class and should be called by the CentralizedAgent.
+	 */
+	public ArrayList<Solution> getNeighbors() {
+		ArrayList<Solution> neighbors = new ArrayList<Solution>();
+		this.addNeighborsSwapTasks(neighbors);
+		this.addNeighborsChangeVehicle(neighbors);
+		return neighbors;
+	}
+
 	private Vehicle getRandomVehicle() {
 		int item = Solution.random.nextInt(vehicles.size());
 		int i = 0;
@@ -80,9 +67,8 @@ public class Solution implements Comparable<Solution>, Cloneable {
 		}
 		return null;
 	}
-	
-	private ArrayList<Solution> getNeighborsSwapTasks() {
-		ArrayList<Solution> neighbors = new ArrayList<Solution>();
+
+	private void addNeighborsSwapTasks(ArrayList<Solution> neighbors) {
 		Vehicle vehicle = null;
 		for (int i = 0; i < 10; i++) {
 			vehicle = this.getRandomVehicle();
@@ -100,272 +86,164 @@ public class Solution implements Comparable<Solution>, Cloneable {
 			Wrapper pickup = null;
 			Wrapper delivery = null;
 			Wrapper removed = null;
-//			for (Wrapper w : wrappers) {
-//				System.out.print(w.task.id + " ");
-//			}
-//			System.out.println("----------------------------");
+
+			// Remove random task
 			while (iterator.hasNext()) {
 				if (iterator.nextIndex() == toRemove) {
 					removed = iterator.next();
 					iterator.remove();
-					if (removed.pickup == false) {
-						delivery = removed;
-						break;
-					}
-					else {
-						pickup = removed;
-					}
-				}
-				else {
-					Wrapper next = iterator.next();
-					if (removed != null && next.task.equals(removed.task)) {
-						delivery = next;
-						iterator.remove();
-						break;
-					}
+					break;
+				} else {
+					iterator.next();
 				}
 			}
-			if (pickup == null) {
-				if (delivery == null) {
-					throw new IllegalStateException();
-				}
-				iterator = wrappers.listIterator();
-				while (iterator.hasNext()) {
-					Wrapper next = iterator.next();
-					if (delivery.task.equals(next.task)) {
-						pickup = next;
-						iterator.remove();
-						break;
-					}
-				}
-			}
-//			System.out.println(pickup);
-//			System.out.println(delivery);
-//			System.out.println(removed);
-//			System.out.println(this);
-//			System.out.println(current);
-//			System.out.println("---------------------------------------------------");
-//			System.out.println(pickup.task);
-			if (pickup == null) {
-				System.out.print(this.nextTaskV.get(vehicle));
-				throw new IllegalStateException("swap pickup");
-			}
-			if (delivery == null) {
-				throw new IllegalStateException("swap delivery");
-			}
-			if (!pickup.task.equals(delivery.task)) {
-				System.out.println(pickup);
-				System.out.println(delivery);
-				System.out.println(removed);
-				System.out.println(this.nextTaskV.get(vehicle));
-				System.out.println(wrappers);
-				throw new IllegalSelectorException();
-			}
-			this.addToNeighbors(neighbors, current, pickup, delivery, vehicle);
-		}
-		return neighbors;
-	}
 
-	private ArrayList<Solution> getNeighborsChangeVehicle() throws CloneNotSupportedException {
-		ArrayList<Solution> neighbors = new ArrayList<Solution>();
-		Vehicle removeVehicle = null;
-		for (int i = 0; i < 10; i++) {
-			removeVehicle = this.getRandomVehicle();
-			if (this.nextTaskV.get(removeVehicle).size() >= 2) {
-				break;
-			}
-		}
-		if (removeVehicle != null) {
-			if (this.nextTaskV.get(removeVehicle).size() < 2) {
-				return neighbors;
-			}
-			
-			
-			Vehicle addVehicle = this.getRandomVehicle();
-			if (removeVehicle.equals(addVehicle)) {
-				return neighbors;
-			}
-			Solution current = this.clone(removeVehicle, addVehicle);
-			Wrapper pickup = null;
-			Wrapper delivery = null;
-			
-			// Delete the first task from the random vehicle
-			ListIterator<Wrapper> iterator = current.nextTaskV.get(removeVehicle).listIterator();
-			pickup = iterator.next();
-			iterator.remove();
+			// Remove corresponding task
+			iterator = wrappers.listIterator();
 			while (iterator.hasNext()) {
-				delivery = iterator.next();
-				if (delivery.task.equals(pickup.task)) {
+				Wrapper next = iterator.next();
+				if (next.task.equals(removed.task)) {
+					if (next.isPickup()) {
+						pickup = next;
+						delivery = removed;
+					} else {
+						pickup = removed;
+						delivery = next;
+					}
 					iterator.remove();
 					break;
 				}
 			}
-			if (!pickup.task.equals(delivery.task)) {
-				System.out.println(this.nextTaskV.get(removeVehicle));
-				throw new IllegalSelectorException();
-			}
-			if (pickup == null || delivery == null) {
-				throw new IllegalStateException("change vehicle");
-			}
-			this.addToNeighbors(neighbors, current, pickup, delivery, addVehicle);
+
+			this.addToNeighbors(neighbors, current, pickup, delivery, vehicle);
 		}
-		return neighbors;
 	}
-	
-	
-	private void addToNeighbors2(ArrayList<Solution> neighbors, Solution current, Wrapper pickup, Wrapper delivery, Vehicle addVehicle) {
+
+	/*
+	 * Returns neighboring solutions by selecting a task and moving it to another
+	 * vehicle.
+	 */
+	private void addNeighborsChangeVehicle(ArrayList<Solution> neighbors) {
+		Vehicle removeVehicle = null;
+
+		// Find random vehicle with enough tasks
+		for (int i = 0; i < 10; i++) {
+			removeVehicle = this.getRandomVehicle();
+			if (this.nextTaskV.get(removeVehicle).size() >= 2) {
+				Vehicle addVehicle = this.getRandomVehicle();
+				if (removeVehicle.equals(addVehicle)) {
+					return;
+				}
+				Solution current = this.clone(removeVehicle, addVehicle);
+				Wrapper pickup = null;
+				Wrapper delivery = null;
+
+				// Delete the first wrapper from the random vehicle
+				ListIterator<Wrapper> iterator = current.nextTaskV.get(removeVehicle).listIterator();
+				pickup = iterator.next();
+				iterator.remove();
+
+				// Delete the corresponding delivery Wrapper
+				while (iterator.hasNext()) {
+					delivery = iterator.next();
+					if (delivery.task.equals(pickup.task)) {
+						iterator.remove();
+						break;
+					}
+				}
+				this.addToNeighbors(neighbors, current, pickup, delivery, addVehicle);
+				break;
+			}
+		}
+	}
+
+	private void addToNeighbors2(ArrayList<Solution> neighbors, Solution current, Wrapper pickup, Wrapper delivery,
+			Vehicle addVehicle) {
 		LinkedList<Wrapper> wrappers = current.nextTaskV.get(addVehicle);
 		if (wrappers.size() == 0) {
 			wrappers.add(pickup);
 			wrappers.add(delivery);
 			neighbors.add(current.clone(addVehicle, wrappers));
-		}
-		else {
+		} else {
 			// Try all possible positions for pickup and delivery
 			ListIterator<Wrapper> iteratorBackward = wrappers.listIterator(wrappers.size());
 			ListIterator<Wrapper> iteratorForward;
 			while (iteratorBackward.hasPrevious()) {
 				iteratorBackward.add(delivery);
-				iteratorBackward.previous(); // this is delivery
-				
+				iteratorBackward.previous();
+
 				LinkedList<Wrapper> wrappers2 = new LinkedList<Wrapper>(wrappers);
 				iteratorBackward.remove();
 				iteratorBackward.previous();
-				
+
 				iteratorForward = wrappers2.listIterator();
 				while (iteratorForward.hasNext() && iteratorForward.nextIndex() < iteratorBackward.previousIndex()) {
 					iteratorForward.add(pickup);
-					
-					// Add neighbours to list
-//					System.out.println(wrappers2.size());
-//					System.out.println(wrappers2);
-					if (wrappers2.size() % 2 == 0) {
-						HashMap<Task, Wrapper> seen = new HashMap<Task, Wrapper>();
-						for (Wrapper wrapper : wrappers2) {
-							if (seen.containsKey(wrapper.task)) {
-								if (!seen.get(wrapper.task).task.equals(wrapper.task)) {
-									System.out.println(pickup);
-									System.out.println(delivery);
-									System.out.println(wrappers2);
-									System.out.println(this.nextTaskV.get(addVehicle));
-									throw new IllegalSelectorException();
-								}
-								if (seen.get(wrapper.task).isPickup() == wrapper.isPickup()) {
-									System.out.println(pickup);
-									System.out.println(delivery);
-									System.out.println(wrappers2);
-									System.out.println(this.nextTaskV.get(addVehicle));
-									throw new IllegalSelectorException();
-								}
-								seen.remove(wrapper.task);
-							}
-							else {
-								
-								seen.put(wrapper.task, wrapper);
-							}
-						}
-						if (seen.size() != 0) {
-							System.out.println(pickup);
-							System.out.println(delivery);
-							System.out.println(wrappers2);
-							System.out.println(this.nextTaskV.get(addVehicle));
-							throw new IllegalSelectorException();
-						}
-						neighbors.add(current.clone(addVehicle, wrappers2));
-					}
-					
+
+					// Add to neighbors
+					neighbors.add(current.clone(addVehicle, wrappers2));
+
 					// Reset forward iterator
 					iteratorForward.previous();
 					iteratorForward.remove();
-					
+
 					// Take iterator step forward
 					iteratorForward.next();
 				}
 			}
 		}
 	}
-	
-	private void addToNeighbors(ArrayList<Solution> neighbors, Solution current, Wrapper pickup, Wrapper delivery, Vehicle addVehicle) {
+
+	private void addToNeighbors(ArrayList<Solution> neighbors, Solution current, Wrapper pickup, Wrapper delivery,
+			Vehicle addVehicle) {
 		ArrayList<Wrapper> wrappers = new ArrayList<Wrapper>(current.nextTaskV.get(addVehicle));
 		if (wrappers.size() == 0) {
 			wrappers.add(pickup);
 			wrappers.add(delivery);
-			neighbors.add(current.clone(addVehicle, wrappers));
-		}
-		else {
-			for (int iF = 0; iF < wrappers.size(); iF++) {
-				for (int iB = wrappers.size()-1; iB > iF; iB--) {
-//					ArrayList<Wrapper> wrapperCopy = new ArrayList<Wrapper>(wrappers);
+			Solution sol = current.clone(addVehicle, wrappers);
+			sol.updateCost();
+			neighbors.add(sol);
+		} else {
+			// When we encounter a non feasible solution, we can break out of the inner loop
+			// as all the other solutions won't be feasible either.
+			for (int iB = wrappers.size() - 1; iB >= 0; iB--) {
+				for (int iF = iB - 1; iF > 0; iF--) {
 					wrappers.add(iF, pickup);
-					wrappers.add(iB+1, delivery);
-					if (wrappers.size() % 2 == 0) {
-						HashMap<Task, Wrapper> seen = new HashMap<Task, Wrapper>();
-						for (Wrapper wrapper : wrappers) {
-							if (seen.containsKey(wrapper.task)) {
-								if (!seen.get(wrapper.task).task.equals(wrapper.task)) {
-									System.out.println(pickup);
-									System.out.println(delivery);
-									System.out.println(wrappers);
-									System.out.println(this.nextTaskV.get(addVehicle));
-									throw new IllegalSelectorException();
-								}
-								if (seen.get(wrapper.task).isPickup() == wrapper.isPickup()) {
-									System.out.println(pickup);
-									System.out.println(delivery);
-									System.out.println(wrappers);
-									System.out.println(this.nextTaskV.get(addVehicle));
-									throw new IllegalSelectorException();
-								}
-								seen.remove(wrapper.task);
-							}
-							else {
-								
-								seen.put(wrapper.task, wrapper);
-							}
-						}
-						if (seen.size() != 0) {
-							System.out.println(pickup);
-							System.out.println(delivery);
-							System.out.println(wrappers);
-							System.out.println(this.nextTaskV.get(addVehicle));
-							throw new IllegalSelectorException();
-						}
-						neighbors.add(current.clone(addVehicle, wrappers));
-					}
-					wrappers.remove(iB+1);
+					wrappers.add(iB + 1, delivery);
+					Solution newSolution = current.clone(addVehicle, wrappers);
+
+					// Reset list
+					wrappers.remove(iB + 1);
 					wrappers.remove(iF);
+					newSolution.updateCost();
+					if (newSolution.isFeasible()) {
+						neighbors.add(newSolution);
+					} else {
+						break;
+					}
 				}
 			}
 		}
 	}
 
 	public void updateCost() {
-		this.cost = 0; // ----------------------------------------------------------------------RIGHT???
-		for (Vehicle v: this.nextTaskV.keySet()) {
+		this.cost = 0;
+		for (Vehicle v : this.nextTaskV.keySet()) {
 			City prevCity = v.homeCity();
-			for (Wrapper w: this.nextTaskV.get(v)) {
-				try {
-					this.cost += prevCity.distanceTo(w.getCity()) * v.costPerKm();
-				}
-				catch (NullPointerException e) {
-					System.out.println(prevCity);
-					System.out.println(v);
-					System.out.println(w);
-					System.out.println(this.nextTaskV.get(v));
-				}
+			for (Wrapper w : this.nextTaskV.get(v)) {
+				this.cost += prevCity.distanceTo(w.getCity()) * v.costPerKm();
 				prevCity = w.getCity();
 			}
 		}
 	}
-	
+
 	public boolean isFeasible() {
-		for (Vehicle v: this.nextTaskV.keySet()) {
+		for (Vehicle v : this.nextTaskV.keySet()) {
 			double load = 0;
-			for (Wrapper w: this.nextTaskV.get(v)) {
+			for (Wrapper w : this.nextTaskV.get(v)) {
 				if (w.isPickup()) {
 					load += w.getTask().weight;
-				}
-				else {
+				} else {
 					load -= w.getTask().weight;
 				}
 				if (load > v.capacity()) {
@@ -375,91 +253,49 @@ public class Solution implements Comparable<Solution>, Cloneable {
 		}
 		return true;
 	}
-	
-	public HashMap<Vehicle, LinkedList<Wrapper>> getPlans () {
+
+	public HashMap<Vehicle, LinkedList<Wrapper>> getPlans() {
 		return this.nextTaskV;
 	}
 
 	public Solution clone(Vehicle random, Vehicle other) {
-		try {
-			Solution clone = (Solution) super.clone();
-			clone.nextTaskV = new HashMap<Vehicle, LinkedList<Wrapper>>(this.nextTaskV);
-			clone.nextTaskV.put(random, new LinkedList<Wrapper>(this.nextTaskV.get(random)));
-			clone.nextTaskV.put(other, new LinkedList<Wrapper>(this.nextTaskV.get(other)));
-			return clone;
-		} catch (CloneNotSupportedException e) {
-			// Let it be
-			return null;
-		}
+		HashMap<Vehicle, LinkedList<Wrapper>> nextTaskV = new HashMap<Vehicle, LinkedList<Wrapper>>(this.nextTaskV);
+		nextTaskV.put(random, new LinkedList<Wrapper>(this.nextTaskV.get(random)));
+		nextTaskV.put(other, new LinkedList<Wrapper>(this.nextTaskV.get(other)));
+		return new Solution(this.vehicles, nextTaskV);
 	}
-	
+
 	public Solution clone(Vehicle vehicle, LinkedList<Wrapper> wrappers) {
-		try {
-			Solution clone = (Solution) super.clone();
-			clone.nextTaskV = new HashMap<Vehicle, LinkedList<Wrapper>>(this.nextTaskV);
-			clone.nextTaskV.put(vehicle, new LinkedList<Wrapper>(wrappers));
-			return clone;
-		} catch (CloneNotSupportedException e) {
-			// Let it be
-			return null;
-		}
+		HashMap<Vehicle, LinkedList<Wrapper>> nextTaskV = new HashMap<Vehicle, LinkedList<Wrapper>>(this.nextTaskV);
+		nextTaskV.put(vehicle, new LinkedList<Wrapper>(wrappers));
+		return new Solution(this.vehicles, nextTaskV);
 	}
-	
+
 	public Solution clone(Vehicle vehicle, ArrayList<Wrapper> wrappers) {
-		try {
-			Solution clone = (Solution) super.clone();
-			clone.nextTaskV = new HashMap<Vehicle, LinkedList<Wrapper>>(this.nextTaskV);
-			clone.nextTaskV.put(vehicle, new LinkedList<Wrapper>(wrappers));
-			return clone;
-		} catch (CloneNotSupportedException e) {
-			// Let it be
-			return null;
-		}
+		HashMap<Vehicle, LinkedList<Wrapper>> nextTaskV = new HashMap<Vehicle, LinkedList<Wrapper>>(this.nextTaskV);
+		nextTaskV.put(vehicle, new LinkedList<Wrapper>(wrappers));
+		return new Solution(this.vehicles, nextTaskV);
 	}
 
 	@Override
 	public int compareTo(Solution o) {
 		return (int) (this.cost - o.cost);
 	}
-	
+
 	public double getCost() {
 		return this.cost;
 	}
-	
+
 	public String toString() {
 		String sString = new String();
-		for (Vehicle v: this.nextTaskV.keySet()) {
-			String vString = "Vehicle" + v.id() + ", origin: " + v.homeCity().toString() + ", capacity: " + v.capacity() + ", costPerKm: " + v.costPerKm() + ", tasks: " + this.nextTaskV.get(v).size() + "\n";
-			for (Wrapper w: this.nextTaskV.get(v)) {
+		for (Vehicle v : this.nextTaskV.keySet()) {
+			String vString = "Vehicle" + v.id() + ", origin: " + v.homeCity().toString() + ", capacity: " + v.capacity()
+					+ ", costPerKm: " + v.costPerKm() + ", tasks: " + this.nextTaskV.get(v).size() + "\n";
+			for (Wrapper w : this.nextTaskV.get(v)) {
 				vString = vString + w.toString();
 			}
-		sString = sString + vString;
+			sString = sString + vString;
 		}
 		return sString;
-	}
-	
-	public boolean isValid() {
-		for (Vehicle v: this.nextTaskV.keySet()) {
-			LinkedList<Wrapper> vPlan = this.nextTaskV.get(v);
-			while (!vPlan.isEmpty()) {
-				Wrapper from = vPlan.remove();
-				if (!from.isPickup()) {
-					return false;
-				}
-				int sameTaskCount = 0;
-				@SuppressWarnings("unchecked")
-				LinkedList<Wrapper> vPlanCopy = (LinkedList<Wrapper>) vPlan.clone();
-				for (Wrapper w: vPlanCopy) {
-					if (w.getTask().id == from.getTask().id) {
-						sameTaskCount += 1;
-						vPlan.remove(w);
-						if (sameTaskCount > 1) {
-							return false;
-						}
-					}
-				}
-			}
-		}
-		return true;
 	}
 }

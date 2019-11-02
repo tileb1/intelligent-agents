@@ -47,6 +47,7 @@ public class CentralizedAgent implements CentralizedBehavior {
         }
         
         // the setup method cannot last more than timeout_setup milliseconds
+        // Not needed as our setup is trivial
         timeout_setup = ls.get(LogistSettings.TimeoutKey.SETUP);
         // the plan method cannot execute more than timeout_plan milliseconds
         timeout_plan = ls.get(LogistSettings.TimeoutKey.PLAN);
@@ -59,36 +60,32 @@ public class CentralizedAgent implements CentralizedBehavior {
     @Override
     public List<Plan> plan(List<Vehicle> vehicles, TaskSet tasks) {
         long time_start = System.currentTimeMillis();
-        
-//		System.out.println("Agent " + agent.id() + " has tasks " + tasks);
         Solution currentSol = new Solution(vehicles, topology, tasks);
         
         int iter = 0;
         Solution bestSolEver = currentSol;
-    	while (iter < 10000) {
-    		try {
-    			ArrayList<Solution> sols = currentSol.getNeighbors();
-    			if (sols.size() > 0) {
-    				Solution minSol = Collections.min(sols);
-    				if (minSol.getCost() < currentSol.getCost()) {
-    					currentSol = minSol;
-    					if (bestSolEver.getCost() > minSol.getCost()) {
-    						bestSolEver = minSol;
-    					}
-    				}
-    				if (Math.random() < 0.03) {
-    					currentSol = sols.get(Solution.random.nextInt(sols.size()));
-    				}
-    				if (Math.random() < 0.0005) {
-    					currentSol = bestSolEver;
-    				}
-    			}
-				
-			} catch (CloneNotSupportedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+        
+        // We add a second safety delay
+    	while (System.currentTimeMillis() - time_start + 1000 < this.timeout_plan) {
+    		ArrayList<Solution> sols = currentSol.getNeighbors();
+			if (sols.size() > 0) {
+				Solution minSol = Collections.min(sols);
+				if (minSol.getCost() < currentSol.getCost()) {
+					currentSol = minSol;
+					if (bestSolEver.getCost() > minSol.getCost()) {
+						bestSolEver = minSol;
+					}
+				}
+				if (Math.random() < 0.03) {
+					currentSol = sols.get(Solution.random.nextInt(sols.size()));
+				}
+				if (Math.random() < 0.0005) {
+					currentSol = bestSolEver;
+				}
 			}
-    		System.out.println("Iteration number: " + iter + " with cost " + currentSol.getCost() + " and best cost " + bestSolEver.getCost());
+			if (iter % 1000 == 0) {
+				System.out.println("Iteration number: " + iter + " with cost " + currentSol.getCost() + " and best cost " + bestSolEver.getCost());
+			}
     		iter++;
     	}
     	
@@ -114,7 +111,7 @@ public class CentralizedAgent implements CentralizedBehavior {
         
         long time_end = System.currentTimeMillis();
         long duration = time_end - time_start;
-        System.out.println("The plan was generated in ----------" + duration + " milliseconds.");
+        System.out.println("The plan was generated in " + duration + " milliseconds.");
         System.out.print(currentSol.toString());
         
         return plans;
