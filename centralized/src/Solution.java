@@ -179,8 +179,8 @@ public class Solution implements Comparable<Solution>, Cloneable {
 		} else {
 			// When we encounter a non feasible solution, we can break out of the inner loop
 			// as all the other solutions won't be feasible either.
-			for (int iB = wrappers.size() - 1; iB >= 0; iB--) {
-				for (int iF = iB - 1; iF > 0; iF--) {
+			for (int iB = wrappers.size(); iB >= 0; iB--) {
+				for (int iF = iB - 1; iF >= 0; iF--) {
 					wrappers.add(iF, pickup);
 					wrappers.add(iB + 1, delivery);
 					Solution newSolution = current.clone(addVehicle, wrappers);
