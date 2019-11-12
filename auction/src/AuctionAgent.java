@@ -51,7 +51,7 @@ public class AuctionAgent implements AuctionBehavior {
 		long seed = -9019554669489983951L * currentCity.hashCode() * agent.id();
 		this.random = new Random(seed);
 		// --------------------------------------------------------------------------------------FIX TIMEOUT
-		this.centralizedAgent = new CentralizedAgent(topology, distribution, agent, 5000);
+		this.centralizedAgent = new CentralizedAgent(topology, distribution, agent, 1200);
 		
 		this.ourSolution = new Solution(agent.vehicles(), topology);
 		this.opponentSolution = new Solution(agent.vehicles(), topology);
@@ -72,6 +72,7 @@ public class AuctionAgent implements AuctionBehavior {
 		for (Vehicle v: ourVehicles) {
 			Random rand = new Random();
 			int randInt = rand.nextInt(remainingCities.size());
+			final City homeCity = remainingCities.get(randInt);
 			Vehicle newV = new Vehicle() {
 				
 				@Override
@@ -91,7 +92,7 @@ public class AuctionAgent implements AuctionBehavior {
 				
 				@Override
 				public City homeCity() {
-					return remainingCities.get(randInt);
+					return homeCity;
 				}
 				
 				@Override

@@ -72,9 +72,9 @@ public class CentralizedAgent {
 					currentSol = bestSolEver;
 				}
 			}
-			if (iter % 1000 == 0) {
-				System.out.println("Iteration number: " + iter + " with cost " + currentSol.getCost() + " and best cost " + bestSolEver.getCost());
-			}
+//			if (iter % 1000 == 0) {
+//				System.out.println("Iteration number: " + iter + " with cost " + currentSol.getCost() + " and best cost " + bestSolEver.getCost());
+//			}
     		iter++;
     	}
     	
@@ -82,8 +82,8 @@ public class CentralizedAgent {
     	// Print computation time
         long time_end = System.currentTimeMillis();
         long duration = time_end - time_start;
-        System.out.println("The solution was generated in " + duration + " milliseconds.");
-        System.out.print(currentSol.toString());
+//        System.out.println("The solution was generated in " + duration + " milliseconds.");
+//        System.out.print(currentSol.toString());
         
         return bestSolEver;
     }
