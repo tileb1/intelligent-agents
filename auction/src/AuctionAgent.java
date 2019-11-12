@@ -29,6 +29,7 @@ public class AuctionAgent implements AuctionBehavior {
 	private Vehicle vehicle;
 	private City currentCity;
 	private CentralizedAgent centralizedAgent;
+	private Solution currentSolution;
 
 	@Override
 	public void setup(Topology topology, TaskDistribution distribution,
@@ -60,21 +61,13 @@ public class AuctionAgent implements AuctionBehavior {
 	
 	@Override
 	public Long askPrice(Task task) {
-		System.out.println(task);
-
-		if (vehicle.capacity() < task.weight)
+		double cost = this.currentSolution.getCost();
+		Solution solution = this.centralizedAgent.getSolution(task, this.currentSolution);
+		if (solution == null) {
 			return null;
-
-		long distanceTask = task.pickupCity.distanceUnitsTo(task.deliveryCity);
-		long distanceSum = distanceTask
-				+ currentCity.distanceUnitsTo(task.pickupCity);
-		double marginalCost = Measures.unitsToKM(distanceSum
-				* vehicle.costPerKm());
-
-		double ratio = 1.0 + (random.nextDouble() * 0.05 * task.id);
-		double bid = ratio * marginalCost;
-
-		return (long) Math.round(bid);
+		}
+		double marginalCost = solution.getCost() - cost;
+		return (long) marginalCost;
 	}
 
 	@Override

@@ -40,11 +40,14 @@ public class CentralizedAgent {
     }
     
     
-    public Solution getSolution(List<Vehicle> vehicles, Task task, Solution currentSol) {
+    public Solution getSolution(Task task, Solution currentSol) {
         long time_start = System.currentTimeMillis();
         int iter = 0;
         
         ArrayList<Solution> sols = currentSol.getNeighbors(task);
+        if (sols.size() == 0) {
+        	return null;
+        }
         currentSol = Collections.min(sols);
         Solution bestSolEver = currentSol;
         
