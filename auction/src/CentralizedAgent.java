@@ -43,11 +43,14 @@ public class CentralizedAgent {
     public Solution getSolution(List<Vehicle> vehicles, Task task, Solution currentSol) {
         long time_start = System.currentTimeMillis();
         int iter = 0;
+        
+        ArrayList<Solution> sols = currentSol.getNeighbors(task);
+        currentSol = Collections.min(sols);
         Solution bestSolEver = currentSol;
         
         // We add a second safety delay
     	while (System.currentTimeMillis() - time_start + 1000 < this.timeout_plan_per_round) {
-    		ArrayList<Solution> sols = currentSol.getNeighbors();
+    		sols = currentSol.getNeighbors();
 			if (sols.size() > 0) {
 				Solution minSol = Collections.min(sols);
 				if (minSol.getCost() < currentSol.getCost()) {
