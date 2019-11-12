@@ -31,6 +31,7 @@ public class AuctionAgent implements AuctionBehavior {
 	private CentralizedAgent centralizedAgent;
 	private Solution ourSolution;
 	private Solution opponentSolution;
+	private Solution theSolutionWeBidFor;
 
 	@Override
 	public void setup(Topology topology, TaskDistribution distribution,
@@ -54,7 +55,6 @@ public class AuctionAgent implements AuctionBehavior {
 		for (int i = 0; i < bids.length; i++) {
 			System.out.println(bids[i]);
 		}
-		System.out.println(bids);
 		if (winner == agent.id()) {
 			currentCity = previous.deliveryCity;
 		}
