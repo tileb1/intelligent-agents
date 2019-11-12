@@ -4,3 +4,9 @@ reactive/\.classpath
 centralized/.classpath
 
 *.class
+
+auction/.classpath
+
+auction/.project
+
+auction/.settings/org.eclipse.jdt.core.prefs
