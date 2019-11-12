@@ -8,7 +8,6 @@ import java.util.Set;
 
 import logist.simulation.Vehicle;
 import logist.task.Task;
-import logist.task.TaskSet;
 import logist.topology.Topology;
 import logist.topology.Topology.City;
 
@@ -21,26 +20,13 @@ public class Solution implements Comparable<Solution>, Cloneable {
 	/*
 	 * Constructor called for generating the initial solution. All tasks are carried by the biggest vehicle.
 	 */
-	public Solution(List<Vehicle> vehicles2, Topology topology, TaskSet taskset) {
+	public Solution(List<Vehicle> vehicles2, Topology topology) {
 		this.nextTaskV = new HashMap<Vehicle, LinkedList<Wrapper>>();
-		Vehicle biggestVehicle = null;
-
-		// Find vehicle with largest capacity
+		
 		for (Vehicle v : vehicles2) {
-			if (biggestVehicle == null || v.capacity() > biggestVehicle.capacity()) {
-				biggestVehicle = v;
-			}
 			this.nextTaskV.put(v, new LinkedList<Wrapper>());
 		}
-
-		LinkedList<Wrapper> biggestVehiclePlan = new LinkedList<Wrapper>();
-		for (Task task : taskset) {
-			biggestVehiclePlan.addLast(new Wrapper(task, true));
-			biggestVehiclePlan.addLast(new Wrapper(task, false));
-		}
-
-		this.nextTaskV.put(biggestVehicle, biggestVehiclePlan);
-		this.updateCost();
+		this.cost = 0;
 		this.vehicles = this.nextTaskV.keySet();
 	}
 
