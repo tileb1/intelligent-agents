@@ -30,13 +30,13 @@ public class CentralizedAgent {
     private Topology topology;
     private TaskDistribution distribution;
     private Agent agent;
-    private long timeout_setup;
-    private long timeout_plan;
+    private long timeout_plan_per_round;
     
-    public CentralizedAgent(Topology topology, TaskDistribution distribution, Agent agent) {
+    public CentralizedAgent(Topology topology, TaskDistribution distribution, Agent agent, long timeout_plan_per_round) {
         this.topology = topology;
         this.distribution = distribution;
         this.agent = agent;
+        this.timeout_plan_per_round = timeout_plan_per_round;
     }
     
     
@@ -46,7 +46,7 @@ public class CentralizedAgent {
         Solution bestSolEver = currentSol;
         
         // We add a second safety delay
-    	while (System.currentTimeMillis() - time_start + 1000 < this.timeout_plan) {
+    	while (System.currentTimeMillis() - time_start + 1000 < this.timeout_plan_per_round) {
     		ArrayList<Solution> sols = currentSol.getNeighbors();
 			if (sols.size() > 0) {
 				Solution minSol = Collections.min(sols);

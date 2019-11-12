@@ -42,7 +42,8 @@ public class AuctionAgent implements AuctionBehavior {
 
 		long seed = -9019554669489983951L * currentCity.hashCode() * agent.id();
 		this.random = new Random(seed);
-		this.centralizedAgent = new CentralizedAgent(topology, distribution, agent);
+		// --------------------------------------------------------------------------------------FIX TIMEOUT
+		this.centralizedAgent = new CentralizedAgent(topology, distribution, agent, 300000);
 	}
 
 	@Override
