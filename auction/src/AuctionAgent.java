@@ -29,7 +29,8 @@ public class AuctionAgent implements AuctionBehavior {
 	private Vehicle vehicle;
 	private City currentCity;
 	private CentralizedAgent centralizedAgent;
-	private Solution currentSolution;
+	private Solution ourSolution;
+	private Solution opponentSolution;
 
 	@Override
 	public void setup(Topology topology, TaskDistribution distribution,
@@ -61,12 +62,21 @@ public class AuctionAgent implements AuctionBehavior {
 	
 	@Override
 	public Long askPrice(Task task) {
-		double cost = this.currentSolution.getCost();
-		Solution solution = this.centralizedAgent.getSolution(task, this.currentSolution);
+		// Our company
+		double cost = this.ourSolution.getCost();
+		Solution solution = this.centralizedAgent.getSolution(task, this.ourSolution);
 		if (solution == null) {
 			return null;
 		}
+		
+		// Oponent company
+		double opponentCost = this.opponentSolution.getCost();
+		Solution opponentSolution = this.centralizedAgent.getSolution(task, this.opponentSolution);
+//		if (opponentSolution == null) {
+//			return Long.MAX_VALUE;
+//		}
 		double marginalCost = solution.getCost() - cost;
+		double opponentMarginalCost = opponentSolution.getCost() - opponentCost;
 		return (long) marginalCost;
 	}
 
