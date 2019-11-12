@@ -1,5 +1,7 @@
 //the list of imports
+import java.awt.Color;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 
@@ -32,6 +34,8 @@ public class AuctionAgent implements AuctionBehavior {
 	private Solution ourSolution;
 	private Solution opponentSolution;
 	private Solution theSolutionWeBidFor;
+	private List<Vehicle> ourVehicles;
+	private List<Vehicle> opponentVehicles;
 
 	@Override
 	public void setup(Topology topology, TaskDistribution distribution,
@@ -42,11 +46,98 @@ public class AuctionAgent implements AuctionBehavior {
 		this.agent = agent;
 		this.vehicle = agent.vehicles().get(0);
 		this.currentCity = vehicle.homeCity();
+		this.ourVehicles = agent.vehicles();
 
 		long seed = -9019554669489983951L * currentCity.hashCode() * agent.id();
 		this.random = new Random(seed);
 		// --------------------------------------------------------------------------------------FIX TIMEOUT
-		this.centralizedAgent = new CentralizedAgent(topology, distribution, agent, 300000);
+		this.centralizedAgent = new CentralizedAgent(topology, distribution, agent, 5000);
+		
+		this.ourSolution = new Solution(agent.vehicles(), topology);
+		this.opponentSolution = new Solution(agent.vehicles(), topology);
+		
+		this.opponentVehicles = new ArrayList<Vehicle>();
+		HashSet<City> ourCities = new HashSet<City>();
+		
+		for (Vehicle v: ourVehicles) {
+			ourCities.add(v.homeCity());
+		}
+		ArrayList<City> remainingCities = new ArrayList<City>();
+		for (City c: topology.cities()) {
+			if (!ourCities.contains(c)) {
+				remainingCities.add(c);
+			}
+		}
+		
+		for (Vehicle v: ourVehicles) {
+			Random rand = new Random();
+			int randInt = rand.nextInt(remainingCities.size());
+			Vehicle newV = new Vehicle() {
+				
+				@Override
+				public double speed() {
+					return 0;
+				}
+				
+				@Override
+				public String name() {
+					return null;
+				}
+				
+				@Override
+				public int id() {
+					return 0;
+				}
+				
+				@Override
+				public City homeCity() {
+					return remainingCities.get(randInt);
+				}
+				
+				@Override
+				public long getReward() {
+					return 0;
+				}
+				
+				@Override
+				public long getDistanceUnits() {
+					return 0;
+				}
+				
+				@Override
+				public double getDistance() {
+					return 0;
+				}
+				
+				@Override
+				public TaskSet getCurrentTasks() {
+					return null;
+				}
+				
+				@Override
+				public City getCurrentCity() {
+					return null;
+				}
+				
+				@Override
+				public int costPerKm() {
+					return 0;
+				}
+				
+				@Override
+				public Color color() {
+					return null;
+				}
+				
+				@Override
+				public int capacity() {
+					return 0;
+				}
+			};
+			remainingCities.remove(randInt);
+			opponentVehicles.add(newV);
+		}
+		
 	}
 
 	@Override
