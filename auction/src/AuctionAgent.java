@@ -28,6 +28,7 @@ public class AuctionAgent implements AuctionBehavior {
 	private Random random;
 	private Vehicle vehicle;
 	private City currentCity;
+	private CentralizedAgent centralizedAgent;
 
 	@Override
 	public void setup(Topology topology, TaskDistribution distribution,
@@ -41,10 +42,16 @@ public class AuctionAgent implements AuctionBehavior {
 
 		long seed = -9019554669489983951L * currentCity.hashCode() * agent.id();
 		this.random = new Random(seed);
+		this.centralizedAgent = new CentralizedAgent(topology, distribution, agent);
 	}
 
 	@Override
 	public void auctionResult(Task previous, int winner, Long[] bids) {
+		System.out.println("Winner " + winner);
+		for (int i = 0; i < bids.length; i++) {
+			System.out.println(bids[i]);
+		}
+		System.out.println(bids);
 		if (winner == agent.id()) {
 			currentCity = previous.deliveryCity;
 		}
@@ -52,6 +59,7 @@ public class AuctionAgent implements AuctionBehavior {
 	
 	@Override
 	public Long askPrice(Task task) {
+		System.out.println(task);
 
 		if (vehicle.capacity() < task.weight)
 			return null;
