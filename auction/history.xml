@@ -6,6 +6,7 @@
 			<vehicle name="Vehicle 1"/>
 			<vehicle name="Vehicle 2"/>
 		</agent>
+<<<<<<< HEAD
 	</agents>
 	<rounds>
 		<round id="1">
@@ -98,3 +99,8 @@
 		</stat>
 	</statistics>
 </history>
+=======
+		<agent name="auction-random">
+			<vehicle name="Vehicle 3"/>
+			<vehicle name="Vehicle 4"/>
+>>>>>>> a2cfb1669b715b36373373ce9be6efed996c29f9
