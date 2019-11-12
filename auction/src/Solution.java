@@ -56,6 +56,20 @@ public class Solution implements Comparable<Solution>, Cloneable {
 	 * Returns the neighboring solution. This is the most important method of the
 	 * class and should be called by the CentralizedAgent.
 	 */
+	public ArrayList<Solution> getNeighbors(Task taskToBidFor) {
+		ArrayList<Solution> neighbors = new ArrayList<Solution>();
+		for (Vehicle vehicle : vehicles) {
+			LinkedList<Wrapper> wrappers = this.nextTaskV.get(vehicle);
+			Solution current = this.clone(vehicle, wrappers);
+			this.addToNeighbors(neighbors, current, new Wrapper(taskToBidFor, true), new Wrapper(taskToBidFor, false), vehicle);
+		}
+		return neighbors;
+	}
+	
+	/*
+	 * Returns the neighboring solution. This is the most important method of the
+	 * class and should be called by the CentralizedAgent.
+	 */
 	public ArrayList<Solution> getNeighbors() {
 		ArrayList<Solution> neighbors = new ArrayList<Solution>();
 		this.addNeighborsSwapTasks(neighbors);
@@ -128,6 +142,7 @@ public class Solution implements Comparable<Solution>, Cloneable {
 			this.addToNeighbors(neighbors, current, pickup, delivery, vehicle);
 		}
 	}
+	
 
 	/*
 	 * Adds neighboring solutions by selecting a task and moving it to another
