@@ -37,6 +37,11 @@ public class AuctionAgent implements AuctionBehavior {
 	private Solution theSolutionOpponentBidsFor;
 	private List<Vehicle> ourVehicles;
 	private List<Vehicle> opponentVehicles;
+	private final double RATIO_UPPER = 1.0;
+	private final double RATIO_LOWER = 0.7;
+	private double ratio = 0.7;
+	private int iter = 0;
+	private double opponent_min_bid = Double.MAX_VALUE;
 
 	@Override
 	public void setup(Topology topology, TaskDistribution distribution,
@@ -150,12 +155,15 @@ public class AuctionAgent implements AuctionBehavior {
 				System.out.println(bids[i]);
 			}
 			this.ourSolution = this.theSolutionWeBidFor;
-			// do smth
+			// We win so we will bid more less aggressivaly
+			this.ratio = Math.max(Math.min(this.ratio*1.01, this.RATIO_UPPER), this.RATIO_LOWER);
 		}
 		else {
 			this.opponentSolution = this.theSolutionOpponentBidsFor;
-			// do smth
+			// We lose so we will bid more aggressivaly
+			this.ratio = Math.max(Math.min(this.ratio*0.99, this.RATIO_UPPER), this.RATIO_LOWER);
 		}
+		this.opponent_min_bid = Math.min(this.opponent_min_bid, bids[(int) (1 - agent.id())]);
 	}
 	
 	@Override
@@ -166,13 +174,26 @@ public class AuctionAgent implements AuctionBehavior {
 			return null;
 		}
 		
-		// Oponent company
+		// Opponent company
 		this.theSolutionOpponentBidsFor = this.centralizedAgent.getSolution(task, this.opponentSolution);
 
+		// Marginal costs
 		double ourMarginalCost = this.theSolutionWeBidFor.getCost() - this.ourSolution.getCost();
 		double opponentMarginalCost = opponentSolution.getCost() - this.opponentSolution.getCost();
 		
-		return (long) ourMarginalCost;
+		double bid = opponentMarginalCost * ratio;
+		if (bid < ourMarginalCost * 0.8) {
+			bid = ourMarginalCost * 0.8;
+		}
+		if (bid < this.opponent_min_bid) {
+			bid = this.opponent_min_bid - 1;
+		}
+		if (this.iter < 5) {
+			bid = ourMarginalCost * 0.5;
+		}
+		this.iter++;
+		
+		return (long) bid;
 	}
 
 	@Override
