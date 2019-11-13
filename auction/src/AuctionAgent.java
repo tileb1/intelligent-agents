@@ -34,6 +34,7 @@ public class AuctionAgent implements AuctionBehavior {
 	private Solution ourSolution;
 	private Solution opponentSolution;
 	private Solution theSolutionWeBidFor;
+	private Solution theSolutionOpponentBidsFor;
 	private List<Vehicle> ourVehicles;
 	private List<Vehicle> opponentVehicles;
 
@@ -143,33 +144,35 @@ public class AuctionAgent implements AuctionBehavior {
 
 	@Override
 	public void auctionResult(Task previous, int winner, Long[] bids) {
-		System.out.println("Winner " + winner);
-		for (int i = 0; i < bids.length; i++) {
-			System.out.println(bids[i]);
-		}
 		if (winner == agent.id()) {
-			currentCity = previous.deliveryCity;
+			System.out.println("Winner " + winner);
+			for (int i = 0; i < bids.length; i++) {
+				System.out.println(bids[i]);
+			}
+			this.ourSolution = this.theSolutionWeBidFor;
+			// do smth
+		}
+		else {
+			this.opponentSolution = this.theSolutionOpponentBidsFor;
+			// do smth
 		}
 	}
 	
 	@Override
 	public Long askPrice(Task task) {
 		// Our company
-		double cost = this.ourSolution.getCost();
-		Solution solution = this.centralizedAgent.getSolution(task, this.ourSolution);
-		if (solution == null) {
+		this.theSolutionWeBidFor = this.centralizedAgent.getSolution(task, this.ourSolution);
+		if (this.theSolutionWeBidFor == null) {
 			return null;
 		}
 		
 		// Oponent company
-		double opponentCost = this.opponentSolution.getCost();
-		Solution opponentSolution = this.centralizedAgent.getSolution(task, this.opponentSolution);
-//		if (opponentSolution == null) {
-//			return Long.MAX_VALUE;
-//		}
-		double marginalCost = solution.getCost() - cost;
-		double opponentMarginalCost = opponentSolution.getCost() - opponentCost;
-		return (long) marginalCost;
+		this.theSolutionOpponentBidsFor = this.centralizedAgent.getSolution(task, this.opponentSolution);
+
+		double ourMarginalCost = this.theSolutionWeBidFor.getCost() - this.ourSolution.getCost();
+		double opponentMarginalCost = opponentSolution.getCost() - this.opponentSolution.getCost();
+		
+		return (long) ourMarginalCost;
 	}
 
 	@Override
