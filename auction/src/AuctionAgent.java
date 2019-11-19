@@ -42,6 +42,8 @@ public class AuctionAgent implements AuctionBehavior {
 	private double ratio = 0.7;
 	private int iter = 0;
 	private double opponent_min_bid = Double.MAX_VALUE;
+	
+	public double totalBid = 0;
 
 	@Override
 	public void setup(Topology topology, TaskDistribution distribution,
@@ -150,13 +152,15 @@ public class AuctionAgent implements AuctionBehavior {
 	@Override
 	public void auctionResult(Task previous, int winner, Long[] bids) {
 		if (winner == agent.id()) {
-			System.out.println("Winner " + winner);
+			this.totalBid += bids[agent.id()];
 			for (int i = 0; i < bids.length; i++) {
-				System.out.println(bids[i]);
+				System.out.println("Agent " + i + ": " + bids[i]);
 			}
 			this.ourSolution = this.theSolutionWeBidFor;
 			// We win so we will bid more less aggressivaly
 			this.ratio = Math.max(Math.min(this.ratio*1.01, this.RATIO_UPPER), this.RATIO_LOWER);
+			System.out.println("Agent " + agent.id() + " has this much profit: " + (this.totalBid - this.ourSolution.getCost()));
+			System.out.println(this.totalBid);
 		}
 		else {
 			this.opponentSolution = this.theSolutionOpponentBidsFor;
@@ -188,49 +192,19 @@ public class AuctionAgent implements AuctionBehavior {
 		if (bid < this.opponent_min_bid) {
 			bid = this.opponent_min_bid - 1;
 		}
-		if (this.iter < 5) {
+		if (this.iter < 3) {
 			bid = ourMarginalCost * 0.5;
 		}
 		this.iter++;
-		
 		return (long) bid;
 	}
 
 	@Override
 	public List<Plan> plan(List<Vehicle> vehicles, TaskSet tasks) {
-		
-//		System.out.println("Agent " + agent.id() + " has tasks " + tasks);
-
-		Plan planVehicle1 = naivePlan(vehicle, tasks);
-
-		List<Plan> plans = new ArrayList<Plan>();
-		plans.add(planVehicle1);
-		while (plans.size() < vehicles.size())
-			plans.add(Plan.EMPTY);
-
-		return plans;
+		List<Plan> plans = this.centralizedAgent.plan(vehicles, tasks);
+		System.out.println(plans);
+		System.out.println("Agent " + this.agent.id() + " : " + (this.totalBid - this.ourSolution.getCost()));
+        return plans;
 	}
 
-	private Plan naivePlan(Vehicle vehicle, TaskSet tasks) {
-		City current = vehicle.getCurrentCity();
-		Plan plan = new Plan(current);
-
-		for (Task task : tasks) {
-			// move: current city => pickup location
-			for (City city : current.pathTo(task.pickupCity))
-				plan.appendMove(city);
-
-			plan.appendPickup(task);
-
-			// move: pickup location => delivery location
-			for (City city : task.path())
-				plan.appendMove(city);
-
-			plan.appendDelivery(task);
-
-			// set current city
-			current = task.deliveryCity;
-		}
-		return plan;
-	}
 }
