@@ -196,6 +196,12 @@ public class AuctionAgent implements AuctionBehavior {
 			bid = ourMarginalCost * 0.5;
 		}
 		this.iter++;
+		
+		// Some random agent
+		bid = this.random.nextDouble() * 5000;
+		
+		// Some cheap ass agent
+		bid = ourMarginalCost;
 		return (long) bid;
 	}
 
