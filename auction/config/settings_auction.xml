@@ -23,10 +23,10 @@
 	
 	<!-- Timeouts -->
 	<set timeout-setup="1200" />
-	<set timeout-plan="1200" />
-	<set timeout-bid="1200" />
+	<set timeout-plan="8000" />
+	<set timeout-bid="8000" />
 	
 	<!-- Flags -->
-	<set flag-show-ui="true" />
+	<set flag-show-ui="false" />
 	
 </settings>

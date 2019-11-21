@@ -52,7 +52,7 @@ public class CentralizedAgent {
         Solution bestSolEver = currentSol;
         
         // We add a second safety delay
-    	while (System.currentTimeMillis() - time_start + 1000 < this.timeout_plan_per_round) {
+    	while (System.currentTimeMillis() - time_start + 500 < this.timeout_plan_per_round) {
     		sols = currentSol.getNeighbors();
 			if (sols.size() > 0) {
 				Solution minSol = Collections.min(sols);
@@ -141,6 +141,10 @@ public class CentralizedAgent {
     	}
         
         return plans;
+    }
+    
+    public void setTimeout(long time) {
+    	this.timeout_plan_per_round = time;
     }
 
 }

@@ -1,12 +1,15 @@
 //the list of imports
 import java.awt.Color;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 
+import logist.LogistSettings;
 import logist.Measures;
 import logist.behavior.AuctionBehavior;
+import logist.config.Parsers;
 import logist.agent.Agent;
 import logist.simulation.Vehicle;
 import logist.plan.Plan;
@@ -42,6 +45,9 @@ public class AuctionAgent implements AuctionBehavior {
 	private double ratio = 0.7;
 	private int iter = 0;
 	private double opponent_min_bid = Double.MAX_VALUE;
+	private long timeout_setup;
+	private long timeout_plan;
+	private long timeout_bid;
 	
 	public double totalBid = 0;
 
@@ -59,7 +65,22 @@ public class AuctionAgent implements AuctionBehavior {
 		long seed = -9019554669489983951L * currentCity.hashCode() * agent.id();
 		this.random = new Random(seed);
 		// --------------------------------------------------------------------------------------FIX TIMEOUT
-		this.centralizedAgent = new CentralizedAgent(topology, distribution, agent, 1200);
+		
+        // this code is used to get the timeouts
+        LogistSettings ls = null;
+        try {
+            ls = Parsers.parseSettings("config" + File.separator + "settings_auction.xml");
+        }
+        catch (Exception exc) {
+            System.out.println("There was a problem loading the configuration file.");
+        }
+        
+        // the setup method cannot last more than timeout_setup milliseconds
+        timeout_setup = ls.get(LogistSettings.TimeoutKey.SETUP);
+        timeout_plan = ls.get(LogistSettings.TimeoutKey.PLAN);
+        timeout_bid = ls.get(LogistSettings.TimeoutKey.BID);
+		
+		this.centralizedAgent = new CentralizedAgent(topology, distribution, agent, timeout_bid/2);
 		
 		this.ourSolution = new Solution(agent.vehicles(), topology);
 		this.opponentSolution = new Solution(agent.vehicles(), topology);
@@ -202,11 +223,15 @@ public class AuctionAgent implements AuctionBehavior {
 		
 		// Some cheap ass agent
 		bid = ourMarginalCost;
+		
+		// Baller agent
+		bid = ourMarginalCost * 1.1;
 		return (long) bid;
 	}
 
 	@Override
 	public List<Plan> plan(List<Vehicle> vehicles, TaskSet tasks) {
+		this.centralizedAgent.setTimeout(timeout_plan);
 		List<Plan> plans = this.centralizedAgent.plan(vehicles, tasks);
 		System.out.println(plans);
 		System.out.println("Agent " + this.agent.id() + " : " + (this.totalBid - this.ourSolution.getCost()));
