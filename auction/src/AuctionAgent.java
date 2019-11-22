@@ -242,9 +242,7 @@ public class AuctionAgent implements AuctionBehavior {
 				ourMarginalCost = this.theSolutionWeBidFor.getCost() - this.ourSolution.getCost();
 				opponentMarginalCost = opponentSolution.getCost() - this.opponentSolution.getCost();
 			}
-
-
-
+			
 			bid = opponentMarginalCost * ratio;
 			if (bid < ourMarginalCost * 0.8) {
 				bid = ourMarginalCost * 0.8;
@@ -268,12 +266,12 @@ public class AuctionAgent implements AuctionBehavior {
 		}
 		// Beginning of game
 		else {
-			System.out.println(this.getTasksForSolution());
 			this.theSolutionWeBidFor = this.centralizedAgent.getSolution(this.getTasksForSolution(), this.ourVehicles);
 			bid = this.theSolutionWeBidFor.getCost();
 		}
 
 		this.iter++;
+		System.out.println(this.iter);
 		return (long) bid;
 	}
 
@@ -302,21 +300,15 @@ public class AuctionAgent implements AuctionBehavior {
 	}
 
 	private TaskSet getTasksForSolution() {
-//		System.out.println("-----------------------");
 		Task[] array = new Task[this.wonTasks.size() + this.firstSpeculatedTasks.size()];
 		for (int i = 0; i < this.wonTasks.size(); i++) {
 			Task task = this.wonTasks.get(i);
-			array[i] = new Task(i, task.pickupCity, task.deliveryCity, 0, 5);
-//			array[i] = 
-//			System.out.println(array[i]);
+			array[i] = new Task(i, task.pickupCity, task.deliveryCity, task.reward, task.weight);
 		}
-//		System.out.println("-----");
 		for (int i = 0; i < this.firstSpeculatedTasks.size(); i++) {
 			Task task = this.firstSpeculatedTasks.get(i);
 			array[i + this.wonTasks.size()] = new Task(i+this.wonTasks.size(), task.pickupCity, task.deliveryCity, task.reward, task.weight);
-//			System.out.println(array[i+this.wonTasks.size()]);
 		}
-//		System.out.println("-----------------------");
 		return TaskSet.create(array);
 	}
 
