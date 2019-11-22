@@ -1,0 +1,12 @@
+### auction.xml ###
+       Agents        |  Win - Draw - Lose   |        random        |       myAgent        |       cheapass       |        baller       
+       random        |      4 - 0 - 2       |          -           | LOSE (-2058 : 2719)  | WIN (-1350 : -2698)  |  WIN (-913 : -3395) 
+      myAgent        |      4 - 0 - 2       | LOSE (-2672 : -2638) |          -           |    WIN (3374 : 0)    |   WIN (4341 : 57)   
+      cheapass       |      3 - 0 - 3       |  LOSE (-3159 : 930)  |   WIN (0 : -3506)    |          -           |   WIN (-1 : -4504)  
+       baller        |      1 - 0 - 5       | WIN (-1746 : -2638)  | LOSE (-2644 : -568)  |   LOSE (-3805 : 0)   |          -          
+
+First company results
+  # wins   : 7
+  # draws  : 0
+  # losses : 5
+
