@@ -1,1116 +1,945 @@
-03:55:58.226 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/tour/auction-random-myAgent.xml -a tournament/tour/agents.xml config/auction.xml random myAgent
-03:55:58.307 CONFIG | Reading config/auction.xml
-03:55:58.417 CONFIG | Reading config/settings_auction.xml
-03:55:58.444 CONFIG | Reading config/topology/england.xml
-03:55:58.460 CONFIG | Reading tournament/tour/agents.xml
-03:55:58.482 CONFIG | Reading config/settings_auction.xml
-03:55:58.490 CONFIG | Reading config/settings_auction.xml
-03:56:01.574 CONFIG | Agent 0: 3654
-03:56:01.574 CONFIG | Agent 1: 1383
-03:56:01.576 CONFIG | Agent 1 has this much profit: -1383.0
-03:56:01.577 CONFIG | 1383.0
-03:56:03.618 CONFIG | Agent 0: 1202
-03:56:03.618 CONFIG | Agent 1: 1191
-03:56:03.618 CONFIG | Agent 1 has this much profit: -2574.0
-03:56:03.618 CONFIG | 2574.0
-03:56:05.658 CONFIG | Agent 0: 3187
-03:56:05.660 CONFIG | Agent 1: 0
-03:56:05.660 CONFIG | Agent 1 has this much profit: -2574.0
-03:56:05.660 CONFIG | 2574.0
-03:56:07.698 CONFIG | Agent 0: 2752
-03:56:07.698 CONFIG | Agent 1: 1201
-03:56:07.698 CONFIG | Agent 1 has this much profit: -2121.0
-03:56:07.698 CONFIG | 3775.0
-03:56:09.738 CONFIG | Agent 0: 2987
-03:56:09.738 CONFIG | Agent 1: 1201
-03:56:09.738 CONFIG | Agent 1 has this much profit: -920.0
-03:56:09.738 CONFIG | 4976.0
-03:56:11.778 CONFIG | Agent 0: 1666
-03:56:11.778 CONFIG | Agent 1: 1201
-03:56:11.778 CONFIG | Agent 1 has this much profit: 281.0
-03:56:11.778 CONFIG | 6177.0
-03:56:13.818 CONFIG | Agent 0: 1925
-03:56:13.818 CONFIG | Agent 1: 1201
-03:56:13.818 CONFIG | Agent 1 has this much profit: 1482.0
-03:56:13.818 CONFIG | 7378.0
-03:56:15.858 CONFIG | Agent 0: 4924
-03:56:15.858 CONFIG | Agent 1: 1201
-03:56:15.858 CONFIG | Agent 1 has this much profit: 2683.0
-03:56:15.858 CONFIG | 8579.0
-03:56:17.898 CONFIG | Agent 0: 4395
-03:56:17.898 CONFIG | Agent 1: 1451
-03:56:17.898 CONFIG | Agent 1 has this much profit: 2320.0
-03:56:17.898 CONFIG | 10030.0
-03:56:19.938 CONFIG | Agent 0: 4706
-03:56:19.938 CONFIG | Agent 1: 1201
-03:56:19.938 CONFIG | Agent 1 has this much profit: 2887.0
-03:56:19.938 CONFIG | 11231.0
-03:56:21.978 CONFIG | Agent 0: 1374
-03:56:21.978 CONFIG | Agent 1: 1201
-03:56:21.978 CONFIG | Agent 1 has this much profit: 4088.0
-03:56:21.978 CONFIG | 12432.0
-03:56:22.998 CONFIG | Agent 0: 644
-03:56:22.998 CONFIG | Agent 1: 1201
-03:56:23.000 CONFIG | Agent 0 has this much profit: -1145.0
-03:56:23.000 CONFIG | 644.0
-03:56:26.058 CONFIG | Agent 0: 733
-03:56:26.058 CONFIG | Agent 1: 643
-03:56:26.058 CONFIG | Agent 1 has this much profit: 4731.0
-03:56:26.058 CONFIG | 13075.0
-03:56:27.078 CONFIG | Agent 0: 116
-03:56:27.078 CONFIG | Agent 1: 788
-03:56:27.078 CONFIG | Agent 0 has this much profit: -2057.5
-03:56:27.078 CONFIG | 760.0
-03:56:30.138 CONFIG | Agent 0: 2733
-03:56:30.138 CONFIG | Agent 1: 115
-03:56:30.138 CONFIG | Agent 1 has this much profit: 4846.0
-03:56:30.138 CONFIG | 13190.0
-03:56:32.178 CONFIG | Agent 0: 4822
-03:56:32.178 CONFIG | Agent 1: 115
-03:56:32.178 CONFIG | Agent 1 has this much profit: 4961.0
-03:56:32.178 CONFIG | 13305.0
-03:56:34.218 CONFIG | Agent 0: 522
-03:56:34.218 CONFIG | Agent 1: 115
-03:56:34.218 CONFIG | Agent 1 has this much profit: 5076.0
-03:56:34.218 CONFIG | 13420.0
-03:56:36.258 CONFIG | Agent 0: 3125
-03:56:36.258 CONFIG | Agent 1: 115
-03:56:36.258 CONFIG | Agent 1 has this much profit: 5191.0
-03:56:36.258 CONFIG | 13535.0
-03:56:38.298 CONFIG | Agent 0: 2053
-03:56:38.298 CONFIG | Agent 1: 920
-03:56:38.298 CONFIG | Agent 1 has this much profit: 4961.0
-03:56:38.298 CONFIG | 14455.0
-03:56:39.520 CONFIG | [[Pickup (Task 13), Move (Leeds), Move (Liverpool), Move (Manchester), Deliver (Task 13)], 205.7, [Move (Portsmouth), Pickup (Task 11), Move (London), Move (Birmingham), Move (Sheffield), Deliver (Task 11)], 357.8]
-03:56:39.520 CONFIG | Agent 0 : -2057.5
-03:56:39.522 CONFIG | Agent 0: 3881
-03:56:39.523 CONFIG | Agent 1: 115
-03:56:39.523 CONFIG | Agent 1 has this much profit: 5076.0
-03:56:39.523 CONFIG | 14570.0
-03:56:39.724 CONFIG | [[Pickup (Task 8), Move (Portsmouth), Pickup (Task 14), Move (London), Move (Birmingham), Move (Sheffield), Pickup (Task 15), Pickup (Task 3), Move (Birmingham), Pickup (Task 10), Move (Cardiff), Deliver (Task 10), Pickup (Task 12), Pickup (Task 2), Pickup (Task 6), Pickup (Task 19), Pickup (Task 0), Move (Birmingham), Move (Manchester), Move (Liverpool), Deliver (Task 15), Pickup (Task 4), Deliver (Task 14), Move (Leeds), Deliver (Task 19), Move (Sheffield), Deliver (Task 0), Move (Birmingham), Move (London), Pickup (Task 16), Pickup (Task 7), Move (Birmingham), Deliver (Task 16), Move (Manchester), Deliver (Task 12), Deliver (Task 2), Pickup (Task 1), Deliver (Task 7), Move (Birmingham), Deliver (Task 8), Move (London), Move (Portsmouth), Pickup (Task 9), Move (Plymouth), Pickup (Task 18), Deliver (Task 9), Move (Portsmouth), Deliver (Task 3), Pickup (Task 17), Move (London), Deliver (Task 6), Move (Norwich), Deliver (Task 18), Deliver (Task 4), Deliver (Task 1), Pickup (Task 5), Deliver (Task 17), Move (London), Deliver (Task 5)], 2370.2, [], 0.0]
-03:56:39.724 CONFIG | Agent 1 : 5076.0
-03:56:39.728 CONFIG | Wrote tournament/tour/auction-random-myAgent.xml
-03:56:39.750 INFO | LogistPlatform finished successfully!
-03:56:39.782 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/tour/auction-random-baller.xml -a tournament/tour/agents.xml config/auction.xml random baller
-03:56:39.849 CONFIG | Reading config/auction.xml
-03:56:39.967 CONFIG | Reading config/settings_auction.xml
-03:56:39.995 CONFIG | Reading config/topology/england.xml
-03:56:40.009 CONFIG | Reading tournament/tour/agents.xml
-03:56:40.029 CONFIG | Reading config/settings_auction.xml
-03:56:40.038 CONFIG | Reading config/settings_auction.xml
-03:56:43.130 CONFIG | Agent 0: 3654
-03:56:43.130 CONFIG | Agent 1: 1383
-03:56:43.131 CONFIG | Agent 1 has this much profit: -1383.0
-03:56:43.132 CONFIG | 1383.0
-03:56:45.172 CONFIG | Agent 0: 1202
-03:56:45.172 CONFIG | Agent 1: 1191
-03:56:45.172 CONFIG | Agent 1 has this much profit: -2574.0
-03:56:45.173 CONFIG | 2574.0
-03:56:47.213 CONFIG | Agent 0: 3187
-03:56:47.213 CONFIG | Agent 1: 0
-03:56:47.214 CONFIG | Agent 1 has this much profit: -2574.0
-03:56:47.214 CONFIG | 2574.0
-03:56:49.253 CONFIG | Agent 0: 2752
-03:56:49.253 CONFIG | Agent 1: 822
-03:56:49.253 CONFIG | Agent 1 has this much profit: -2500.0
-03:56:49.253 CONFIG | 3396.0
-03:56:51.293 CONFIG | Agent 0: 2987
-03:56:51.293 CONFIG | Agent 1: 0
-03:56:51.293 CONFIG | Agent 1 has this much profit: -2500.0
-03:56:51.293 CONFIG | 3396.0
-03:56:53.333 CONFIG | Agent 0: 1666
-03:56:53.333 CONFIG | Agent 1: 0
-03:56:53.333 CONFIG | Agent 1 has this much profit: -2500.0
-03:56:53.333 CONFIG | 3396.0
-03:56:55.373 CONFIG | Agent 0: 1925
-03:56:55.373 CONFIG | Agent 1: 0
-03:56:55.373 CONFIG | Agent 1 has this much profit: -2500.0
-03:56:55.373 CONFIG | 3396.0
-03:56:57.413 CONFIG | Agent 0: 4924
-03:56:57.413 CONFIG | Agent 1: 0
-03:56:57.413 CONFIG | Agent 1 has this much profit: -2500.0
-03:56:57.413 CONFIG | 3396.0
-03:56:59.453 CONFIG | Agent 0: 4395
-03:56:59.453 CONFIG | Agent 1: 1995
-03:56:59.453 CONFIG | Agent 1 has this much profit: -2319.0
-03:56:59.453 CONFIG | 5391.0
-03:57:01.493 CONFIG | Agent 0: 4706
-03:57:01.493 CONFIG | Agent 1: 918
-03:57:01.493 CONFIG | Agent 1 has this much profit: -2236.0
-03:57:01.493 CONFIG | 6309.0
-03:57:03.533 CONFIG | Agent 0: 1374
-03:57:03.533 CONFIG | Agent 1: 0
-03:57:03.533 CONFIG | Agent 1 has this much profit: -2236.0
-03:57:03.533 CONFIG | 6309.0
-03:57:05.573 CONFIG | Agent 0: 644
-03:57:05.573 CONFIG | Agent 1: -221
-03:57:05.573 CONFIG | Agent 1 has this much profit: -2256.0
-03:57:05.573 CONFIG | 6088.0
-03:57:07.613 CONFIG | Agent 0: 733
-03:57:07.613 CONFIG | Agent 1: 0
-03:57:07.613 CONFIG | Agent 1 has this much profit: -2256.0
-03:57:07.613 CONFIG | 6088.0
-03:57:08.633 CONFIG | Agent 0: 116
-03:57:08.633 CONFIG | Agent 1: 1874
-03:57:08.633 CONFIG | Agent 0 has this much profit: -912.5
-03:57:08.633 CONFIG | 116.0
-03:57:11.693 CONFIG | Agent 0: 2733
-03:57:11.693 CONFIG | Agent 1: 0
-03:57:11.693 CONFIG | Agent 1 has this much profit: -2256.0
-03:57:11.693 CONFIG | 6088.0
-03:57:13.733 CONFIG | Agent 0: 4822
-03:57:13.733 CONFIG | Agent 1: 0
-03:57:13.733 CONFIG | Agent 1 has this much profit: -2256.0
-03:57:13.733 CONFIG | 6088.0
-03:57:15.773 CONFIG | Agent 0: 522
-03:57:15.773 CONFIG | Agent 1: 0
-03:57:15.773 CONFIG | Agent 1 has this much profit: -2256.0
-03:57:15.773 CONFIG | 6088.0
-03:57:17.813 CONFIG | Agent 0: 3125
-03:57:17.813 CONFIG | Agent 1: 0
-03:57:17.813 CONFIG | Agent 1 has this much profit: -2256.0
-03:57:17.813 CONFIG | 6088.0
-03:57:19.853 CONFIG | Agent 0: 2053
-03:57:19.853 CONFIG | Agent 1: 1265
-03:57:19.853 CONFIG | Agent 1 has this much profit: -2141.0
-03:57:19.853 CONFIG | 7353.0
-03:57:21.075 CONFIG | [[Pickup (Task 13), Move (Leeds), Move (Liverpool), Move (Manchester), Deliver (Task 13)], 205.7, [], 0.0]
-03:57:21.075 CONFIG | Agent 0 : -912.5
-03:57:21.076 CONFIG | Agent 0: 3881
-03:57:21.076 CONFIG | Agent 1: 0
-03:57:21.076 CONFIG | Agent 1 has this much profit: -2141.0
-03:57:21.077 CONFIG | 7353.0
-03:57:21.276 CONFIG | [[Pickup (Task 8), Move (Portsmouth), Move (London), Move (Birmingham), Pickup (Task 10), Move (Cardiff), Pickup (Task 12), Pickup (Task 6), Pickup (Task 19), Pickup (Task 0), Pickup (Task 2), Deliver (Task 10), Move (Birmingham), Move (London), Move (Portsmouth), Pickup (Task 11), Pickup (Task 14), Move (London), Pickup (Task 16), Pickup (Task 7), Move (Birmingham), Deliver (Task 16), Move (Sheffield), Deliver (Task 11), Pickup (Task 15), Pickup (Task 3), Deliver (Task 0), Move (Leeds), Deliver (Task 19), Move (Liverpool), Deliver (Task 15), Pickup (Task 4), Deliver (Task 14), Move (Manchester), Deliver (Task 12), Pickup (Task 1), Deliver (Task 7), Deliver (Task 2), Move (Birmingham), Deliver (Task 8), Move (London), Move (Portsmouth), Pickup (Task 9), Move (Plymouth), Deliver (Task 9), Pickup (Task 18), Move (Portsmouth), Pickup (Task 17), Deliver (Task 3), Move (London), Move (Norwich), Deliver (Task 17), Pickup (Task 5), Deliver (Task 1), Deliver (Task 4), Deliver (Task 18), Move (London), Deliver (Task 5), Deliver (Task 6)], 2149.6, [], 0.0]
-03:57:21.277 CONFIG | Agent 1 : -2141.0
-03:57:21.284 CONFIG | Wrote tournament/tour/auction-random-baller.xml
-03:57:21.306 INFO | LogistPlatform finished successfully!
-03:57:21.307 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/tour/auction-random-cheapass.xml -a tournament/tour/agents.xml config/auction.xml random cheapass
-03:57:21.375 CONFIG | Reading config/auction.xml
-03:57:21.490 CONFIG | Reading config/settings_auction.xml
-03:57:21.519 CONFIG | Reading config/topology/england.xml
-03:57:21.539 CONFIG | Reading tournament/tour/agents.xml
-03:57:21.562 CONFIG | Reading config/settings_auction.xml
-03:57:21.571 CONFIG | Reading config/settings_auction.xml
-03:57:24.659 CONFIG | Agent 0: 3654
-03:57:24.659 CONFIG | Agent 1: 2766
-03:57:24.660 CONFIG | Agent 1 has this much profit: 0.0
-03:57:24.661 CONFIG | 2766.0
-03:57:25.682 CONFIG | Agent 0: 1202
-03:57:25.682 CONFIG | Agent 1: 2382
-03:57:25.683 CONFIG | Agent 0 has this much profit: -1466.0
-03:57:25.683 CONFIG | 1202.0
-03:57:28.743 CONFIG | Agent 0: 3187
-03:57:28.743 CONFIG | Agent 1: 742
-03:57:28.743 CONFIG | Agent 1 has this much profit: -0.5
-03:57:28.743 CONFIG | 3508.0
-03:57:30.783 CONFIG | Agent 0: 2752
-03:57:30.783 CONFIG | Agent 1: 1438
-03:57:30.783 CONFIG | Agent 1 has this much profit: -1.0
-03:57:30.783 CONFIG | 4946.0
-03:57:32.823 CONFIG | Agent 0: 2987
-03:57:32.823 CONFIG | Agent 1: 949
-03:57:32.823 CONFIG | Agent 1 has this much profit: -1.0
-03:57:32.823 CONFIG | 5895.0
-03:57:34.863 CONFIG | Agent 0: 1666
-03:57:34.863 CONFIG | Agent 1: 0
-03:57:34.863 CONFIG | Agent 1 has this much profit: -1.0
-03:57:34.863 CONFIG | 5895.0
-03:57:36.903 CONFIG | Agent 0: 1925
-03:57:36.903 CONFIG | Agent 1: 0
-03:57:36.903 CONFIG | Agent 1 has this much profit: -1.0
-03:57:36.903 CONFIG | 5895.0
-03:57:38.943 CONFIG | Agent 0: 4924
-03:57:38.943 CONFIG | Agent 1: 0
-03:57:38.943 CONFIG | Agent 1 has this much profit: -1.0
-03:57:38.944 CONFIG | 5895.0
-03:57:40.983 CONFIG | Agent 0: 4395
-03:57:40.983 CONFIG | Agent 1: 1814
-03:57:40.983 CONFIG | Agent 1 has this much profit: -1.0
-03:57:40.983 CONFIG | 7709.0
-03:57:43.023 CONFIG | Agent 0: 4706
-03:57:43.023 CONFIG | Agent 1: 835
-03:57:43.023 CONFIG | Agent 1 has this much profit: -1.0
-03:57:43.023 CONFIG | 8544.0
-03:57:45.063 CONFIG | Agent 0: 1374
-03:57:45.063 CONFIG | Agent 1: -201
-03:57:45.063 CONFIG | Agent 1 has this much profit: -1.0
-03:57:45.063 CONFIG | 8343.0
-03:57:47.103 CONFIG | Agent 0: 644
-03:57:47.103 CONFIG | Agent 1: 0
-03:57:47.103 CONFIG | Agent 1 has this much profit: -1.0
-03:57:47.103 CONFIG | 8343.0
-03:57:49.143 CONFIG | Agent 0: 733
-03:57:49.143 CONFIG | Agent 1: 0
-03:57:49.143 CONFIG | Agent 1 has this much profit: -1.0
-03:57:49.143 CONFIG | 8343.0
-03:57:50.163 CONFIG | Agent 0: 116
-03:57:50.163 CONFIG | Agent 1: 985
-03:57:50.163 CONFIG | Agent 0 has this much profit: -1350.0
-03:57:50.163 CONFIG | 1318.0
-03:57:53.223 CONFIG | Agent 0: 2733
-03:57:53.223 CONFIG | Agent 1: 0
-03:57:53.225 CONFIG | Agent 1 has this much profit: -1.0
-03:57:53.225 CONFIG | 8343.0
-03:57:55.263 CONFIG | Agent 0: 4822
-03:57:55.263 CONFIG | Agent 1: 0
-03:57:55.263 CONFIG | Agent 1 has this much profit: -1.0
-03:57:55.263 CONFIG | 8343.0
-03:57:57.303 CONFIG | Agent 0: 522
-03:57:57.303 CONFIG | Agent 1: 0
-03:57:57.303 CONFIG | Agent 1 has this much profit: -1.0
-03:57:57.303 CONFIG | 8343.0
-03:57:59.343 CONFIG | Agent 0: 3125
-03:57:59.343 CONFIG | Agent 1: 0
-03:57:59.343 CONFIG | Agent 1 has this much profit: -1.0
-03:57:59.343 CONFIG | 8343.0
-03:58:01.383 CONFIG | Agent 0: 2053
-03:58:01.383 CONFIG | Agent 1: 1150
-03:58:01.383 CONFIG | Agent 1 has this much profit: -1.0
-03:58:01.383 CONFIG | 9493.0
-03:58:02.605 CONFIG | [[Pickup (Task 13), Move (Leeds), Move (Liverpool), Move (Manchester), Pickup (Task 1), Deliver (Task 13), Move (Birmingham), Move (London), Move (Norwich), Deliver (Task 1)], 533.6, [], 0.0]
-03:58:02.605 CONFIG | Agent 0 : -1350.0
-03:58:02.607 CONFIG | Agent 0: 3881
-03:58:02.607 CONFIG | Agent 1: 0
-03:58:02.607 CONFIG | Agent 1 has this much profit: -1.0
-03:58:02.607 CONFIG | 9493.0
-03:58:02.808 CONFIG | [[Move (Portsmouth), Pickup (Task 9), Move (Plymouth), Deliver (Task 9), Pickup (Task 18), Pickup (Task 8), Move (Portsmouth), Pickup (Task 14), Move (London), Pickup (Task 7), Move (Birmingham), Move (Cardiff), Pickup (Task 2), Pickup (Task 19), Pickup (Task 6), Pickup (Task 12), Move (Birmingham), Move (Sheffield), Pickup (Task 15), Pickup (Task 3), Move (Leeds), Deliver (Task 19), Move (Liverpool), Deliver (Task 15), Pickup (Task 4), Deliver (Task 14), Move (Manchester), Deliver (Task 2), Deliver (Task 12), Deliver (Task 7), Move (Birmingham), Move (London), Move (Portsmouth), Deliver (Task 3), Pickup (Task 11), Pickup (Task 17), Move (London), Move (Norwich), Deliver (Task 18), Deliver (Task 4), Deliver (Task 17), Pickup (Task 5), Move (London), Move (Birmingham), Pickup (Task 10), Move (Cardiff), Pickup (Task 0), Deliver (Task 10), Move (Birmingham), Move (London), Pickup (Task 16), Deliver (Task 6), Deliver (Task 5), Move (Birmingham), Deliver (Task 8), Deliver (Task 16), Move (Sheffield), Deliver (Task 11), Deliver (Task 0)], 2438.2, [], 0.0]
-03:58:02.808 CONFIG | Agent 1 : -1.0
-03:58:02.812 CONFIG | Wrote tournament/tour/auction-random-cheapass.xml
-03:58:02.837 INFO | LogistPlatform finished successfully!
-03:58:02.839 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/tour/auction-myAgent-random.xml -a tournament/tour/agents.xml config/auction.xml myAgent random
-03:58:02.905 CONFIG | Reading config/auction.xml
-03:58:03.021 CONFIG | Reading config/settings_auction.xml
-03:58:03.046 CONFIG | Reading config/topology/england.xml
-03:58:03.061 CONFIG | Reading tournament/tour/agents.xml
-03:58:03.083 CONFIG | Reading config/settings_auction.xml
-03:58:03.094 CONFIG | Reading config/settings_auction.xml
-03:58:05.161 CONFIG | Agent 0: 1095
-03:58:05.161 CONFIG | Agent 1: 1248
-03:58:05.163 CONFIG | Agent 0 has this much profit: -1096.0
-03:58:05.163 CONFIG | 1095.0
-03:58:08.224 CONFIG | Agent 0: 1191
-03:58:08.224 CONFIG | Agent 1: 869
-03:58:08.224 CONFIG | Agent 1 has this much profit: -2410.0
-03:58:08.224 CONFIG | 869.0
-03:58:09.244 CONFIG | Agent 0: 371
-03:58:09.245 CONFIG | Agent 1: 1985
-03:58:09.245 CONFIG | Agent 0 has this much profit: -1467.5
-03:58:09.245 CONFIG | 1466.0
-03:58:12.304 CONFIG | Agent 0: 1150
-03:58:12.304 CONFIG | Agent 1: 1082
-03:58:12.304 CONFIG | Agent 1 has this much profit: -2795.0
-03:58:12.304 CONFIG | 1951.0
-03:58:14.344 CONFIG | Agent 0: 1311
-03:58:14.344 CONFIG | Agent 1: 157
-03:58:14.344 CONFIG | Agent 1 has this much profit: -2638.0
-03:58:14.344 CONFIG | 2108.0
-03:58:15.364 CONFIG | Agent 0: 920
-03:58:15.364 CONFIG | Agent 1: 2395
-03:58:15.364 CONFIG | Agent 0 has this much profit: -1697.5
-03:58:15.364 CONFIG | 2386.0
-03:58:17.404 CONFIG | Agent 0: 851
-03:58:17.404 CONFIG | Agent 1: 2134
-03:58:17.406 CONFIG | Agent 0 has this much profit: -1911.0
-03:58:17.406 CONFIG | 3237.0
-03:58:19.444 CONFIG | Agent 0: 156
-03:58:19.444 CONFIG | Agent 1: 1116
-03:58:19.445 CONFIG | Agent 0 has this much profit: -1755.0
-03:58:19.445 CONFIG | 3393.0
-03:58:21.484 CONFIG | Agent 0: 1958
-03:58:21.484 CONFIG | Agent 1: 3261
-03:58:21.484 CONFIG | Agent 0 has this much profit: -2245.0
-03:58:21.484 CONFIG | 5351.0
-03:58:23.524 CONFIG | Agent 0: 156
-03:58:23.524 CONFIG | Agent 1: 861
-03:58:23.524 CONFIG | Agent 0 has this much profit: -2089.0
-03:58:23.524 CONFIG | 5507.0
-03:58:25.564 CONFIG | Agent 0: 156
-03:58:25.564 CONFIG | Agent 1: 3232
-03:58:25.564 CONFIG | Agent 0 has this much profit: -1933.0
-03:58:25.564 CONFIG | 5663.0
-03:58:27.604 CONFIG | Agent 0: 156
-03:58:27.604 CONFIG | Agent 1: 2533
-03:58:27.604 CONFIG | Agent 0 has this much profit: -1777.0
-03:58:27.604 CONFIG | 5819.0
-03:58:29.644 CONFIG | Agent 0: 156
-03:58:29.644 CONFIG | Agent 1: 1096
-03:58:29.644 CONFIG | Agent 0 has this much profit: -1621.0
-03:58:29.644 CONFIG | 5975.0
-03:58:31.684 CONFIG | Agent 0: 788
-03:58:31.684 CONFIG | Agent 1: 1662
-03:58:31.684 CONFIG | Agent 0 has this much profit: -1818.0
-03:58:31.684 CONFIG | 6763.0
-03:58:33.724 CONFIG | Agent 0: 156
-03:58:33.724 CONFIG | Agent 1: 2826
-03:58:33.724 CONFIG | Agent 0 has this much profit: -1662.0
-03:58:33.724 CONFIG | 6919.0
-03:58:35.764 CONFIG | Agent 0: 156
-03:58:35.764 CONFIG | Agent 1: 3566
-03:58:35.764 CONFIG | Agent 0 has this much profit: -1506.0
-03:58:35.764 CONFIG | 7075.0
-03:58:37.804 CONFIG | Agent 0: 156
-03:58:37.804 CONFIG | Agent 1: 2026
-03:58:37.804 CONFIG | Agent 0 has this much profit: -1350.0
-03:58:37.804 CONFIG | 7231.0
-03:58:39.844 CONFIG | Agent 0: 156
-03:58:39.844 CONFIG | Agent 1: 1114
-03:58:39.844 CONFIG | Agent 0 has this much profit: -1194.0
-03:58:39.844 CONFIG | 7387.0
-03:58:41.884 CONFIG | Agent 0: 156
-03:58:41.884 CONFIG | Agent 1: 1887
-03:58:41.884 CONFIG | Agent 0 has this much profit: -1038.0
-03:58:41.884 CONFIG | 7543.0
-03:58:43.924 CONFIG | Agent 0: 156
-03:58:43.925 CONFIG | Agent 1: 2860
-03:58:43.925 CONFIG | Agent 0 has this much profit: -882.0
-03:58:43.925 CONFIG | 7699.0
-03:58:44.128 CONFIG | [[Pickup (Task 13), Move (Leeds), Move (Sheffield), Move (Birmingham), Move (Cardiff), Pickup (Task 12), Pickup (Task 6), Pickup (Task 2), Move (Birmingham), Move (Manchester), Deliver (Task 12), Deliver (Task 2), Deliver (Task 13), Move (Birmingham), Pickup (Task 10), Move (Cardiff), Pickup (Task 19), Deliver (Task 10), Pickup (Task 0), Move (Birmingham), Move (London), Move (Portsmouth), Pickup (Task 9), Move (Plymouth), Pickup (Task 18), Pickup (Task 8), Deliver (Task 9), Move (Portsmouth), Pickup (Task 17), Pickup (Task 11), Pickup (Task 14), Move (London), Move (Norwich), Deliver (Task 18), Pickup (Task 5), Deliver (Task 17), Move (London), Deliver (Task 5), Deliver (Task 6), Pickup (Task 16), Pickup (Task 7), Move (Birmingham), Deliver (Task 8), Deliver (Task 16), Move (Sheffield), Deliver (Task 11), Pickup (Task 15), Deliver (Task 0), Move (Leeds), Deliver (Task 19), Move (Liverpool), Deliver (Task 14), Deliver (Task 15), Move (Manchester), Deliver (Task 7)], 2074.1, [], 0.0]
-03:58:44.128 CONFIG | Agent 0 : -882.0
-03:58:44.330 CONFIG | [[], 0.0, [Move (London), Move (Birmingham), Move (Manchester), Pickup (Task 1), Move (Liverpool), Pickup (Task 4), Move (Leeds), Move (Sheffield), Pickup (Task 3), Move (Birmingham), Move (London), Move (Portsmouth), Deliver (Task 3), Move (London), Move (Norwich), Deliver (Task 4), Deliver (Task 1)], 949.2]
-03:58:44.330 CONFIG | Agent 1 : -2638.0
-03:58:44.337 CONFIG | Wrote tournament/tour/auction-myAgent-random.xml
-03:58:44.358 INFO | LogistPlatform finished successfully!
-03:58:44.359 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/tour/auction-myAgent-baller.xml -a tournament/tour/agents.xml config/auction.xml myAgent baller
-03:58:44.427 CONFIG | Reading config/auction.xml
-03:58:44.559 CONFIG | Reading config/settings_auction.xml
-03:58:44.591 CONFIG | Reading config/topology/england.xml
-03:58:44.609 CONFIG | Reading tournament/tour/agents.xml
-03:58:44.633 CONFIG | Reading config/settings_auction.xml
-03:58:44.640 CONFIG | Reading config/settings_auction.xml
-03:58:46.707 CONFIG | Agent 0: 1095
-03:58:46.708 CONFIG | Agent 1: 1383
-03:58:46.709 CONFIG | Agent 0 has this much profit: -1096.0
-03:58:46.709 CONFIG | 1095.0
-03:58:48.750 CONFIG | Agent 0: 1191
-03:58:48.751 CONFIG | Agent 1: 1639
-03:58:48.752 CONFIG | Agent 0 has this much profit: -2287.0
-03:58:48.752 CONFIG | 2286.0
-03:58:50.791 CONFIG | Agent 0: 0
-03:58:50.791 CONFIG | Agent 1: 1394
-03:58:50.791 CONFIG | Agent 0 has this much profit: -2287.0
-03:58:50.791 CONFIG | 2286.0
-03:58:52.831 CONFIG | Agent 0: 1382
-03:58:52.831 CONFIG | Agent 1: 3334
-03:58:52.831 CONFIG | Agent 0 has this much profit: -1653.0
-03:58:52.831 CONFIG | 3668.0
-03:58:54.871 CONFIG | Agent 0: 1382
-03:58:54.871 CONFIG | Agent 1: 3988
-03:58:54.871 CONFIG | Agent 0 has this much profit: -271.0
-03:58:54.871 CONFIG | 5050.0
-03:58:57.931 CONFIG | Agent 0: 1382
-03:58:57.931 CONFIG | Agent 1: 632
-03:58:57.931 CONFIG | Agent 1 has this much profit: 57.0
-03:58:57.931 CONFIG | 632.0
-03:58:58.951 CONFIG | Agent 0: 631
-03:58:58.951 CONFIG | Agent 1: 2563
-03:58:58.951 CONFIG | Agent 0 has this much profit: 360.0
-03:58:58.951 CONFIG | 5681.0
-03:59:00.991 CONFIG | Agent 0: 631
-03:59:00.991 CONFIG | Agent 1: 1170
-03:59:00.992 CONFIG | Agent 0 has this much profit: 991.0
-03:59:00.992 CONFIG | 6312.0
-03:59:03.031 CONFIG | Agent 0: 1958
-03:59:03.031 CONFIG | Agent 1: 1995
-03:59:03.031 CONFIG | Agent 0 has this much profit: 501.0
-03:59:03.031 CONFIG | 8270.0
-03:59:05.071 CONFIG | Agent 0: 631
-03:59:05.072 CONFIG | Agent 1: 1870
-03:59:05.072 CONFIG | Agent 0 has this much profit: 1132.0
-03:59:05.072 CONFIG | 8901.0
-03:59:07.111 CONFIG | Agent 0: 631
-03:59:07.111 CONFIG | Agent 1: 2563
-03:59:07.111 CONFIG | Agent 0 has this much profit: 1763.0
-03:59:07.111 CONFIG | 9532.0
-03:59:09.151 CONFIG | Agent 0: 631
-03:59:09.151 CONFIG | Agent 1: 1967
-03:59:09.151 CONFIG | Agent 0 has this much profit: 2394.0
-03:59:09.151 CONFIG | 10163.0
-03:59:11.191 CONFIG | Agent 0: 631
-03:59:11.191 CONFIG | Agent 1: 3606
-03:59:11.191 CONFIG | Agent 0 has this much profit: 3025.0
-03:59:11.192 CONFIG | 10794.0
-03:59:13.231 CONFIG | Agent 0: 822
-03:59:13.231 CONFIG | Agent 1: 4216
-03:59:13.231 CONFIG | Agent 0 has this much profit: 2818.5
-03:59:13.231 CONFIG | 11616.0
-03:59:15.271 CONFIG | Agent 0: 631
-03:59:15.271 CONFIG | Agent 1: 2184
-03:59:15.271 CONFIG | Agent 0 has this much profit: 3493.0
-03:59:15.271 CONFIG | 12247.0
-03:59:17.311 CONFIG | Agent 0: 631
-03:59:17.311 CONFIG | Agent 1: 3117
-03:59:17.311 CONFIG | Agent 0 has this much profit: 4124.0
-03:59:17.311 CONFIG | 12878.0
-03:59:19.352 CONFIG | Agent 0: 631
-03:59:19.352 CONFIG | Agent 1: 649
-03:59:19.352 CONFIG | Agent 0 has this much profit: 4755.0
-03:59:19.352 CONFIG | 13509.0
-03:59:21.392 CONFIG | Agent 0: 631
-03:59:21.392 CONFIG | Agent 1: 1455
-03:59:21.392 CONFIG | Agent 0 has this much profit: 5386.0
-03:59:21.392 CONFIG | 14140.0
-03:59:23.432 CONFIG | Agent 0: 631
-03:59:23.432 CONFIG | Agent 1: 1978
-03:59:23.432 CONFIG | Agent 0 has this much profit: 5670.0
-03:59:23.432 CONFIG | 14771.0
-03:59:25.472 CONFIG | Agent 0: 631
-03:59:25.472 CONFIG | Agent 1: 3935
-03:59:25.473 CONFIG | Agent 0 has this much profit: 6648.0
-03:59:25.473 CONFIG | 15402.0
-03:59:25.674 CONFIG | [[Pickup (Task 13), Move (Leeds), Move (Sheffield), Pickup (Task 3), Move (Birmingham), Move (London), Move (Portsmouth), Pickup (Task 9), Move (Plymouth), Deliver (Task 9), Pickup (Task 18), Pickup (Task 8), Move (Portsmouth), Pickup (Task 14), Deliver (Task 3), Pickup (Task 11), Pickup (Task 17), Move (London), Move (Norwich), Deliver (Task 18), Move (London), Pickup (Task 16), Pickup (Task 7), Move (Birmingham), Pickup (Task 10), Move (Cardiff), Pickup (Task 19), Pickup (Task 0), Deliver (Task 10), Pickup (Task 12), Move (Birmingham), Deliver (Task 16), Deliver (Task 8), Move (Cardiff), Pickup (Task 6), Pickup (Task 2), Move (Birmingham), Move (Sheffield), Deliver (Task 0), Pickup (Task 15), Deliver (Task 11), Move (Leeds), Deliver (Task 19), Move (Liverpool), Deliver (Task 14), Deliver (Task 15), Pickup (Task 4), Move (Manchester), Deliver (Task 13), Deliver (Task 12), Pickup (Task 1), Deliver (Task 2), Deliver (Task 7), Move (Birmingham), Move (London), Deliver (Task 6), Move (Norwich), Deliver (Task 4), Deliver (Task 1), Deliver (Task 17)], 2212.2, [], 0.0]
-03:59:25.674 CONFIG | Agent 0 : 6648.0
-03:59:25.876 CONFIG | [[], 0.0, [Pickup (Task 5), Move (London), Deliver (Task 5)], 115.0]
-03:59:25.876 CONFIG | Agent 1 : 57.0
-03:59:25.882 CONFIG | Wrote tournament/tour/auction-myAgent-baller.xml
-03:59:25.905 INFO | LogistPlatform finished successfully!
-03:59:25.906 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/tour/auction-myAgent-cheapass.xml -a tournament/tour/agents.xml config/auction.xml myAgent cheapass
-03:59:25.973 CONFIG | Reading config/auction.xml
-03:59:26.091 CONFIG | Reading config/settings_auction.xml
-03:59:26.115 CONFIG | Reading config/topology/england.xml
-03:59:26.130 CONFIG | Reading tournament/tour/agents.xml
-03:59:26.150 CONFIG | Reading config/settings_auction.xml
-03:59:26.159 CONFIG | Reading config/settings_auction.xml
-03:59:28.223 CONFIG | Agent 0: 1095
-03:59:28.223 CONFIG | Agent 1: 2766
-03:59:28.224 CONFIG | Agent 0 has this much profit: -1096.0
-03:59:28.224 CONFIG | 1095.0
-03:59:30.265 CONFIG | Agent 0: 1191
-03:59:30.265 CONFIG | Agent 1: 3279
-03:59:30.265 CONFIG | Agent 0 has this much profit: -2287.0
-03:59:30.265 CONFIG | 2286.0
-03:59:32.306 CONFIG | Agent 0: 0
-03:59:32.306 CONFIG | Agent 1: 2789
-03:59:32.307 CONFIG | Agent 0 has this much profit: -2287.0
-03:59:32.307 CONFIG | 2286.0
-03:59:34.346 CONFIG | Agent 0: 2765
-03:59:34.348 CONFIG | Agent 1: 3031
-03:59:34.348 CONFIG | Agent 0 has this much profit: -270.0
-03:59:34.348 CONFIG | 5051.0
-03:59:36.386 CONFIG | Agent 0: 2765
-03:59:36.387 CONFIG | Agent 1: 3626
-03:59:36.387 CONFIG | Agent 0 has this much profit: 2495.0
-03:59:36.387 CONFIG | 7816.0
-03:59:39.446 CONFIG | Agent 0: 2765
-03:59:39.446 CONFIG | Agent 1: 575
-03:59:39.448 CONFIG | Agent 1 has this much profit: 0.0
-03:59:39.448 CONFIG | 575.0
-03:59:40.466 CONFIG | Agent 0: 574
-03:59:40.466 CONFIG | Agent 1: 2330
-03:59:40.466 CONFIG | Agent 0 has this much profit: 3069.0
-03:59:40.466 CONFIG | 8390.0
-03:59:42.506 CONFIG | Agent 0: 574
-03:59:42.506 CONFIG | Agent 1: 1064
-03:59:42.506 CONFIG | Agent 0 has this much profit: 3643.0
-03:59:42.506 CONFIG | 8964.0
-03:59:45.566 CONFIG | Agent 0: 1958
-03:59:45.566 CONFIG | Agent 1: 1814
-03:59:45.566 CONFIG | Agent 1 has this much profit: 0.0
-03:59:45.566 CONFIG | 2389.0
-03:59:46.586 CONFIG | Agent 0: 840
-03:59:46.586 CONFIG | Agent 1: 1224
-03:59:46.586 CONFIG | Agent 0 has this much profit: 3432.0
-03:59:46.586 CONFIG | 9804.0
-03:59:48.626 CONFIG | Agent 0: 574
-03:59:48.626 CONFIG | Agent 1: 575
-03:59:48.626 CONFIG | Agent 0 has this much profit: 4006.0
-03:59:48.626 CONFIG | 10378.0
-03:59:51.686 CONFIG | Agent 0: 598
-03:59:51.686 CONFIG | Agent 1: 451
-03:59:51.686 CONFIG | Agent 1 has this much profit: 0.0
-03:59:51.686 CONFIG | 2840.0
-03:59:52.706 CONFIG | Agent 0: 450
-03:59:52.706 CONFIG | Agent 1: 1892
-03:59:52.706 CONFIG | Agent 0 has this much profit: 4456.0
-03:59:52.706 CONFIG | 10828.0
-03:59:54.746 CONFIG | Agent 0: 788
-03:59:54.746 CONFIG | Agent 1: 1727
-03:59:54.746 CONFIG | Agent 0 has this much profit: 4259.0
-03:59:54.746 CONFIG | 11616.0
-03:59:57.806 CONFIG | Agent 0: 598
-03:59:57.806 CONFIG | Agent 1: 569
-03:59:57.806 CONFIG | Agent 1 has this much profit: 0.0
-03:59:57.806 CONFIG | 3409.0
-03:59:59.846 CONFIG | Agent 0: 450
-03:59:59.846 CONFIG | Agent 1: 0
-03:59:59.846 CONFIG | Agent 1 has this much profit: 0.0
-03:59:59.846 CONFIG | 3409.0
-04:00:00.866 CONFIG | Agent 0: 0
-04:00:00.866 CONFIG | Agent 1: 0
-04:00:00.866 CONFIG | Agent 0 has this much profit: 4259.0
-04:00:00.866 CONFIG | 11616.0
-04:00:02.906 CONFIG | Agent 0: 519
-04:00:02.906 CONFIG | Agent 1: 575
-04:00:02.906 CONFIG | Agent 0 has this much profit: 4129.0
-04:00:02.906 CONFIG | 12135.0
-04:00:04.946 CONFIG | Agent 0: 0
-04:00:04.946 CONFIG | Agent 1: 575
-04:00:04.948 CONFIG | Agent 0 has this much profit: 4129.0
-04:00:04.948 CONFIG | 12135.0
-04:00:06.986 CONFIG | Agent 0: 0
-04:00:06.986 CONFIG | Agent 1: 1150
-04:00:06.986 CONFIG | Agent 0 has this much profit: 4129.0
-04:00:06.986 CONFIG | 12135.0
-04:00:07.188 CONFIG | [[Pickup (Task 13), Move (Leeds), Move (Sheffield), Pickup (Task 3), Move (Birmingham), Move (London), Move (Portsmouth), Pickup (Task 9), Move (Plymouth), Pickup (Task 18), Deliver (Task 9), Move (Portsmouth), Pickup (Task 17), Deliver (Task 3), Move (London), Pickup (Task 16), Pickup (Task 7), Move (Birmingham), Pickup (Task 10), Move (Cardiff), Pickup (Task 12), Pickup (Task 6), Pickup (Task 2), Deliver (Task 10), Pickup (Task 19), Pickup (Task 0), Move (Birmingham), Move (Manchester), Deliver (Task 13), Deliver (Task 12), Pickup (Task 1), Deliver (Task 7), Deliver (Task 2), Move (Liverpool), Pickup (Task 4), Move (Leeds), Deliver (Task 19), Move (Sheffield), Deliver (Task 0), Move (Birmingham), Deliver (Task 16), Move (London), Deliver (Task 6), Move (Norwich), Deliver (Task 1), Deliver (Task 17), Deliver (Task 4), Deliver (Task 18)], 1752.2, [], 0.0]
-04:00:07.188 CONFIG | Agent 0 : 4129.0
-04:00:07.390 CONFIG | [[Pickup (Task 8), Move (Portsmouth), Pickup (Task 14), Pickup (Task 11), Move (London), Move (Birmingham), Deliver (Task 8), Move (Sheffield), Pickup (Task 15), Deliver (Task 11), Move (Leeds), Move (Liverpool), Deliver (Task 14), Deliver (Task 15)], 566.8, [Pickup (Task 5), Move (London), Deliver (Task 5)], 115.0]
-04:00:07.390 CONFIG | Agent 1 : 0.0
-04:00:07.397 CONFIG | Wrote tournament/tour/auction-myAgent-cheapass.xml
-04:00:07.419 INFO | LogistPlatform finished successfully!
-04:00:07.420 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/tour/auction-baller-random.xml -a tournament/tour/agents.xml config/auction.xml baller random
-04:00:07.488 CONFIG | Reading config/auction.xml
-04:00:07.596 CONFIG | Reading config/settings_auction.xml
-04:00:07.619 CONFIG | Reading config/topology/england.xml
-04:00:07.633 CONFIG | Reading tournament/tour/agents.xml
-04:00:07.651 CONFIG | Reading config/settings_auction.xml
-04:00:07.661 CONFIG | Reading config/settings_auction.xml
-04:00:09.724 CONFIG | Agent 0: 1095
-04:00:09.724 CONFIG | Agent 1: 1248
-04:00:09.725 CONFIG | Agent 0 has this much profit: -1096.0
-04:00:09.725 CONFIG | 1095.0
-04:00:12.785 CONFIG | Agent 0: 1191
-04:00:12.785 CONFIG | Agent 1: 869
-04:00:12.787 CONFIG | Agent 1 has this much profit: -2410.0
-04:00:12.787 CONFIG | 869.0
-04:00:13.805 CONFIG | Agent 0: 371
-04:00:13.805 CONFIG | Agent 1: 1985
-04:00:13.805 CONFIG | Agent 0 has this much profit: -1467.5
-04:00:13.805 CONFIG | 1466.0
-04:00:16.865 CONFIG | Agent 0: 1582
-04:00:16.865 CONFIG | Agent 1: 1082
-04:00:16.865 CONFIG | Agent 1 has this much profit: -2795.0
-04:00:16.865 CONFIG | 1951.0
-04:00:18.905 CONFIG | Agent 0: 1803
-04:00:18.905 CONFIG | Agent 1: 157
-04:00:18.905 CONFIG | Agent 1 has this much profit: -2638.0
-04:00:18.905 CONFIG | 2108.0
-04:00:19.925 CONFIG | Agent 0: 1265
-04:00:19.925 CONFIG | Agent 1: 2395
-04:00:19.925 CONFIG | Agent 0 has this much profit: -1352.5
-04:00:19.925 CONFIG | 2731.0
-04:00:21.965 CONFIG | Agent 0: 1170
-04:00:21.965 CONFIG | Agent 1: 2134
-04:00:21.965 CONFIG | Agent 0 has this much profit: -1247.0
-04:00:21.965 CONFIG | 3901.0
-04:00:24.005 CONFIG | Agent 0: 0
-04:00:24.005 CONFIG | Agent 1: 1116
-04:00:24.005 CONFIG | Agent 0 has this much profit: -1247.0
-04:00:24.005 CONFIG | 3901.0
-04:00:26.045 CONFIG | Agent 0: 2692
-04:00:26.045 CONFIG | Agent 1: 3261
-04:00:26.045 CONFIG | Agent 0 has this much profit: -1003.0
-04:00:26.045 CONFIG | 6593.0
-04:00:28.085 CONFIG | Agent 0: 0
-04:00:28.085 CONFIG | Agent 1: 861
-04:00:28.085 CONFIG | Agent 0 has this much profit: -1003.0
-04:00:28.085 CONFIG | 6593.0
-04:00:30.125 CONFIG | Agent 0: 0
-04:00:30.125 CONFIG | Agent 1: 3232
-04:00:30.125 CONFIG | Agent 0 has this much profit: -1003.0
-04:00:30.125 CONFIG | 6593.0
-04:00:32.165 CONFIG | Agent 0: 0
-04:00:32.165 CONFIG | Agent 1: 2533
-04:00:32.165 CONFIG | Agent 0 has this much profit: -1003.0
-04:00:32.165 CONFIG | 6593.0
-04:00:34.205 CONFIG | Agent 0: 0
-04:00:34.205 CONFIG | Agent 1: 1096
-04:00:34.205 CONFIG | Agent 0 has this much profit: -1003.0
-04:00:34.205 CONFIG | 6593.0
-04:00:36.245 CONFIG | Agent 0: 1083
-04:00:36.245 CONFIG | Agent 1: 1662
-04:00:36.245 CONFIG | Agent 0 has this much profit: -905.0
-04:00:36.245 CONFIG | 7676.0
-04:00:38.285 CONFIG | Agent 0: 0
-04:00:38.285 CONFIG | Agent 1: 2826
-04:00:38.285 CONFIG | Agent 0 has this much profit: -905.0
-04:00:38.285 CONFIG | 7676.0
-04:00:40.325 CONFIG | Agent 0: 0
-04:00:40.325 CONFIG | Agent 1: 3566
-04:00:40.325 CONFIG | Agent 0 has this much profit: -905.0
-04:00:40.325 CONFIG | 7676.0
-04:00:42.365 CONFIG | Agent 0: 0
-04:00:42.365 CONFIG | Agent 1: 2026
-04:00:42.365 CONFIG | Agent 0 has this much profit: -905.0
-04:00:42.365 CONFIG | 7676.0
-04:00:44.405 CONFIG | Agent 0: 0
-04:00:44.405 CONFIG | Agent 1: 1114
-04:00:44.405 CONFIG | Agent 0 has this much profit: -905.0
-04:00:44.405 CONFIG | 7676.0
-04:00:46.446 CONFIG | Agent 0: 0
-04:00:46.446 CONFIG | Agent 1: 1887
-04:00:46.446 CONFIG | Agent 0 has this much profit: -905.0
-04:00:46.446 CONFIG | 7676.0
-04:00:48.486 CONFIG | Agent 0: 0
-04:00:48.487 CONFIG | Agent 1: 2860
-04:00:48.487 CONFIG | Agent 0 has this much profit: -905.0
-04:00:48.487 CONFIG | 7676.0
-04:00:48.688 CONFIG | [[Pickup (Task 13), Move (Leeds), Move (Sheffield), Move (Birmingham), Move (Cardiff), Pickup (Task 6), Move (Birmingham), Move (London), Move (Portsmouth), Pickup (Task 9), Pickup (Task 17), Move (Plymouth), Deliver (Task 9), Pickup (Task 8), Pickup (Task 18), Move (Portsmouth), Pickup (Task 11), Pickup (Task 14), Move (London), Move (Norwich), Deliver (Task 17), Pickup (Task 5), Deliver (Task 18), Move (London), Pickup (Task 7), Pickup (Task 16), Deliver (Task 5), Deliver (Task 6), Move (Birmingham), Pickup (Task 10), Move (Cardiff), Deliver (Task 10), Pickup (Task 12), Pickup (Task 0), Pickup (Task 2), Pickup (Task 19), Move (Birmingham), Deliver (Task 16), Deliver (Task 8), Move (Sheffield), Deliver (Task 11), Pickup (Task 15), Deliver (Task 0), Move (Leeds), Deliver (Task 19), Move (Liverpool), Deliver (Task 14), Deliver (Task 15), Move (Manchester), Deliver (Task 7), Deliver (Task 12), Deliver (Task 2), Deliver (Task 13)], 1884.3, [], 0.0]
-04:00:48.688 CONFIG | Agent 0 : -905.0
-04:00:48.890 CONFIG | [[], 0.0, [Move (London), Move (Birmingham), Move (Manchester), Pickup (Task 1), Move (Liverpool), Pickup (Task 4), Move (Leeds), Move (Sheffield), Pickup (Task 3), Move (Birmingham), Move (London), Move (Portsmouth), Deliver (Task 3), Move (London), Move (Norwich), Deliver (Task 1), Deliver (Task 4)], 949.2]
-04:00:48.890 CONFIG | Agent 1 : -2638.0
-04:00:48.895 CONFIG | Wrote tournament/tour/auction-baller-random.xml
-04:00:48.917 INFO | LogistPlatform finished successfully!
-04:00:48.918 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/tour/auction-baller-myAgent.xml -a tournament/tour/agents.xml config/auction.xml baller myAgent
-04:00:48.982 CONFIG | Reading config/auction.xml
-04:00:49.091 CONFIG | Reading config/settings_auction.xml
-04:00:49.115 CONFIG | Reading config/topology/england.xml
-04:00:49.129 CONFIG | Reading tournament/tour/agents.xml
-04:00:49.148 CONFIG | Reading config/settings_auction.xml
-04:00:49.157 CONFIG | Reading config/settings_auction.xml
-04:00:51.222 CONFIG | Agent 0: 1095
-04:00:51.222 CONFIG | Agent 1: 1383
-04:00:51.226 CONFIG | Agent 0 has this much profit: -1096.0
-04:00:51.226 CONFIG | 1095.0
-04:00:53.267 CONFIG | Agent 0: 1191
-04:00:53.267 CONFIG | Agent 1: 1639
-04:00:53.267 CONFIG | Agent 0 has this much profit: -2287.0
-04:00:53.267 CONFIG | 2286.0
-04:00:55.307 CONFIG | Agent 0: 0
-04:00:55.307 CONFIG | Agent 1: 1394
-04:00:55.307 CONFIG | Agent 0 has this much profit: -2287.0
-04:00:55.307 CONFIG | 2286.0
-04:00:57.347 CONFIG | Agent 0: 822
-04:00:57.347 CONFIG | Agent 1: 2424
-04:00:57.347 CONFIG | Agent 0 has this much profit: -2213.0
-04:00:57.348 CONFIG | 3108.0
-04:00:59.387 CONFIG | Agent 0: 0
-04:00:59.387 CONFIG | Agent 1: 2900
-04:00:59.388 CONFIG | Agent 0 has this much profit: -2213.0
-04:00:59.388 CONFIG | 3108.0
-04:01:01.428 CONFIG | Agent 0: 221
-04:01:01.428 CONFIG | Agent 1: 460
-04:01:01.428 CONFIG | Agent 0 has this much profit: -2193.0
-04:01:01.428 CONFIG | 3329.0
-04:01:03.468 CONFIG | Agent 0: 0
-04:01:03.468 CONFIG | Agent 1: 2324
-04:01:03.468 CONFIG | Agent 0 has this much profit: -2193.0
-04:01:03.468 CONFIG | 3329.0
-04:01:05.508 CONFIG | Agent 0: 0
-04:01:05.508 CONFIG | Agent 1: 1311
-04:01:05.508 CONFIG | Agent 0 has this much profit: -2193.0
-04:01:05.508 CONFIG | 3329.0
-04:01:08.568 CONFIG | Agent 0: 2692
-04:01:08.568 CONFIG | Agent 1: 1451
-04:01:08.568 CONFIG | Agent 1 has this much profit: -363.0
-04:01:08.568 CONFIG | 1451.0
-04:01:09.588 CONFIG | Agent 0: 935
-04:01:09.588 CONFIG | Agent 1: 1360
-04:01:09.588 CONFIG | Agent 0 has this much profit: -2108.0
-04:01:09.588 CONFIG | 4264.0
-04:01:11.628 CONFIG | Agent 0: 0
-04:01:11.628 CONFIG | Agent 1: 460
-04:01:11.628 CONFIG | Agent 0 has this much profit: -2108.0
-04:01:11.628 CONFIG | 4264.0
-04:01:14.702 CONFIG | Agent 0: 822
-04:01:14.703 CONFIG | Agent 1: 360
-04:01:14.703 CONFIG | Agent 1 has this much profit: -454.0
-04:01:14.703 CONFIG | 1811.0
-04:01:15.720 CONFIG | Agent 0: 0
-04:01:15.720 CONFIG | Agent 1: 1514
-04:01:15.720 CONFIG | Agent 0 has this much profit: -2108.0
-04:01:15.720 CONFIG | 4264.0
-04:01:17.760 CONFIG | Agent 0: 1083
-04:01:17.760 CONFIG | Agent 1: 1382
-04:01:17.760 CONFIG | Agent 0 has this much profit: -2010.0
-04:01:17.761 CONFIG | 5347.0
-04:01:20.821 CONFIG | Agent 0: 822
-04:01:20.821 CONFIG | Agent 1: 455
-04:01:20.821 CONFIG | Agent 1 has this much profit: -568.0
-04:01:20.821 CONFIG | 2266.0
-04:01:21.841 CONFIG | Agent 0: 0
-04:01:21.841 CONFIG | Agent 1: 0
-04:01:21.841 CONFIG | Agent 0 has this much profit: -2010.0
-04:01:21.841 CONFIG | 5347.0
-04:01:23.881 CONFIG | Agent 0: 0
-04:01:23.881 CONFIG | Agent 1: 0
-04:01:23.881 CONFIG | Agent 0 has this much profit: -2010.0
-04:01:23.881 CONFIG | 5347.0
-04:01:25.921 CONFIG | Agent 0: 822
-04:01:25.921 CONFIG | Agent 1: 920
-04:01:25.921 CONFIG | Agent 0 has this much profit: -1936.0
-04:01:25.921 CONFIG | 6169.0
-04:01:27.961 CONFIG | Agent 0: 523
-04:01:27.961 CONFIG | Agent 1: 920
-04:01:27.961 CONFIG | Agent 0 has this much profit: -1889.0
-04:01:27.961 CONFIG | 6692.0
-04:01:30.001 CONFIG | Agent 0: 0
-04:01:30.001 CONFIG | Agent 1: 920
-04:01:30.001 CONFIG | Agent 0 has this much profit: -1889.0
-04:01:30.001 CONFIG | 6692.0
-04:01:30.204 CONFIG | [[Pickup (Task 13), Move (Leeds), Move (Sheffield), Pickup (Task 3), Pickup (Task 15), Move (Birmingham), Move (London), Move (Portsmouth), Pickup (Task 17), Deliver (Task 3), Pickup (Task 9), Move (Plymouth), Pickup (Task 18), Deliver (Task 9), Move (Portsmouth), Move (London), Pickup (Task 7), Pickup (Task 16), Move (Birmingham), Pickup (Task 10), Deliver (Task 16), Move (Cardiff), Deliver (Task 10), Pickup (Task 2), Pickup (Task 6), Pickup (Task 0), Pickup (Task 12), Pickup (Task 19), Move (Birmingham), Move (Sheffield), Deliver (Task 0), Move (Leeds), Deliver (Task 19), Move (Liverpool), Pickup (Task 4), Deliver (Task 15), Move (Manchester), Deliver (Task 2), Deliver (Task 13), Pickup (Task 1), Deliver (Task 7), Deliver (Task 12), Move (Birmingham), Move (London), Move (Norwich), Deliver (Task 17), Deliver (Task 1), Deliver (Task 4), Pickup (Task 5), Deliver (Task 18), Move (London), Deliver (Task 5), Deliver (Task 6)], 1867.2, [], 0.0]
-04:01:30.204 CONFIG | Agent 0 : -1889.0
-04:01:30.406 CONFIG | [[Pickup (Task 8), Move (Portsmouth), Pickup (Task 11), Pickup (Task 14), Move (London), Move (Birmingham), Deliver (Task 8), Move (Sheffield), Deliver (Task 11), Move (Leeds), Move (Liverpool), Deliver (Task 14)], 566.8, [], 0.0]
-04:01:30.406 CONFIG | Agent 1 : -568.0
-04:01:30.412 CONFIG | Wrote tournament/tour/auction-baller-myAgent.xml
-04:01:30.434 INFO | LogistPlatform finished successfully!
-04:01:30.436 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/tour/auction-baller-cheapass.xml -a tournament/tour/agents.xml config/auction.xml baller cheapass
-04:01:30.491 CONFIG | Reading config/auction.xml
-04:01:30.623 CONFIG | Reading config/settings_auction.xml
-04:01:30.654 CONFIG | Reading config/topology/england.xml
-04:01:30.672 CONFIG | Reading tournament/tour/agents.xml
-04:01:30.694 CONFIG | Reading config/settings_auction.xml
-04:01:30.704 CONFIG | Reading config/settings_auction.xml
-04:01:32.769 CONFIG | Agent 0: 1095
-04:01:32.770 CONFIG | Agent 1: 2766
-04:01:32.771 CONFIG | Agent 0 has this much profit: -1096.0
-04:01:32.771 CONFIG | 1095.0
-04:01:34.813 CONFIG | Agent 0: 1191
-04:01:34.813 CONFIG | Agent 1: 3279
-04:01:34.814 CONFIG | Agent 0 has this much profit: -2287.0
-04:01:34.814 CONFIG | 2286.0
-04:01:36.856 CONFIG | Agent 0: 0
-04:01:36.856 CONFIG | Agent 1: 2789
-04:01:36.856 CONFIG | Agent 0 has this much profit: -2287.0
-04:01:36.856 CONFIG | 2286.0
-04:01:38.896 CONFIG | Agent 0: 822
-04:01:38.896 CONFIG | Agent 1: 3031
-04:01:38.896 CONFIG | Agent 0 has this much profit: -2213.0
-04:01:38.896 CONFIG | 3108.0
-04:01:40.937 CONFIG | Agent 0: 0
-04:01:40.937 CONFIG | Agent 1: 3626
-04:01:40.937 CONFIG | Agent 0 has this much profit: -2213.0
-04:01:40.937 CONFIG | 3108.0
-04:01:42.978 CONFIG | Agent 0: 221
-04:01:42.978 CONFIG | Agent 1: 575
-04:01:42.978 CONFIG | Agent 0 has this much profit: -2193.0
-04:01:42.978 CONFIG | 3329.0
-04:01:45.018 CONFIG | Agent 0: 0
-04:01:45.018 CONFIG | Agent 1: 2905
-04:01:45.018 CONFIG | Agent 0 has this much profit: -2193.0
-04:01:45.018 CONFIG | 3329.0
-04:01:47.058 CONFIG | Agent 0: 0
-04:01:47.058 CONFIG | Agent 1: 1639
-04:01:47.058 CONFIG | Agent 0 has this much profit: -2193.0
-04:01:47.058 CONFIG | 3329.0
-04:01:50.118 CONFIG | Agent 0: 2692
-04:01:50.118 CONFIG | Agent 1: 1814
-04:01:50.118 CONFIG | Agent 1 has this much profit: 0.0
-04:01:50.118 CONFIG | 1814.0
-04:01:51.139 CONFIG | Agent 0: 935
-04:01:51.139 CONFIG | Agent 1: 1700
-04:01:51.139 CONFIG | Agent 0 has this much profit: -2108.0
-04:01:51.139 CONFIG | 4264.0
-04:01:53.182 CONFIG | Agent 0: 0
-04:01:53.182 CONFIG | Agent 1: 575
-04:01:53.182 CONFIG | Agent 0 has this much profit: -2108.0
-04:01:53.182 CONFIG | 4264.0
-04:01:56.254 CONFIG | Agent 0: 822
-04:01:56.254 CONFIG | Agent 1: 451
-04:01:56.254 CONFIG | Agent 1 has this much profit: 0.0
-04:01:56.254 CONFIG | 2265.0
-04:01:57.274 CONFIG | Agent 0: 0
-04:01:57.274 CONFIG | Agent 1: 1892
-04:01:57.274 CONFIG | Agent 0 has this much profit: -2108.0
-04:01:57.274 CONFIG | 4264.0
-04:01:59.314 CONFIG | Agent 0: 1083
-04:01:59.314 CONFIG | Agent 1: 1727
-04:01:59.314 CONFIG | Agent 0 has this much profit: -2010.0
-04:01:59.315 CONFIG | 5347.0
-04:02:02.375 CONFIG | Agent 0: 822
-04:02:02.375 CONFIG | Agent 1: 569
-04:02:02.375 CONFIG | Agent 1 has this much profit: 0.0
-04:02:02.375 CONFIG | 2834.0
-04:02:03.395 CONFIG | Agent 0: 0
-04:02:03.395 CONFIG | Agent 1: 0
-04:02:03.395 CONFIG | Agent 0 has this much profit: -2010.0
-04:02:03.395 CONFIG | 5347.0
-04:02:05.435 CONFIG | Agent 0: 0
-04:02:05.435 CONFIG | Agent 1: 0
-04:02:05.435 CONFIG | Agent 0 has this much profit: -2010.0
-04:02:05.435 CONFIG | 5347.0
-04:02:07.475 CONFIG | Agent 0: 822
-04:02:07.475 CONFIG | Agent 1: 1150
-04:02:07.475 CONFIG | Agent 0 has this much profit: -1936.0
-04:02:07.475 CONFIG | 6169.0
-04:02:09.515 CONFIG | Agent 0: 523
-04:02:09.515 CONFIG | Agent 1: 1150
-04:02:09.515 CONFIG | Agent 0 has this much profit: -1889.0
-04:02:09.515 CONFIG | 6692.0
-04:02:11.556 CONFIG | Agent 0: 0
-04:02:11.556 CONFIG | Agent 1: 1150
-04:02:11.556 CONFIG | Agent 0 has this much profit: -1889.0
-04:02:11.556 CONFIG | 6692.0
-04:02:11.758 CONFIG | [[Pickup (Task 13), Move (Leeds), Move (Sheffield), Move (Birmingham), Move (London), Move (Portsmouth), Pickup (Task 9), Move (Plymouth), Deliver (Task 9), Pickup (Task 18), Move (Portsmouth), Move (London), Pickup (Task 7), Pickup (Task 16), Move (Birmingham), Pickup (Task 10), Move (Cardiff), Pickup (Task 6), Pickup (Task 19), Deliver (Task 10), Pickup (Task 2), Pickup (Task 0), Pickup (Task 12), Move (Birmingham), Move (Sheffield), Pickup (Task 15), Move (Leeds), Deliver (Task 19), Move (Sheffield), Pickup (Task 3), Deliver (Task 0), Move (Leeds), Move (Liverpool), Deliver (Task 15), Pickup (Task 4), Move (Manchester), Deliver (Task 13), Deliver (Task 7), Deliver (Task 2), Pickup (Task 1), Deliver (Task 12), Move (Birmingham), Deliver (Task 16), Move (London), Move (Portsmouth), Deliver (Task 3), Pickup (Task 17), Move (London), Move (Norwich), Deliver (Task 4), Pickup (Task 5), Deliver (Task 18), Deliver (Task 1), Deliver (Task 17), Move (London), Deliver (Task 5), Deliver (Task 6)], 2099.4, [], 0.0]
-04:02:11.758 CONFIG | Agent 0 : -1889.0
-04:02:11.960 CONFIG | [[Pickup (Task 8), Move (Portsmouth), Pickup (Task 11), Pickup (Task 14), Move (London), Move (Birmingham), Deliver (Task 8), Move (Sheffield), Deliver (Task 11), Move (Leeds), Move (Liverpool), Deliver (Task 14)], 566.8, [], 0.0]
-04:02:11.960 CONFIG | Agent 1 : 0.0
-04:02:11.966 CONFIG | Wrote tournament/tour/auction-baller-cheapass.xml
-04:02:11.989 INFO | LogistPlatform finished successfully!
-04:02:11.990 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/tour/auction-cheapass-random.xml -a tournament/tour/agents.xml config/auction.xml cheapass random
-04:02:12.051 CONFIG | Reading config/auction.xml
-04:02:12.183 CONFIG | Reading config/settings_auction.xml
-04:02:12.218 CONFIG | Reading config/topology/england.xml
-04:02:12.238 CONFIG | Reading tournament/tour/agents.xml
-04:02:12.263 CONFIG | Reading config/settings_auction.xml
-04:02:12.271 CONFIG | Reading config/settings_auction.xml
-04:02:15.360 CONFIG | Agent 0: 2191
-04:02:15.360 CONFIG | Agent 1: 1248
-04:02:15.363 CONFIG | Agent 1 has this much profit: -1518.0
-04:02:15.363 CONFIG | 1248.0
-04:02:17.402 CONFIG | Agent 0: 2668
-04:02:17.402 CONFIG | Agent 1: 869
-04:02:17.402 CONFIG | Agent 1 has this much profit: -3031.0
-04:02:17.402 CONFIG | 2117.0
-04:02:19.442 CONFIG | Agent 0: 2214
-04:02:19.442 CONFIG | Agent 1: 1985
-04:02:19.442 CONFIG | Agent 1 has this much profit: -1046.0
-04:02:19.442 CONFIG | 4102.0
-04:02:21.482 CONFIG | Agent 0: 2114
-04:02:21.482 CONFIG | Agent 1: 1082
-04:02:21.484 CONFIG | Agent 1 has this much profit: -712.0
-04:02:21.484 CONFIG | 5184.0
-04:02:23.522 CONFIG | Agent 0: 2668
-04:02:23.522 CONFIG | Agent 1: 157
-04:02:23.522 CONFIG | Agent 1 has this much profit: -555.0
-04:02:23.522 CONFIG | 5341.0
-04:02:24.542 CONFIG | Agent 0: 1150
-04:02:24.542 CONFIG | Agent 1: 2395
-04:02:24.542 CONFIG | Agent 0 has this much profit: 0.0
-04:02:24.542 CONFIG | 1150.0
-04:02:27.602 CONFIG | Agent 0: 2330
-04:02:27.602 CONFIG | Agent 1: 2134
-04:02:27.602 CONFIG | Agent 1 has this much profit: 1579.0
-04:02:27.602 CONFIG | 7475.0
-04:02:28.622 CONFIG | Agent 0: 1064
-04:02:28.622 CONFIG | Agent 1: 1116
-04:02:28.622 CONFIG | Agent 0 has this much profit: -0.5
-04:02:28.622 CONFIG | 2214.0
-04:02:30.662 CONFIG | Agent 0: 2448
-04:02:30.662 CONFIG | Agent 1: 3261
-04:02:30.662 CONFIG | Agent 0 has this much profit: -0.5
-04:02:30.662 CONFIG | 4662.0
-04:02:32.702 CONFIG | Agent 0: 0
-04:02:32.704 CONFIG | Agent 1: 861
-04:02:32.704 CONFIG | Agent 0 has this much profit: -0.5
-04:02:32.704 CONFIG | 4662.0
-04:02:34.742 CONFIG | Agent 0: 1049
-04:02:34.742 CONFIG | Agent 1: 3232
-04:02:34.742 CONFIG | Agent 0 has this much profit: -1.0
-04:02:34.742 CONFIG | 5711.0
-04:02:36.782 CONFIG | Agent 0: 719
-04:02:36.782 CONFIG | Agent 1: 2533
-04:02:36.782 CONFIG | Agent 0 has this much profit: -1.0
-04:02:36.782 CONFIG | 6430.0
-04:02:38.822 CONFIG | Agent 0: 100
-04:02:38.822 CONFIG | Agent 1: 1096
-04:02:38.822 CONFIG | Agent 0 has this much profit: -1.5
-04:02:38.822 CONFIG | 6530.0
-04:02:40.862 CONFIG | Agent 0: 985
-04:02:40.862 CONFIG | Agent 1: 1662
-04:02:40.862 CONFIG | Agent 0 has this much profit: -1.5
-04:02:40.862 CONFIG | 7515.0
-04:02:42.902 CONFIG | Agent 0: 0
-04:02:42.902 CONFIG | Agent 1: 2826
-04:02:42.902 CONFIG | Agent 0 has this much profit: -1.5
-04:02:42.902 CONFIG | 7515.0
-04:02:44.942 CONFIG | Agent 0: 0
-04:02:44.942 CONFIG | Agent 1: 3566
-04:02:44.942 CONFIG | Agent 0 has this much profit: -1.5
-04:02:44.942 CONFIG | 7515.0
-04:02:46.982 CONFIG | Agent 0: 0
-04:02:46.982 CONFIG | Agent 1: 2026
-04:02:46.982 CONFIG | Agent 0 has this much profit: -1.5
-04:02:46.982 CONFIG | 7515.0
-04:02:49.022 CONFIG | Agent 0: 748
-04:02:49.022 CONFIG | Agent 1: 1114
-04:02:49.022 CONFIG | Agent 0 has this much profit: -1.5
-04:02:49.022 CONFIG | 8263.0
-04:02:51.062 CONFIG | Agent 0: -748
-04:02:51.062 CONFIG | Agent 1: 1887
-04:02:51.062 CONFIG | Agent 0 has this much profit: -1.5
-04:02:51.062 CONFIG | 7515.0
-04:02:53.102 CONFIG | Agent 0: 0
-04:02:53.102 CONFIG | Agent 1: 2860
-04:02:53.102 CONFIG | Agent 0 has this much profit: -1.5
-04:02:53.102 CONFIG | 7515.0
-04:02:53.304 CONFIG | [[Pickup (Task 13), Move (Leeds), Move (Sheffield), Move (Birmingham), Pickup (Task 10), Move (Cardiff), Pickup (Task 12), Pickup (Task 19), Deliver (Task 10), Move (Birmingham), Move (London), Move (Portsmouth), Pickup (Task 14), Pickup (Task 11), Move (London), Pickup (Task 7), Move (Birmingham), Move (Sheffield), Pickup (Task 15), Deliver (Task 11), Move (Leeds), Deliver (Task 19), Move (Liverpool), Deliver (Task 15), Deliver (Task 14), Move (Manchester), Deliver (Task 13), Deliver (Task 12), Deliver (Task 7), Move (Birmingham), Move (London), Move (Portsmouth), Pickup (Task 9), Move (Plymouth), Pickup (Task 18), Pickup (Task 8), Deliver (Task 9), Move (Portsmouth), Pickup (Task 17), Move (London), Move (Norwich), Deliver (Task 18), Pickup (Task 5), Deliver (Task 17), Move (London), Deliver (Task 5), Pickup (Task 16), Move (Birmingham), Deliver (Task 8), Deliver (Task 16)], 2134.8, [], 0.0]
-04:02:53.304 CONFIG | Agent 0 : -1.5
-04:02:53.506 CONFIG | [[Move (Portsmouth), Move (London), Move (Birmingham), Move (Cardiff), Pickup (Task 6), Pickup (Task 2), Pickup (Task 0), Move (Birmingham), Move (Sheffield), Pickup (Task 3), Deliver (Task 0), Move (Leeds), Move (Liverpool), Pickup (Task 4), Move (Manchester), Deliver (Task 2), Pickup (Task 1), Move (Birmingham), Move (London), Deliver (Task 6), Move (Portsmouth), Deliver (Task 3), Move (London), Move (Norwich), Deliver (Task 1), Deliver (Task 4)], 1309.0, [], 0.0]
-04:02:53.506 CONFIG | Agent 1 : 1579.0
-04:02:53.514 CONFIG | Wrote tournament/tour/auction-cheapass-random.xml
-04:02:53.544 INFO | LogistPlatform finished successfully!
-04:02:53.545 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/tour/auction-cheapass-myAgent.xml -a tournament/tour/agents.xml config/auction.xml cheapass myAgent
-04:02:53.599 CONFIG | Reading config/auction.xml
-04:02:53.708 CONFIG | Reading config/settings_auction.xml
-04:02:53.732 CONFIG | Reading config/topology/england.xml
-04:02:53.747 CONFIG | Reading tournament/tour/agents.xml
-04:02:53.766 CONFIG | Reading config/settings_auction.xml
-04:02:53.776 CONFIG | Reading config/settings_auction.xml
-04:02:56.861 CONFIG | Agent 0: 2191
-04:02:56.861 CONFIG | Agent 1: 1383
-04:02:56.863 CONFIG | Agent 1 has this much profit: -1383.0
-04:02:56.863 CONFIG | 1383.0
-04:02:58.904 CONFIG | Agent 0: 2668
-04:02:58.904 CONFIG | Agent 1: 1191
-04:02:58.906 CONFIG | Agent 1 has this much profit: -2574.0
-04:02:58.906 CONFIG | 2574.0
-04:03:00.944 CONFIG | Agent 0: 2214
-04:03:00.944 CONFIG | Agent 1: 0
-04:03:00.944 CONFIG | Agent 1 has this much profit: -2574.0
-04:03:00.944 CONFIG | 2574.0
-04:03:01.964 CONFIG | Agent 0: 2114
-04:03:01.964 CONFIG | Agent 1: 2190
-04:03:01.964 CONFIG | Agent 0 has this much profit: 0.0
-04:03:01.964 CONFIG | 2114.0
-04:03:04.004 CONFIG | Agent 0: 1674
-04:03:04.004 CONFIG | Agent 1: 2113
-04:03:04.006 CONFIG | Agent 0 has this much profit: 0.0
-04:03:04.006 CONFIG | 3788.0
-04:03:06.044 CONFIG | Agent 0: 201
-04:03:06.044 CONFIG | Agent 1: 1673
-04:03:06.044 CONFIG | Agent 0 has this much profit: 0.0
-04:03:06.044 CONFIG | 3989.0
-04:03:09.104 CONFIG | Agent 0: 1150
-04:03:09.104 CONFIG | Agent 1: 200
-04:03:09.106 CONFIG | Agent 1 has this much profit: -2374.0
-04:03:09.106 CONFIG | 2774.0
-04:03:11.144 CONFIG | Agent 0: 383
-04:03:11.144 CONFIG | Agent 1: 200
-04:03:11.144 CONFIG | Agent 1 has this much profit: -2174.0
-04:03:11.144 CONFIG | 2974.0
-04:03:13.184 CONFIG | Agent 0: 2664
-04:03:13.184 CONFIG | Agent 1: 519
-04:03:13.184 CONFIG | Agent 1 has this much profit: -2304.0
-04:03:13.184 CONFIG | 3493.0
-04:03:14.204 CONFIG | Agent 0: 850
-04:03:14.204 CONFIG | Agent 1: 1360
-04:03:14.204 CONFIG | Agent 0 has this much profit: 0.0
-04:03:14.204 CONFIG | 4839.0
-04:03:17.264 CONFIG | Agent 0: 1150
-04:03:17.265 CONFIG | Agent 1: 200
-04:03:17.265 CONFIG | Agent 1 has this much profit: -2104.0
-04:03:17.265 CONFIG | 3693.0
-04:03:19.305 CONFIG | Agent 0: 1131
-04:03:19.305 CONFIG | Agent 1: 200
-04:03:19.305 CONFIG | Agent 1 has this much profit: -1904.0
-04:03:19.305 CONFIG | 3893.0
-04:03:21.345 CONFIG | Agent 0: 1533
-04:03:21.345 CONFIG | Agent 1: 200
-04:03:21.346 CONFIG | Agent 1 has this much profit: -1704.0
-04:03:21.346 CONFIG | 4093.0
-04:03:22.366 CONFIG | Agent 0: 41
-04:03:22.366 CONFIG | Agent 1: 788
-04:03:22.366 CONFIG | Agent 0 has this much profit: 0.0
-04:03:22.366 CONFIG | 4880.0
-04:03:25.426 CONFIG | Agent 0: 1945
-04:03:25.426 CONFIG | Agent 1: 40
-04:03:25.426 CONFIG | Agent 1 has this much profit: -1664.0
-04:03:25.426 CONFIG | 4133.0
-04:03:26.446 CONFIG | Agent 0: 0
-04:03:26.446 CONFIG | Agent 1: 40
-04:03:26.446 CONFIG | Agent 0 has this much profit: 0.0
-04:03:26.446 CONFIG | 4880.0
-04:03:29.506 CONFIG | Agent 0: 590
-04:03:29.506 CONFIG | Agent 1: 0
-04:03:29.507 CONFIG | Agent 1 has this much profit: -1664.0
-04:03:29.508 CONFIG | 4133.0
-04:03:31.546 CONFIG | Agent 0: 748
-04:03:31.546 CONFIG | Agent 1: 0
-04:03:31.546 CONFIG | Agent 1 has this much profit: -1664.0
-04:03:31.546 CONFIG | 4133.0
-04:03:33.586 CONFIG | Agent 0: 1224
-04:03:33.586 CONFIG | Agent 1: 0
-04:03:33.586 CONFIG | Agent 1 has this much profit: -1664.0
-04:03:33.586 CONFIG | 4133.0
-04:03:34.808 CONFIG | [[Pickup (Task 13), Move (Leeds), Move (Sheffield), Pickup (Task 3), Pickup (Task 15), Move (Leeds), Move (Liverpool), Pickup (Task 4), Deliver (Task 15), Move (Manchester), Deliver (Task 13), Move (Birmingham), Move (London), Move (Norwich), Pickup (Task 5), Deliver (Task 4), Move (London), Deliver (Task 5), Move (Portsmouth), Pickup (Task 9), Deliver (Task 3), Move (Plymouth), Deliver (Task 9)], 976.0, [], 0.0]
-04:03:34.808 CONFIG | Agent 0 : 0.0
-04:03:34.809 CONFIG | Agent 0: 2052
-04:03:34.810 CONFIG | Agent 1: 759
-04:03:34.810 CONFIG | Agent 1 has this much profit: -1854.0
-04:03:34.810 CONFIG | 4892.0
-04:03:35.010 CONFIG | [[Pickup (Task 8), Pickup (Task 18), Move (Portsmouth), Pickup (Task 14), Pickup (Task 11), Pickup (Task 17), Move (London), Pickup (Task 7), Move (Birmingham), Move (Cardiff), Pickup (Task 12), Pickup (Task 6), Pickup (Task 2), Move (Birmingham), Move (Manchester), Move (Liverpool), Deliver (Task 14), Move (Manchester), Pickup (Task 1), Deliver (Task 12), Deliver (Task 2), Deliver (Task 7), Move (Birmingham), Move (London), Move (Norwich), Deliver (Task 1), Deliver (Task 18), Deliver (Task 17), Move (London), Deliver (Task 6), Pickup (Task 16), Move (Birmingham), Pickup (Task 10), Move (Cardiff), Deliver (Task 10), Pickup (Task 0), Pickup (Task 19), Move (Birmingham), Deliver (Task 8), Deliver (Task 16), Move (Sheffield), Deliver (Task 0), Deliver (Task 11), Move (Leeds), Deliver (Task 19)], 1679.5, [], 0.0]
-04:03:35.010 CONFIG | Agent 1 : -1854.0
-04:03:35.016 CONFIG | Wrote tournament/tour/auction-cheapass-myAgent.xml
-04:03:35.026 INFO | LogistPlatform finished successfully!
-04:03:35.026 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/tour/auction-cheapass-baller.xml -a tournament/tour/agents.xml config/auction.xml cheapass baller
-04:03:35.098 CONFIG | Reading config/auction.xml
-04:03:35.204 CONFIG | Reading config/settings_auction.xml
-04:03:35.228 CONFIG | Reading config/topology/england.xml
-04:03:35.242 CONFIG | Reading tournament/tour/agents.xml
-04:03:35.261 CONFIG | Reading config/settings_auction.xml
-04:03:35.272 CONFIG | Reading config/settings_auction.xml
-04:03:38.360 CONFIG | Agent 0: 2191
-04:03:38.360 CONFIG | Agent 1: 1383
-04:03:38.362 CONFIG | Agent 1 has this much profit: -1383.0
-04:03:38.362 CONFIG | 1383.0
-04:03:40.401 CONFIG | Agent 0: 2668
-04:03:40.401 CONFIG | Agent 1: 1191
-04:03:40.401 CONFIG | Agent 1 has this much profit: -2574.0
-04:03:40.401 CONFIG | 2574.0
-04:03:42.441 CONFIG | Agent 0: 2214
-04:03:42.441 CONFIG | Agent 1: 0
-04:03:42.441 CONFIG | Agent 1 has this much profit: -2574.0
-04:03:42.441 CONFIG | 2574.0
-04:03:44.481 CONFIG | Agent 0: 2114
-04:03:44.481 CONFIG | Agent 1: 822
-04:03:44.481 CONFIG | Agent 1 has this much profit: -2500.0
-04:03:44.481 CONFIG | 3396.0
-04:03:46.521 CONFIG | Agent 0: 2668
-04:03:46.521 CONFIG | Agent 1: 0
-04:03:46.521 CONFIG | Agent 1 has this much profit: -2500.0
-04:03:46.521 CONFIG | 3396.0
-04:03:48.561 CONFIG | Agent 0: 1150
-04:03:48.561 CONFIG | Agent 1: 0
-04:03:48.561 CONFIG | Agent 1 has this much profit: -2500.0
-04:03:48.561 CONFIG | 3396.0
-04:03:50.601 CONFIG | Agent 0: 2330
-04:03:50.601 CONFIG | Agent 1: 0
-04:03:50.601 CONFIG | Agent 1 has this much profit: -2500.0
-04:03:50.601 CONFIG | 3396.0
-04:03:52.641 CONFIG | Agent 0: 1064
-04:03:52.641 CONFIG | Agent 1: 0
-04:03:52.641 CONFIG | Agent 1 has this much profit: -2500.0
-04:03:52.641 CONFIG | 3396.0
-04:03:54.681 CONFIG | Agent 0: 3038
-04:03:54.681 CONFIG | Agent 1: 1995
-04:03:54.681 CONFIG | Agent 1 has this much profit: -2319.0
-04:03:54.681 CONFIG | 5391.0
-04:03:56.721 CONFIG | Agent 0: 1224
-04:03:56.721 CONFIG | Agent 1: 1156
-04:03:56.721 CONFIG | Agent 1 has this much profit: -2214.0
-04:03:56.721 CONFIG | 6547.0
-04:03:58.761 CONFIG | Agent 0: 1165
-04:03:58.761 CONFIG | Agent 1: -458
-04:03:58.761 CONFIG | Agent 1 has this much profit: -2255.0
-04:03:58.761 CONFIG | 6089.0
-04:04:00.801 CONFIG | Agent 0: 1789
-04:04:00.801 CONFIG | Agent 1: 0
-04:04:00.801 CONFIG | Agent 1 has this much profit: -2255.0
-04:04:00.801 CONFIG | 6089.0
-04:04:02.841 CONFIG | Agent 0: 2214
-04:04:02.841 CONFIG | Agent 1: 0
-04:04:02.841 CONFIG | Agent 1 has this much profit: -2255.0
-04:04:02.841 CONFIG | 6089.0
-04:04:03.861 CONFIG | Agent 0: 1028
-04:04:03.861 CONFIG | Agent 1: 1083
-04:04:03.861 CONFIG | Agent 0 has this much profit: -0.5
-04:04:03.861 CONFIG | 1028.0
-04:04:06.921 CONFIG | Agent 0: 1986
-04:04:06.921 CONFIG | Agent 1: 0
-04:04:06.921 CONFIG | Agent 1 has this much profit: -2255.0
-04:04:06.921 CONFIG | 6089.0
-04:04:08.961 CONFIG | Agent 0: 413
-04:04:08.961 CONFIG | Agent 1: 221
-04:04:08.961 CONFIG | Agent 1 has this much profit: -2235.0
-04:04:08.961 CONFIG | 6310.0
-04:04:11.001 CONFIG | Agent 0: 590
-04:04:11.001 CONFIG | Agent 1: 0
-04:04:11.001 CONFIG | Agent 1 has this much profit: -2235.0
-04:04:11.001 CONFIG | 6310.0
-04:04:13.041 CONFIG | Agent 0: 1323
-04:04:13.041 CONFIG | Agent 1: -221
-04:04:13.041 CONFIG | Agent 1 has this much profit: -2255.0
-04:04:13.041 CONFIG | 6089.0
-04:04:15.081 CONFIG | Agent 0: 3023
-04:04:15.081 CONFIG | Agent 1: 1265
-04:04:15.081 CONFIG | Agent 1 has this much profit: -2140.0
-04:04:15.081 CONFIG | 7354.0
-04:04:16.303 CONFIG | [[Pickup (Task 13), Move (Leeds), Move (Liverpool), Move (Manchester), Deliver (Task 13)], 205.7, [], 0.0]
-04:04:16.303 CONFIG | Agent 0 : -0.5
-04:04:16.305 CONFIG | Agent 0: 2282
-04:04:16.305 CONFIG | Agent 1: 1070
-04:04:16.305 CONFIG | Agent 1 has this much profit: -2043.0
-04:04:16.305 CONFIG | 8424.0
-04:04:16.505 CONFIG | [[Move (Portsmouth), Pickup (Task 17), Pickup (Task 11), Move (London), Move (Birmingham), Move (Sheffield), Pickup (Task 15), Pickup (Task 3), Deliver (Task 11), Move (Birmingham), Move (London), Move (Portsmouth), Pickup (Task 9), Move (Plymouth), Pickup (Task 18), Pickup (Task 8), Deliver (Task 9), Move (Portsmouth), Pickup (Task 14), Deliver (Task 3), Move (London), Pickup (Task 7), Move (Birmingham), Pickup (Task 10), Move (Cardiff), Deliver (Task 10), Pickup (Task 12), Pickup (Task 2), Pickup (Task 6), Move (Birmingham), Move (Manchester), Move (Liverpool), Pickup (Task 4), Deliver (Task 15), Deliver (Task 14), Move (Manchester), Pickup (Task 1), Deliver (Task 12), Deliver (Task 2), Deliver (Task 7), Move (Birmingham), Move (London), Move (Norwich), Deliver (Task 4), Deliver (Task 17), Deliver (Task 18), Pickup (Task 5), Deliver (Task 1), Move (London), Deliver (Task 5), Deliver (Task 6), Pickup (Task 16), Move (Birmingham), Move (Cardiff), Pickup (Task 0), Pickup (Task 19), Move (Birmingham), Deliver (Task 8), Deliver (Task 16), Move (Sheffield), Deliver (Task 0), Move (Leeds), Deliver (Task 19)], 2585.5, [], 0.0]
-04:04:16.506 CONFIG | Agent 1 : -2043.0
-04:04:16.512 CONFIG | Wrote tournament/tour/auction-cheapass-baller.xml
-04:04:16.522 INFO | LogistPlatform finished successfully!
+07:43:37.322 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/tour/auction-myAgent-newAgent3.xml -a tournament/tour/agents.xml config/auction.xml myAgent newAgent3
+07:43:37.418 CONFIG | Reading config/auction.xml
+07:43:37.552 CONFIG | Reading config/settings_auction.xml
+07:43:37.581 CONFIG | Reading config/topology/england.xml
+07:43:37.597 CONFIG | Reading tournament/tour/agents.xml
+07:43:37.618 CONFIG | Reading config/settings_auction.xml
+07:43:37.625 CONFIG | Reading config/settings_auction.xml
+07:43:39.696 CONFIG | Vehicle1, origin: Norwich, capacity: 30, costPerKm: 5, tasks: 6
+07:43:39.696 CONFIG | - Pickup Task 1 at Norwich, to be delivred to London 
+07:43:39.696 CONFIG | - Pickup Task 0 at Norwich, to be delivred to Manchester 
+07:43:39.696 CONFIG | - Deliver Task 1 to London 
+07:43:39.697 CONFIG | - Pickup Task 2 at Leeds, to be delivred to Liverpool 
+07:43:39.697 CONFIG | - Deliver Task 2 to Liverpool 
+07:43:39.697 CONFIG | - Deliver Task 0 to Manchester 
+07:43:39.697 CONFIG | Vehicle0, origin: Plymouth, capacity: 30, costPerKm: 5, tasks: 0
+07:43:39.697 CONFIG | 
+07:43:39.697 CONFIG | Vehicle1, origin: Norwich, capacity: 30, costPerKm: 5, tasks: 8
+07:43:39.697 CONFIG | - Pickup Task 1 at Norwich, to be delivred to London 
+07:43:39.697 CONFIG | - Pickup Task 0 at Norwich, to be delivred to Manchester 
+07:43:39.698 CONFIG | - Deliver Task 1 to London 
+07:43:39.698 CONFIG | - Pickup Task 3 at Cardiff, to be delivred to Sheffield 
+07:43:39.698 CONFIG | - Deliver Task 3 to Sheffield 
+07:43:39.698 CONFIG | - Pickup Task 2 at Leeds, to be delivred to Liverpool 
+07:43:39.698 CONFIG | - Deliver Task 2 to Liverpool 
+07:43:39.698 CONFIG | - Deliver Task 0 to Manchester 
+07:43:39.698 CONFIG | Vehicle0, origin: Plymouth, capacity: 30, costPerKm: 5, tasks: 0
+07:43:39.698 CONFIG | 
+07:43:39.698 CONFIG | 1
+07:43:39.698 CONFIG | Agent 0: 1095
+07:43:39.698 CONFIG | Agent 1: 1150
+07:43:39.699 CONFIG | Agent 0 has this much profit: -1096.0
+07:43:39.699 CONFIG | 1095.0
+07:43:41.230 CONFIG | Vehicle1, origin: Norwich, capacity: 30, costPerKm: 5, tasks: 6
+07:43:41.230 CONFIG | - Pickup Task 1 at Norwich, to be delivred to London 
+07:43:41.230 CONFIG | - Pickup Task 0 at Norwich, to be delivred to Manchester 
+07:43:41.230 CONFIG | - Deliver Task 1 to London 
+07:43:41.231 CONFIG | - Pickup Task 2 at Leeds, to be delivred to Liverpool 
+07:43:41.231 CONFIG | - Deliver Task 2 to Liverpool 
+07:43:41.231 CONFIG | - Deliver Task 0 to Manchester 
+07:43:41.231 CONFIG | Vehicle0, origin: Plymouth, capacity: 30, costPerKm: 5, tasks: 0
+07:43:41.231 CONFIG | 
+07:43:41.231 CONFIG | Vehicle1, origin: Norwich, capacity: 30, costPerKm: 5, tasks: 8
+07:43:41.231 CONFIG | - Pickup Task 1 at Norwich, to be delivred to London 
+07:43:41.231 CONFIG | - Pickup Task 0 at Norwich, to be delivred to Manchester 
+07:43:41.231 CONFIG | - Pickup Task 2 at Leeds, to be delivred to Liverpool 
+07:43:41.232 CONFIG | - Deliver Task 2 to Liverpool 
+07:43:41.232 CONFIG | - Pickup Task 3 at Manchester, to be delivred to Norwich 
+07:43:41.232 CONFIG | - Deliver Task 0 to Manchester 
+07:43:41.232 CONFIG | - Deliver Task 1 to London 
+07:43:41.232 CONFIG | - Deliver Task 3 to Norwich 
+07:43:41.232 CONFIG | Vehicle0, origin: Plymouth, capacity: 30, costPerKm: 5, tasks: 0
+07:43:41.232 CONFIG | 
+07:43:41.232 CONFIG | 2
+07:43:41.234 CONFIG | Agent 0: 1191
+07:43:41.234 CONFIG | Agent 1: 1639
+07:43:41.234 CONFIG | Agent 0 has this much profit: -2287.0
+07:43:41.235 CONFIG | 2286.0
+07:43:42.766 CONFIG | Vehicle1, origin: Norwich, capacity: 30, costPerKm: 5, tasks: 6
+07:43:42.766 CONFIG | - Pickup Task 1 at Norwich, to be delivred to London 
+07:43:42.766 CONFIG | - Pickup Task 0 at Norwich, to be delivred to Manchester 
+07:43:42.766 CONFIG | - Deliver Task 1 to London 
+07:43:42.767 CONFIG | - Pickup Task 2 at Leeds, to be delivred to Liverpool 
+07:43:42.767 CONFIG | - Deliver Task 2 to Liverpool 
+07:43:42.767 CONFIG | - Deliver Task 0 to Manchester 
+07:43:42.767 CONFIG | Vehicle0, origin: Plymouth, capacity: 30, costPerKm: 5, tasks: 0
+07:43:42.767 CONFIG | 
+07:43:42.767 CONFIG | Vehicle1, origin: Norwich, capacity: 30, costPerKm: 5, tasks: 8
+07:43:42.767 CONFIG | - Pickup Task 1 at Norwich, to be delivred to London 
+07:43:42.767 CONFIG | - Pickup Task 0 at Norwich, to be delivred to Manchester 
+07:43:42.767 CONFIG | - Deliver Task 1 to London 
+07:43:42.767 CONFIG | - Pickup Task 3 at Cardiff, to be delivred to Manchester 
+07:43:42.768 CONFIG | - Pickup Task 2 at Leeds, to be delivred to Liverpool 
+07:43:42.768 CONFIG | - Deliver Task 2 to Liverpool 
+07:43:42.768 CONFIG | - Deliver Task 0 to Manchester 
+07:43:42.768 CONFIG | - Deliver Task 3 to Manchester 
+07:43:42.768 CONFIG | Vehicle0, origin: Plymouth, capacity: 30, costPerKm: 5, tasks: 0
+07:43:42.768 CONFIG | 
+07:43:42.768 CONFIG | 3
+07:43:42.768 CONFIG | Agent 0: 0
+07:43:42.768 CONFIG | Agent 1: 1150
+07:43:42.768 CONFIG | Agent 0 has this much profit: -2287.0
+07:43:42.768 CONFIG | 2286.0
+07:43:44.297 CONFIG | Vehicle1, origin: Norwich, capacity: 30, costPerKm: 5, tasks: 6
+07:43:44.297 CONFIG | - Pickup Task 1 at Norwich, to be delivred to London 
+07:43:44.297 CONFIG | - Pickup Task 0 at Norwich, to be delivred to Manchester 
+07:43:44.298 CONFIG | - Deliver Task 1 to London 
+07:43:44.298 CONFIG | - Pickup Task 2 at Leeds, to be delivred to Liverpool 
+07:43:44.298 CONFIG | - Deliver Task 2 to Liverpool 
+07:43:44.298 CONFIG | - Deliver Task 0 to Manchester 
+07:43:44.298 CONFIG | Vehicle0, origin: Plymouth, capacity: 30, costPerKm: 5, tasks: 0
+07:43:44.298 CONFIG | 
+07:43:44.298 CONFIG | Vehicle1, origin: Norwich, capacity: 30, costPerKm: 5, tasks: 8
+07:43:44.298 CONFIG | - Pickup Task 0 at Norwich, to be delivred to Manchester 
+07:43:44.298 CONFIG | - Pickup Task 1 at Norwich, to be delivred to London 
+07:43:44.299 CONFIG | - Pickup Task 3 at Sheffield, to be delivred to Portsmouth 
+07:43:44.299 CONFIG | - Pickup Task 2 at Leeds, to be delivred to Liverpool 
+07:43:44.299 CONFIG | - Deliver Task 2 to Liverpool 
+07:43:44.299 CONFIG | - Deliver Task 0 to Manchester 
+07:43:44.299 CONFIG | - Deliver Task 1 to London 
+07:43:44.299 CONFIG | - Deliver Task 3 to Portsmouth 
+07:43:44.299 CONFIG | Vehicle0, origin: Plymouth, capacity: 30, costPerKm: 5, tasks: 0
+07:43:44.299 CONFIG | 
+07:43:44.299 CONFIG | 4
+07:43:44.299 CONFIG | Agent 0: 1149
+07:43:44.299 CONFIG | Agent 1: 1438
+07:43:44.299 CONFIG | Agent 0 has this much profit: -1886.0
+07:43:44.299 CONFIG | 3435.0
+07:43:45.828 CONFIG | Vehicle1, origin: Norwich, capacity: 30, costPerKm: 5, tasks: 6
+07:43:45.828 CONFIG | - Pickup Task 1 at Norwich, to be delivred to London 
+07:43:45.828 CONFIG | - Pickup Task 0 at Norwich, to be delivred to Manchester 
+07:43:45.828 CONFIG | - Deliver Task 1 to London 
+07:43:45.829 CONFIG | - Pickup Task 2 at Leeds, to be delivred to Liverpool 
+07:43:45.829 CONFIG | - Deliver Task 2 to Liverpool 
+07:43:45.829 CONFIG | - Deliver Task 0 to Manchester 
+07:43:45.829 CONFIG | Vehicle0, origin: Plymouth, capacity: 30, costPerKm: 5, tasks: 0
+07:43:45.829 CONFIG | 
+07:43:45.829 CONFIG | Vehicle1, origin: Norwich, capacity: 30, costPerKm: 5, tasks: 8
+07:43:45.829 CONFIG | - Pickup Task 0 at Norwich, to be delivred to Manchester 
+07:43:45.829 CONFIG | - Pickup Task 1 at Norwich, to be delivred to London 
+07:43:45.830 CONFIG | - Pickup Task 2 at Leeds, to be delivred to Liverpool 
+07:43:45.830 CONFIG | - Pickup Task 3 at Liverpool, to be delivred to Norwich 
+07:43:45.830 CONFIG | - Deliver Task 2 to Liverpool 
+07:43:45.830 CONFIG | - Deliver Task 0 to Manchester 
+07:43:45.830 CONFIG | - Deliver Task 1 to London 
+07:43:45.830 CONFIG | - Deliver Task 3 to Norwich 
+07:43:45.830 CONFIG | Vehicle0, origin: Plymouth, capacity: 30, costPerKm: 5, tasks: 0
+07:43:45.830 CONFIG | 
+07:43:45.830 CONFIG | 5
+07:43:45.830 CONFIG | Agent 0: 1149
+07:43:45.830 CONFIG | Agent 1: 1639
+07:43:45.831 CONFIG | Agent 0 has this much profit: -737.0
+07:43:45.831 CONFIG | 4584.0
+07:43:47.359 CONFIG | Vehicle1, origin: Norwich, capacity: 30, costPerKm: 5, tasks: 6
+07:43:47.359 CONFIG | - Pickup Task 1 at Norwich, to be delivred to London 
+07:43:47.359 CONFIG | - Pickup Task 0 at Norwich, to be delivred to Manchester 
+07:43:47.359 CONFIG | - Deliver Task 1 to London 
+07:43:47.359 CONFIG | - Pickup Task 2 at Leeds, to be delivred to Liverpool 
+07:43:47.360 CONFIG | - Deliver Task 2 to Liverpool 
+07:43:47.360 CONFIG | - Deliver Task 0 to Manchester 
+07:43:47.360 CONFIG | Vehicle0, origin: Plymouth, capacity: 30, costPerKm: 5, tasks: 0
+07:43:47.360 CONFIG | 
+07:43:47.360 CONFIG | Vehicle1, origin: Norwich, capacity: 30, costPerKm: 5, tasks: 8
+07:43:47.360 CONFIG | - Pickup Task 3 at Norwich, to be delivred to London 
+07:43:47.360 CONFIG | - Pickup Task 0 at Norwich, to be delivred to Manchester 
+07:43:47.360 CONFIG | - Pickup Task 1 at Norwich, to be delivred to London 
+07:43:47.360 CONFIG | - Deliver Task 3 to London 
+07:43:47.360 CONFIG | - Deliver Task 1 to London 
+07:43:47.360 CONFIG | - Pickup Task 2 at Leeds, to be delivred to Liverpool 
+07:43:47.360 CONFIG | - Deliver Task 2 to Liverpool 
+07:43:47.360 CONFIG | - Deliver Task 0 to Manchester 
+07:43:47.361 CONFIG | Vehicle0, origin: Plymouth, capacity: 30, costPerKm: 5, tasks: 0
+07:43:47.361 CONFIG | 
+07:43:47.361 CONFIG | 6
+07:43:48.890 CONFIG | Vehicle1, origin: Norwich, capacity: 30, costPerKm: 5, tasks: 8
+07:43:48.890 CONFIG | - Pickup Task 3 at Norwich, to be delivred to London 
+07:43:48.890 CONFIG | - Pickup Task 0 at Norwich, to be delivred to Manchester 
+07:43:48.891 CONFIG | - Pickup Task 1 at Norwich, to be delivred to London 
+07:43:48.891 CONFIG | - Deliver Task 3 to London 
+07:43:48.891 CONFIG | - Deliver Task 1 to London 
+07:43:48.891 CONFIG | - Pickup Task 2 at Leeds, to be delivred to Liverpool 
+07:43:48.891 CONFIG | - Deliver Task 2 to Liverpool 
+07:43:48.891 CONFIG | - Deliver Task 0 to Manchester 
+07:43:48.891 CONFIG | Vehicle0, origin: Plymouth, capacity: 30, costPerKm: 5, tasks: 0
+07:43:48.891 CONFIG | 
+07:43:48.891 CONFIG | Vehicle1, origin: Norwich, capacity: 30, costPerKm: 5, tasks: 8
+07:43:48.891 CONFIG | - Pickup Task 0 at Norwich, to be delivred to London 
+07:43:48.891 CONFIG | - Pickup Task 1 at Norwich, to be delivred to London 
+07:43:48.891 CONFIG | - Deliver Task 0 to London 
+07:43:48.891 CONFIG | - Pickup Task 3 at Cardiff, to be delivred to London 
+07:43:48.891 CONFIG | - Deliver Task 1 to London 
+07:43:48.891 CONFIG | - Deliver Task 3 to London 
+07:43:48.892 CONFIG | - Pickup Task 2 at Leeds, to be delivred to Liverpool 
+07:43:48.892 CONFIG | - Deliver Task 2 to Liverpool 
+07:43:48.892 CONFIG | Vehicle0, origin: Plymouth, capacity: 30, costPerKm: 5, tasks: 0
+07:43:48.892 CONFIG | 
+07:43:48.892 CONFIG | 7
+07:43:48.892 CONFIG | Agent 0: 0
+07:43:48.892 CONFIG | Agent 1: 2156
+07:43:48.892 CONFIG | Agent 0 has this much profit: -737.0
+07:43:48.893 CONFIG | 4584.0
+07:43:50.421 CONFIG | Vehicle1, origin: Norwich, capacity: 30, costPerKm: 5, tasks: 8
+07:43:50.421 CONFIG | - Pickup Task 3 at Norwich, to be delivred to London 
+07:43:50.421 CONFIG | - Pickup Task 0 at Norwich, to be delivred to Manchester 
+07:43:50.421 CONFIG | - Pickup Task 1 at Norwich, to be delivred to London 
+07:43:50.421 CONFIG | - Deliver Task 3 to London 
+07:43:50.422 CONFIG | - Deliver Task 1 to London 
+07:43:50.422 CONFIG | - Pickup Task 2 at Leeds, to be delivred to Liverpool 
+07:43:50.422 CONFIG | - Deliver Task 2 to Liverpool 
+07:43:50.422 CONFIG | - Deliver Task 0 to Manchester 
+07:43:50.422 CONFIG | Vehicle0, origin: Plymouth, capacity: 30, costPerKm: 5, tasks: 0
+07:43:50.422 CONFIG | 
+07:43:50.422 CONFIG | Vehicle1, origin: Norwich, capacity: 30, costPerKm: 5, tasks: 8
+07:43:50.422 CONFIG | - Pickup Task 1 at Norwich, to be delivred to London 
+07:43:50.422 CONFIG | - Pickup Task 0 at Norwich, to be delivred to London 
+07:43:50.422 CONFIG | - Deliver Task 1 to London 
+07:43:50.422 CONFIG | - Deliver Task 0 to London 
+07:43:50.422 CONFIG | - Pickup Task 3 at London, to be delivred to Manchester 
+07:43:50.422 CONFIG | - Pickup Task 2 at Leeds, to be delivred to Liverpool 
+07:43:50.422 CONFIG | - Deliver Task 2 to Liverpool 
+07:43:50.422 CONFIG | - Deliver Task 3 to Manchester 
+07:43:50.423 CONFIG | Vehicle0, origin: Plymouth, capacity: 30, costPerKm: 5, tasks: 0
+07:43:50.423 CONFIG | 
+07:43:50.423 CONFIG | 8
+07:43:50.423 CONFIG | Agent 0: 0
+07:43:50.423 CONFIG | Agent 1: 0
+07:43:50.423 CONFIG | Agent 0 has this much profit: -737.0
+07:43:50.423 CONFIG | 4584.0
+07:43:51.952 CONFIG | Vehicle1, origin: Norwich, capacity: 30, costPerKm: 5, tasks: 8
+07:43:51.952 CONFIG | - Pickup Task 3 at Norwich, to be delivred to London 
+07:43:51.952 CONFIG | - Pickup Task 0 at Norwich, to be delivred to Manchester 
+07:43:51.952 CONFIG | - Pickup Task 1 at Norwich, to be delivred to London 
+07:43:51.952 CONFIG | - Deliver Task 3 to London 
+07:43:51.952 CONFIG | - Deliver Task 1 to London 
+07:43:51.952 CONFIG | - Pickup Task 2 at Leeds, to be delivred to Liverpool 
+07:43:51.952 CONFIG | - Deliver Task 2 to Liverpool 
+07:43:51.953 CONFIG | - Deliver Task 0 to Manchester 
+07:43:51.953 CONFIG | Vehicle0, origin: Plymouth, capacity: 30, costPerKm: 5, tasks: 0
+07:43:51.953 CONFIG | 
+07:43:51.953 CONFIG | Vehicle1, origin: Norwich, capacity: 30, costPerKm: 5, tasks: 0
+07:43:51.953 CONFIG | Vehicle0, origin: Plymouth, capacity: 30, costPerKm: 5, tasks: 8
+07:43:51.953 CONFIG | - Pickup Task 3 at Plymouth, to be delivred to Birmingham 
+07:43:51.953 CONFIG | - Pickup Task 1 at Norwich, to be delivred to London 
+07:43:51.953 CONFIG | - Pickup Task 0 at Norwich, to be delivred to London 
+07:43:51.953 CONFIG | - Deliver Task 1 to London 
+07:43:51.953 CONFIG | - Deliver Task 0 to London 
+07:43:51.953 CONFIG | - Deliver Task 3 to Birmingham 
+07:43:51.953 CONFIG | - Pickup Task 2 at Leeds, to be delivred to Liverpool 
+07:43:51.953 CONFIG | - Deliver Task 2 to Liverpool 
+07:43:51.953 CONFIG | 
+07:43:51.953 CONFIG | 9
+07:43:53.482 CONFIG | Vehicle1, origin: Norwich, capacity: 30, costPerKm: 5, tasks: 0
+07:43:53.482 CONFIG | Vehicle0, origin: Plymouth, capacity: 30, costPerKm: 5, tasks: 8
+07:43:53.482 CONFIG | - Pickup Task 3 at Plymouth, to be delivred to Birmingham 
+07:43:53.482 CONFIG | - Pickup Task 1 at Norwich, to be delivred to London 
+07:43:53.482 CONFIG | - Pickup Task 0 at Norwich, to be delivred to London 
+07:43:53.482 CONFIG | - Deliver Task 1 to London 
+07:43:53.483 CONFIG | - Deliver Task 0 to London 
+07:43:53.483 CONFIG | - Deliver Task 3 to Birmingham 
+07:43:53.483 CONFIG | - Pickup Task 2 at Leeds, to be delivred to Liverpool 
+07:43:53.483 CONFIG | - Deliver Task 2 to Liverpool 
+07:43:53.483 CONFIG | 
+07:43:53.483 CONFIG | Vehicle1, origin: Norwich, capacity: 30, costPerKm: 5, tasks: 8
+07:43:53.483 CONFIG | - Pickup Task 0 at Norwich, to be delivred to London 
+07:43:53.483 CONFIG | - Pickup Task 3 at Portsmouth, to be delivred to Plymouth 
+07:43:53.483 CONFIG | - Deliver Task 3 to Plymouth 
+07:43:53.483 CONFIG | - Pickup Task 1 at Plymouth, to be delivred to Birmingham 
+07:43:53.483 CONFIG | - Deliver Task 0 to London 
+07:43:53.483 CONFIG | - Deliver Task 1 to Birmingham 
+07:43:53.483 CONFIG | - Pickup Task 2 at Leeds, to be delivred to Liverpool 
+07:43:53.483 CONFIG | - Deliver Task 2 to Liverpool 
+07:43:53.483 CONFIG | Vehicle0, origin: Plymouth, capacity: 30, costPerKm: 5, tasks: 0
+07:43:53.483 CONFIG | 
+07:43:53.483 CONFIG | 10
+07:43:55.523 CONFIG | Vehicle1, origin: Norwich, capacity: 30, costPerKm: 5, tasks: 0
+07:43:55.523 CONFIG | Vehicle0, origin: Plymouth, capacity: 30, costPerKm: 5, tasks: 14
+07:43:55.523 CONFIG | - Pickup Task 6 at London, to be delivred to Manchester 
+07:43:55.523 CONFIG | - Pickup Task 5 at Cardiff, to be delivred to London 
+07:43:55.524 CONFIG | - Pickup Task 0 at Cardiff, to be delivred to Sheffield 
+07:43:55.524 CONFIG | - Pickup Task 2 at Cardiff, to be delivred to Manchester 
+07:43:55.524 CONFIG | - Pickup Task 1 at Manchester, to be delivred to Norwich 
+07:43:55.524 CONFIG | - Deliver Task 2 to Manchester 
+07:43:55.524 CONFIG | - Deliver Task 6 to Manchester 
+07:43:55.524 CONFIG | - Pickup Task 4 at Liverpool, to be delivred to Norwich 
+07:43:55.524 CONFIG | - Pickup Task 3 at Sheffield, to be delivred to Portsmouth 
+07:43:55.524 CONFIG | - Deliver Task 0 to Sheffield 
+07:43:55.524 CONFIG | - Deliver Task 5 to London 
+07:43:55.524 CONFIG | - Deliver Task 3 to Portsmouth 
+07:43:55.524 CONFIG | - Deliver Task 1 to Norwich 
+07:43:55.524 CONFIG | - Deliver Task 4 to Norwich 
+07:43:55.524 CONFIG | 
+07:43:55.524 CONFIG | STEADY
+07:43:55.524 CONFIG | 11
+07:43:55.524 CONFIG | Agent 0: 0
+07:43:55.524 CONFIG | Agent 1: 714
+07:43:55.525 CONFIG | Agent 0 has this much profit: -737.0
+07:43:55.525 CONFIG | 4584.0
+07:43:57.563 CONFIG | Vehicle1, origin: Norwich, capacity: 30, costPerKm: 5, tasks: 0
+07:43:57.563 CONFIG | Vehicle0, origin: Plymouth, capacity: 30, costPerKm: 5, tasks: 16
+07:43:57.565 CONFIG | - Pickup Task 6 at London, to be delivred to Manchester 
+07:43:57.565 CONFIG | - Pickup Task 7 at Birmingham, to be delivred to Cardiff 
+07:43:57.565 CONFIG | - Pickup Task 0 at Cardiff, to be delivred to Sheffield 
+07:43:57.565 CONFIG | - Deliver Task 7 to Cardiff 
+07:43:57.565 CONFIG | - Pickup Task 2 at Cardiff, to be delivred to Manchester 
+07:43:57.565 CONFIG | - Pickup Task 5 at Cardiff, to be delivred to London 
+07:43:57.565 CONFIG | - Deliver Task 0 to Sheffield 
+07:43:57.565 CONFIG | - Pickup Task 3 at Sheffield, to be delivred to Portsmouth 
+07:43:57.565 CONFIG | - Pickup Task 4 at Liverpool, to be delivred to Norwich 
+07:43:57.565 CONFIG | - Deliver Task 2 to Manchester 
+07:43:57.565 CONFIG | - Deliver Task 6 to Manchester 
+07:43:57.565 CONFIG | - Pickup Task 1 at Manchester, to be delivred to Norwich 
+07:43:57.565 CONFIG | - Deliver Task 5 to London 
+07:43:57.565 CONFIG | - Deliver Task 3 to Portsmouth 
+07:43:57.565 CONFIG | - Deliver Task 1 to Norwich 
+07:43:57.565 CONFIG | - Deliver Task 4 to Norwich 
+07:43:57.565 CONFIG | 
+07:43:57.565 CONFIG | STEADY
+07:43:57.565 CONFIG | 12
+07:43:57.566 CONFIG | Agent 0: 598
+07:43:57.566 CONFIG | Agent 1: 706
+07:43:57.566 CONFIG | Agent 0 has this much profit: -887.0
+07:43:57.566 CONFIG | 5182.0
+07:43:59.603 CONFIG | Vehicle1, origin: Norwich, capacity: 30, costPerKm: 5, tasks: 0
+07:43:59.603 CONFIG | Vehicle0, origin: Plymouth, capacity: 30, costPerKm: 5, tasks: 18
+07:43:59.603 CONFIG | - Pickup Task 8 at Portsmouth, to be delivred to Sheffield 
+07:43:59.603 CONFIG | - Pickup Task 6 at London, to be delivred to Manchester 
+07:43:59.604 CONFIG | - Pickup Task 7 at Birmingham, to be delivred to Cardiff 
+07:43:59.604 CONFIG | - Deliver Task 7 to Cardiff 
+07:43:59.604 CONFIG | - Pickup Task 2 at Cardiff, to be delivred to Manchester 
+07:43:59.604 CONFIG | - Pickup Task 5 at Cardiff, to be delivred to London 
+07:43:59.604 CONFIG | - Pickup Task 0 at Cardiff, to be delivred to Sheffield 
+07:43:59.604 CONFIG | - Deliver Task 8 to Sheffield 
+07:43:59.604 CONFIG | - Deliver Task 0 to Sheffield 
+07:43:59.604 CONFIG | - Pickup Task 3 at Sheffield, to be delivred to Portsmouth 
+07:43:59.604 CONFIG | - Pickup Task 4 at Liverpool, to be delivred to Norwich 
+07:43:59.604 CONFIG | - Deliver Task 2 to Manchester 
+07:43:59.604 CONFIG | - Deliver Task 6 to Manchester 
+07:43:59.604 CONFIG | - Pickup Task 1 at Manchester, to be delivred to Norwich 
+07:43:59.604 CONFIG | - Deliver Task 5 to London 
+07:43:59.604 CONFIG | - Deliver Task 3 to Portsmouth 
+07:43:59.604 CONFIG | - Deliver Task 1 to Norwich 
+07:43:59.604 CONFIG | - Deliver Task 4 to Norwich 
+07:43:59.604 CONFIG | 
+07:43:59.604 CONFIG | STEADY
+07:43:59.604 CONFIG | 13
+07:43:59.605 CONFIG | Agent 0: 0
+07:43:59.605 CONFIG | Agent 1: 700
+07:43:59.605 CONFIG | Agent 0 has this much profit: -887.0
+07:43:59.605 CONFIG | 5182.0
+07:44:01.643 CONFIG | Vehicle1, origin: Norwich, capacity: 30, costPerKm: 5, tasks: 0
+07:44:01.643 CONFIG | Vehicle0, origin: Plymouth, capacity: 30, costPerKm: 5, tasks: 20
+07:44:01.643 CONFIG | - Pickup Task 8 at Portsmouth, to be delivred to Sheffield 
+07:44:01.643 CONFIG | - Pickup Task 6 at London, to be delivred to Manchester 
+07:44:01.643 CONFIG | - Pickup Task 7 at Birmingham, to be delivred to Cardiff 
+07:44:01.643 CONFIG | - Pickup Task 2 at Cardiff, to be delivred to Manchester 
+07:44:01.643 CONFIG | - Deliver Task 7 to Cardiff 
+07:44:01.643 CONFIG | - Pickup Task 9 at Cardiff, to be delivred to Manchester 
+07:44:01.643 CONFIG | - Pickup Task 5 at Cardiff, to be delivred to London 
+07:44:01.643 CONFIG | - Pickup Task 0 at Cardiff, to be delivred to Sheffield 
+07:44:01.644 CONFIG | - Deliver Task 2 to Manchester 
+07:44:01.644 CONFIG | - Deliver Task 9 to Manchester 
+07:44:01.644 CONFIG | - Pickup Task 1 at Manchester, to be delivred to Norwich 
+07:44:01.644 CONFIG | - Deliver Task 6 to Manchester 
+07:44:01.644 CONFIG | - Pickup Task 4 at Liverpool, to be delivred to Norwich 
+07:44:01.644 CONFIG | - Deliver Task 8 to Sheffield 
+07:44:01.644 CONFIG | - Deliver Task 0 to Sheffield 
+07:44:01.644 CONFIG | - Pickup Task 3 at Sheffield, to be delivred to Portsmouth 
+07:44:01.644 CONFIG | - Deliver Task 5 to London 
+07:44:01.644 CONFIG | - Deliver Task 3 to Portsmouth 
+07:44:01.644 CONFIG | - Deliver Task 4 to Norwich 
+07:44:01.644 CONFIG | - Deliver Task 1 to Norwich 
+07:44:01.644 CONFIG | 
+07:44:01.644 CONFIG | STEADY
+07:44:01.644 CONFIG | 14
+07:44:01.644 CONFIG | Agent 0: 788
+07:44:01.644 CONFIG | Agent 1: 1146
+07:44:01.644 CONFIG | Agent 0 has this much profit: -1084.0
+07:44:01.644 CONFIG | 5970.0
+07:44:03.683 CONFIG | Vehicle1, origin: Norwich, capacity: 30, costPerKm: 5, tasks: 0
+07:44:03.683 CONFIG | Vehicle0, origin: Plymouth, capacity: 30, costPerKm: 5, tasks: 22
+07:44:03.683 CONFIG | - Pickup Task 8 at Portsmouth, to be delivred to Sheffield 
+07:44:03.683 CONFIG | - Pickup Task 6 at London, to be delivred to Manchester 
+07:44:03.683 CONFIG | - Pickup Task 7 at Birmingham, to be delivred to Cardiff 
+07:44:03.683 CONFIG | - Pickup Task 0 at Cardiff, to be delivred to Sheffield 
+07:44:03.683 CONFIG | - Deliver Task 7 to Cardiff 
+07:44:03.683 CONFIG | - Pickup Task 9 at Cardiff, to be delivred to Manchester 
+07:44:03.683 CONFIG | - Pickup Task 2 at Cardiff, to be delivred to Manchester 
+07:44:03.683 CONFIG | - Pickup Task 5 at Cardiff, to be delivred to London 
+07:44:03.683 CONFIG | - Deliver Task 0 to Sheffield 
+07:44:03.683 CONFIG | - Pickup Task 3 at Sheffield, to be delivred to Portsmouth 
+07:44:03.683 CONFIG | - Deliver Task 8 to Sheffield 
+07:44:03.683 CONFIG | - Pickup Task 10 at Newcastle, to be delivred to Manchester 
+07:44:03.683 CONFIG | - Pickup Task 4 at Liverpool, to be delivred to Norwich 
+07:44:03.683 CONFIG | - Deliver Task 6 to Manchester 
+07:44:03.683 CONFIG | - Deliver Task 10 to Manchester 
+07:44:03.684 CONFIG | - Pickup Task 1 at Manchester, to be delivred to Norwich 
+07:44:03.684 CONFIG | - Deliver Task 9 to Manchester 
+07:44:03.684 CONFIG | - Deliver Task 2 to Manchester 
+07:44:03.684 CONFIG | - Deliver Task 3 to Portsmouth 
+07:44:03.684 CONFIG | - Deliver Task 5 to London 
+07:44:03.684 CONFIG | - Deliver Task 1 to Norwich 
+07:44:03.684 CONFIG | - Deliver Task 4 to Norwich 
+07:44:03.684 CONFIG | 
+07:44:03.684 CONFIG | STEADY
+07:44:03.684 CONFIG | 15
+07:44:03.684 CONFIG | Agent 0: 0
+07:44:03.684 CONFIG | Agent 1: 700
+07:44:03.684 CONFIG | Agent 0 has this much profit: -1084.0
+07:44:03.684 CONFIG | 5970.0
+07:44:05.723 CONFIG | Vehicle1, origin: Norwich, capacity: 30, costPerKm: 5, tasks: 0
+07:44:05.723 CONFIG | Vehicle0, origin: Plymouth, capacity: 30, costPerKm: 5, tasks: 24
+07:44:05.723 CONFIG | - Pickup Task 8 at Portsmouth, to be delivred to Sheffield 
+07:44:05.723 CONFIG | - Pickup Task 11 at Portsmouth, to be delivred to Liverpool 
+07:44:05.723 CONFIG | - Pickup Task 6 at London, to be delivred to Manchester 
+07:44:05.724 CONFIG | - Pickup Task 7 at Birmingham, to be delivred to Cardiff 
+07:44:05.724 CONFIG | - Pickup Task 2 at Cardiff, to be delivred to Manchester 
+07:44:05.724 CONFIG | - Pickup Task 5 at Cardiff, to be delivred to London 
+07:44:05.724 CONFIG | - Pickup Task 9 at Cardiff, to be delivred to Manchester 
+07:44:05.724 CONFIG | - Deliver Task 7 to Cardiff 
+07:44:05.724 CONFIG | - Pickup Task 0 at Cardiff, to be delivred to Sheffield 
+07:44:05.724 CONFIG | - Pickup Task 10 at Newcastle, to be delivred to Manchester 
+07:44:05.724 CONFIG | - Deliver Task 2 to Manchester 
+07:44:05.724 CONFIG | - Deliver Task 9 to Manchester 
+07:44:05.724 CONFIG | - Pickup Task 1 at Manchester, to be delivred to Norwich 
+07:44:05.724 CONFIG | - Deliver Task 6 to Manchester 
+07:44:05.724 CONFIG | - Deliver Task 10 to Manchester 
+07:44:05.724 CONFIG | - Deliver Task 11 to Liverpool 
+07:44:05.724 CONFIG | - Pickup Task 4 at Liverpool, to be delivred to Norwich 
+07:44:05.724 CONFIG | - Pickup Task 3 at Sheffield, to be delivred to Portsmouth 
+07:44:05.724 CONFIG | - Deliver Task 8 to Sheffield 
+07:44:05.724 CONFIG | - Deliver Task 0 to Sheffield 
+07:44:05.724 CONFIG | - Deliver Task 5 to London 
+07:44:05.724 CONFIG | - Deliver Task 3 to Portsmouth 
+07:44:05.724 CONFIG | - Deliver Task 1 to Norwich 
+07:44:05.724 CONFIG | - Deliver Task 4 to Norwich 
+07:44:05.724 CONFIG | 
+07:44:05.724 CONFIG | STEADY
+07:44:05.724 CONFIG | 16
+07:44:05.725 CONFIG | Agent 0: 0
+07:44:05.725 CONFIG | Agent 1: 700
+07:44:05.725 CONFIG | Agent 0 has this much profit: -1084.0
+07:44:05.725 CONFIG | 5970.0
+07:44:07.763 CONFIG | Vehicle1, origin: Norwich, capacity: 30, costPerKm: 5, tasks: 0
+07:44:07.763 CONFIG | Vehicle0, origin: Plymouth, capacity: 30, costPerKm: 5, tasks: 26
+07:44:07.763 CONFIG | - Pickup Task 8 at Portsmouth, to be delivred to Sheffield 
+07:44:07.763 CONFIG | - Pickup Task 11 at Portsmouth, to be delivred to Liverpool 
+07:44:07.764 CONFIG | - Pickup Task 6 at London, to be delivred to Manchester 
+07:44:07.764 CONFIG | - Pickup Task 7 at Birmingham, to be delivred to Cardiff 
+07:44:07.764 CONFIG | - Pickup Task 0 at Cardiff, to be delivred to Sheffield 
+07:44:07.764 CONFIG | - Pickup Task 5 at Cardiff, to be delivred to London 
+07:44:07.764 CONFIG | - Deliver Task 7 to Cardiff 
+07:44:07.764 CONFIG | - Pickup Task 9 at Cardiff, to be delivred to Manchester 
+07:44:07.764 CONFIG | - Pickup Task 2 at Cardiff, to be delivred to Manchester 
+07:44:07.764 CONFIG | - Deliver Task 8 to Sheffield 
+07:44:07.764 CONFIG | - Deliver Task 0 to Sheffield 
+07:44:07.764 CONFIG | - Pickup Task 12 at Sheffield, to be delivred to Liverpool 
+07:44:07.764 CONFIG | - Pickup Task 3 at Sheffield, to be delivred to Portsmouth 
+07:44:07.764 CONFIG | - Pickup Task 10 at Newcastle, to be delivred to Manchester 
+07:44:07.764 CONFIG | - Deliver Task 12 to Liverpool 
+07:44:07.764 CONFIG | - Deliver Task 11 to Liverpool 
+07:44:07.764 CONFIG | - Pickup Task 4 at Liverpool, to be delivred to Norwich 
+07:44:07.764 CONFIG | - Pickup Task 1 at Manchester, to be delivred to Norwich 
+07:44:07.764 CONFIG | - Deliver Task 10 to Manchester 
+07:44:07.764 CONFIG | - Deliver Task 6 to Manchester 
+07:44:07.764 CONFIG | - Deliver Task 9 to Manchester 
+07:44:07.764 CONFIG | - Deliver Task 2 to Manchester 
+07:44:07.764 CONFIG | - Deliver Task 3 to Portsmouth 
+07:44:07.764 CONFIG | - Deliver Task 5 to London 
+07:44:07.764 CONFIG | - Deliver Task 1 to Norwich 
+07:44:07.764 CONFIG | - Deliver Task 4 to Norwich 
+07:44:07.764 CONFIG | 
+07:44:07.764 CONFIG | STEADY
+07:44:07.764 CONFIG | 17
+07:44:07.764 CONFIG | Agent 0: 0
+07:44:07.764 CONFIG | Agent 1: 700
+07:44:07.764 CONFIG | Agent 0 has this much profit: -1084.0
+07:44:07.764 CONFIG | 5970.0
+07:44:09.804 CONFIG | Vehicle1, origin: Norwich, capacity: 30, costPerKm: 5, tasks: 0
+07:44:09.804 CONFIG | Vehicle0, origin: Plymouth, capacity: 30, costPerKm: 5, tasks: 28
+07:44:09.804 CONFIG | - Pickup Task 11 at Portsmouth, to be delivred to Liverpool 
+07:44:09.804 CONFIG | - Pickup Task 8 at Portsmouth, to be delivred to Sheffield 
+07:44:09.804 CONFIG | - Pickup Task 7 at Birmingham, to be delivred to Cardiff 
+07:44:09.804 CONFIG | - Pickup Task 2 at Cardiff, to be delivred to Manchester 
+07:44:09.804 CONFIG | - Pickup Task 9 at Cardiff, to be delivred to Manchester 
+07:44:09.804 CONFIG | - Pickup Task 0 at Cardiff, to be delivred to Sheffield 
+07:44:09.804 CONFIG | - Pickup Task 5 at Cardiff, to be delivred to London 
+07:44:09.804 CONFIG | - Deliver Task 7 to Cardiff 
+07:44:09.804 CONFIG | - Pickup Task 3 at Sheffield, to be delivred to Portsmouth 
+07:44:09.805 CONFIG | - Deliver Task 0 to Sheffield 
+07:44:09.805 CONFIG | - Pickup Task 12 at Sheffield, to be delivred to Liverpool 
+07:44:09.805 CONFIG | - Deliver Task 8 to Sheffield 
+07:44:09.805 CONFIG | - Pickup Task 10 at Newcastle, to be delivred to Manchester 
+07:44:09.805 CONFIG | - Deliver Task 12 to Liverpool 
+07:44:09.805 CONFIG | - Deliver Task 11 to Liverpool 
+07:44:09.805 CONFIG | - Pickup Task 4 at Liverpool, to be delivred to Norwich 
+07:44:09.805 CONFIG | - Pickup Task 1 at Manchester, to be delivred to Norwich 
+07:44:09.805 CONFIG | - Deliver Task 1 to Norwich 
+07:44:09.805 CONFIG | - Deliver Task 4 to Norwich 
+07:44:09.805 CONFIG | - Deliver Task 3 to Portsmouth 
+07:44:09.805 CONFIG | - Deliver Task 5 to London 
+07:44:09.805 CONFIG | - Pickup Task 13 at London, to be delivred to Birmingham 
+07:44:09.805 CONFIG | - Pickup Task 6 at London, to be delivred to Manchester 
+07:44:09.805 CONFIG | - Deliver Task 13 to Birmingham 
+07:44:09.805 CONFIG | - Deliver Task 2 to Manchester 
+07:44:09.805 CONFIG | - Deliver Task 10 to Manchester 
+07:44:09.805 CONFIG | - Deliver Task 9 to Manchester 
+07:44:09.805 CONFIG | - Deliver Task 6 to Manchester 
+07:44:09.805 CONFIG | 
+07:44:09.805 CONFIG | STEADY
+07:44:09.805 CONFIG | 18
+07:44:09.805 CONFIG | Agent 0: 0
+07:44:09.805 CONFIG | Agent 1: 700
+07:44:09.805 CONFIG | Agent 0 has this much profit: -1084.0
+07:44:09.805 CONFIG | 5970.0
+07:44:11.844 CONFIG | Vehicle1, origin: Norwich, capacity: 30, costPerKm: 5, tasks: 0
+07:44:11.844 CONFIG | Vehicle0, origin: Plymouth, capacity: 30, costPerKm: 5, tasks: 30
+07:44:11.844 CONFIG | - Pickup Task 11 at Portsmouth, to be delivred to Liverpool 
+07:44:11.844 CONFIG | - Pickup Task 8 at Portsmouth, to be delivred to Sheffield 
+07:44:11.844 CONFIG | - Pickup Task 6 at London, to be delivred to Manchester 
+07:44:11.845 CONFIG | - Pickup Task 13 at London, to be delivred to Birmingham 
+07:44:11.845 CONFIG | - Pickup Task 7 at Birmingham, to be delivred to Cardiff 
+07:44:11.845 CONFIG | - Pickup Task 2 at Cardiff, to be delivred to Manchester 
+07:44:11.845 CONFIG | - Pickup Task 0 at Cardiff, to be delivred to Sheffield 
+07:44:11.845 CONFIG | - Pickup Task 5 at Cardiff, to be delivred to London 
+07:44:11.845 CONFIG | - Deliver Task 7 to Cardiff 
+07:44:11.845 CONFIG | - Pickup Task 9 at Cardiff, to be delivred to Manchester 
+07:44:11.845 CONFIG | - Deliver Task 13 to Birmingham 
+07:44:11.845 CONFIG | - Deliver Task 8 to Sheffield 
+07:44:11.845 CONFIG | - Deliver Task 0 to Sheffield 
+07:44:11.845 CONFIG | - Pickup Task 12 at Sheffield, to be delivred to Liverpool 
+07:44:11.845 CONFIG | - Pickup Task 3 at Sheffield, to be delivred to Portsmouth 
+07:44:11.845 CONFIG | - Pickup Task 10 at Newcastle, to be delivred to Manchester 
+07:44:11.845 CONFIG | - Deliver Task 11 to Liverpool 
+07:44:11.845 CONFIG | - Pickup Task 4 at Liverpool, to be delivred to Norwich 
+07:44:11.845 CONFIG | - Deliver Task 12 to Liverpool 
+07:44:11.845 CONFIG | - Deliver Task 6 to Manchester 
+07:44:11.845 CONFIG | - Pickup Task 1 at Manchester, to be delivred to Norwich 
+07:44:11.845 CONFIG | - Pickup Task 14 at Portsmouth, to be delivred to Norwich 
+07:44:11.845 CONFIG | - Deliver Task 3 to Portsmouth 
+07:44:11.846 CONFIG | - Deliver Task 4 to Norwich 
+07:44:11.846 CONFIG | - Deliver Task 14 to Norwich 
+07:44:11.846 CONFIG | - Deliver Task 1 to Norwich 
+07:44:11.846 CONFIG | - Deliver Task 5 to London 
+07:44:11.846 CONFIG | - Deliver Task 2 to Manchester 
+07:44:11.846 CONFIG | - Deliver Task 10 to Manchester 
+07:44:11.846 CONFIG | - Deliver Task 9 to Manchester 
+07:44:11.846 CONFIG | 
+07:44:11.846 CONFIG | STEADY
+07:44:11.846 CONFIG | 19
+07:44:13.884 CONFIG | STEADY
+07:44:13.884 CONFIG | 20
+07:44:13.884 CONFIG | Agent 0: 0
+07:44:13.884 CONFIG | Agent 1: 1789
+07:44:13.884 CONFIG | Agent 0 has this much profit: -1084.0
+07:44:13.884 CONFIG | 5970.0
+07:44:15.924 CONFIG | STEADY
+07:44:15.924 CONFIG | 21
+07:44:15.924 CONFIG | Agent 0: 920
+07:44:15.924 CONFIG | Agent 1: 2277
+07:44:15.924 CONFIG | Agent 0 has this much profit: -1314.0
+07:44:15.924 CONFIG | 6890.0
+07:44:17.964 CONFIG | STEADY
+07:44:17.964 CONFIG | 22
+07:44:17.964 CONFIG | Agent 0: 0
+07:44:17.964 CONFIG | Agent 1: 1138
+07:44:17.964 CONFIG | Agent 0 has this much profit: -1314.0
+07:44:17.964 CONFIG | 6890.0
+07:44:20.004 CONFIG | STEADY
+07:44:20.004 CONFIG | 23
+07:44:22.044 CONFIG | STEADY
+07:44:22.044 CONFIG | 24
+07:44:24.085 CONFIG | STEADY
+07:44:24.085 CONFIG | 25
+07:44:26.126 CONFIG | STEADY
+07:44:26.126 CONFIG | 26
+07:44:28.166 CONFIG | STEADY
+07:44:28.166 CONFIG | 27
+07:44:30.208 CONFIG | STEADY
+07:44:30.208 CONFIG | 28
+07:44:32.248 CONFIG | STEADY
+07:44:32.248 CONFIG | 29
+07:44:32.248 CONFIG | Agent 0: 0
+07:44:32.248 CONFIG | Agent 1: 0
+07:44:32.248 CONFIG | Agent 0 has this much profit: -511.0
+07:44:32.248 CONFIG | 6890.0
+07:44:34.288 CONFIG | STEADY
+07:44:34.288 CONFIG | 30
+07:44:36.328 CONFIG | STEADY
+07:44:36.328 CONFIG | 31
+07:44:36.328 CONFIG | Agent 0: 1036
+07:44:36.328 CONFIG | Agent 1: 1138
+07:44:36.328 CONFIG | Agent 0 has this much profit: -771.0
+07:44:36.328 CONFIG | 7926.0
+07:44:38.368 CONFIG | STEADY
+07:44:38.368 CONFIG | 32
+07:44:40.408 CONFIG | STEADY
+07:44:40.409 CONFIG | 33
+07:44:40.409 CONFIG | Agent 0: 0
+07:44:40.409 CONFIG | Agent 1: 343
+07:44:40.409 CONFIG | Agent 0 has this much profit: -771.0
+07:44:40.409 CONFIG | 7926.0
+07:44:42.450 CONFIG | STEADY
+07:44:42.450 CONFIG | 34
+07:44:42.451 CONFIG | Agent 0: 642
+07:44:42.452 CONFIG | Agent 1: 1138
+07:44:42.452 CONFIG | Agent 0 has this much profit: -932.0
+07:44:42.452 CONFIG | 8568.0
+07:44:44.490 CONFIG | STEADY
+07:44:44.490 CONFIG | 35
+07:44:46.533 CONFIG | STEADY
+07:44:46.533 CONFIG | 36
+07:44:48.573 CONFIG | STEADY
+07:44:48.573 CONFIG | 37
+07:44:50.614 CONFIG | STEADY
+07:44:50.614 CONFIG | 38
+07:44:50.614 CONFIG | Agent 0: 297
+07:44:50.614 CONFIG | Agent 1: 711
+07:44:50.614 CONFIG | Agent 0 has this much profit: -1007.0
+07:44:50.614 CONFIG | 8865.0
+07:44:52.654 CONFIG | STEADY
+07:44:52.654 CONFIG | 39
+07:44:52.655 CONFIG | Agent 0: 277
+07:44:52.655 CONFIG | Agent 1: 1850
+07:44:52.655 CONFIG | Agent 0 has this much profit: -1077.0
+07:44:52.655 CONFIG | 9142.0
+07:44:54.695 CONFIG | STEADY
+07:44:54.695 CONFIG | 40
+07:44:54.695 CONFIG | Agent 0: 0
+07:44:54.695 CONFIG | Agent 1: 975
+07:44:54.695 CONFIG | Agent 0 has this much profit: -730.0
+07:44:54.695 CONFIG | 9142.0
+07:44:56.739 CONFIG | STEADY
+07:44:56.739 CONFIG | 41
+07:44:56.739 CONFIG | Agent 0: 0
+07:44:56.739 CONFIG | Agent 1: 2113
+07:44:56.739 CONFIG | Agent 0 has this much profit: -730.0
+07:44:56.739 CONFIG | 9142.0
+07:44:58.781 CONFIG | STEADY
+07:44:58.781 CONFIG | 42
+07:45:00.821 CONFIG | STEADY
+07:45:00.821 CONFIG | 43
+07:45:00.822 CONFIG | Agent 0: 277
+07:45:00.822 CONFIG | Agent 1: 343
+07:45:00.822 CONFIG | Agent 0 has this much profit: -800.0
+07:45:00.822 CONFIG | 9419.0
+07:45:02.862 CONFIG | STEADY
+07:45:02.862 CONFIG | 44
+07:45:04.903 CONFIG | STEADY
+07:45:04.903 CONFIG | 45
+07:45:06.943 CONFIG | STEADY
+07:45:06.943 CONFIG | 46
+07:45:06.944 CONFIG | Agent 0: 0
+07:45:06.944 CONFIG | Agent 1: 975
+07:45:06.944 CONFIG | Agent 0 has this much profit: -800.0
+07:45:06.944 CONFIG | 9419.0
+07:45:08.986 CONFIG | STEADY
+07:45:08.986 CONFIG | 47
+07:45:08.986 CONFIG | Agent 0: 0
+07:45:08.986 CONFIG | Agent 1: 1138
+07:45:08.986 CONFIG | Agent 0 has this much profit: -800.0
+07:45:08.986 CONFIG | 9419.0
+07:45:11.028 CONFIG | STEADY
+07:45:11.028 CONFIG | 48
+07:45:11.028 CONFIG | Agent 0: 0
+07:45:11.028 CONFIG | Agent 1: 349
+07:45:11.029 CONFIG | Agent 0 has this much profit: -800.0
+07:45:11.029 CONFIG | 9419.0
+07:45:13.069 CONFIG | STEADY
+07:45:13.069 CONFIG | 49
+07:45:13.069 CONFIG | Agent 0: 0
+07:45:13.069 CONFIG | Agent 1: 1138
+07:45:13.069 CONFIG | Agent 0 has this much profit: -800.0
+07:45:13.069 CONFIG | 9419.0
+07:45:15.111 CONFIG | STEADY
+07:45:15.112 CONFIG | 50
+07:45:15.314 CONFIG | [[Move (Leeds), Move (Sheffield), Move (Birmingham), Pickup (Task 10), Move (Cardiff), Deliver (Task 10), Pickup (Task 6), Pickup (Task 30), Move (Birmingham), Move (Sheffield), Pickup (Task 15), Pickup (Task 3), Move (Leeds), Move (Liverpool), Deliver (Task 15), Pickup (Task 4), Pickup (Task 28), Move (Manchester), Pickup (Task 1), Move (Birmingham), Move (London), Move (Portsmouth), Pickup (Task 17), Move (London), Move (Norwich), Deliver (Task 4), Deliver (Task 1), Deliver (Task 17), Move (London), Move (Portsmouth), Pickup (Task 11), Deliver (Task 28), Deliver (Task 3), Pickup (Task 14), Move (London), Pickup (Task 16), Pickup (Task 7), Deliver (Task 6), Move (Birmingham), Pickup (Task 21), Move (Sheffield), Move (Leeds), Move (Newcastle), Pickup (Task 39), Pickup (Task 20), Deliver (Task 21), Move (Leeds), Move (Liverpool), Deliver (Task 30), Deliver (Task 14), Move (Manchester), Deliver (Task 39), Move (Birmingham), Deliver (Task 20), Move (Cardiff), Pickup (Task 40), Pickup (Task 33), Pickup (Task 38), Pickup (Task 12), Pickup (Task 2), Pickup (Task 0), Pickup (Task 19), Move (Birmingham), Move (Sheffield), Deliver (Task 11), Deliver (Task 0), Move (Leeds), Pickup (Task 45), Move (Newcastle), Deliver (Task 40), Pickup (Task 13), Deliver (Task 45), Move (Leeds), Move (Liverpool), Move (Manchester), Pickup (Task 42), Deliver (Task 13), Pickup (Task 37), Pickup (Task 32), Move (Liverpool), Deliver (Task 42), Pickup (Task 46), Deliver (Task 33), Move (Leeds), Deliver (Task 37), Deliver (Task 19), Pickup (Task 47), Move (Liverpool), Deliver (Task 38), Deliver (Task 32), Deliver (Task 47), Move (Manchester), Pickup (Task 48), Deliver (Task 7), Deliver (Task 12), Deliver (Task 2), Move (Birmingham), Deliver (Task 16), Move (Cardiff), Deliver (Task 48), Deliver (Task 46)], 3179.4, [], 0.0]
+07:45:15.314 CONFIG | Agent 0 : -800.0
+07:45:15.516 CONFIG | [[Pickup (Task 18), Move (Portsmouth), Move (London), Move (Norwich), Pickup (Task 44), Pickup (Task 23), Pickup (Task 24), Pickup (Task 31), Pickup (Task 5), Deliver (Task 18), Move (London), Pickup (Task 27), Move (Portsmouth), Move (Plymouth), Pickup (Task 41), Pickup (Task 8), Pickup (Task 36), Move (Portsmouth), Move (London), Move (Birmingham), Deliver (Task 8), Pickup (Task 43), Move (Sheffield), Move (Leeds), Pickup (Task 35), Deliver (Task 41), Pickup (Task 25), Move (Liverpool), Deliver (Task 35), Move (Manchester), Deliver (Task 44), Deliver (Task 27), Pickup (Task 26), Deliver (Task 31), Deliver (Task 36), Pickup (Task 49), Move (Liverpool), Deliver (Task 43), Move (Leeds), Pickup (Task 22), Move (Sheffield), Pickup (Task 29), Move (Birmingham), Move (London), Deliver (Task 23), Deliver (Task 24), Deliver (Task 5), Move (Portsmouth), Pickup (Task 34), Pickup (Task 9), Move (Plymouth), Deliver (Task 34), Deliver (Task 25), Deliver (Task 9), Deliver (Task 26), Deliver (Task 22), Deliver (Task 29), Deliver (Task 49)], 1922.6, [], 0.0]
+07:45:15.516 CONFIG | Agent 1 : -1717.0
+07:45:15.527 CONFIG | Wrote tournament/tour/auction-myAgent-newAgent3.xml
+07:45:15.554 INFO | LogistPlatform finished successfully!
+07:45:15.584 FINE | Run command: java -Xmx1024m -classpath ../logist/logist.jar logist.LogistPlatform -o tournament/tour/auction-newAgent3-myAgent.xml -a tournament/tour/agents.xml config/auction.xml newAgent3 myAgent
+07:45:15.658 CONFIG | Reading config/auction.xml
+07:45:15.810 CONFIG | Reading config/settings_auction.xml
+07:45:15.834 CONFIG | Reading config/topology/england.xml
+07:45:15.848 CONFIG | Reading tournament/tour/agents.xml
+07:45:15.866 CONFIG | Reading config/settings_auction.xml
+07:45:16.388 CONFIG | Reading config/settings_auction.xml
+07:45:16.930 CONFIG | Vehicle0, origin: Newcastle, capacity: 30, costPerKm: 5, tasks: 0
+07:45:16.930 CONFIG | Vehicle1, origin: London, capacity: 30, costPerKm: 5, tasks: 6
+07:45:16.930 CONFIG | - Pickup Task 1 at Norwich, to be delivred to London 
+07:45:16.931 CONFIG | - Pickup Task 0 at Norwich, to be delivred to Manchester 
+07:45:16.931 CONFIG | - Deliver Task 1 to London 
+07:45:16.931 CONFIG | - Pickup Task 2 at Leeds, to be delivred to Liverpool 
+07:45:16.931 CONFIG | - Deliver Task 2 to Liverpool 
+07:45:16.932 CONFIG | - Deliver Task 0 to Manchester 
+07:45:16.932 CONFIG | 
+07:45:16.932 CONFIG | Vehicle0, origin: Newcastle, capacity: 30, costPerKm: 5, tasks: 0
+07:45:16.932 CONFIG | Vehicle1, origin: London, capacity: 30, costPerKm: 5, tasks: 8
+07:45:16.932 CONFIG | - Pickup Task 1 at Norwich, to be delivred to London 
+07:45:16.932 CONFIG | - Pickup Task 0 at Norwich, to be delivred to Manchester 
+07:45:16.932 CONFIG | - Deliver Task 1 to London 
+07:45:16.932 CONFIG | - Pickup Task 3 at Cardiff, to be delivred to Sheffield 
+07:45:16.932 CONFIG | - Deliver Task 3 to Sheffield 
+07:45:16.932 CONFIG | - Pickup Task 2 at Leeds, to be delivred to Liverpool 
+07:45:16.932 CONFIG | - Deliver Task 2 to Liverpool 
+07:45:16.932 CONFIG | - Deliver Task 0 to Manchester 
+07:45:16.932 CONFIG | 
+07:45:16.932 CONFIG | 1
+07:45:18.461 CONFIG | Vehicle0, origin: Newcastle, capacity: 30, costPerKm: 5, tasks: 0
+07:45:18.461 CONFIG | Vehicle1, origin: London, capacity: 30, costPerKm: 5, tasks: 8
+07:45:18.461 CONFIG | - Pickup Task 1 at Norwich, to be delivred to London 
+07:45:18.462 CONFIG | - Pickup Task 0 at Norwich, to be delivred to Manchester 
+07:45:18.462 CONFIG | - Deliver Task 1 to London 
+07:45:18.462 CONFIG | - Pickup Task 3 at Cardiff, to be delivred to Sheffield 
+07:45:18.462 CONFIG | - Deliver Task 3 to Sheffield 
+07:45:18.462 CONFIG | - Pickup Task 2 at Leeds, to be delivred to Liverpool 
+07:45:18.462 CONFIG | - Deliver Task 2 to Liverpool 
+07:45:18.462 CONFIG | - Deliver Task 0 to Manchester 
+07:45:18.462 CONFIG | 
+07:45:18.463 CONFIG | Vehicle0, origin: Newcastle, capacity: 30, costPerKm: 5, tasks: 0
+07:45:18.463 CONFIG | Vehicle1, origin: London, capacity: 30, costPerKm: 5, tasks: 8
+07:45:18.463 CONFIG | - Pickup Task 0 at Cardiff, to be delivred to Sheffield 
+07:45:18.463 CONFIG | - Deliver Task 0 to Sheffield 
+07:45:18.463 CONFIG | - Pickup Task 2 at Leeds, to be delivred to Liverpool 
+07:45:18.463 CONFIG | - Deliver Task 2 to Liverpool 
+07:45:18.463 CONFIG | - Pickup Task 3 at Manchester, to be delivred to Norwich 
+07:45:18.463 CONFIG | - Pickup Task 1 at Norwich, to be delivred to London 
+07:45:18.463 CONFIG | - Deliver Task 3 to Norwich 
+07:45:18.463 CONFIG | - Deliver Task 1 to London 
+07:45:18.463 CONFIG | 
+07:45:18.463 CONFIG | 2
+07:45:19.993 CONFIG | Vehicle0, origin: Newcastle, capacity: 30, costPerKm: 5, tasks: 0
+07:45:19.993 CONFIG | Vehicle1, origin: London, capacity: 30, costPerKm: 5, tasks: 8
+07:45:19.993 CONFIG | - Pickup Task 0 at Cardiff, to be delivred to Sheffield 
+07:45:19.993 CONFIG | - Deliver Task 0 to Sheffield 
+07:45:19.993 CONFIG | - Pickup Task 2 at Leeds, to be delivred to Liverpool 
+07:45:19.993 CONFIG | - Deliver Task 2 to Liverpool 
+07:45:19.993 CONFIG | - Pickup Task 3 at Manchester, to be delivred to Norwich 
+07:45:19.993 CONFIG | - Pickup Task 1 at Norwich, to be delivred to London 
+07:45:19.993 CONFIG | - Deliver Task 3 to Norwich 
+07:45:19.993 CONFIG | - Deliver Task 1 to London 
+07:45:19.993 CONFIG | 
+07:45:19.994 CONFIG | Vehicle0, origin: Newcastle, capacity: 30, costPerKm: 5, tasks: 0
+07:45:19.994 CONFIG | Vehicle1, origin: London, capacity: 30, costPerKm: 5, tasks: 8
+07:45:19.994 CONFIG | - Pickup Task 0 at Cardiff, to be delivred to Sheffield 
+07:45:19.994 CONFIG | - Pickup Task 3 at Cardiff, to be delivred to Manchester 
+07:45:19.994 CONFIG | - Deliver Task 0 to Sheffield 
+07:45:19.994 CONFIG | - Pickup Task 2 at Leeds, to be delivred to Liverpool 
+07:45:19.994 CONFIG | - Deliver Task 2 to Liverpool 
+07:45:19.994 CONFIG | - Pickup Task 1 at Manchester, to be delivred to Norwich 
+07:45:19.994 CONFIG | - Deliver Task 3 to Manchester 
+07:45:19.994 CONFIG | - Deliver Task 1 to Norwich 
+07:45:19.994 CONFIG | 
+07:45:19.994 CONFIG | 3
+07:45:21.524 CONFIG | Vehicle0, origin: Newcastle, capacity: 30, costPerKm: 5, tasks: 0
+07:45:21.524 CONFIG | Vehicle1, origin: London, capacity: 30, costPerKm: 5, tasks: 0
+07:45:21.524 CONFIG | 
+07:45:21.524 CONFIG | STEADY
+07:45:21.524 CONFIG | 4
+07:45:23.565 CONFIG | STEADY
+07:45:23.565 CONFIG | 5
+07:45:25.605 CONFIG | STEADY
+07:45:25.605 CONFIG | 6
+07:45:27.645 CONFIG | STEADY
+07:45:27.645 CONFIG | 7
+07:45:27.645 CONFIG | Agent 0: 1382
+07:45:27.646 CONFIG | Agent 1: 460
+07:45:27.647 CONFIG | Agent 1 has this much profit: -115.0
+07:45:27.647 CONFIG | 460.0
+07:45:29.687 CONFIG | STEADY
+07:45:29.687 CONFIG | 8
+07:45:31.727 CONFIG | STEADY
+07:45:31.727 CONFIG | 9
+07:45:33.767 CONFIG | STEADY
+07:45:33.767 CONFIG | 10
+07:45:33.767 CONFIG | Agent 0: 2423
+07:45:33.767 CONFIG | Agent 1: 1451
+07:45:33.767 CONFIG | Agent 1 has this much profit: -478.0
+07:45:33.767 CONFIG | 1911.0
+07:45:35.807 CONFIG | STEADY
+07:45:35.807 CONFIG | 11
+07:45:35.807 CONFIG | Agent 0: 1040
+07:45:35.807 CONFIG | Agent 1: 979
+07:45:35.807 CONFIG | Agent 1 has this much profit: -723.0
+07:45:35.807 CONFIG | 2890.0
+07:45:37.847 CONFIG | STEADY
+07:45:37.847 CONFIG | 12
+07:45:39.887 CONFIG | STEADY
+07:45:39.887 CONFIG | 13
+07:45:39.887 CONFIG | Agent 0: 740
+07:45:39.887 CONFIG | Agent 1: 360
+07:45:39.887 CONFIG | Agent 1 has this much profit: -814.0
+07:45:39.887 CONFIG | 3250.0
+07:45:41.927 CONFIG | STEADY
+07:45:41.927 CONFIG | 14
+07:45:43.967 CONFIG | STEADY
+07:45:43.967 CONFIG | 15
+07:45:46.008 CONFIG | STEADY
+07:45:46.008 CONFIG | 16
+07:45:46.009 CONFIG | Agent 0: 740
+07:45:46.009 CONFIG | Agent 1: 455
+07:45:46.009 CONFIG | Agent 1 has this much profit: -928.0
+07:45:46.009 CONFIG | 3705.0
+07:45:48.048 CONFIG | STEADY
+07:45:48.048 CONFIG | 17
+07:45:48.049 CONFIG | Agent 0: 359
+07:45:48.049 CONFIG | Agent 1: 0
+07:45:48.049 CONFIG | Agent 1 has this much profit: -928.0
+07:45:48.049 CONFIG | 3705.0
+07:45:50.089 CONFIG | STEADY
+07:45:50.089 CONFIG | 18
+07:45:52.129 CONFIG | STEADY
+07:45:52.129 CONFIG | 19
+07:45:54.169 CONFIG | STEADY
+07:45:54.169 CONFIG | 20
+07:45:54.169 CONFIG | Agent 0: 1683
+07:45:54.169 CONFIG | Agent 1: 920
+07:45:54.169 CONFIG | Agent 1 has this much profit: -1158.0
+07:45:54.169 CONFIG | 4625.0
+07:45:56.209 CONFIG | STEADY
+07:45:56.209 CONFIG | 21
+07:45:58.259 CONFIG | STEADY
+07:45:58.260 CONFIG | 22
+07:46:00.304 CONFIG | STEADY
+07:46:00.306 CONFIG | 23
+07:46:02.344 CONFIG | STEADY
+07:46:02.344 CONFIG | 24
+07:46:02.344 CONFIG | Agent 0: 1683
+07:46:02.344 CONFIG | Agent 1: 530
+07:46:02.344 CONFIG | Agent 1 has this much profit: -1291.0
+07:46:02.344 CONFIG | 5155.0
+07:46:04.384 CONFIG | STEADY
+07:46:04.384 CONFIG | 25
+07:46:04.384 CONFIG | Agent 0: 569
+07:46:04.384 CONFIG | Agent 1: 0
+07:46:04.384 CONFIG | Agent 1 has this much profit: -1291.0
+07:46:04.384 CONFIG | 5155.0
+07:46:06.424 CONFIG | STEADY
+07:46:06.424 CONFIG | 26
+07:46:06.424 CONFIG | Agent 0: 569
+07:46:06.424 CONFIG | Agent 1: 0
+07:46:06.424 CONFIG | Agent 1 has this much profit: -1291.0
+07:46:06.424 CONFIG | 5155.0
+07:46:08.464 CONFIG | STEADY
+07:46:08.464 CONFIG | 27
+07:46:08.464 CONFIG | Agent 0: 1683
+07:46:08.464 CONFIG | Agent 1: 0
+07:46:08.464 CONFIG | Agent 1 has this much profit: -1291.0
+07:46:08.465 CONFIG | 5155.0
+07:46:10.505 CONFIG | STEADY
+07:46:10.505 CONFIG | 28
+07:46:10.506 CONFIG | Agent 0: 1683
+07:46:10.506 CONFIG | Agent 1: 0
+07:46:10.506 CONFIG | Agent 1 has this much profit: -1291.0
+07:46:10.506 CONFIG | 5155.0
+07:46:12.558 CONFIG | STEADY
+07:46:12.558 CONFIG | 29
+07:46:12.559 CONFIG | Agent 0: 758
+07:46:12.559 CONFIG | Agent 1: 0
+07:46:12.559 CONFIG | Agent 1 has this much profit: -1291.0
+07:46:12.559 CONFIG | 5155.0
+07:46:14.599 CONFIG | STEADY
+07:46:14.599 CONFIG | 30
+07:46:16.647 CONFIG | STEADY
+07:46:16.647 CONFIG | 31
+07:46:16.647 CONFIG | Agent 0: 2394
+07:46:16.647 CONFIG | Agent 1: 0
+07:46:16.647 CONFIG | Agent 1 has this much profit: -1291.0
+07:46:16.647 CONFIG | 5155.0
+07:46:18.687 CONFIG | STEADY
+07:46:18.687 CONFIG | 32
+07:46:20.727 CONFIG | STEADY
+07:46:20.729 CONFIG | 33
+07:46:20.729 CONFIG | Agent 0: 1482
+07:46:20.729 CONFIG | Agent 1: 0
+07:46:20.729 CONFIG | Agent 1 has this much profit: -1291.0
+07:46:20.729 CONFIG | 5155.0
+07:46:22.767 CONFIG | STEADY
+07:46:22.767 CONFIG | 34
+07:46:22.767 CONFIG | Agent 0: 343
+07:46:22.767 CONFIG | Agent 1: 277
+07:46:22.767 CONFIG | Agent 1 has this much profit: -1361.0
+07:46:22.767 CONFIG | 5432.0
+07:46:24.808 CONFIG | STEADY
+07:46:24.808 CONFIG | 35
+07:46:26.849 CONFIG | STEADY
+07:46:26.849 CONFIG | 36
+07:46:26.849 CONFIG | Agent 0: 1683
+07:46:26.849 CONFIG | Agent 1: 0
+07:46:26.849 CONFIG | Agent 1 has this much profit: -1361.0
+07:46:26.849 CONFIG | 5432.0
+07:46:28.889 CONFIG | STEADY
+07:46:28.889 CONFIG | 37
+07:46:28.889 CONFIG | Agent 0: 758
+07:46:28.889 CONFIG | Agent 1: 580
+07:46:28.889 CONFIG | Agent 1 has this much profit: -1506.0
+07:46:28.889 CONFIG | 6012.0
+07:46:30.929 CONFIG | STEADY
+07:46:30.929 CONFIG | 38
+07:46:30.929 CONFIG | Agent 0: 3306
+07:46:30.929 CONFIG | Agent 1: 0
+07:46:30.929 CONFIG | Agent 1 has this much profit: -1200.0
+07:46:30.929 CONFIG | 6012.0
+07:46:32.970 CONFIG | STEADY
+07:46:32.970 CONFIG | 39
+07:46:32.970 CONFIG | Agent 0: 711
+07:46:32.970 CONFIG | Agent 1: 0
+07:46:32.970 CONFIG | Agent 1 has this much profit: -1200.0
+07:46:32.970 CONFIG | 6012.0
+07:46:35.010 CONFIG | STEADY
+07:46:35.010 CONFIG | 40
+07:46:35.010 CONFIG | Agent 0: 939
+07:46:35.010 CONFIG | Agent 1: 920
+07:46:35.010 CONFIG | Agent 1 has this much profit: -1430.0
+07:46:35.010 CONFIG | 6932.0
+07:46:37.050 CONFIG | STEADY
+07:46:37.050 CONFIG | 41
+07:46:39.091 CONFIG | STEADY
+07:46:39.091 CONFIG | 42
+07:46:41.132 CONFIG | STEADY
+07:46:41.132 CONFIG | 43
+07:46:41.132 CONFIG | Agent 0: 3306
+07:46:41.132 CONFIG | Agent 1: 1052
+07:46:41.132 CONFIG | Agent 1 has this much profit: -1693.0
+07:46:41.132 CONFIG | 7984.0
+07:46:43.176 CONFIG | STEADY
+07:46:43.176 CONFIG | 44
+07:46:43.176 CONFIG | Agent 0: 343
+07:46:43.176 CONFIG | Agent 1: 0
+07:46:43.176 CONFIG | Agent 1 has this much profit: -1097.0
+07:46:43.176 CONFIG | 7984.0
+07:46:45.218 CONFIG | STEADY
+07:46:45.218 CONFIG | 45
+07:46:47.259 CONFIG | STEADY
+07:46:47.259 CONFIG | 46
+07:46:47.259 CONFIG | Agent 0: 1441
+07:46:47.259 CONFIG | Agent 1: 1128
+07:46:47.259 CONFIG | Agent 1 has this much profit: -1379.0
+07:46:47.259 CONFIG | 9112.0
+07:46:49.299 CONFIG | STEADY
+07:46:49.299 CONFIG | 47
+07:46:51.340 CONFIG | STEADY
+07:46:51.340 CONFIG | 48
+07:46:51.340 CONFIG | Agent 0: 1138
+07:46:51.340 CONFIG | Agent 1: 920
+07:46:51.340 CONFIG | Agent 1 has this much profit: -1609.0
+07:46:51.340 CONFIG | 10032.0
+07:46:53.380 CONFIG | STEADY
+07:46:53.380 CONFIG | 49
+07:46:55.422 CONFIG | STEADY
+07:46:55.423 CONFIG | 50
+07:46:55.423 CONFIG | Agent 0: 939
+07:46:55.423 CONFIG | Agent 1: 0
+07:46:55.423 CONFIG | Agent 1 has this much profit: -1609.0
+07:46:55.423 CONFIG | 10032.0
+07:46:56.645 CONFIG | [[Move (Leeds), Move (Sheffield), Pickup (Task 3), Move (Leeds), Move (Liverpool), Pickup (Task 28), Pickup (Task 4), Move (Manchester), Pickup (Task 1), Move (Birmingham), Move (Cardiff), Pickup (Task 6), Move (Birmingham), Move (London), Move (Portsmouth), Deliver (Task 28), Pickup (Task 17), Deliver (Task 3), Move (London), Pickup (Task 7), Pickup (Task 16), Move (Norwich), Deliver (Task 1), Deliver (Task 17), Deliver (Task 4), Move (London), Deliver (Task 6), Move (Birmingham), Move (Cardiff), Pickup (Task 12), Pickup (Task 0), Pickup (Task 40), Pickup (Task 19), Move (Birmingham), Pickup (Task 43), Pickup (Task 21), Deliver (Task 16), Move (Sheffield), Deliver (Task 0), Move (Leeds), Pickup (Task 45), Move (Newcastle), Pickup (Task 13), Deliver (Task 45), Deliver (Task 21), Pickup (Task 39), Deliver (Task 40), Pickup (Task 20), Move (Leeds), Pickup (Task 47), Deliver (Task 19), Move (Sheffield), Move (Birmingham), Pickup (Task 10), Move (Cardiff), Deliver (Task 10), Pickup (Task 30), Pickup (Task 33), Pickup (Task 2), Move (Birmingham), Deliver (Task 20), Move (Manchester), Deliver (Task 13), Deliver (Task 12), Deliver (Task 7), Deliver (Task 39), Deliver (Task 2), Move (Liverpool), Deliver (Task 30), Deliver (Task 43), Deliver (Task 47), Deliver (Task 33)], 2278.4, [], 0.0]
+07:46:56.645 CONFIG | Agent 0 : 794.0
+07:46:56.647 CONFIG | Agent 0: 1683
+07:46:56.647 CONFIG | Agent 1: 0
+07:46:56.647 CONFIG | Agent 1 has this much profit: -1402.0
+07:46:56.647 CONFIG | 10032.0
+07:46:56.847 CONFIG | [[Move (Portsmouth), Move (London), Move (Birmingham), Move (Sheffield), Move (Leeds), Pickup (Task 22), Move (Liverpool), Move (Manchester), Pickup (Task 49), Pickup (Task 26), Pickup (Task 37), Pickup (Task 42), Move (Birmingham), Move (London), Move (Portsmouth), Pickup (Task 9), Pickup (Task 34), Move (Plymouth), Pickup (Task 41), Deliver (Task 49), Deliver (Task 9), Pickup (Task 36), Pickup (Task 8), Deliver (Task 26), Deliver (Task 34), Deliver (Task 22), Pickup (Task 18), Move (Portsmouth), Move (London), Move (Birmingham), Move (Cardiff), Pickup (Task 38), Move (Birmingham), Move (Sheffield), Pickup (Task 15), Move (Leeds), Deliver (Task 41), Deliver (Task 37), Pickup (Task 35), Move (Liverpool), Pickup (Task 46), Deliver (Task 15), Deliver (Task 38), Deliver (Task 35), Deliver (Task 42), Move (Manchester), Move (Birmingham), Move (London), Move (Norwich), Pickup (Task 24), Pickup (Task 44), Pickup (Task 23), Pickup (Task 31), Deliver (Task 18), Move (London), Deliver (Task 24), Pickup (Task 27), Deliver (Task 23), Move (Birmingham), Move (Manchester), Deliver (Task 44), Pickup (Task 48), Deliver (Task 36), Deliver (Task 27), Deliver (Task 31), Move (Birmingham), Deliver (Task 8), Move (Cardiff), Deliver (Task 48), Deliver (Task 46)], 2756.4, [Pickup (Task 5), Move (London), Move (Portsmouth), Pickup (Task 11), Pickup (Task 14), Move (London), Deliver (Task 5), Move (Birmingham), Move (Sheffield), Deliver (Task 11), Pickup (Task 29), Move (Leeds), Pickup (Task 25), Move (Liverpool), Move (Manchester), Pickup (Task 32), Move (Liverpool), Deliver (Task 14), Deliver (Task 32), Move (Manchester), Move (Birmingham), Move (London), Move (Portsmouth), Move (Plymouth), Deliver (Task 25), Deliver (Task 29)], 1148.4]
+07:46:56.848 CONFIG | Agent 1 : -1402.0
+07:46:56.858 CONFIG | Wrote tournament/tour/auction-newAgent3-myAgent.xml
+07:46:56.873 INFO | LogistPlatform finished successfully!

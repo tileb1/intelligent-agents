@@ -186,7 +186,7 @@ public class AuctionAgent implements AuctionBehavior {
 			this.updateMyState(previous);
 			this.ourSolution = this.theSolutionWeBidFor;
 			// We win so we will bid more less aggressivaly
-			this.ratio = Math.max(Math.min(this.ratio * 1.01, this.RATIO_UPPER), this.RATIO_LOWER);
+			this.ratio = Math.max(Math.min(this.ratio * 1.05, this.RATIO_UPPER), this.RATIO_LOWER);
 //			System.out.println("Agent " + agent.id() + " has this much profit: " + (this.totalBid - this.ourSolution.getCost()));
 //			System.out.println(this.totalBid);
 		} else {
@@ -246,8 +246,11 @@ public class AuctionAgent implements AuctionBehavior {
 			}
 			
 			bid = opponentMarginalCost * ratio;
-			if (bid < ourMarginalCost * 0.8) {
-				bid = ourMarginalCost * 0.8;
+			if (bid < ourMarginalCost * 0.99) {
+				bid = ourMarginalCost * 0.99;
+			}
+			if (bid == 0) {
+				bid = 250 - this.iter;
 			}
 			if (bid < this.opponent_min_bid) {
 				bid = this.opponent_min_bid - 1;
