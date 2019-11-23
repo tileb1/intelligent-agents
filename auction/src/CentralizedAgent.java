@@ -96,7 +96,7 @@ public class CentralizedAgent {
         Solution currentSol = new Solution(veh, topology, tasks);
         ArrayList<Solution> sols = currentSol.getNeighbors();
         if (sols.size() == 0) {
-        	return null;
+        	return currentSol;
         }
         currentSol = Collections.min(sols);
         Solution bestSolEver = currentSol;
