@@ -339,19 +339,20 @@ public class Solution implements Comparable<Solution>, Cloneable {
 	}
 	
 	public void setTask(Task task) {
-		boolean pickupSet = false;
+		int tmp = 0;
 		for (Vehicle v : this.nextTaskV.keySet()) {
 			for (Wrapper w : this.nextTaskV.get(v)) {
-				Task inTruck = w.getTask();
-				if (inTruck.deliveryCity.equals(task.deliveryCity) && inTruck.pickupCity.equals(task.pickupCity) && inTruck.weight == task.weight) {
+				if (w.getTask().id == task.id) {
 					w.setTask(task);
-					if (pickupSet) {
-						return;
-					}
-					pickupSet = !pickupSet;
+					tmp += 1;
+//					if (tmp == 2) {
+//						break;
+//					}
 				}
 			}
 		}
-		throw new IllegalStateException();
+		if (tmp != 2) {
+			throw new IllegalStateException();
+		}
 	}
 }
