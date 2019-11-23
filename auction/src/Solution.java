@@ -229,7 +229,25 @@ public class Solution implements Comparable<Solution>, Cloneable {
 		for (Vehicle v : this.nextTaskV.keySet()) {
 			City prevCity = v.homeCity();
 			for (Wrapper w : this.nextTaskV.get(v)) {
-				this.cost += prevCity.distanceTo(w.getCity()) * v.costPerKm();
+				try {
+					this.cost += prevCity.distanceTo(w.getCity()) * v.costPerKm();
+				} catch (NullPointerException e) {
+					System.out.println(prevCity);
+					System.out.println(w);
+					System.out.println(this);
+					for (Vehicle vv : this.nextTaskV.keySet()) {
+						for (Wrapper ww : this.nextTaskV.get(vv)) {
+							if (ww == null) {
+								System.out.println("null");
+							}
+							else {
+								System.out.println(ww);
+							}
+						}
+					}
+					throw new IllegalAccessError();
+				}
+				
 				prevCity = w.getCity();
 			}
 		}
@@ -295,5 +313,45 @@ public class Solution implements Comparable<Solution>, Cloneable {
 			sString = sString + vString;
 		}
 		return sString;
+	}
+	
+	/*
+	 * Returns the numbers of tasks in the solution (not number of wrappers)
+	 */
+	public int size() {
+		int tmp = 0;
+		for (Vehicle v : this.nextTaskV.keySet()) {
+			tmp += this.nextTaskV.get(v).size();
+		}
+		return (int) (tmp / 2);
+	}
+	
+	public boolean contains(Task task) {
+		for (Vehicle v : this.nextTaskV.keySet()) {
+			for (Wrapper w : this.nextTaskV.get(v)) {
+				Task inTruck = w.getTask();
+				if (inTruck.deliveryCity.equals(task.deliveryCity) & inTruck.pickupCity.equals(task.pickupCity) & inTruck.weight == task.weight) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	public void setTask(Task task) {
+		boolean pickupSet = false;
+		for (Vehicle v : this.nextTaskV.keySet()) {
+			for (Wrapper w : this.nextTaskV.get(v)) {
+				Task inTruck = w.getTask();
+				if (inTruck.deliveryCity.equals(task.deliveryCity) && inTruck.pickupCity.equals(task.pickupCity) && inTruck.weight == task.weight) {
+					w.setTask(task);
+					if (pickupSet) {
+						return;
+					}
+					pickupSet = !pickupSet;
+				}
+			}
+		}
+		throw new IllegalStateException();
 	}
 }

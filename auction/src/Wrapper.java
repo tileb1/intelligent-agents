@@ -17,6 +17,10 @@ public class Wrapper {
 		return this.task;
 	}
 	
+	public void setTask(Task task) {
+		this.task = task;
+	}
+	
 	public City getCity() {
 		if (pickup) {
 			return this.task.pickupCity;

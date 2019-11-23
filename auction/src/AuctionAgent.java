@@ -41,9 +41,9 @@ public class AuctionAgent implements AuctionBehavior {
 	private Solution theSolutionOpponentBidsFor;
 	private List<Vehicle> ourVehicles;
 	private List<Vehicle> opponentVehicles;
-	private final double RATIO_UPPER = 1.0;
-	private final double RATIO_LOWER = 0.7;
-	private double ratio = 0.7;
+	private final double RATIO_UPPER = 1.2;
+	private final double RATIO_LOWER = 0.8;
+	private double ratio = 1.0;
 	private int iter = 0;
 	private double opponent_min_bid = Double.MAX_VALUE;
 	private long timeout_setup;
@@ -246,12 +246,16 @@ public class AuctionAgent implements AuctionBehavior {
 			}
 			
 			bid = opponentMarginalCost * ratio;
-			if (bid < ourMarginalCost * 0.99) {
-				bid = ourMarginalCost * 0.99;
+			if (bid < ourMarginalCost * 1) {
+				bid = ourMarginalCost * 1;
+			}
+			if (bid <= 0) {
+				bid = 250 - this.iter;
 			}
 			if (bid < this.opponent_min_bid) {
 				bid = this.opponent_min_bid - 1;
 			}
+			
 			System.out.println("STEADY");
 
 			// Some random agent
@@ -273,24 +277,57 @@ public class AuctionAgent implements AuctionBehavior {
 			System.out.println(this.ourSolution);
 			System.out.println(this.theSolutionWeBidFor);
 			bid = this.theSolutionWeBidFor.getCost() - this.ourSolution.getCost();
-//			System.out.println(this.theSolutionWeBidFor);
+			if (bid <= 0) {
+				bid = 250 - this.iter;
+			}
 		}
 		
-		if (bid <= 0) {
-			bid = 250 - this.iter;
-		}
 		this.iter++;
 		System.out.println(this.iter);
 		return (long) bid;
 	}
 
+//	@Override
+//	public List<Plan> plan(List<Vehicle> vehicles, TaskSet tasks) {
+//		this.centralizedAgent.setTimeout(timeout_plan);
+//		List<Plan> plans = this.centralizedAgent.plan(vehicles, tasks);
+//		System.out.println(plans);
+//		System.out.println("Agent " + this.agent.id() + " : " + (this.totalBid - this.ourSolution.getCost()));
+//		return plans;
+//	}
+	
 	@Override
 	public List<Plan> plan(List<Vehicle> vehicles, TaskSet tasks) {
+		System.out.println("Calling plan");
 		this.centralizedAgent.setTimeout(timeout_plan);
-		List<Plan> plans = this.centralizedAgent.plan(vehicles, tasks);
-		System.out.println(plans);
-		System.out.println("Agent " + this.agent.id() + " : " + (this.totalBid - this.ourSolution.getCost()));
-		return plans;
+		Solution solution = null;
+		List<Plan> plan = null;
+
+		// We don't win the last task
+		if (tasks.size() == this.ourSolution.size()) {
+			System.out.println("first");
+			for (Task task : tasks) {
+				this.ourSolution.setTask(task);
+			}
+			plan = this.centralizedAgent.plan(vehicles, this.ourSolution);
+		}
+		
+		// We win the last task
+		if (tasks.size() == this.ourSolution.size() + 1) {
+			System.out.println("second");
+			for (Task task : tasks) {
+				this.theSolutionWeBidFor.setTask(task);
+			}
+			plan = this.centralizedAgent.plan(vehicles, this.theSolutionWeBidFor);
+		}
+		
+		// The auction agent has not even entered steady state...
+		if (tasks.size() > this.ourSolution.size() + 1) {
+			System.out.println("third");
+			plan = this.centralizedAgent.plan(vehicles, tasks);
+		}
+
+		return plan;
 	}
 
 	private void updateMyState(Task task) {

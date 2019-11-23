@@ -148,7 +148,62 @@ public class CentralizedAgent {
         Solution bestSolEver = currentSol;
         
         // We add a second safety delay
-    	while (System.currentTimeMillis() - time_start + 1000 < 1200) {
+    	while (System.currentTimeMillis() - time_start + 500 < this.timeout_plan_per_round) {
+    		ArrayList<Solution> sols = currentSol.getNeighbors();
+			if (sols.size() > 0) {
+				Solution minSol = Collections.min(sols);
+				if (minSol.getCost() < currentSol.getCost()) {
+					currentSol = minSol;
+					if (bestSolEver.getCost() > minSol.getCost()) {
+						bestSolEver = minSol;
+					}
+				}
+				// Do some exploration
+				if (Math.random() < 0.03) {
+					currentSol = sols.get(Solution.random.nextInt(sols.size()));
+				}
+				// Reset to last local minimum very rarely
+				// This can be usefull when the exploration leads us nowhere...
+				if (Math.random() < 0.0005) {
+					currentSol = bestSolEver;
+				}
+			}
+
+    		iter++;
+    	}
+    	
+    	// Generate plan
+    	List<Plan> plans = new ArrayList<Plan>();
+    	for (Vehicle v: vehicles) {
+    		Plan plan = new Plan(v.homeCity());
+    		City fromCity = v.homeCity();
+    		for (Wrapper w: bestSolEver.getPlans().get(v)) {
+    			for (City c: fromCity.pathTo(w.getCity())) {
+					plan.appendMove(c);
+				}
+    			fromCity = w.getCity();
+    			if (w.isPickup()) {
+    				plan.appendPickup(w.getTask());
+    			}
+    			else {
+    				plan.appendDelivery(w.getTask());
+    			}
+    		}
+    		plans.add(plan);
+    	}
+        
+        return plans;
+    }
+    
+    public List<Plan> plan(List<Vehicle> vehicles, Solution currentSol) {
+        long time_start = System.currentTimeMillis();
+//        Solution currentSol = new Solution(vehicles, topology, tasks);
+        
+        int iter = 0;
+        Solution bestSolEver = currentSol;
+        
+        // We add a second safety delay
+    	while (System.currentTimeMillis() - time_start + 500 < this.timeout_plan_per_round) {
     		ArrayList<Solution> sols = currentSol.getNeighbors();
 			if (sols.size() > 0) {
 				Solution minSol = Collections.min(sols);
