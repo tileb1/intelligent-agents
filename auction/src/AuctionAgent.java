@@ -249,9 +249,6 @@ public class AuctionAgent implements AuctionBehavior {
 			if (bid < ourMarginalCost * 0.99) {
 				bid = ourMarginalCost * 0.99;
 			}
-			if (bid == 0) {
-				bid = 250 - this.iter;
-			}
 			if (bid < this.opponent_min_bid) {
 				bid = this.opponent_min_bid - 1;
 			}
@@ -278,7 +275,10 @@ public class AuctionAgent implements AuctionBehavior {
 			bid = this.theSolutionWeBidFor.getCost() - this.ourSolution.getCost();
 //			System.out.println(this.theSolutionWeBidFor);
 		}
-
+		
+		if (bid <= 0) {
+			bid = 250 - this.iter;
+		}
 		this.iter++;
 		System.out.println(this.iter);
 		return (long) bid;
