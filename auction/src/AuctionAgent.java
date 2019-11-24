@@ -85,7 +85,6 @@ public class AuctionAgent implements AuctionBehavior {
 		this.centralizedAgent = new CentralizedAgent(topology, distribution, agent, timeout_bid / 2);
 
 		this.ourSolution = new Solution(agent.vehicles(), topology);
-		this.opponentSolution = new Solution(agent.vehicles(), topology);
 		this.firstSpeculatedTasks = this.initTasks(distribution, topology, 3);
 
 		this.opponentVehicles = new ArrayList<Vehicle>();
@@ -154,7 +153,7 @@ public class AuctionAgent implements AuctionBehavior {
 
 				@Override
 				public int costPerKm() {
-					return 0;
+					return v.costPerKm();
 				}
 
 				@Override
@@ -164,12 +163,13 @@ public class AuctionAgent implements AuctionBehavior {
 
 				@Override
 				public int capacity() {
-					return 0;
+					return v.capacity();
 				}
 			};
 			remainingCities.remove(randInt);
 			opponentVehicles.add(newV);
 		}
+		this.opponentSolution = new Solution(opponentVehicles, topology);
 		this.ourSolution = this.centralizedAgent.getSolution(this.getTasksForSolution(null), this.ourVehicles);
 
 	}
