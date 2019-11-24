@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.io.File;
 
+import logist.LogistSettings;
 import logist.Measures;
 import logist.behavior.AuctionBehavior;
+import logist.config.Parsers;
 import logist.agent.Agent;
 import logist.simulation.Vehicle;
 import logist.plan.Plan;
@@ -37,11 +40,14 @@ public class AuctionAgent implements AuctionBehavior {
 	private Solution theSolutionOpponentBidsFor;
 	private List<Vehicle> ourVehicles;
 	private List<Vehicle> opponentVehicles;
-	private final double RATIO_UPPER = 1.0;
-	private final double RATIO_LOWER = 0.7;
-	private double ratio = 0.7;
+	private final double RATIO_UPPER = 1.2;
+	private final double RATIO_LOWER = 0.8;
+	private double ratio = 1;
 	private int iter = 0;
 	private double opponent_min_bid = Double.MAX_VALUE;
+	private long timeout_plan;
+	private long timeout_setup;
+	private long timeout_bid;
 	
 	public double totalBid = 0;
 
@@ -59,7 +65,20 @@ public class AuctionAgent implements AuctionBehavior {
 		long seed = -9019554669489983951L * currentCity.hashCode() * agent.id();
 		this.random = new Random(seed);
 		// --------------------------------------------------------------------------------------FIX TIMEOUT
-		this.centralizedAgent = new CentralizedAgent(topology, distribution, agent, 1200);
+		// this code is used to get the timeouts
+		LogistSettings ls = null;
+		try {
+			ls = Parsers.parseSettings("config" + File.separator + "settings_auction.xml");
+		} catch (Exception exc) {
+			System.out.println("There was a problem loading the configuration file.");
+		}
+
+		// the setup method cannot last more than timeout_setup milliseconds
+		timeout_setup = ls.get(LogistSettings.TimeoutKey.SETUP);
+		timeout_plan = ls.get(LogistSettings.TimeoutKey.PLAN);
+		timeout_bid = ls.get(LogistSettings.TimeoutKey.BID);
+		
+		this.centralizedAgent = new CentralizedAgent(topology, distribution, agent, this.timeout_bid/2);
 		
 		this.ourSolution = new Solution(agent.vehicles(), topology);
 		this.opponentSolution = new Solution(agent.vehicles(), topology);
@@ -158,7 +177,7 @@ public class AuctionAgent implements AuctionBehavior {
 			}
 			this.ourSolution = this.theSolutionWeBidFor;
 			// We win so we will bid more less aggressivaly
-			this.ratio = Math.max(Math.min(this.ratio*1.01, this.RATIO_UPPER), this.RATIO_LOWER);
+			this.ratio = Math.max(Math.min(this.ratio*1.05, this.RATIO_UPPER), this.RATIO_LOWER);
 			System.out.println("Agent " + agent.id() + " has this much profit: " + (this.totalBid - this.ourSolution.getCost()));
 			System.out.println(this.totalBid);
 		}
@@ -186,8 +205,11 @@ public class AuctionAgent implements AuctionBehavior {
 		double opponentMarginalCost = opponentSolution.getCost() - this.opponentSolution.getCost();
 		
 		double bid = opponentMarginalCost * ratio;
-		if (bid < ourMarginalCost * 0.8) {
-			bid = ourMarginalCost * 0.8;
+		if (bid < ourMarginalCost * 1) {
+			bid = ourMarginalCost * 1;
+		}
+		if (bid <= 0) {
+			bid = 250 - this.iter;
 		}
 		if (bid < this.opponent_min_bid) {
 			bid = this.opponent_min_bid - 1;
@@ -201,10 +223,37 @@ public class AuctionAgent implements AuctionBehavior {
 
 	@Override
 	public List<Plan> plan(List<Vehicle> vehicles, TaskSet tasks) {
-		List<Plan> plans = this.centralizedAgent.plan(vehicles, tasks);
-		System.out.println(plans);
-		System.out.println("Agent " + this.agent.id() + " : " + (this.totalBid - this.ourSolution.getCost()));
-        return plans;
+		this.centralizedAgent.setTimeout(timeout_plan);
+		Solution solution = null;
+		List<Plan> plan = null;
+
+		if (this.ourSolution != null) {
+			// We don't win the last task
+			if (tasks.size() == this.ourSolution.size()) {
+				for (Task task : tasks) {
+					this.ourSolution.setTask(task);
+				}
+				plan = this.centralizedAgent.plan(vehicles, this.ourSolution);
+			}
+		}
+
+		
+		if (this.theSolutionOpponentBidsFor != null) {
+			// We win the last task
+			if (tasks.size() == this.ourSolution.size() + 1) {
+				for (Task task : tasks) {
+					this.theSolutionWeBidFor.setTask(task);
+				}
+				plan = this.centralizedAgent.plan(vehicles, this.theSolutionWeBidFor);
+			}
+		}
+		
+		// The auction agent has not even entered steady state...
+		if (plan == null) {
+			plan = this.centralizedAgent.plan(vehicles, tasks);
+		}
+
+		return plan;
 	}
 
 }
