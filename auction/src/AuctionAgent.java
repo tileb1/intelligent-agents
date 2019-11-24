@@ -81,7 +81,6 @@ public class AuctionAgent implements AuctionBehavior {
 		this.centralizedAgent = new CentralizedAgent(topology, distribution, agent, this.timeout_bid/2);
 		
 		this.ourSolution = new Solution(agent.vehicles(), topology);
-		this.opponentSolution = new Solution(agent.vehicles(), topology);
 		
 		this.opponentVehicles = new ArrayList<Vehicle>();
 		HashSet<City> ourCities = new HashSet<City>();
@@ -100,6 +99,8 @@ public class AuctionAgent implements AuctionBehavior {
 			Random rand = new Random();
 			int randInt = rand.nextInt(remainingCities.size());
 			final City homeCity = remainingCities.get(randInt);
+			final int costPerKm = v.costPerKm();
+			final int capacity = v.capacity();
 			Vehicle newV = new Vehicle() {
 				
 				@Override
@@ -149,7 +150,7 @@ public class AuctionAgent implements AuctionBehavior {
 				
 				@Override
 				public int costPerKm() {
-					return 0;
+					return costPerKm;
 				}
 				
 				@Override
@@ -159,12 +160,13 @@ public class AuctionAgent implements AuctionBehavior {
 				
 				@Override
 				public int capacity() {
-					return 0;
+					return capacity;
 				}
 			};
 			remainingCities.remove(randInt);
 			opponentVehicles.add(newV);
 		}
+		this.opponentSolution = new Solution(opponentVehicles, topology);
 		
 	}
 
@@ -214,10 +216,11 @@ public class AuctionAgent implements AuctionBehavior {
 		if (bid < this.opponent_min_bid) {
 			bid = this.opponent_min_bid - 1;
 		}
-		if (this.iter < 3) {
+		if (this.iter < 2) {
 			bid = ourMarginalCost * 0.5;
 		}
 		this.iter++;
+		bid = ourMarginalCost;
 		return (long) bid;
 	}
 
