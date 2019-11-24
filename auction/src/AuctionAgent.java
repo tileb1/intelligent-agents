@@ -246,8 +246,8 @@ public class AuctionAgent implements AuctionBehavior {
 			}
 			
 			bid = opponentMarginalCost * ratio;
-			if (bid < ourMarginalCost * 0.99) {
-				bid = ourMarginalCost * 0.99;
+			if (bid < ourMarginalCost * 1) {
+				bid = ourMarginalCost * 1;
 			}
 			if (bid <= 0) {
 				bid = 250 - this.iter;
@@ -286,15 +286,6 @@ public class AuctionAgent implements AuctionBehavior {
 		System.out.println(this.iter);
 		return (long) bid;
 	}
-
-//	@Override
-//	public List<Plan> plan(List<Vehicle> vehicles, TaskSet tasks) {
-//		this.centralizedAgent.setTimeout(timeout_plan);
-//		List<Plan> plans = this.centralizedAgent.plan(vehicles, tasks);
-//		System.out.println(plans);
-//		System.out.println("Agent " + this.agent.id() + " : " + (this.totalBid - this.ourSolution.getCost()));
-//		return plans;
-//	}
 	
 	@Override
 	public List<Plan> plan(List<Vehicle> vehicles, TaskSet tasks) {
