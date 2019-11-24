@@ -271,24 +271,29 @@ public class AuctionAgent implements AuctionBehavior {
 		Solution solution = null;
 		List<Plan> plan = null;
 
-		// We don't win the last task
-		if (tasks.size() == this.ourSolution.size()) {
-			for (Task task : tasks) {
-				this.ourSolution.setTask(task);
+		if (this.ourSolution != null) {
+			// We don't win the last task
+			if (tasks.size() == this.ourSolution.size()) {
+				for (Task task : tasks) {
+					this.ourSolution.setTask(task);
+				}
+				plan = this.centralizedAgent.plan(vehicles, this.ourSolution);
 			}
-			plan = this.centralizedAgent.plan(vehicles, this.ourSolution);
 		}
+
 		
-		// We win the last task
-		if (tasks.size() == this.ourSolution.size() + 1) {
-			for (Task task : tasks) {
-				this.theSolutionWeBidFor.setTask(task);
+		if (this.theSolutionOpponentBidsFor != null) {
+			// We win the last task
+			if (tasks.size() == this.ourSolution.size() + 1) {
+				for (Task task : tasks) {
+					this.theSolutionWeBidFor.setTask(task);
+				}
+				plan = this.centralizedAgent.plan(vehicles, this.theSolutionWeBidFor);
 			}
-			plan = this.centralizedAgent.plan(vehicles, this.theSolutionWeBidFor);
 		}
 		
 		// The auction agent has not even entered steady state...
-		if (tasks.size() > this.ourSolution.size() + 1) {
+		if (plan == null) {
 			plan = this.centralizedAgent.plan(vehicles, tasks);
 		}
 
