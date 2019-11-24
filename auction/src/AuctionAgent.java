@@ -53,6 +53,8 @@ public class AuctionAgent implements AuctionBehavior {
 	private ArrayList<Task> wonTasks = new ArrayList<Task>();
 	private ArrayList<Task> oppenentWonTask = new ArrayList<Task>();
 	private boolean iterTransientToSteady = false;
+	private double minCostPerKm = 0;
+	private double averageTaskLength = 0;
 
 	public double totalBid = 0;
 
@@ -65,6 +67,11 @@ public class AuctionAgent implements AuctionBehavior {
 		this.vehicle = agent.vehicles().get(0);
 		this.currentCity = vehicle.homeCity();
 		this.ourVehicles = agent.vehicles();
+		
+		double total = 0;
+		for (Vehicle v :  this.ourVehicles) {
+			this.minCostPerKm = Math.min(v.costPerKm(), this.minCostPerKm);
+		}
 
 		long seed = -9019554669489983951L * currentCity.hashCode() * agent.id();
 		this.random = new Random(seed);
@@ -246,7 +253,7 @@ public class AuctionAgent implements AuctionBehavior {
 				bid = ourMarginalCost * 1;
 			}
 			if (bid <= 0) {
-				bid = 250 - this.iter;
+				bid = 250*(this.minCostPerKm/5)*(276/this.averageTaskLength) - this.iter;
 			}
 			if (bid < this.opponent_min_bid) {
 				bid = this.opponent_min_bid - 1;
@@ -258,7 +265,7 @@ public class AuctionAgent implements AuctionBehavior {
 			this.theSolutionWeBidFor = this.centralizedAgent.getSolution(this.getTasksForSolution(task), this.ourVehicles);
 			bid = this.theSolutionWeBidFor.getCost() - this.ourSolution.getCost();
 			if (bid <= 0) {
-				bid = 250 - this.iter;
+				bid = 350*(this.minCostPerKm/5)*(276/this.averageTaskLength) - this.iter;
 			}
 		}
 		
@@ -304,7 +311,7 @@ public class AuctionAgent implements AuctionBehavior {
 	}
 
 	/*
-	 * Updates the state of the agent if a task if won.
+	 * Updates the state of the agent if a task is won.
 	 */
 	private void updateMyState(Task task) {
 		this.iterTransientToSteady = false;
@@ -362,8 +369,10 @@ public class AuctionAgent implements AuctionBehavior {
 			tos.add(tp.cities().get(0));
 		}
 
+		double total_distance = 0;
 		for (City c_f : tp.cities()) {
 			for (City c_t : tp.cities()) {
+				total_distance += c_f.distanceTo(c_t);
 				Double prob = td.probability(c_f, c_t);
 				int iter = -1;
 				for (Double observed_p : probabilities) {
@@ -384,6 +393,7 @@ public class AuctionAgent implements AuctionBehavior {
 				}
 			}
 		}
+		this.averageTaskLength = total_distance / Math.pow(tp.cities().size()-1, 2);
 
 		ArrayList<Task> initialTasks = new ArrayList<Task>();
 		int dummy_id = 0;
