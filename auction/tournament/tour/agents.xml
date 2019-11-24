@@ -11,15 +11,15 @@
 	<agent name="YourName2">
 		<set class-path="bin"/>
 		<set class-name="template.AuctionTemplate"/>
-	</agent>
+	</agent> -->
 	<agent name="random">
 		<set class-path="agents/random.jar"/>
 		<set class-name="AuctionAgent"/>
-	</agent> -->
-	<agent name="myAgent">
+	</agent>
+	<!-- <agent name="myAgent">
 		<set class-path="agents/myAgent.jar"/>
 		<set class-name="AuctionAgent"/>
-	</agent>
+	</agent> -->
 	<agent name="newAgent3">
 		<set class-path="agents/newAgent3.jar"/>
 		<set class-name="AuctionAgent"/>

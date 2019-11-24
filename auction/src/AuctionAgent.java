@@ -246,8 +246,8 @@ public class AuctionAgent implements AuctionBehavior {
 			}
 			
 			bid = opponentMarginalCost * ratio;
-			if (bid < ourMarginalCost * 1) {
-				bid = ourMarginalCost * 1;
+			if (bid < ourMarginalCost * 0.99) {
+				bid = ourMarginalCost * 0.99;
 			}
 			if (bid <= 0) {
 				bid = 250 - this.iter;

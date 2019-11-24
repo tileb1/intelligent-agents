@@ -1,0 +1,10 @@
+### auction.xml ###
+       Agents        |  Win - Draw - Lose   |      newAgent3       |        random       
+     newAgent3       |      2 - 0 - 0       |          -           |  WIN (5209 : -2488) 
+       random        |      0 - 0 - 2       | LOSE (-5518 : 13111) |          -          
+
+First company results
+  # wins   : 1
+  # draws  : 0
+  # losses : 1
+
