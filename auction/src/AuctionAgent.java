@@ -85,7 +85,7 @@ public class AuctionAgent implements AuctionBehavior {
 		this.centralizedAgent = new CentralizedAgent(topology, distribution, agent, timeout_bid / 2);
 
 		this.ourSolution = new Solution(agent.vehicles(), topology);
-		this.firstSpeculatedTasks = this.initTasks(distribution, topology, 3);
+		this.firstSpeculatedTasks = this.initTasks(distribution, topology, 2);
 
 		this.opponentVehicles = new ArrayList<Vehicle>();
 		HashSet<City> ourCities = new HashSet<City>();
@@ -223,7 +223,7 @@ public class AuctionAgent implements AuctionBehavior {
 				
 				// Marginal costs
 				ourMarginalCost = this.theSolutionWeBidFor.getCost() - this.ourSolution.getCost();
-			    opponentMarginalCost = 1000;
+			    opponentMarginalCost = 1000; // Random value
 
 			} else {
 				// Our company
@@ -273,6 +273,7 @@ public class AuctionAgent implements AuctionBehavior {
 		Solution solution = null;
 		List<Plan> plan = null;
 
+		// Normal case
 		if (this.ourSolution != null) {
 			// We don't win the last task
 			if (tasks.size() == this.ourSolution.size()) {
@@ -283,7 +284,7 @@ public class AuctionAgent implements AuctionBehavior {
 			}
 		}
 
-		
+		// Will not happen normally
 		if (this.theSolutionOpponentBidsFor != null) {
 			// We win the last task
 			if (tasks.size() == this.ourSolution.size() + 1) {
@@ -294,7 +295,7 @@ public class AuctionAgent implements AuctionBehavior {
 			}
 		}
 		
-		// The auction agent has not even entered steady state...
+		// The auction agent has not even entered steady state... (number of bids too low)
 		if (plan == null) {
 			plan = this.centralizedAgent.plan(vehicles, tasks);
 		}
@@ -302,6 +303,9 @@ public class AuctionAgent implements AuctionBehavior {
 		return plan;
 	}
 
+	/*
+	 * Updates the state of the agent if a task if won.
+	 */
 	private void updateMyState(Task task) {
 		this.iterTransientToSteady = false;
 		if (this.firstSpeculatedTasks.size() > 0) {
@@ -317,6 +321,9 @@ public class AuctionAgent implements AuctionBehavior {
 		this.oppenentWonTask.add(task);
 	}
 
+	/*
+	 * Returns the Taskset containing the won tasks, the speculated tasks left over, and the task we are bidding for.
+	 */
 	private TaskSet getTasksForSolution(Task offer) {
 		Task[] array;
 		if (offer != null) {
@@ -341,6 +348,9 @@ public class AuctionAgent implements AuctionBehavior {
 		return TaskSet.create(array);
 	}
 
+	/*
+	 * Returns the most probable tasks in an array list.
+	 */
 	public ArrayList<Task> initTasks(TaskDistribution td, Topology tp, int num) {
 		ArrayList<City> froms = new ArrayList<City>();
 		ArrayList<City> tos = new ArrayList<City>();
