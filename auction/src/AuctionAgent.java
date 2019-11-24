@@ -104,6 +104,8 @@ public class AuctionAgent implements AuctionBehavior {
 			Random rand = new Random();
 			int randInt = rand.nextInt(remainingCities.size());
 			final City homeCity = remainingCities.get(randInt);
+			final int costPerKm = v.costPerKm();
+			final int capacity = v.capacity();
 			Vehicle newV = new Vehicle() {
 
 				@Override
@@ -153,7 +155,7 @@ public class AuctionAgent implements AuctionBehavior {
 
 				@Override
 				public int costPerKm() {
-					return v.costPerKm();
+					return costPerKm;
 				}
 
 				@Override
@@ -163,13 +165,13 @@ public class AuctionAgent implements AuctionBehavior {
 
 				@Override
 				public int capacity() {
-					return v.capacity();
+					return capacity;
 				}
 			};
 			remainingCities.remove(randInt);
 			opponentVehicles.add(newV);
 		}
-		this.opponentSolution = new Solution(opponentVehicles, topology);
+		this.opponentSolution = new Solution(this.opponentVehicles, topology);
 		this.ourSolution = this.centralizedAgent.getSolution(this.getTasksForSolution(null), this.ourVehicles);
 
 	}
