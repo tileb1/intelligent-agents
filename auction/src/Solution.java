@@ -329,30 +329,64 @@ public class Solution implements Comparable<Solution>, Cloneable {
 	public boolean contains(Task task) {
 		for (Vehicle v : this.nextTaskV.keySet()) {
 			for (Wrapper w : this.nextTaskV.get(v)) {
-				Task inTruck = w.getTask();
-				if (inTruck.deliveryCity.equals(task.deliveryCity) & inTruck.pickupCity.equals(task.pickupCity) & inTruck.weight == task.weight) {
-					return true;
-				}
-			}
-		}
-		return false;
-	}
-	
-	public void setTask(Task task) {
-		int tmp = 0;
-		for (Vehicle v : this.nextTaskV.keySet()) {
-			for (Wrapper w : this.nextTaskV.get(v)) {
 				if (w.getTask().id == task.id) {
-					w.setTask(task);
-					tmp += 1;
+					return true;
 //					if (tmp == 2) {
 //						break;
 //					}
 				}
 			}
 		}
-		if (tmp != 2) {
-			throw new IllegalStateException();
+		return false;
+	}
+	
+//	public void setTask(Task task) {
+//		int tmp = 0;
+//		for (Vehicle v : this.nextTaskV.keySet()) {
+//			for (Wrapper w : this.nextTaskV.get(v)) {
+//				if (w.getTask().id == task.id) {
+//					w.setTask(task);
+//					tmp += 1;
+////					if (tmp == 2) {
+////						break;
+////					}
+//				}
+//			}
+//		}
+//		if (tmp != 2) {
+//			throw new IllegalStateException();
+//		}
+//	}
+	
+	public void toggleWrappers() {
+		for (Vehicle v : this.nextTaskV.keySet()) {
+			for (Wrapper w : this.nextTaskV.get(v)) {
+				w.toggleIsSet();
+			}
 		}
+	}
+	
+	public void setTask(Task task) {
+		Task pickup = null;
+		for (Vehicle v : this.nextTaskV.keySet()) {
+			for (Wrapper w : this.nextTaskV.get(v)) {
+				Task inTruck = w.getTask();
+				if (inTruck.deliveryCity.equals(task.deliveryCity) &&
+						inTruck.pickupCity.equals(task.pickupCity) &&
+						inTruck.weight == task.weight) {
+					if (pickup == null && w.isPickup() && !w.isSet()) {
+						pickup = inTruck;
+						w.setTask(task);
+						w.toggleIsSet();
+					}
+					if (pickup != null && !w.isPickup() && !w.isSet()) {
+						w.setTask(task);
+						w.toggleIsSet();
+						return;
+					}
+				}
+			}
+		}
+		throw new IllegalStateException();
 	}
 }

@@ -307,10 +307,6 @@ public class AuctionAgent implements AuctionBehavior {
 		if (tasks.size() == this.ourSolution.size()) {
 			System.out.println("first");
 			for (Task task : tasks) {
-				System.out.println(task);
-				if (!this.ourSolution.contains(task)) {
-					throw new IllegalAccessError(); /////////////////WAS TRIGGERED..........................
-				}
 				this.ourSolution.setTask(task);
 			}
 			plan = this.centralizedAgent.plan(vehicles, this.ourSolution);

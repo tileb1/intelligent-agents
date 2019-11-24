@@ -7,6 +7,7 @@ import logist.topology.Topology.City;
 public class Wrapper {
 	private Task task;
 	private boolean pickup;
+	private boolean isSet;
 	
 	public Wrapper(Task tsk, boolean pckp) {
 		this.task = tsk;
@@ -32,6 +33,14 @@ public class Wrapper {
 	
 	public boolean isPickup() {
 		return this.pickup;
+	}
+	
+	public void toggleIsSet() {
+		this.isSet = !this.isSet;
+	}
+	
+	public boolean isSet() {
+		return this.isSet;
 	}
 	
 	public String toString() {
