@@ -22,11 +22,11 @@
 	<set color-route="#99aabb" />
 	
 	<!-- Timeouts -->
-	<set timeout-setup="1200" />
-	<set timeout-plan="1200" />
-	<set timeout-bid="1200" />
+	<set timeout-setup="2000" />
+	<set timeout-plan="2000" />
+	<set timeout-bid="2000" />
 	
 	<!-- Flags -->
-	<set flag-show-ui="true" />
+	<set flag-show-ui="false" />
 	
 </settings>
