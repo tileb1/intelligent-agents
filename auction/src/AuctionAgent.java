@@ -253,7 +253,7 @@ public class AuctionAgent implements AuctionBehavior {
 				bid = ourMarginalCost * 1;
 			}
 			if (bid <= 0) {
-				bid = 250*(this.minCostPerKm/5)*(276/this.averageTaskLength) - this.iter;
+				bid = Math.max(250*(this.minCostPerKm/5)*(276/this.averageTaskLength) - this.iter, 10);
 			}
 			if (bid < this.opponent_min_bid) {
 				bid = this.opponent_min_bid - 1;
@@ -265,7 +265,7 @@ public class AuctionAgent implements AuctionBehavior {
 			this.theSolutionWeBidFor = this.centralizedAgent.getSolution(this.getTasksForSolution(task), this.ourVehicles);
 			bid = this.theSolutionWeBidFor.getCost() - this.ourSolution.getCost();
 			if (bid <= 0) {
-				bid = 350*(this.minCostPerKm/5)*(276/this.averageTaskLength) - this.iter;
+				bid = Math.max(350*(this.minCostPerKm/5)*(276/this.averageTaskLength) - this.iter, 10);
 			}
 		}
 		
