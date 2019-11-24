@@ -53,7 +53,7 @@ public class AuctionAgent implements AuctionBehavior {
 	private ArrayList<Task> wonTasks = new ArrayList<Task>();
 	private ArrayList<Task> oppenentWonTask = new ArrayList<Task>();
 	private boolean iterTransientToSteady = false;
-	private double minCostPerKm = 0;
+	private double minCostPerKm = Double.MAX_VALUE;
 	private double averageTaskLength = 0;
 
 	public double totalBid = 0;
@@ -68,7 +68,6 @@ public class AuctionAgent implements AuctionBehavior {
 		this.currentCity = vehicle.homeCity();
 		this.ourVehicles = agent.vehicles();
 		
-		double total = 0;
 		for (Vehicle v :  this.ourVehicles) {
 			this.minCostPerKm = Math.min(v.costPerKm(), this.minCostPerKm);
 		}
