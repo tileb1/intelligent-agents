@@ -331,39 +331,10 @@ public class Solution implements Comparable<Solution>, Cloneable {
 			for (Wrapper w : this.nextTaskV.get(v)) {
 				if (w.getTask().id == task.id) {
 					return true;
-//					if (tmp == 2) {
-//						break;
-//					}
 				}
 			}
 		}
 		return false;
-	}
-	
-//	public void setTask(Task task) {
-//		int tmp = 0;
-//		for (Vehicle v : this.nextTaskV.keySet()) {
-//			for (Wrapper w : this.nextTaskV.get(v)) {
-//				if (w.getTask().id == task.id) {
-//					w.setTask(task);
-//					tmp += 1;
-////					if (tmp == 2) {
-////						break;
-////					}
-//				}
-//			}
-//		}
-//		if (tmp != 2) {
-//			throw new IllegalStateException();
-//		}
-//	}
-	
-	public void toggleWrappers() {
-		for (Vehicle v : this.nextTaskV.keySet()) {
-			for (Wrapper w : this.nextTaskV.get(v)) {
-				w.toggleIsSet();
-			}
-		}
 	}
 	
 	public void setTask(Task task) {

@@ -72,9 +72,6 @@ public class CentralizedAgent {
 					currentSol = bestSolEver;
 				}
 			}
-//			if (iter % 1000 == 0) {
-//				System.out.println("Iteration number: " + iter + " with cost " + currentSol.getCost() + " and best cost " + bestSolEver.getCost());
-//			}
     		iter++;
     	}
     	
@@ -82,9 +79,7 @@ public class CentralizedAgent {
     	// Print computation time
         long time_end = System.currentTimeMillis();
         long duration = time_end - time_start;
-//        System.out.println("The solution was generated in " + duration + " milliseconds.");
-//        System.out.print(currentSol.toString());
-        
+  
         return bestSolEver;
     }
     
@@ -122,18 +117,12 @@ public class CentralizedAgent {
 					currentSol = bestSolEver;
 				}
 			}
-//			if (iter % 1000 == 0) {
-//				System.out.println("Iteration number: " + iter + " with cost " + currentSol.getCost() + " and best cost " + bestSolEver.getCost());
-//			}
     		iter++;
     	}
-    	
         
     	// Print computation time
         long time_end = System.currentTimeMillis();
         long duration = time_end - time_start;
-//        System.out.println("The solution was generated in " + duration + " milliseconds.");
-//        System.out.print(currentSol.toString());
         
         return bestSolEver;
     }
@@ -143,7 +132,6 @@ public class CentralizedAgent {
     public List<Plan> plan(List<Vehicle> vehicles, TaskSet tasks) {
         long time_start = System.currentTimeMillis();
         Solution currentSol = new Solution(vehicles, topology, tasks);
-        
         int iter = 0;
         Solution bestSolEver = currentSol;
         
@@ -197,8 +185,6 @@ public class CentralizedAgent {
     
     public List<Plan> plan(List<Vehicle> vehicles, Solution currentSol) {
         long time_start = System.currentTimeMillis();
-//        Solution currentSol = new Solution(vehicles, topology, tasks);
-        
         int iter = 0;
         Solution bestSolEver = currentSol;
         

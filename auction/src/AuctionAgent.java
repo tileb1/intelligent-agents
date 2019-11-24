@@ -68,8 +68,6 @@ public class AuctionAgent implements AuctionBehavior {
 
 		long seed = -9019554669489983951L * currentCity.hashCode() * agent.id();
 		this.random = new Random(seed);
-		// --------------------------------------------------------------------------------------FIX
-		// TIMEOUT
 
 		// this code is used to get the timeouts
 		LogistSettings ls = null;
@@ -180,18 +178,15 @@ public class AuctionAgent implements AuctionBehavior {
 	public void auctionResult(Task previous, int winner, Long[] bids) {
 		if (winner == agent.id()) {
 			this.totalBid += bids[agent.id()];
-//			for (int i = 0; i < bids.length; i++) {
-//				System.out.println("Agent " + i + ": " + bids[i]);
-//			}
 			this.updateMyState(previous);
 			this.ourSolution = this.theSolutionWeBidFor;
+			
 			// We win so we will bid more less aggressivaly
 			this.ratio = Math.max(Math.min(this.ratio * 1.05, this.RATIO_UPPER), this.RATIO_LOWER);
-//			System.out.println("Agent " + agent.id() + " has this much profit: " + (this.totalBid - this.ourSolution.getCost()));
-//			System.out.println(this.totalBid);
 		} else {
 			this.updateOpponentState(previous);
 			this.opponentSolution = this.theSolutionOpponentBidsFor;
+			
 			// We lose so we will bid more aggressivaly
 			this.ratio = Math.max(Math.min(this.ratio * 0.99, this.RATIO_UPPER), this.RATIO_LOWER);
 		}
@@ -222,7 +217,6 @@ public class AuctionAgent implements AuctionBehavior {
 				}
 				this.theSolutionOpponentBidsFor = this.centralizedAgent
 						.getSolution(TaskSet.create(array), this.ourVehicles);
-				System.out.println(this.theSolutionOpponentBidsFor);
 				this.opponentSolution = this.theSolutionOpponentBidsFor;
 				
 				// Marginal costs
@@ -256,26 +250,10 @@ public class AuctionAgent implements AuctionBehavior {
 				bid = this.opponent_min_bid - 1;
 			}
 			
-			System.out.println("STEADY");
-
-			// Some random agent
-//			bid = this.random.nextDouble() * 5000;
-
-//			// Some cheap ass agent
-//			bid = ourMarginalCost;
-//			
-//			// Baller agent
-//			bid = ourMarginalCost * 1.1;
-
-//			if (this.iter < 3) {
-//				bid = ourMarginalCost * 0.5;
-//			}
 		}
 		// Beginning of game
 		else {
 			this.theSolutionWeBidFor = this.centralizedAgent.getSolution(this.getTasksForSolution(task), this.ourVehicles);
-			System.out.println(this.ourSolution);
-			System.out.println(this.theSolutionWeBidFor);
 			bid = this.theSolutionWeBidFor.getCost() - this.ourSolution.getCost();
 			if (bid <= 0) {
 				bid = 250 - this.iter;
@@ -289,14 +267,12 @@ public class AuctionAgent implements AuctionBehavior {
 	
 	@Override
 	public List<Plan> plan(List<Vehicle> vehicles, TaskSet tasks) {
-		System.out.println("Calling plan");
 		this.centralizedAgent.setTimeout(timeout_plan);
 		Solution solution = null;
 		List<Plan> plan = null;
 
 		// We don't win the last task
 		if (tasks.size() == this.ourSolution.size()) {
-			System.out.println("first");
 			for (Task task : tasks) {
 				this.ourSolution.setTask(task);
 			}
@@ -305,7 +281,6 @@ public class AuctionAgent implements AuctionBehavior {
 		
 		// We win the last task
 		if (tasks.size() == this.ourSolution.size() + 1) {
-			System.out.println("second");
 			for (Task task : tasks) {
 				this.theSolutionWeBidFor.setTask(task);
 			}
@@ -314,7 +289,6 @@ public class AuctionAgent implements AuctionBehavior {
 		
 		// The auction agent has not even entered steady state...
 		if (tasks.size() > this.ourSolution.size() + 1) {
-			System.out.println("third");
 			plan = this.centralizedAgent.plan(vehicles, tasks);
 		}
 
