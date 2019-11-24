@@ -76,8 +76,6 @@ public class AuctionAgent implements AuctionBehavior {
 		} catch (Exception exc) {
 			System.out.println("There was a problem loading the configuration file.");
 		}
-
-		// the setup method cannot last more than timeout_setup milliseconds
 		timeout_setup = ls.get(LogistSettings.TimeoutKey.SETUP);
 		timeout_plan = ls.get(LogistSettings.TimeoutKey.PLAN);
 		timeout_bid = ls.get(LogistSettings.TimeoutKey.BID);
@@ -85,7 +83,6 @@ public class AuctionAgent implements AuctionBehavior {
 		this.centralizedAgent = new CentralizedAgent(topology, distribution, agent, timeout_bid / 2);
 
 		this.ourSolution = new Solution(agent.vehicles(), topology);
-		this.opponentSolution = new Solution(agent.vehicles(), topology);
 		this.firstSpeculatedTasks = this.initTasks(distribution, topology, 3);
 
 		this.opponentVehicles = new ArrayList<Vehicle>();
@@ -101,7 +98,7 @@ public class AuctionAgent implements AuctionBehavior {
 			}
 		}
 
-		for (Vehicle v : ourVehicles) {
+		for (final Vehicle v : ourVehicles) {
 			Random rand = new Random();
 			int randInt = rand.nextInt(remainingCities.size());
 			final City homeCity = remainingCities.get(randInt);
@@ -154,7 +151,7 @@ public class AuctionAgent implements AuctionBehavior {
 
 				@Override
 				public int costPerKm() {
-					return 0;
+					return v.costPerKm();
 				}
 
 				@Override
@@ -164,12 +161,13 @@ public class AuctionAgent implements AuctionBehavior {
 
 				@Override
 				public int capacity() {
-					return 0;
+					return v.capacity();
 				}
 			};
 			remainingCities.remove(randInt);
 			opponentVehicles.add(newV);
 		}
+		this.opponentSolution = new Solution(this.opponentVehicles, topology);
 		this.ourSolution = this.centralizedAgent.getSolution(this.getTasksForSolution(null), this.ourVehicles);
 
 	}
@@ -267,6 +265,7 @@ public class AuctionAgent implements AuctionBehavior {
 	
 	@Override
 	public List<Plan> plan(List<Vehicle> vehicles, TaskSet tasks) {
+		System.out.println(this.theSolutionOpponentBidsFor);
 		this.centralizedAgent.setTimeout(timeout_plan);
 		Solution solution = null;
 		List<Plan> plan = null;

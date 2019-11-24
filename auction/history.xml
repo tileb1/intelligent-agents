@@ -19,7 +19,7 @@
 					<bid agent="dummyAgent" bid="3415"/>
 				</task>
 				<task id="1" pickup="Manchester" delivery="Norwich" weight="3" reward="47516">
-					<bid agent="auction-random" bid="1211"/>
+					<bid agent="auction-random" bid="1064"/>
 					<bid agent="dummyAgent" bid="3962"/>
 				</task>
 				<task id="2" pickup="Cardiff" delivery="Manchester" weight="3" reward="68638">
@@ -132,9 +132,9 @@
 				<event id="33" time="11953333326" vehicle="Vehicle 3" move="Birmingham"/>
 				<event id="34" time="13206666658" vehicle="Vehicle 2" move="Sheffield"/>
 				<event id="35" time="13264444436" vehicle="Vehicle 3" move="Manchester"/>
-				<event id="36" time="14208888879" vehicle="Vehicle 2" deliver="0"/>
+				<event id="36" time="14208888879" vehicle="Vehicle 2" pickup="3"/>
 				<event id="37" time="14318888879" vehicle="Vehicle 3" deliver="7"/>
-				<event id="38" time="14508888879" vehicle="Vehicle 2" pickup="3"/>
+				<event id="38" time="14508888879" vehicle="Vehicle 2" deliver="0"/>
 				<event id="39" time="14808888879" vehicle="Vehicle 2" deliver="11"/>
 				<event id="40" time="15108888878" vehicle="Vehicle 2" pickup="15"/>
 				<event id="41" time="15408888878" vehicle="Vehicle 2" move="Leeds"/>
@@ -147,8 +147,8 @@
 				<event id="48" time="19762222207" vehicle="Vehicle 2" deliver="14"/>
 				<event id="49" time="20062222206" vehicle="Vehicle 2" deliver="15"/>
 				<event id="50" time="20362222206" vehicle="Vehicle 2" move="Manchester"/>
-				<event id="51" time="20747777761" vehicle="Vehicle 2" pickup="1"/>
-				<event id="52" time="21047777760" vehicle="Vehicle 2" deliver="2"/>
+				<event id="51" time="20747777761" vehicle="Vehicle 2" deliver="2"/>
+				<event id="52" time="21047777760" vehicle="Vehicle 2" pickup="1"/>
 				<event id="53" time="21347777760" vehicle="Vehicle 2" deliver="12"/>
 				<event id="54" time="21647777760" vehicle="Vehicle 2" deliver="13"/>
 				<event id="55" time="21947777760" vehicle="Vehicle 2" move="Birmingham"/>
@@ -172,8 +172,8 @@
 			<total-tasks value="17"/>
 			<total-distance value="1750.8"/>
 			<total-cost value="8754"/>
-			<total-reward value="24502"/>
-			<total-profit value="15748"/>
+			<total-reward value="24355"/>
+			<total-profit value="15601"/>
 		</stat>
 		<stat rank="2" agent="dummyAgent">
 			<total-tasks value="3"/>
